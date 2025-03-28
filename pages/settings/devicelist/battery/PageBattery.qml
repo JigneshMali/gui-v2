@@ -183,7 +183,7 @@ Page {
 			ListText {
 				id: guiV2Test
 				text: "GUI v2 Test"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.battery.serviceUid + "/GUIv2Test"  // Directly reading from the required path
+				dataItem.uid: root.bindPrefix + "/GUIv2Test"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
 			}
 
