@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 3.24) # earlier versions of cmake don't handle 'q
 cmake_policy(SET CMP0071 NEW) # process GENERATED source files in AUTOMOC and AUTOUIC. Added to silence a cmake warning.
 cmake_policy(SET CMP0079 NEW)
 
-project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.6)
+project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.7)
 add_definitions(-DPROJECT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR} -DPROJECT_VERSION_MINOR=${PROJECT_VERSION_MINOR} -DPROJECT_VERSION_PATCH=${PROJECT_VERSION_PATCH} )
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -223,6 +223,7 @@ set (VENUS_QML_MODULE_SOURCES
     components/NavBar.qml
     components/NavButton.qml
     components/NetworkServices.qml
+    components/NotificationCounter.qml
     components/NotificationDelegate.qml
     components/ObjectAcConnection.qml
     components/ObjectModelMonitor.qml
@@ -260,6 +261,8 @@ set (VENUS_QML_MODULE_SOURCES
     components/StatusBar.qml
     components/SwipePageModel.qml
     components/SwipeViewPage.qml
+    components/SystemBatteryDelegate.qml
+    components/SystemBatteryDeviceModel.qml
     components/SystemReason.qml
     components/TabBar.qml
     components/TankItem.qml
@@ -411,6 +414,7 @@ set (VENUS_QML_MODULE_SOURCES
     data/common/AcInputSettingsModel.qml
     data/common/AcInputSystemInfo.qml
     data/common/AcInput.qml
+    data/common/ActiveSystemBattery.qml
     data/common/DcDevice.qml
     data/common/DcInput.qml
     data/common/DeviceModel.qml
@@ -430,7 +434,6 @@ set (VENUS_QML_MODULE_SOURCES
     data/common/SolarHistoryErrorModel.qml
     data/common/SolarTracker.qml
     data/common/SolarTrackerDailyHistory.qml
-    data/common/SystemBattery.qml
     data/common/Tank.qml
     data/common/TankDescription.qml
     data/common/TankModel.qml
@@ -694,8 +697,14 @@ list(APPEND VenusQMLModule_CPP_SOURCES
     src/language.cpp
     src/enums.h
     src/enums.cpp
+    src/fastutils.h
+    src/fastutils.cpp
+    src/basenotification.h
+    src/basenotification.cpp
     src/notificationsmodel.h
     src/notificationsmodel.cpp
+    src/notificationsortfilterproxymodel.h
+    src/notificationsortfilterproxymodel.cpp
     src/clocktime.h
     src/clocktime.cpp
     src/cpuinfo.h
@@ -1136,6 +1145,7 @@ qt_add_resources(${PROJECT_NAME} "${PROJECT_NAME}_large_resources"
         images/inverter_charger.svg
         images/levels.svg
         images/notifications.svg
+        images/notifications_subtract.svg
         images/overview.svg
         images/rain.svg
         images/scatteredcloud.svg

@@ -20,7 +20,7 @@ QtObject {
 			&& (hasVebusEss ? (hasGridMeter && _withoutGridMeter.value === 0) : hasGridMeter)
 	readonly property bool feedbackEnabled: _feedbackEnabled.value === 1
 
-	readonly property SystemBattery battery: SystemBattery {
+	readonly property ActiveSystemBattery battery: ActiveSystemBattery {
 		systemServiceUid: root.serviceUid
 	}
 
@@ -29,7 +29,7 @@ QtObject {
 	}
 
 	readonly property QtObject dc: QtObject {
-		readonly property real power: _dcSystemPower.valid ? _dcSystemPower.value : NaN
+		readonly property real power: (_hasDcSystem.valid && _hasDcSystem.value && _dcSystemPower.valid) ? _dcSystemPower.value : NaN
 		readonly property real current: (isNaN(power) || isNaN(voltage) || voltage === 0) ? NaN : power / voltage
 		readonly property real voltage: _dcBatteryVoltage.valid ? _dcBatteryVoltage.value : NaN
 		readonly property real maximumPower: _maximumDcPower.valid ? _maximumDcPower.value : NaN
@@ -44,6 +44,10 @@ QtObject {
 
 		readonly property VeQuickItem _maximumDcPower: VeQuickItem {
 			uid: Global.systemSettings.serviceUid + "/Settings/Gui/Gauges/Dc/System/Power/Max"
+		}
+
+		readonly property VeQuickItem _hasDcSystem: VeQuickItem {
+			uid: Global.systemSettings.serviceUid + "/Settings/SystemSetup/HasDcSystem"
 		}
 	}
 

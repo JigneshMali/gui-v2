@@ -9,7 +9,7 @@ import Victron.VenusOS
 ListNavigation {
 	id: root
 
-	readonly property string activeBatteryName: availableBatteryServices.mapObject[activeBatteryService.value] ?? ""
+	required property string activeBatteryName
 	property string customServiceDescription
 
 	function _summaryText(deviceName, deviceInstance) {
@@ -27,13 +27,14 @@ ListNavigation {
 		let deviceOptionModel = [{ display: activeBatteryName, value: "", section: qsTrId("settings_briefview_center_active_battery_monitor") }]
 		for (let i = 0; i < deviceModel.count; ++i) {
 			const device = deviceModel.deviceAt(i)
+			const portableServiceId = BackendConnection.serviceUidToPortableId(device.serviceUid, device.deviceInstance)
 			deviceOptionModel.push({
 				display: root._summaryText(device.name, device.deviceInstance),
-				value: device.serviceUid,
+				value: portableServiceId,
 				//% "Temperature services"
 				section: qsTrId("settings_briefview_center_temperature_services")
 			})
-			if (selectedIndex < 0 && device.serviceUid === centerService.value) {
+			if (selectedIndex < 0 && portableServiceId === centerService.value) {
 				selectedIndex = i
 			}
 		}
@@ -48,34 +49,14 @@ ListNavigation {
 		id: centerService
 		uid: Global.systemSettings.serviceUid + "/Settings/Gui2/BriefView/CenterService"
 		onValueChanged: {
-			const serviceUid = value
-			const serviceType = BackendConnection.serviceTypeFromUid(serviceUid)
-			if (serviceType === "temperature") {
-				const deviceModel = Global.environmentInputs.model
-				const device = deviceModel.deviceAt(deviceModel.indexOf(serviceUid))
-				root.customServiceDescription = root._summaryText(device?.name, device?.deviceInstance)
+			const idInfo = BackendConnection.portableIdInfo(value)
+			if (idInfo.type === "temperature") {
+				const device = Global.environmentInputs.model.deviceForDeviceInstance(idInfo.instance)
+				if (device) {
+					root.customServiceDescription = root._summaryText(device?.name, device?.deviceInstance)
+				}
 			} else {
 				root.customServiceDescription = ""
-			}
-		}
-	}
-
-	VeQuickItem {
-		id: activeBatteryService
-		uid: Global.system.serviceUid + "/ActiveBatteryService"
-	}
-
-	VeQuickItem {
-		id: availableBatteryServices
-
-		property var mapObject: ({})
-
-		uid: Global.system.serviceUid + "/AvailableBatteryServices"
-		onValueChanged: {
-			try {
-				mapObject = JSON.parse(value)
-			} catch (e) {
-				console.warn("Unable to parse JSON:", value, "exception:", e)
 			}
 		}
 	}
@@ -92,8 +73,11 @@ ListNavigation {
 				text: section
 			}
 
-			onOptionClicked: (index, serviceUid) => {
-				centerService.setValue(serviceUid)
+			showAccessLevel: root.showAccessLevel
+			writeAccessLevel: root.writeAccessLevel
+
+			onOptionClicked: (index, serviceId) => {
+				centerService.setValue(serviceId)
 			}
 		}
 	}

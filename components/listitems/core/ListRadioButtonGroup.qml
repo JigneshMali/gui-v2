@@ -54,7 +54,7 @@ ListNavigation {
 
 	onClicked: {
 		// onClicked is not emitted if interactive: false
-		Global.pageManager.pushPage(optionsPageComponent, { title: text })
+		Global.pageManager.pushPage(optionsPageComponent, { title: Qt.binding(function() { return root.text }) })
 	}
 
 	VeQuickItem {
@@ -69,6 +69,8 @@ ListNavigation {
 			currentIndex: root.currentIndex
 			updateCurrentIndexOnClick: root.updateCurrentIndexOnClick
 			popDestination: root.popDestination
+			showAccessLevel: root.showAccessLevel
+			writeAccessLevel: root.writeAccessLevel
 			validatePassword: root.validatePassword
 
 			onOptionClicked: (index, value) => {
