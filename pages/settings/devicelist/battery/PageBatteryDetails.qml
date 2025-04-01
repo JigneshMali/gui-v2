@@ -12,6 +12,22 @@ Page {
 	property string bindPrefix
 	property BatteryDetails details
 
+	VeQuickItem {
+			id: productName
+			uid: root.bindPrefix + "/ProductName"
+		}
+	VeQuickItem {
+			id: hardwareVersion
+			uid: root.bindPrefix + "/HardwareVersion"
+		}
+	VeQuickItem {
+			id: nrOfBatteries
+			uid: root.bindPrefix + "/System/NrOfBatteries"
+		}
+
+	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
+	property bool versionFlag: hardwareVersion.text === "6.4"
+
 	QtObject {
 		id: temperatureData
 
@@ -21,6 +37,7 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
+
 			ListQuantityGroup {
 				//% "Lowest cell voltage"
 				text: qsTrId("batterydetails_lowest_cell_voltage")
@@ -99,6 +116,34 @@ Page {
 					QuantityObject { object: details.capacity; unit: VenusOS.Units_AmpHour }
 				}
 				preferredVisible: details.allowsCapacity
+			}
+
+			ListText {
+				text: "Heating Mode"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
+				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+			}
+
+			ListTemperature {
+				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
+				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				unit: Global.systemSettings.temperatureUnit
+			}
+
+			ListQuantity {
+				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
+				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				unit: VenusOS.Units_Percentage
+
+			}
+
+			ListQuantity {
+				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
+				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				unit: VenusOS.Units_Percentage
 			}
 
 			ListText {

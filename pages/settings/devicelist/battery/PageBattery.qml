@@ -187,22 +187,25 @@ Page {
 				unit: VenusOS.Units_Percentage
 			}
 
-			ListText {
+			ListTemperature {
 				text: "BMS Temp"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/System/MOSTemperature"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
 			}
 			
-			ListText {
+			ListTemperature {
 				text: "Case Temp 1"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/System/Temperature1"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
 			}
 
-			ListText {
+			ListTemperature {
 				text: "Case Temp 2"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/System/Temperature2"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
 			}
 
 			ListText {
@@ -210,6 +213,7 @@ Page {
 				text: "GUI v2 Test"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/GUIv2Test"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
+				
 			}
 
 			ListQuantity {
@@ -227,12 +231,12 @@ Page {
 			// 	unit: Global.systemSettings.temperatureUnit
 			// }
 
-			ListTemperature {
-				//% "Air temperature"
-				text: qsTrId("battery_air_temp")
-				dataItem.uid: root.bindPrefix + "/AirTemperature"
-				preferredVisible: dataItem.valid
-			}
+			// ListTemperature {
+			// 	//% "Air temperature"
+			// 	text: qsTrId("battery_air_temp")
+			// 	dataItem.uid: root.bindPrefix + "/AirTemperature"
+			// 	preferredVisible: dataItem.valid
+			// }
 
 			ListQuantity {
 				//% "Starter voltage"
@@ -323,7 +327,7 @@ Page {
 
 			ListNavigation {
 				text: "Cell Voltages"
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && nrOfBatteries.value < 1 //tgl
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && (!nrOfBatteries.value || nrOfBatteries.value === undefined || nrOfBatteries.value < 1)
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryCellVoltages.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
