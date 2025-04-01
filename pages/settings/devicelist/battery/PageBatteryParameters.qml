@@ -20,6 +20,24 @@ Page {
 				unit: VenusOS.Units_Volt_DC
 			}
 
+			ListRadioButtonGroup {
+				text: "Charge Voltage Limit (CVL)"
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				optionModel: [
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.400)), value: 3.400 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.450)), value: 3.450 },
+					{ display: qsTr("%1V %2").arg(nrOfcell.value*(3.500)).arg("[DEFAULT]"), value: 3.500 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.550)), value: 3.550 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 },					
+				]
+			}
+
+			ListVolumeUnitRadioButtonGroup {
+				//: Title for a list of units of volume (e.g. cubic meters, liters, gallons)
+				//% "Volume"
+				text: qsTrId("components_volumeunit_volume")
+			}
+
 			ListQuantity {
 				//% "Charge Current Limit (CCL)"
 				text: qsTrId("batteryparameters_charge_current_limit_ccl")
