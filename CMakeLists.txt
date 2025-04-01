@@ -561,6 +561,8 @@ set (VENUS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/FuseInfo.qml
     pages/settings/devicelist/battery/Page48TlDiagnostics.qml
     pages/settings/devicelist/battery/PageBattery.qml
+    pages/settings/devicelist/battery/PageBatteryCellVoltages.qml
+    pages/settings/devicelist/battery/PageDeviceInfo.qml
     pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml
