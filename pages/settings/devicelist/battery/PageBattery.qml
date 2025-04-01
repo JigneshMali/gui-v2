@@ -173,11 +173,36 @@ Page {
 				dataItem.uid: root.bindPrefix + "/NumberOfBmses"
 				preferredVisible: root.isParallelBms
 			}
+			
+			ListText {
+				id: currentavg5min
+				text: "Current (Last 5 minutes avg.)"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CurrentAvg"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
 
 			ListQuantity {
 				text: CommonWords.state_of_charge
 				dataItem.uid: root.bindPrefix + "/Soc"
 				unit: VenusOS.Units_Percentage
+			}
+
+			ListText {
+				text: "BMS Temp"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/MOSTemperature"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+			
+			ListText {
+				text: "Case Temp 1"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/Temperature1"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+
+			ListText {
+				text: "Case Temp 2"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/Temperature2"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
 			}
 
 			ListText {
@@ -195,12 +220,12 @@ Page {
 				unit: VenusOS.Units_Percentage
 			}
 
-			ListTemperature {
-				text: CommonWords.battery_temperature
-				dataItem.uid: root.bindPrefix + "/Dc/0/Temperature"
-				preferredVisible: dataItem.valid
-				unit: Global.systemSettings.temperatureUnit
-			}
+			// ListTemperature {
+			// 	text: CommonWords.battery_temperature
+			// 	dataItem.uid: root.bindPrefix + "/Dc/0/Temperature"
+			// 	preferredVisible: dataItem.valid
+			// 	unit: Global.systemSettings.temperatureUnit
+			// }
 
 			ListTemperature {
 				//% "Air temperature"
@@ -293,6 +318,15 @@ Page {
 				BatteryDetails {
 					id: batteryDetails
 					bindPrefix: root.bindPrefix
+				}
+			}
+
+			ListNavigation {
+				text: "Cell Voltages"
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && nrOfBatteries.value < 1 //tgl
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryCellVoltages.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
 
@@ -414,7 +448,7 @@ Page {
 			ListNavigation {
 				text: CommonWords.device_info_title
 				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/PageDeviceInfo.qml",
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}
