@@ -307,7 +307,7 @@ Page {
 
 			ListItem {
 				text: "Cells 5-8"
-				allowed: batteryVoltagesCell_5 != "--"
+				preferredVisible: batteryVoltagesCell_5 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -374,7 +374,7 @@ Page {
 
 			ListItem {
 				text: "Cells 9-12"
-				allowed: batteryVoltagesCell_9 != "--"
+				preferredVisible: batteryVoltagesCell_9 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -441,7 +441,7 @@ Page {
 
 			ListItem {
 				text: "Cells 13-16"
-				allowed: batteryVoltagesCell_13 != "--"
+				preferredVisible: batteryVoltagesCell_13 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -508,7 +508,7 @@ Page {
 
 			ListItem {
 				text: "Cells 17-20"
-				allowed: batteryVoltagesCell_17 != "--"
+				preferredVisible: batteryVoltagesCell_17 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -575,7 +575,7 @@ Page {
 
 			ListItem {
 				text: "Cells 21-24"
-				allowed: batteryVoltagesCell_21 != "--"
+				preferredVisible: batteryVoltagesCell_21 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -642,7 +642,7 @@ Page {
 
 			ListItem {
 				text: "Cells 25-28"
-				allowed: batteryVoltagesCell_25 != "--"
+				preferredVisible: batteryVoltagesCell_25 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
@@ -709,7 +709,7 @@ Page {
 
 			ListItem {
 				text: "Cells 29-32"
-				allowed: batteryVoltagesCell_29 != "--"
+				preferredVisible: batteryVoltagesCell_29 != "--"
 				content.children: [
 					Column {
 						width: ( parent.width - Theme.geometry_page_content_horizontalMargin ) / 4
