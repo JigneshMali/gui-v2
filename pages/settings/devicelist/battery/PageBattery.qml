@@ -420,6 +420,14 @@ Page {
 			}
 
 			ListNavigation {
+				text: "Enable Virtual Battery"
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
+							{ "title": text, "bindPrefix": root.battery.serviceUid })
+				}
+			}
+
+			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
 				preferredVisible: cvl.valid || ccl.valid || dcl.valid
