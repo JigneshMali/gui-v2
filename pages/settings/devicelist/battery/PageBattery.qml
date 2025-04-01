@@ -423,7 +423,7 @@ Page {
 				text: "Enable Virtual Battery"
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
-							{ "title": text, "bindPrefix": root.battery.serviceUid })
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
 
