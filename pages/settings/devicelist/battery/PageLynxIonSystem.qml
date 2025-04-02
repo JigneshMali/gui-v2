@@ -13,6 +13,131 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
+
+			VeQuickItem {
+				id: nrOfBatteries
+				uid: root.bindPrefix + "/System/NrOfBatteries"
+			}
+
+			VeQuickItem {
+				id: nrOfcell
+				uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
+			}
+
+			VeQuickItem {
+				id: nrOfBatteries
+				uid: root.bindPrefix + "/System/SFKVirtualSetup"
+			}
+
+			VeQuickItem {
+				id: nrOfcell
+				uid: root.bindPrefix + "/System/ShowBalanceSeries"
+			}
+
+			ListRadioButtonGroup {
+				text: "Virtual Battery Setup"
+				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
+				optionModel: generateOptions()
+
+                function generateOptions() {
+                    var options = [];
+                    var nrOfCellsValue = nrOfCellsPerBattery.value || 4; // Default to 4 if undefined
+                    var nrOfBatteriesValue = nrOfBatteries.value || 2; // Default to 2 if undefined
+
+                    if (nrOfBatteriesValue === 2) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("2 in parallel (12v)"), value: "2P_2B_4C" },
+                                { display: qsTr("2 in series (24v)"), value: "2S_2B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("2 in parallel (24v)"), value: "2P_2B_8C" },
+                                { display: qsTr("2 in series (48v)"), value: "2S_2B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 3) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("3 in parallel (12v)"), value: "3P_3B_4C" },
+                                { display: qsTr("3 in series (36v)"), value: "3S_3B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("3 in parallel (24v)"), value: "3P_3B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 4) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("4 in parallel (12v)"), value: "4P_4B_4C" },
+                                { display: qsTr("4 in series (48v)"), value: "4S_4B_4C" },
+                                { display: qsTr("2 in series, 2 in parallel (24v)"), value: "2S2P_4B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("4 in parallel (24v)"), value: "4P_4B_8C" },
+                                { display: qsTr("2 in series, 2 in parallel (48v)"), value: "2S2P_4B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 5) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("5 in parallel (12v)"), value: "5P_5B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("5 in parallel (24v)"), value: "5P_5B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 6) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("6 in parallel (12v)"), value: "6P_6B_4C" },
+                                { display: qsTr("2 in series, 3 in parallel (24v)"), value: "2S3P_6B_4C" },
+                                { display: qsTr("3 in series, 2 in parallel (36v)"), value: "3S2P_6B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("6 in parallel (24v)"), value: "6P_6B_8C" },
+                                { display: qsTr("2 in series, 3 in parallel (48v)"), value: "2S3P_6B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 7) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("7 in parallel (12v)"), value: "7P_7B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("7 in parallel (24v)"), value: "7P_7B_8C" }
+                            ];
+                        }
+                    } else if (nrOfBatteriesValue === 8) {
+                        if (nrOfCellsValue === 4) {
+                            options = [
+                                { display: qsTr("8 in parallel (12v)"), value: "8P_8B_4C" },
+                                { display: qsTr("2 in series, 4 in parallel (24v)"), value: "2S4P_8B_4C" },
+                                { display: qsTr("4 in series, 2 in parallel (48v)"), value: "4S2P_8B_4C" }
+                            ];
+                        } else if (nrOfCellsValue === 8) {
+                            options = [
+                                { display: qsTr("8 in parallel (24v)"), value: "8P_8B_8C" },
+                                { display: qsTr("2 in series, 4 in parallel (48v)"), value: "2S4P_8B_8C" }
+                            ];
+                        }
+                    } else {
+                        options = [
+                            { display: qsTr("2 in parallel (12v)"), value: "2P_2B_4C" },
+                            { display: qsTr("2 in series (24v)"), value: "2S_2B_4C" }
+                        ];
+                    }
+
+                    return options;
+                }
+				 
+			}
+
 			ListText {
 				//% "Capacity"
 				text: qsTrId("lynxionsystem_capacity")
