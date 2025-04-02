@@ -17,16 +17,28 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
-			ListQuantity {
-				//% "Charge Voltage Limit (CVL)"
-				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
-				unit: VenusOS.Units_Volt_DC
+			ListText {
+				text: "Please Restart device to see changes."  // Directly assigning text as no translation ID exists
+				// dataItem.uid: root.bindPrefix + "/Info/ChargeMode"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
 			}
+
+			ListText {
+				text: "Charge Mode"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/ChargeMode"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+			
+			// ListQuantity {
+			// 	//% "Charge Voltage Limit (CVL)"
+			// 	text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
+			// 	dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
+			// 	unit: VenusOS.Units_Volt_DC
+			// }
 
 			ListRadioButtonGroup {
 				text: "Charge Voltage Limit (CVL)"
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
 				optionModel: [
 					{ display: qsTr("%1V").arg(nrOfcell.value*(3.400)), value: 3.400 },
 					{ display: qsTr("%1V").arg(nrOfcell.value*(3.450)), value: 3.450 },
@@ -36,18 +48,108 @@ Page {
 				]
 			}
 
-			ListQuantity {
-				//% "Charge Current Limit (CCL)"
-				text: qsTrId("batteryparameters_charge_current_limit_ccl")
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
-				unit: VenusOS.Units_Amp
+			ListText {
+				text: "Charge Limitation"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/ChargeLimitation"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
 			}
 
-			ListQuantity {
-				//% "Discharge Current Limit (DCL)"
-				text: qsTrId("batteryparameters_discharge_current_limit_dcl")
+			ListRadioButtonGroup {
+				text: "Charge Current Limit (CCL)"
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				optionModel: [
+					{ display: qsTr("%1A").arg(40.0), value: 40 },
+					{ display: qsTr("%1A").arg(50.0), value: 50 },
+					{ display: qsTr("%1A").arg(60.0), value: 60 },
+					{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+					{ display: qsTr("%1A").arg(80.0), value: 80 },
+					{ display: qsTr("%1A").arg(90.0), value: 90 }
+				]
+			}
+
+			// ListQuantity {
+			// 	//% "Charge Current Limit (CCL)"
+			// 	text: qsTrId("batteryparameters_charge_current_limit_ccl")
+			// 	dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+			// 	unit: VenusOS.Units_Amp
+			// }
+
+			ListText {
+				text: "Discharge Limitation"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/DischargeLimitation"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+
+			ListRadioButtonGroup {
+				text: "Discharge Current Limit (DCL)"
 				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
-				unit: VenusOS.Units_Amp
+				optionModel: [
+					{ display: qsTr("%1A").arg(50.0), value: 50 },
+					{ display: qsTr("%1A").arg(60.0), value: 60 },
+					{ display: qsTr("%1A").arg(70.0), value: 70 },
+					{ display: qsTr("%1A").arg(80.0), value: 80 },
+					{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
+					{ display: qsTr("%1A").arg(100.0), value: 100 }
+				]
+			}
+
+			// ListQuantity {
+			// 	//% "Discharge Current Limit (DCL)"
+			// 	text: qsTrId("batteryparameters_discharge_current_limit_dcl")
+			// 	dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
+			// 	unit: VenusOS.Units_Amp
+			// }
+
+			ListRadioButtonGroup {
+				text: "SOC Reset Voltage"
+				dataItem.uid: root.bindPrefix + "/Info/SOCResetVoltage"
+				optionModel: [
+					{ display: qsTr("%1V").arg(3.500), value: 3.500 },
+					{ display: qsTr("%1V").arg(3.550), value: 3.550 },
+					{ display: qsTr("%1V %2").arg(3.600).arg("[DEFAULT]"), value: 3.600 },
+					{ display: qsTr("%1V").arg(3.650), value: 3.650 }
+				]
+			}
+
+			ListRadioButtonGroup {
+				text: "Min Cell Voltage"
+				dataItem.uid: root.bindPrefix + "/Info/MinCellVoltage"
+				optionModel: [
+					{ display: qsTr("%1V").arg(2.700), value: 2.700 },
+					{ display: qsTr("%1V").arg(2.800), value: 2.800 },
+					{ display: qsTr("%1V %2").arg(2.900).arg("[DEFAULT]"), value: 2.900 },
+					{ display: qsTr("%1V").arg(3.000), value: 3.000 }
+				]
+			}
+
+			ListRadioButtonGroup {
+				text: "Max Cell Voltage"
+				dataItem.uid: root.bindPrefix + "/Info/MaxCellVoltage"
+				optionModel: [
+					{ display: qsTr("%1V %2").arg(3.500).arg("[DEFAULT]"), value: 3.500 },
+					{ display: qsTr("%1V").arg(3.550), value: 3.550 },
+					{ display: qsTr("%1V").arg(3.600), value: 3.600 }
+				]
+			}
+
+			ListRadioButtonGroup {
+				text: "Float Cell Voltage"
+				dataItem.uid: root.bindPrefix + "/Info/FloatCellVoltage"
+				optionModel: [
+					{ display: qsTr("%1V %2").arg(3.325).arg("[DEFAULT]"), value: 3.325 },
+					{ display: qsTr("%1V").arg(3.350), value: 3.350 },
+					{ display: qsTr("%1V").arg(3.375), value: 3.375 }
+				]
+			}
+
+			ListRadioButtonGroup {
+				text: "Poll Rate"
+				dataItem.uid: root.bindPrefix + "/BMSPollrate"
+				optionModel: [
+					{ display: qsTr("1 Second"), value: 1000 },
+					{ display: qsTr("2 Seconds %1").arg("[DEFAULT]"), value: 2000 },
+					{ display: qsTr("3 Seconds"), value: 3000 }
+				]
 			}
 
 			ListQuantity {

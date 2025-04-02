@@ -28,26 +28,6 @@ Page {
         }
     }
 
-	// VeQuickItem {
-	// 	id: nrOfBatteries
-	// 	uid: root.bindPrefix +"/System/NrOfBatteries"
-	// }
-
-	// VeQuickItem {
-	// 	id: cvl
-	// 	uid: root.bindPrefix + "/Info/MaxChargeVoltage"
-	// }
-
-	// VeQuickItem {
-	// 	id: ccl
-	// 	uid: root.bindPrefix + "/Info/MaxChargeCurrent"
-	// }
-
-	// VeQuickItem {
-	// 	id: dcl
-	// 	uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
-	// }
-
 	VeQuickItem {
 		id: cellSum
 		uid: root.bindPrefix + "/Voltages/Sum"
