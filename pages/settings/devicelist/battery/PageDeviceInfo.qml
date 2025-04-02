@@ -17,6 +17,13 @@ Page {
 		id: settingsListView
 
 		model: VisibleItemModel {
+
+			ListText {
+				text: "Connected"
+				dataItem.uid: root.bindPrefix + "/Connected"
+				secondaryText: CommonWords.yesOrNo(dataItem.value)
+			}
+
 			ListText {
 				//% "Connection"
 				text: qsTrId("settings_deviceinfo_connection")
@@ -39,6 +46,24 @@ Page {
 				textField.maximumLength: 32
 				preferredVisible: dataItem.valid
 				placeholderText: CommonWords.custom_name
+			}
+
+			ListTextField {
+				//% "SFK pin"
+				text: "Security pin"
+				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
+				dataItem.invalidate: false
+				textField.maximumLength: 6
+				preferredVisible: dataItem.valid
+				// placeholderText: CommonWords.custom_name
+				textField.onAccepted: {
+					if (textField.text.length !== 6) {
+						toast.createToast(qsTr("Security Pin must be 6 digits"))
+					} else {
+						dataItem.value = textField.text  // Store only if exactly 6 digits
+						textField.text = ""             // Clear the field for security
+					}
+				}
 			}
 
 			ListText {
@@ -68,9 +93,25 @@ Page {
 				dataItem.invalidate: false
 			}
 
+			ListTextField {
+				//% "Name"
+				text: CommonWords.vrm_instance
+				dataItem.uid: root.bindPrefix + "/DeviceInstance"
+				dataItem.invalidate: false
+				textField.maximumLength: 4
+				preferredVisible: dataItem.valid
+			}
+
 			ListText {
 				text: CommonWords.serial_number
 				dataItem.uid: root.bindPrefix + "/Serial"
+				dataItem.invalidate: false
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "MCU ID"
+				dataItem.uid: root.bindPrefix + "/MCUid"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
