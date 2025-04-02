@@ -11,24 +11,7 @@ Page {
 
 	property string bindPrefix
 
-	GradientListView {
-		model: VisibleItemModel {
-
-			VeQuickItem {
-				id: nrOfBatteries
-				uid: root.bindPrefix + "/System/NrOfBatteries"
-			}
-
-			VeQuickItem {
-				id: nrOfcell
-				uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
-			}
-
-			ListRadioButtonGroup {
-				text: "Virtual Battery Setup"
-				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
-				optionModel: generateOptions()
-
+	
                 function generateOptions() {
                     var options = [];
                     var nrOfCellsValue = nrOfCellsPerBattery.value || 4; // Default to 4 if undefined
@@ -125,7 +108,24 @@ Page {
 
                     return options;
                 }
-				 
+
+			VeQuickItem {
+			id: nrOfBatteries
+			uid: root.bindPrefix + "/System/NrOfBatteries"
+			}
+
+			VeQuickItem {
+			id: nrOfcell
+			uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
+			}
+
+	GradientListView {
+		model: VisibleItemModel {
+
+			ListRadioButtonGroup {
+				text: "Virtual Battery Setup"
+				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
+				optionModel: generateOptions()		 
 			}
 
 			ListText {
