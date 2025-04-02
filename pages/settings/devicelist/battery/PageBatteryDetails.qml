@@ -126,8 +126,8 @@ Page {
 			ListText {
 				text: "Heating Mode"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
-				// preferredVisible: true
-				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				preferredVisible: true
+				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
 			}
 
 			ListTemperature {
@@ -151,7 +151,7 @@ Page {
 				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
 				preferredVisible: true
-				preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
 				unit: VenusOS.Units_Percentage
 			}
 
