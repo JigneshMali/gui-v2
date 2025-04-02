@@ -24,16 +24,6 @@ Page {
 				uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
 			}
 
-			VeQuickItem {
-				id: nrOfBatteries
-				uid: root.bindPrefix + "/System/SFKVirtualSetup"
-			}
-
-			VeQuickItem {
-				id: nrOfcell
-				uid: root.bindPrefix + "/System/ShowBalanceSeries"
-			}
-
 			ListRadioButtonGroup {
 				text: "Virtual Battery Setup"
 				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
