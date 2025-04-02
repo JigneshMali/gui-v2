@@ -10,6 +10,8 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property VeQuickItem nrOfBatteries: VeQuickItem {uid: root.bindPrefix + "/System/NrOfBatteries"}
+	property VeQuickItem nrOfCellsPerBattery: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
 
 	function generateOptions() {
 		var options = [];
@@ -107,9 +109,6 @@ Page {
 
 		return options;
 	}
-
-	property VeQuickItem nrOfBatteries: VeQuickItem {uid: root.bindPrefix + "/System/NrOfBatteries"}
-	property VeQuickItem nrOfcell: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
 
 	GradientListView {
 		model: VisibleItemModel {
