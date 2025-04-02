@@ -10,7 +10,6 @@ Page {
 	id: root
 
 	property string bindPrefix
-
 	VeQuickItem {
 		id: nrOfcell
 		uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
@@ -23,6 +22,18 @@ Page {
 				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
 				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
 				unit: VenusOS.Units_Volt_DC
+			}
+
+			ListRadioButtonGroup {
+				text: "Charge Voltage Limit (CVL)"
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				optionModel: [
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.400)), value: 3.400 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.450)), value: 3.450 },
+					{ display: qsTr("%1V %2").arg(nrOfcell.value*(3.500)).arg("[DEFAULT]"), value: 3.500 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.550)), value: 3.550 },
+					{ display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 },					
+				]
 			}
 
 			ListQuantity {
