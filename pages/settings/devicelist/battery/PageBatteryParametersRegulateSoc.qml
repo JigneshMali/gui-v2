@@ -36,10 +36,13 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
-			ListText {
+			ListRadioButtonGroup {
 				text: "Regulate Max SOC Enable"
 				dataItem.uid: root.bindPrefix + "/Info/RegulateMaxSocEnable"
-				secondaryText: CommonWords.yesOrNo(dataItem.value)
+				optionModel: [
+					{ display: qsTr("Yes").arg(97), value: 1 },
+					{ display: qsTr("No").arg(98), value: 0 }
+				]
 			}
 
 			ListRadioButtonGroup {
