@@ -110,6 +110,24 @@ Page {
 				preferredVisible: dataItem.valid
 			}
 
+			ListNavigation {
+				text: "Update SFK Driver"
+				preferredVisible: !sfkFlag ||  sfkFlag.value === undefined
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwareCheck.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
+			ListNavigation {
+				text: "Uninstall SFK Driver"
+				preferredVisible: !sfkFlag ||  sfkFlag.value === undefined
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoUninstallSFK.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
 			ListText {
 				//% "Device name"
 				text: qsTrId("settings_deviceinfo_device_name")

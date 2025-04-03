@@ -40,8 +40,8 @@ Page {
 				text: "Regulate Max SOC Enable"
 				dataItem.uid: root.bindPrefix + "/Info/RegulateMaxSocEnable"
 				optionModel: [
-					{ display: qsTr("Yes").arg(97), value: 1 },
-					{ display: qsTr("No").arg(98), value: 0 }
+					{ display: qsTr("Yes"), value: 1 },
+					{ display: qsTr("No"), value: 0 }
 				]
 			}
 

@@ -475,7 +475,7 @@ Page {
 
 			ListNavigation {
 				text: CommonWords.device_info_title
-				preferredVisible: sfkvbFlag
+				preferredVisible: !sfkvbFlag ||  sfkvbFlag.value === undefined
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -495,7 +495,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
