@@ -466,8 +466,18 @@ Page {
 
 			ListNavigation {
 				text: CommonWords.device_info_title
+				preferredVisible: !sfkvbFlag ||  sfkvbFlag.value === undefined
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageDeviceInfo.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
+			ListNavigation {
+				text: CommonWords.device_info_title
+				preferredVisible: sfkvbFlag
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}

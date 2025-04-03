@@ -87,12 +87,6 @@ Page {
 				preferredVisible: dataItem.valid
 			}
 
-			ListText {
-				text: CommonWords.vrm_instance
-				dataItem.uid: root.bindPrefix + "/DeviceInstance"
-				dataItem.invalidate: false
-			}
-
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
