@@ -14,14 +14,11 @@ Page {
 	readonly property VeQuickItem sfkFlag: VeQuickItem {uid: root.bindPrefix +  "/SFKbatteryflag"}	
 	readonly property VeQuickItem sfkvbFlag: VeQuickItem {uid: root.bindPrefix + "/SFKVBbatteryflag"}	
 	readonly property VeQuickItem versionFlag: VeQuickItem {uid: root.bindPrefix +  "/SFKhardwareflag"}	
+	readonly property VeQuickItem nrOfcell: VeQuickItem {uid: root.bindPrefix +   "/System/NrOfCellsPerBattery"}	
 
 	GradientListView {
 		model: VisibleItemModel {
 
-			VeQuickItem {
-				id: nrOfcell
-				uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
-			}
 			ListText {
 				text: "Please Restart device to see changes."  // Directly assigning text as no translation ID exists
 				// dataItem.uid: root.bindPrefix + "/Info/ChargeMode"  // Directly reading from the required path
