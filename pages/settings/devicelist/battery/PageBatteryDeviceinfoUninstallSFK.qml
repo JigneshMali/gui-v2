@@ -27,10 +27,9 @@ Page {
 				dataItem.uid: root.bindPrefix + "/SFKFirmwareUninstallconfirm"
 				preferredVisible: true
 				optionModel: [
-					{ display: qsTr("Yes"), value: 1 },
-					{ display: qsTr("No"), value: 0 }
+					{ display: qsTr("Uninstall"), value: 1 },
+					{ display: qsTr("Cancel"), value: 0 }
 				]
-
 			}
 
 			ListRebootButton { }

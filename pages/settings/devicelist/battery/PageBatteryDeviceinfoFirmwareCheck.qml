@@ -91,15 +91,15 @@ Page {
 
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
-		uid: serviceUid +  "/SFKbatteryflag"
+		uid: root.bindPrefix +  "/SFKbatteryflag"
 	}	
 	property VeQuickItem sfkvbFlag: VeQuickItem {
 		id: sfkvbFlag
-		uid: serviceUid + "/SFKVBbatteryflag"
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
 	}	
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
-		uid: serviceUid +  "/SFKhardwareflag"
+		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
 	property VeQuickItem nrOfcell: VeQuickItem {
 		id: nrOfcell
@@ -109,29 +109,69 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
-			ListQuantity {
-				//% "Charge Voltage Limit (CVL)"
-				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
-				preferredVisible:sfkvbFlag  // Control visibility based on your condition
-				unit: VenusOS.Units_Volt_DC
+			ListRadioButtonGroup {
+				//% "SFK Driver Update"
+				text: "Check for SFK driver update"
+			
+				optionModel: [
+					//% "Check for Updates"
+					{ display: "Check", value: 1 },
+					//% "Cancel"
+					{ display: "Cancel", value: 0 }
+				]
+			
+				currentIndex: sfkFirmwareAvailableCheck.value === 1 ? 0 : 1
+			
+				onOptionClicked: function(index) {
+					// Trigger the appropriate action based on the selected option
+					if (optionModel[index].value === 1) {
+						sfkFirmwareAvailableCheck.setValue(1) // Start checking for updates
+					} else {
+						sfkFirmwareAvailableCheck.setValue(0) // Cancel the update check
+					}
+				}
+			
+				preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
+			}			
+			
+			ListText {
+				text: "SFK Drivers Available"
+				dataItem.uid: root.bindPrefix + "/System/SFKNumberofVersions"
+				preferredVisible: (( isSFKVersionsAvailable.value === 1) || ( sfkNumberofVersions.value > 0 ) ) &&  (sfkFirmwareInstallationCompleted.value === 0)
 			}
 
-			ListQuantity {
-				//% "Charge Current Limit (CCL)"
-				text: qsTrId("batteryparameters_charge_current_limit_ccl")
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
-				preferredVisible: sfkvbFlag  // Control visibility based on your condition
-				unit: VenusOS.Units_Amp
+			ListText {
+				text: installationCompletedPulse ? firmwareInstalledMessage : qsTr("")
+				preferredVisible:sfkFirmwareInstallationCompleted.value === 1 
 			}
 
-			ListQuantity {
-				//% "Discharge Current Limit (DCL)"
-				text: qsTrId("batteryparameters_discharge_current_limit_dcl")
-				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
-				preferredVisible: sfkvbFlag  // Control visibility based on your condition
-				unit: VenusOS.Units_Amp
+			ListNavigation {
+				text: sfkV1TextInstallConfirm.text
+				preferredVisible: (sfkNumberofVersions.value > 0 && sfkNumberofVersions.value < 4 ) 
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev1.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
 			}
+
+			ListNavigation {
+				text: sfkV2TextInstallConfirm.text
+				preferredVisible: (sfkNumberofVersions.value > 1 && sfkNumberofVersions.value < 4 ) 
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev2.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
+			ListNavigation {
+				text: sfkV3TextInstallConfirm.text
+				preferredVisible: show: sfkNumberofVersions.value === 3
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
 		}
 	}
 }
