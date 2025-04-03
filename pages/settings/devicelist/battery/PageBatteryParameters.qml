@@ -11,10 +11,22 @@ Page {
 
 	property string bindPrefix
 
-	readonly property VeQuickItem sfkFlag: VeQuickItem {uid: root.bindPrefix +  "/SFKbatteryflag"}	
-	readonly property VeQuickItem sfkvbFlag: VeQuickItem {uid: root.bindPrefix + "/SFKVBbatteryflag"}	
-	readonly property VeQuickItem versionFlag: VeQuickItem {uid: root.bindPrefix +  "/SFKhardwareflag"}	
-	readonly property VeQuickItem nrOfcell: VeQuickItem {uid: root.bindPrefix +   "/System/NrOfCellsPerBattery"}	
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: serviceUid +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: serviceUid + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: serviceUid +  "/SFKhardwareflag"
+		}
+	property VeQuickItem nrOfcell: VeQuickItem {
+		id: nrOfcell
+		uid: root.bindPrefix +   "/System/NrOfCellsPerBattery"
+		}	
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -166,7 +178,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: "Enable Virtual Battery"
+				text: "Regulate Max SOC Options"
 				preferredVisible: sfkFlag  // Control visibility based on your condition
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParametersRegulateSoc.qml",

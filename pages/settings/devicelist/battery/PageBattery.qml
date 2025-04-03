@@ -20,9 +20,18 @@ Page {
 		serviceUid: root.bindPrefix
 	}
 
-	readonly property VeQuickItem sfkFlag: VeQuickItem {uid: serviceUid +  "/SFKbatteryflag"}	
-	readonly property VeQuickItem sfkvbFlag: VeQuickItem {uid: serviceUid + "/SFKVBbatteryflag"}	
-	readonly property VeQuickItem versionFlag: VeQuickItem {uid: serviceUid +  "/SFKhardwareflag"}	
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: serviceUid +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: serviceUid + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: serviceUid +  "/SFKhardwareflag"
+		}	
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -463,6 +472,16 @@ Page {
 				}
 			}
 
+			ListNavigation {
+				//% "Parameters"
+				text: qsTrId("battery_settings_parameters")
+				preferredVisible: nrOfBatteries.valid
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryParameters.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+			
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
