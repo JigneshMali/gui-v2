@@ -18,17 +18,17 @@ Page {
 	function getDefaultOptions() {
 		if (isCelsius()) {
 			return [
-				{ "description": qsTr("35 °C [DEFAULT]"), "value": 35 },
-				{ "description": qsTr("40 °C"), "value": 40 },
-				{ "description": qsTr("45 °C"), "value": 45 },
-				{ "description": qsTr("50 °C"), "value": 50 }
+				{ display: qsTr("%1 °C %2").arg(35).arg("[DEFAULT]"), value: 35 },
+				{ display: qsTr("%1 °C").arg(40), value: 40 },
+				{ display: qsTr("%1 °C").arg(45), value: 45 },
+				{ display: qsTr("%1 °C").arg(50), value: 50 }
 			];
 		} else {
 			return [
-				{ "description": qsTr("95 °F [DEFAULT]"), "value": 35 },
-				{ "description": qsTr("104 °F"), "value": 40 },
-				{ "description": qsTr("113 °F"), "value": 45 },
-				{ "description": qsTr("122 °F"), "value": 50 }
+				{ display: qsTr("%1 °F %2").arg(95).arg("[DEFAULT]"), value: 35 },
+				{ display: qsTr("%1 °F").arg(104), value: 40 },
+				{ display: qsTr("%1 °F").arg(113), value: 45 },
+				{ display: qsTr("%1 °F").arg(122), value: 50 }
 			];
 		}
 	}
