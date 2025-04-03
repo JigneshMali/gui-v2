@@ -20,21 +20,14 @@ Page {
 		serviceUid: root.bindPrefix
 	}
 
+	readonly property VeQuickItem sfkFlag: VeQuickItem {uid: serviceUid +  "/SFKbatteryflag"}	
+	readonly property VeQuickItem sfkvbFlag: VeQuickItem {uid: serviceUid + "/SFKVBbatteryflag"}	
+	readonly property VeQuickItem versionFlag: VeQuickItem {uid: serviceUid +  "/SFKhardwareflag"}	
+
 	GradientListView {
 		model: VisibleItemModel {
 
-			VeQuickItem {
-				id: sfkFlag
-				uid: root.bindPrefix + "/SFKbatteryflag"
-			}
-			VeQuickItem {
-				id: sfkvbFlag
-				uid: root.bindPrefix + "/SFKVBbatteryflag"
-			}
-			VeQuickItem {
-				id: versionFlag
-				uid: root.bindPrefix + "/SFKhardwareflag"
-			}
+
 			ListRadioButtonGroup {
 				text: CommonWords.switch_mode
 				dataItem.uid: root.bindPrefix + "/Mode"
@@ -494,7 +487,7 @@ Page {
 					uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
 				}
 			}
-			
+
 			ListNavigation {
 				text: "Enable Virtual Battery"
 				preferredVisible: sfkFlag
