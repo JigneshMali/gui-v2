@@ -13,6 +13,21 @@ Page {
 	property BatteryDetails details
 
 	VeQuickItem {
+			id: sfkFlag
+			uid: root.bindPrefix + "/SFKbatteryflag"
+		}
+
+	VeQuickItem {
+			id: sfkvbFlag
+			uid: root.bindPrefix + "/SFKVBbatteryflag"
+		}
+
+	VeQuickItem {
+			id: versionFlag
+			uid: root.bindPrefix + "/SFKhardwareflag"
+		}
+
+	VeQuickItem {
 			id: productName
 			uid: root.bindPrefix + "/ProductName"
 		}
@@ -24,14 +39,10 @@ Page {
 			id: nrOfBatteries
 			uid: root.bindPrefix + "/System/NrOfBatteries"
 		}
-
 	VeQuickItem {
-		id: nrOfcell
-		uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
+			id: nrOfcell
+			uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
 	}
-
-	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
-	property bool versionFlag: hardwareVersion.text === "6.4"
 
 	QtObject {
 		id: temperatureData
@@ -126,23 +137,23 @@ Page {
 			ListText {
 				text: "Heating Mode"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
-				preferredVisible: true
-				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				// preferredVisible: true
+				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag 
 			}
 
 			ListTemperature {
 				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
-				preferredVisible: true
-				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				// preferredVisible: true
+				preferredVisible: (sfkFlag || sfkvbFlag)  && versionFlag  
 				unit: Global.systemSettings.temperatureUnit
 			}
 
 			ListQuantity {
 				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
-				preferredVisible: true
-				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				// preferredVisible: true
+				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag  
 				unit: VenusOS.Units_Percentage
 
 			}
@@ -150,8 +161,8 @@ Page {
 			ListQuantity {
 				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
-				preferredVisible: true
-				// preferredVisible:sfkFlag && versionFlag  && (!nrOfBatteries.value || nrOfBatteries.value === undefined)
+				// preferredVisible: true
+				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag 
 				unit: VenusOS.Units_Percentage
 			}
 
@@ -159,8 +170,8 @@ Page {
 				//% "Connection information"
 				text: qsTrId("batterydetails_connection_information")
 				secondaryText: details.connectionInformation.value ?? ""
-				preferredVisible: true
-				// preferredVisible: details.connectionInformation.valid
+				// preferredVisible: true
+				preferredVisible: details.connectionInformation.valid
 			}
 		}
 	}

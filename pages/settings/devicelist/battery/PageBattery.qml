@@ -22,6 +22,19 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
+
+			VeQuickItem {
+				id: sfkFlag
+				uid: root.bindPrefix + "/SFKbatteryflag"
+			}
+			VeQuickItem {
+				id: sfkvbFlag
+				uid: root.bindPrefix + "/SFKVBbatteryflag"
+			}
+			VeQuickItem {
+				id: versionFlag
+				uid: root.bindPrefix + "/SFKhardwareflag"
+			}
 			ListRadioButtonGroup {
 				text: CommonWords.switch_mode
 				dataItem.uid: root.bindPrefix + "/Mode"
@@ -458,15 +471,6 @@ Page {
 			}
 
 			ListNavigation {
-				text: "Enable Virtual Battery"
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && nrOfBatteries.value < 1
-				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
-							{ "title": text, "bindPrefix": root.bindPrefix  })
-				}
-			}
-
-			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
 				preferredVisible: cvl.valid || ccl.valid || dcl.valid
@@ -490,7 +494,15 @@ Page {
 					uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
 				}
 			}
-
+			
+			ListNavigation {
+				text: "Enable Virtual Battery"
+				preferredVisible: sfkFlag
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
 			ListButton {
 				//% "Redetect Battery"
 				text: qsTrId("battery_redetect_battery")

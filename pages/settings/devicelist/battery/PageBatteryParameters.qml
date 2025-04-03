@@ -10,13 +10,26 @@ Page {
 	id: root
 
 	property string bindPrefix
-	VeQuickItem {
-		id: nrOfcell
-		uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
-	}
 
 	GradientListView {
 		model: VisibleItemModel {
+
+			VeQuickItem {
+				id: sfkFlag
+				uid: root.bindPrefix + "/SFKbatteryflag"
+			}
+			VeQuickItem {
+				id: sfkvbFlag
+				uid: root.bindPrefix + "/SFKVBbatteryflag"
+			}
+			VeQuickItem {
+				id: versionFlag
+				uid: root.bindPrefix + "/SFKhardwareflag"
+			}
+			VeQuickItem {
+				id: nrOfcell
+				uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
+			}
 			ListText {
 				text: "Please Restart device to see changes."  // Directly assigning text as no translation ID exists
 				// dataItem.uid: root.bindPrefix + "/Info/ChargeMode"  // Directly reading from the required path
@@ -29,16 +42,18 @@ Page {
 				preferredVisible: true  // Control visibility based on your condition
 			}
 			
-			// ListQuantity {
-			// 	//% "Charge Voltage Limit (CVL)"
-			// 	text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
-			// 	dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
-			// 	unit: VenusOS.Units_Volt_DC
-			// }
+			ListQuantity {
+				//% "Charge Voltage Limit (CVL)"
+				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
+				preferredVisible: !sfkFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Volt_DC
+			}
 
 			ListRadioButtonGroup {
 				text: "Charge Voltage Limit (CVL)"
 				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1V").arg(nrOfcell.value*(3.400)), value: 3.400 },
 					{ display: qsTr("%1V").arg(nrOfcell.value*(3.450)), value: 3.450 },
@@ -51,12 +66,13 @@ Page {
 			ListText {
 				text: "Charge Limitation"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/Info/ChargeLimitation"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 			}
 
 			ListRadioButtonGroup {
 				text: "Charge Current Limit (CCL)"
 				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1A").arg(40.0), value: 40 },
 					{ display: qsTr("%1A").arg(50.0), value: 50 },
@@ -67,22 +83,24 @@ Page {
 				]
 			}
 
-			// ListQuantity {
-			// 	//% "Charge Current Limit (CCL)"
-			// 	text: qsTrId("batteryparameters_charge_current_limit_ccl")
-			// 	dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
-			// 	unit: VenusOS.Units_Amp
-			// }
+			ListQuantity {
+				//% "Charge Current Limit (CCL)"
+				text: qsTrId("batteryparameters_charge_current_limit_ccl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				preferredVisible: !sfkFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Amp
+			}
 
 			ListText {
 				text: "Discharge Limitation"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/Info/DischargeLimitation"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 			}
 
 			ListRadioButtonGroup {
 				text: "Discharge Current Limit (DCL)"
 				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1A").arg(50.0), value: 50 },
 					{ display: qsTr("%1A").arg(60.0), value: 60 },
@@ -93,16 +111,18 @@ Page {
 				]
 			}
 
-			// ListQuantity {
-			// 	//% "Discharge Current Limit (DCL)"
-			// 	text: qsTrId("batteryparameters_discharge_current_limit_dcl")
-			// 	dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
-			// 	unit: VenusOS.Units_Amp
-			// }
+			ListQuantity {
+				//% "Discharge Current Limit (DCL)"
+				text: qsTrId("batteryparameters_discharge_current_limit_dcl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
+				preferredVisible: !sfkFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Amp
+			}
 
 			ListRadioButtonGroup {
 				text: "SOC Reset Voltage"
 				dataItem.uid: root.bindPrefix + "/Info/SOCResetVoltage"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1V").arg(3.500), value: 3.500 },
 					{ display: qsTr("%1V").arg(3.550), value: 3.550 },
@@ -114,6 +134,7 @@ Page {
 			ListRadioButtonGroup {
 				text: "Min Cell Voltage"
 				dataItem.uid: root.bindPrefix + "/Info/MinCellVoltage"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1V").arg(2.700), value: 2.700 },
 					{ display: qsTr("%1V").arg(2.800), value: 2.800 },
@@ -125,6 +146,7 @@ Page {
 			ListRadioButtonGroup {
 				text: "Max Cell Voltage"
 				dataItem.uid: root.bindPrefix + "/Info/MaxCellVoltage"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1V %2").arg(3.500).arg("[DEFAULT]"), value: 3.500 },
 					{ display: qsTr("%1V").arg(3.550), value: 3.550 },
@@ -135,6 +157,7 @@ Page {
 			ListRadioButtonGroup {
 				text: "Float Cell Voltage"
 				dataItem.uid: root.bindPrefix + "/Info/FloatCellVoltage"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("%1V %2").arg(3.325).arg("[DEFAULT]"), value: 3.325 },
 					{ display: qsTr("%1V").arg(3.350), value: 3.350 },
@@ -145,11 +168,21 @@ Page {
 			ListRadioButtonGroup {
 				text: "Poll Rate"
 				dataItem.uid: root.bindPrefix + "/BMSPollrate"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("1 Second"), value: 1000 },
 					{ display: qsTr("2 Seconds %1").arg("[DEFAULT]"), value: 2000 },
 					{ display: qsTr("3 Seconds"), value: 3000 }
 				]
+			}
+
+			ListNavigation {
+				text: "Enable Virtual Battery"
+				preferredVisible: sfkFlag  // Control visibility based on your condition
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParametersRegulateSoc.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
 			}
 
 			ListQuantity {
