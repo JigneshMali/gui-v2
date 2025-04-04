@@ -24,7 +24,7 @@ Page {
 
 			ListRadioButtonGroup {
 				text: "Uninstall SFK driver"
-				dataItem.uid: root.bindPrefix + "/SFKFirmwareUninstallconfirm"
+				dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
 				preferredVisible: true
 				optionModel: [
 					{ display: qsTr("Uninstall"), value: 1 },
