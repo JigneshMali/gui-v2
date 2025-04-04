@@ -334,7 +334,7 @@ Page {
 
 			ListNavigation {
 				text: "Cell Voltages"
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && (!nrOfBatteries.value || nrOfBatteries.value === undefined || nrOfBatteries.value < 1)
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && (!nrOfBatteries.value || nrOfBatteries.value === undefined || nrOfBatteries.value < 1) && sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryCellVoltages.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
