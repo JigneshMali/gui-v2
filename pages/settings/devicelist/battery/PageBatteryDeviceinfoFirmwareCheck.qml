@@ -165,7 +165,7 @@ Page {
 
 			ListNavigation {
 				text: sfkV3TextInstallConfirm.text
-				preferredVisible: show: sfkNumberofVersions.value === 3
+				preferredVisible: sfkNumberofVersions.value === 3
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })

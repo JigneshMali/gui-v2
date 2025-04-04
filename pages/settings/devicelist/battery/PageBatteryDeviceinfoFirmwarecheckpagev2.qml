@@ -11,22 +11,8 @@ Page {
 
 	property string bindPrefix
 
-	property VeQuickItem sfkFlag: VeQuickItem{
-		id: sfkFlag
-		uid: serviceUid +  "/SFKbatteryflag"
-	}	
-	property VeQuickItem sfkvbFlag: VeQuickItem {
-		id: sfkvbFlag
-		uid: serviceUid + "/SFKVBbatteryflag"
-	}	
-	property VeQuickItem versionFlag: VeQuickItem {
-		id: versionFlag
-		uid: serviceUid +  "/SFKhardwareflag"
-		}
-	property VeQuickItem nrOfcell: VeQuickItem {
-		id: nrOfcell
-		uid: root.bindPrefix +   "/System/NrOfCellsPerBattery"
-		}	
+
+
 
 	GradientListView {
 		model: VisibleItemModel {

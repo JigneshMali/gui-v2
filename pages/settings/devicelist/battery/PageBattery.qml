@@ -22,15 +22,15 @@ Page {
 
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
-		uid: serviceUid +  "/SFKbatteryflag"
+		uid: root.bindPrefix +  "/SFKbatteryflag"
 	}	
 	property VeQuickItem sfkvbFlag: VeQuickItem {
 		id: sfkvbFlag
-		uid: serviceUid + "/SFKVBbatteryflag"
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
 	}	
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
-		uid: serviceUid +  "/SFKhardwareflag"
+		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}	
 
 	GradientListView {
