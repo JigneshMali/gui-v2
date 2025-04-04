@@ -334,7 +334,7 @@ Page {
 
 			ListNavigation {
 				text: "Cell Voltages"
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && (!nrOfBatteries.value || nrOfBatteries.value === undefined || nrOfBatteries.value < 1) && sfkvbFlag.value === 0
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryCellVoltages.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
@@ -487,7 +487,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
