@@ -151,8 +151,57 @@ Page {
 				preferredVisible: sfkFirmwareInstallationCompleted.value === 1 
 			}
 
-
+			ListRadioButtonGroup {
+				//% "SFK Driver Update"
+				text: qsTr("Download %1").arg(sfkV1TextInstallConfirm.value)
 			
+				optionModel: [
+					//% "Check for Updates"
+					{ display: "Download", value: 1 },
+					//% "Cancel"
+					{ display: "Cancel", value: 0 }
+				]
+			
+				currentIndex: sfkV1FirmwareDownloadConfirm.value === 1 ? 0 : 1
+			
+				onOptionClicked: function(index) {
+					// Trigger the appropriate action based on the selected option
+					if (optionModel[index].value === 1) {
+						sfkV1FirmwareDownloadConfirm.setValue(1) // Start checking for updates
+					} else {
+						sfkV1FirmwareDownloadConfirm.setValue(0) // Cancel the update check
+					}
+				}
+			
+				preferredVisible: (installedVersion === requiredVersionv1 ) && sfkFirmwareInstallationCompleted.value === 0 
+			}
+
+			ListRadioButtonGroup {
+				//% "SFK Driver Update"
+				text: qsTr("Install %1").arg(sfkV1TextInstallConfirm.value)
+			
+				optionModel: [
+					//% "Check for Updates"
+					{ display: "Download", value: 1 },
+					//% "Cancel"
+					{ display: "Cancel", value: 0 }
+				]
+			
+				currentIndex: sfkV1InstallConfirmItem.value === 1 ? 0 : 1
+			
+				onOptionClicked: function(index) {
+					// Trigger the appropriate action based on the selected option
+					if (optionModel[index].value === 1) {
+						sfkV1InstallConfirmItem.setValue(1) // Start checking for updates
+					} else {
+						sfkV1InstallConfirmItem.setValue(0) // Cancel the update check
+					}
+				}
+			
+				preferredVisible: sfkV1FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0 
+			}
+			
+			ListRebootButton { }
 	
 		}
 	}
