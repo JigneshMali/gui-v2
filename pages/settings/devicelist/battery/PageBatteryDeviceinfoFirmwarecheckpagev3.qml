@@ -11,7 +11,7 @@ Page {
 
 	property string bindPrefix
 	property string platformPrefix: "com.victronenergy.platform"
-    property VBusItem installedVenusOSversion: VBusItem { 
+    property VeQuickItem installedVenusOSversion: VeQuickItem { 
 		id: installedVenusOSversion   
 		uid: root.platformPrefix + "/Firmware/Installed/Version" } 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
