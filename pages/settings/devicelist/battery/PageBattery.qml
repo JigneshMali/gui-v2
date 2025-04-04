@@ -487,7 +487,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid && sfkFlag.value === 1
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
