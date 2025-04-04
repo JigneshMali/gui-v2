@@ -223,14 +223,6 @@ Page {
 				unit: Global.systemSettings.temperatureUnit
 			}
 
-			ListText {
-				id: guiV2Test
-				text: "GUI v2 Test"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/GUIv2Test"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
-				
-			}
-
 			ListQuantity {
 				//% "State of health"
 				text: qsTrId("battery_state_of_health")
@@ -466,7 +458,7 @@ Page {
 
 			ListNavigation {
 				text: CommonWords.device_info_title
-				preferredVisible: sfkFlag
+				preferredVisible: sfkFlag.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -475,7 +467,7 @@ Page {
 
 			ListNavigation {
 				text: CommonWords.device_info_title
-				preferredVisible: sfkvbFlag
+				preferredVisible:  sfkvbFlag.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -485,7 +477,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: nrOfBatteries.valid &&  sfkvbFlag
+				preferredVisible: nrOfBatteries.valid &&  sfkvbFlag.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -495,7 +487,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid && sfkflag
+				preferredVisible: cvl.valid || ccl.valid || dcl.valid && !nrOfBatteries.valid && sfkFlag.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -519,7 +511,7 @@ Page {
 
 			ListNavigation {
 				text: "Enable Virtual Battery"
-				preferredVisible: sfkFlag
+				preferredVisible: sfkFlag.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
