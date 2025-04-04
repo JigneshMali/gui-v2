@@ -10,6 +10,9 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property VeQuickItem  installedVenusOSversion: VeQuickItem { 
+		id: installedVenusOSversion  
+	    uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"}
     property VeQuickItem  sfkV1FirmwareDownloadCompleted: VeQuickItem { 
 		id: sfkV1FirmwareDownloadCompleted   
 		uid: root.bindPrefix + "/System/SFKV1FirmwareDownloadCompleted" }
