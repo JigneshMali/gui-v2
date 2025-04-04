@@ -485,7 +485,7 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: nrOfBatteries.valid && && sfkvbFlag
+				preferredVisible: nrOfBatteries.valid &&  sfkvbFlag
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
