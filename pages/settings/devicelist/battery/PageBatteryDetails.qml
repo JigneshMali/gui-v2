@@ -117,23 +117,20 @@ Page {
 			ListText {
 				text: "Heating Mode"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
-				// preferredVisible: true
-				preferredVisible: sfkFlag && versionFlag 
+				preferredVisible: dataItem.valid
 			}
 
 			ListTemperature {
 				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
-				// preferredVisible: true
-				preferredVisible: sfkFlag && versionFlag  
+				preferredVisible: dataItem.valid 
 				unit: Global.systemSettings.temperatureUnit
 			}
 
 			ListQuantity {
 				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
-				// preferredVisible: true
-				preferredVisible: sfkFlag && versionFlag  
+				preferredVisible: dataItem.valid
 				unit: VenusOS.Units_Percentage
 
 			}
@@ -141,8 +138,7 @@ Page {
 			ListQuantity {
 				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
-				// preferredVisible: true
-				preferredVisible: sfkFlag && versionFlag 
+				preferredVisible: dataItem.valid
 				unit: VenusOS.Units_Percentage
 			}
 
@@ -150,7 +146,6 @@ Page {
 				//% "Connection information"
 				text: qsTrId("batterydetails_connection_information")
 				secondaryText: details.connectionInformation.value ?? ""
-				// preferredVisible: true
 				preferredVisible: details.connectionInformation.valid
 			}
 		}
