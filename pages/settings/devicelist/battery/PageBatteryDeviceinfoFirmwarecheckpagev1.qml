@@ -124,6 +124,13 @@ Page {
 		uid: root.bindPrefix +   "/System/NrOfCellsPerBattery"
 		}	
 
+    Timer {
+        id: _timer
+        interval: 500
+        running: sfkFirmwareInstallationCompleted.value === 1
+        repeat: true
+        onTriggered: installationCompletedPulse = !installationCompletedPulse
+    }
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -139,10 +146,13 @@ Page {
 				preferredVisible: sfkFirmwareInstallationCompleted.value === 0 
 			}
 
-			// ListText {
-			// 	text: qsTr("%1 %2").arg(versionComparisonMessagev1).arg(versionoutdateComparisonMessagev1)
-			// 	preferredVisible: sfkFirmwareInstallationCompleted.value === 0 
-			// }
+			ListText {
+				text: installationCompletedPulse ? firmwareInstalledMessage : qsTr("")
+				preferredVisible: sfkFirmwareInstallationCompleted.value === 1 
+			}
+
+
+			
 	
 		}
 	}
