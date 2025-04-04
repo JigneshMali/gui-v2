@@ -31,6 +31,13 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
+			ListText {
+				//% "Hardware version"
+				text: "Charge Mode"
+				dataItem.uid: root.bindPrefix +"/Info/ChargeMode"
+				preferredVisible: dataItem.valid
+			}
+
 			ListQuantity {
 				//% "Charge Voltage Limit (CVL)"
 				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
