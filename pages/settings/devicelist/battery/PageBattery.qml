@@ -193,7 +193,7 @@ Page {
 				id: currentavg5min
 				text: "Current (Last 5 minutes avg.)"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/CurrentAvg"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 			}
 
 			ListQuantity {
