@@ -571,6 +571,7 @@ set (VENUS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev1.qml
     pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev2.qml
     pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml
+    pages/settings/devicelist/battery/PageBatteryBalanceSeries.qml
     pages/settings/devicelist/battery/PageBatteryDeviceinfoUninstallSFK.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml

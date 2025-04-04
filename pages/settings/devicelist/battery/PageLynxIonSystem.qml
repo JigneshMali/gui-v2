@@ -12,6 +12,8 @@ Page {
 	property string bindPrefix
 	property VeQuickItem nrOfBatteries: VeQuickItem {uid: root.bindPrefix + "/System/NrOfBatteries"}
 	property VeQuickItem nrOfCellsPerBattery: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
+    property bool showMbSwitch : (["2S_2B_4C", "2S_2B_8C", "3S_3B_4C", "4S_4B_4C","2S2P_4B_4C", "2S2P_4B_8C", "2S3P_6B_4C",  "3S2P_6B_4C",  "2S3P_6B_8C", "3S2P_6B_4C", "4S2P_8B_4C", "2S4P_8B_4C","2S4P_8B_8C"].indexOf(sfkvirtualbattery.value) !== -1) && (sfkShowBalanceSeries.value === "YES")
+
 
 	function generateOptions() {
 		var options = [];
@@ -126,6 +128,15 @@ Page {
 				text: "Virtual Battery Setup"
 				secondaryText: "Single Battery"
 				preferredVisible: nrOfBatteries.value === 1 || nrOfBatteries.value === 0
+			}
+
+			ListNavigation {
+				text: "Series Balance Selection"
+				preferredVisible: showMbSwitch && nrOfBatteries.value !== 1
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryBalanceSeries.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
 			}
 
 			ListText {
