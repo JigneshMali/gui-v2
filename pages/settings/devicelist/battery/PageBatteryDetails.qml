@@ -11,38 +11,18 @@ Page {
 
 	property string bindPrefix
 	property BatteryDetails details
-
-	VeQuickItem {
-			id: sfkFlag
-			uid: root.bindPrefix + "/SFKbatteryflag"
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.bindPrefix +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
-
-	VeQuickItem {
-			id: sfkvbFlag
-			uid: root.bindPrefix + "/SFKVBbatteryflag"
-		}
-
-	VeQuickItem {
-			id: versionFlag
-			uid: root.bindPrefix + "/SFKhardwareflag"
-		}
-
-	VeQuickItem {
-			id: productName
-			uid: root.bindPrefix + "/ProductName"
-		}
-	VeQuickItem {
-			id: hardwareVersion
-			uid: root.bindPrefix + "/HardwareVersion"
-		}
-	VeQuickItem {
-			id: nrOfBatteries
-			uid: root.bindPrefix + "/System/NrOfBatteries"
-		}
-	VeQuickItem {
-			id: nrOfcell
-			uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
-	}
 
 	QtObject {
 		id: temperatureData
@@ -138,14 +118,14 @@ Page {
 				text: "Heating Mode"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
 				// preferredVisible: true
-				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag 
+				preferredVisible: sfkFlag && versionFlag 
 			}
 
 			ListTemperature {
 				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
 				// preferredVisible: true
-				preferredVisible: (sfkFlag || sfkvbFlag)  && versionFlag  
+				preferredVisible: sfkFlag && versionFlag  
 				unit: Global.systemSettings.temperatureUnit
 			}
 
@@ -153,7 +133,7 @@ Page {
 				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
 				// preferredVisible: true
-				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag  
+				preferredVisible: sfkFlag && versionFlag  
 				unit: VenusOS.Units_Percentage
 
 			}
@@ -162,7 +142,7 @@ Page {
 				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
 				// preferredVisible: true
-				preferredVisible: (sfkFlag || sfkvbFlag) && versionFlag 
+				preferredVisible: sfkFlag && versionFlag 
 				unit: VenusOS.Units_Percentage
 			}
 
