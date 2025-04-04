@@ -35,6 +35,15 @@ Page {
     property VeQuickItem  sfkV3TextInstallConfirm: VeQuickItem { 
 		id: sfkV3TextInstallConfirm 
 		uid: root.bindPrefix + "/System/SFKV3Textinstallconfirm" }
+    property VeQuickItem  sfkV1FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV1FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV1Downloaded" }
+    property VeQuickItem  sfkV2FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV2FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV2Downloaded" }
+    property VeQuickItem  sfkV3FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV3FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV3Downloaded" }
     property VeQuickItem  sfkV1OSTextConfirm: VeQuickItem { 
 		id: sfkV1OSTextConfirm  
 		uid: root.bindPrefix + "/System/SFKV1OSTextconfirm"}
@@ -137,7 +146,7 @@ Page {
 
 			ListText {
 				text: "Venus OS firmware version"
-				secondaryText: installedVenusOSversion.value
+				secondaryText: installedVenusOSversion.text
 				preferredVisible: true
 			}
 

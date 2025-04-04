@@ -155,7 +155,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: sfkV1TextInstallConfirm.text
+				text: sfkV1TextInstallConfirm.value
 				preferredVisible: (sfkNumberofVersions.value > 0 && sfkNumberofVersions.value < 4 ) 
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev1.qml",
@@ -164,7 +164,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: sfkV2TextInstallConfirm.text
+				text: sfkV2TextInstallConfirm.value
 				preferredVisible: (sfkNumberofVersions.value > 1 && sfkNumberofVersions.value < 4 ) 
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev2.qml",
@@ -173,7 +173,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: sfkV3TextInstallConfirm.text
+				text: sfkV3TextInstallConfirm.value
 				preferredVisible: sfkNumberofVersions.value === 3
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml",
