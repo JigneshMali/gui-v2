@@ -124,7 +124,7 @@ Page {
 
 			ListNavigation {
 				text: "Update SFK Driver"
-				preferredVisible: !sfkFlag ||  sfkFlag.value === undefined
+				preferredVisible: true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwareCheck.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -133,7 +133,7 @@ Page {
 
 			ListNavigation {
 				text: "Uninstall SFK Driver"
-				preferredVisible: !sfkFlag ||  sfkFlag.value === undefined
+				preferredVisible: true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoUninstallSFK.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
