@@ -12,6 +12,18 @@ Page {
 
 	property string bindPrefix
 	property alias settingsListView: settingsListView
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.bindPrefix +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: root.bindPrefix +  "/SFKhardwareflag"
+		}
 
 	GradientListView {
 		id: settingsListView
