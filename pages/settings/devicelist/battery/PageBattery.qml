@@ -429,7 +429,7 @@ Page {
 			ListNavigation {
 				//% "IO"
 				text: qsTrId("battery_settings_io")
-				preferredVisible: allowToCharge.valid
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageLynxIonIo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })

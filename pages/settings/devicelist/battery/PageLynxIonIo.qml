@@ -35,13 +35,13 @@ Page {
 			ListSwitch {
 				text: "Force charging off"
 				dataItem.uid: root.bindPrefix + "/Io/ForceChargingOff"
-				preferredVisible: true
+				preferredVisible: dataItem.valid
 			}
 
 			ListSwitch {
 				text: "Force discharging off"
 				dataItem.uid: root.bindPrefix + "/Io/ForceDischargingOff"
-				preferredVisible: true
+				preferredVisible: dataItem.valid
 			}
 
 			ListText {
