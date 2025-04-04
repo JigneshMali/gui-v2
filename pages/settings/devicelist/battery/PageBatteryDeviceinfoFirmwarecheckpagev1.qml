@@ -10,11 +10,25 @@ Page {
 	id: root
 
 	property string bindPrefix
-	property string platformPrefix: "com.victronenergy.platform"
-    property VeQuickItem installedVenusOSversion: VeQuickItem { 
-		id: installedVenusOSversion   
-		uid: root.platformPrefix + "/Firmware/Installed/Version" } 
-    property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
+    property VeQuickItem  sfkV1FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV1FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV1FirmwareDownloadCompleted" }
+    property VeQuickItem  sfkV2FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV2FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV2FirmwareDownloadCompleted" }		
+    property VeQuickItem  sfkV3FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV3FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV3FirmwareDownloadCompleted" }
+	property VeQuickItem  sfkV1InstallConfirmItem: VeQuickItem { 
+		id: sfkV1InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV1Installconfirm" }
+	property VeQuickItem  sfkV2InstallConfirmItem: VeQuickItem { 
+		id: sfkV2InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV2Installconfirm" }
+	property VeQuickItem  sfkV3InstallConfirmItem: VeQuickItem { 
+		id: sfkV3InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV3Installconfirm" }	
+	property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
 		uid: root.bindPrefix + "/System/SFKV1Installconfirm" }
     property VeQuickItem  sfkV2InstallConfirm: VeQuickItem { 
@@ -44,14 +58,14 @@ Page {
     property VeQuickItem  sfkV3FirmwareDownloadConfirm: VeQuickItem { 
 		id: sfkV3FirmwareDownloadConfirm 
 		uid: root.bindPrefix + "/System/SFKV3Downloaded" }
-    property VeQuickItem  sfkV1OSTextConfirm: VeQuickItem { 
-		id: sfkV1OSTextConfirm  
+    property VeQuickItem  sfkV1OSTextconfirm: VeQuickItem { 
+		id: sfkV1OSTextconfirm  
 		uid: root.bindPrefix + "/System/SFKV1OSTextconfirm"}
-    property VeQuickItem  sfkV2OSTextConfirm: VeQuickItem { 
-		id: sfkV2OSTextConfirm 
+    property VeQuickItem  sfkV2OSTextconfirm: VeQuickItem { 
+		id: sfkV2OSTextconfirm 
 		uid: root.bindPrefix + "/System/SFKV2OSTextconfirm" }
-    property VeQuickItem  sfkV3OSTextConfirm: VeQuickItem { 
-		id: sfkV3OSTextConfirm 
+    property VeQuickItem  sfkV3OSTextconfirm: VeQuickItem { 
+		id: sfkV3OSTextconfirm 
 		uid: root.bindPrefix + "/System/SFKV3OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 

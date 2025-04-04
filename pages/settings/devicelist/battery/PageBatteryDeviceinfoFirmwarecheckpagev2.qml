@@ -10,11 +10,25 @@ Page {
 	id: root
 
 	property string bindPrefix
-	property string platformPrefix: "com.victronenergy.platform"
-    property VeQuickItem installedVenusOSversion: VeQuickItem { 
-		id: installedVenusOSversion   
-		uid: root.platformPrefix + "/Firmware/Installed/Version" } 
-    property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
+    property VeQuickItem  sfkV1FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV1FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV1FirmwareDownloadCompleted" }
+    property VeQuickItem  sfkV2FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV2FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV2FirmwareDownloadCompleted" }		
+    property VeQuickItem  sfkV3FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV3FirmwareDownloadCompleted   
+		uid: root.bindPrefix + "/System/SFKV3FirmwareDownloadCompleted" }
+	property VeQuickItem  sfkV1InstallConfirmItem: VeQuickItem { 
+		id: sfkV1InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV1Installconfirm" }
+	property VeQuickItem  sfkV2InstallConfirmItem: VeQuickItem { 
+		id: sfkV2InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV2Installconfirm" }
+	property VeQuickItem  sfkV3InstallConfirmItem: VeQuickItem { 
+		id: sfkV3InstallConfirmItem   
+		uid: root.bindPrefix + "/System/SFKV3Installconfirm" }	
+	property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
 		uid: root.bindPrefix + "/System/SFKV1Installconfirm" }
     property VeQuickItem  sfkV2InstallConfirm: VeQuickItem { 
@@ -35,14 +49,23 @@ Page {
     property VeQuickItem  sfkV3TextInstallConfirm: VeQuickItem { 
 		id: sfkV3TextInstallConfirm 
 		uid: root.bindPrefix + "/System/SFKV3Textinstallconfirm" }
-    property VeQuickItem  sfkV1OSTextConfirm: VeQuickItem { 
-		id: sfkV1OSTextConfirm  
+    property VeQuickItem  sfkV1FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV1FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV1Downloaded" }
+    property VeQuickItem  sfkV2FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV2FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV2Downloaded" }
+    property VeQuickItem  sfkV3FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV3FirmwareDownloadConfirm 
+		uid: root.bindPrefix + "/System/SFKV3Downloaded" }
+    property VeQuickItem  sfkV1OSTextconfirm: VeQuickItem { 
+		id: sfkV1OSTextconfirm  
 		uid: root.bindPrefix + "/System/SFKV1OSTextconfirm"}
-    property VeQuickItem  sfkV2OSTextConfirm: VeQuickItem { 
-		id: sfkV2OSTextConfirm 
+    property VeQuickItem  sfkV2OSTextconfirm: VeQuickItem { 
+		id: sfkV2OSTextconfirm 
 		uid: root.bindPrefix + "/System/SFKV2OSTextconfirm" }
-    property VeQuickItem  sfkV3OSTextConfirm: VeQuickItem { 
-		id: sfkV3OSTextConfirm 
+    property VeQuickItem  sfkV3OSTextconfirm: VeQuickItem { 
+		id: sfkV3OSTextconfirm 
 		uid: root.bindPrefix + "/System/SFKV3OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 
@@ -92,7 +115,7 @@ Page {
     property bool isSFKV3Newer: sfkV3Version >= sfkCurrentVersion
 
     property string installedVersionStr: installedVenusOSversion.value || "v0.00"
-    property string requiredVersionStrv1: sfkV1OSTextconfirm.value || "v0.00"
+    property string requiredVersionStrv2: sfkV2OSTextconfirm.value || "v0.00"
 
     // Function to extract numeric version and convert to float
     function extractVersionNumber(versionString) {
@@ -101,10 +124,10 @@ Page {
     }
 	    // Convert versions to numbers
     property real installedVersion: extractVersionNumber(installedVersionStr)
-    property real requiredVersionv1: extractVersionNumber(requiredVersionStrv1)
+    property real requiredVersionv2: extractVersionNumber(requiredVersionStrv2)
 
-    property string versionComparisonMessagev1: (installedVersion > requiredVersionv1) ? qsTr("This driver is not compatible with your Venus OS firmware.") : installedVersion < requiredVersionv1 ? qsTr("This driver is not compatible with your Venus OS firmware.") :  qsTr("This driver is compatible with your Venus OS firmware.")
-    property string versionoutdateComparisonMessagev1: (isSFKV1Newer) ? qsTr("") : qsTr("This driver is outdated.")
+    property string versionComparisonMessagev2: (installedVersion > requiredVersionv2) ? qsTr("This driver is not compatible with your Venus OS firmware.") : installedVersion < requiredVersionv2 ? qsTr("This driver is not compatible with your Venus OS firmware.") :  qsTr("This driver is compatible with your Venus OS firmware.")
+    property string versionoutdateComparisonMessagev2: (isSFKV2Newer) ? qsTr("") : qsTr("This driver is outdated.")
     property bool installationCompletedPulse: true
 
 	property VeQuickItem sfkFlag: VeQuickItem{
@@ -136,9 +159,10 @@ Page {
 		model: VisibleItemModel {
 
 			ListText {
-				text: "Venus OS firmware version"
-				secondaryText: installedVenusOSversion.value
-				preferredVisible: true
+				id: remotePort
+				text: CommonWords.firmware_version
+				secondaryText: FirmwareVersion.versionText(dataItem.value, "venus")
+				dataItem.uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"
 			}
 
 			ListText {
@@ -182,7 +206,7 @@ Page {
 			
 				optionModel: [
 					//% "Check for Updates"
-					{ display: "Download", value: 1 },
+					{ display: "Install", value: 1 },
 					//% "Cancel"
 					{ display: "Cancel", value: 0 }
 				]
