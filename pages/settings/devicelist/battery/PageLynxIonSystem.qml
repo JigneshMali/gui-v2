@@ -12,6 +12,8 @@ Page {
 	property string bindPrefix
 	property VeQuickItem nrOfBatteries: VeQuickItem {uid: root.bindPrefix + "/System/NrOfBatteries"}
 	property VeQuickItem nrOfCellsPerBattery: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
+	property VeQuickItem sfkvirtualbattery: VeQuickItem {uid: root.bindPrefix +  "/System/SFKVirtualSetup"}
+	property VeQuickItem sfkShowBalanceSeries: VeQuickItem {uid: root.bindPrefix +  "/System/ShowBalanceSeries"}
     property bool showMbSwitch : (["2S_2B_4C", "2S_2B_8C", "3S_3B_4C", "4S_4B_4C","2S2P_4B_4C", "2S2P_4B_8C", "2S3P_6B_4C",  "3S2P_6B_4C",  "2S3P_6B_8C", "3S2P_6B_4C", "4S2P_8B_4C", "2S4P_8B_4C","2S4P_8B_8C"].indexOf(sfkvirtualbattery.value) !== -1) && (sfkShowBalanceSeries.value === "YES")
 
 
