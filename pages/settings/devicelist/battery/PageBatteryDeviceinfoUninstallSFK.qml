@@ -27,8 +27,8 @@ Page {
 				dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
 				preferredVisible: true
 				optionModel: [
-					{ display: qsTr("Uninstall"), value: 0 },
-					{ display: qsTr("Cancel"), value: 1 }
+					{ display: qsTr("Uninstall"), value: 1 },
+					{ display: qsTr("Cancel"), value: 0 }
 				]
 			}
 

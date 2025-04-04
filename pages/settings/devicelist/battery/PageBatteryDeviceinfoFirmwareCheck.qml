@@ -88,7 +88,16 @@ Page {
     property bool isSFKV2Newer: sfkV2Version >= sfkCurrentVersion
     property bool isSFKV3Newer: sfkV3Version >= sfkCurrentVersion
 
+    property bool installationCompletedPulse: true
 
+    Timer {
+        id: _timer
+        interval: 500
+        running: sfkFirmwareInstallationCompleted.value === 1
+        repeat: true
+        onTriggered: installationCompletedPulse = !installationCompletedPulse
+    }
+	
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
 		uid: root.bindPrefix +  "/SFKbatteryflag"
