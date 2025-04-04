@@ -145,9 +145,10 @@ Page {
 		model: VisibleItemModel {
 
 			ListText {
-				text: "Venus OS firmware version"
-				secondaryText: installedVenusOSversion.text
-				preferredVisible: true
+				id: remotePort
+				text: CommonWords.firmware_version
+				secondaryText: FirmwareVersion.versionText(dataItem.value, "venus")
+				dataItem.uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"
 			}
 
 			ListText {
@@ -191,7 +192,7 @@ Page {
 			
 				optionModel: [
 					//% "Check for Updates"
-					{ display: "Download", value: 1 },
+					{ display: "Install", value: 1 },
 					//% "Cancel"
 					{ display: "Cancel", value: 0 }
 				]
