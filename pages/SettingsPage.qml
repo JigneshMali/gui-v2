@@ -95,14 +95,14 @@ SwipeViewPage {
 				showAccessLevel: VenusOS.User_AccessType_SuperUser
 			}
 
-			// ListNavigation {
-			// 	text: qsTr("SFK Venus OS Driver")
-			// 	preferredVisible:  true
-			// 	onClicked: {
-			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml",
-			// 				{ "title": text, "bindPrefix": "mqtt/com.victronenergy.sfksettings" })
-			// 	}
-			// }
+			ListNavigation {
+				text: qsTr("SFK Venus OS Driver")
+				preferredVisible:  true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml",
+							{ "title": text, "bindPrefix": "mqtt/com.victronenergy.sfksettings" })
+				}
+			}
 		}
 	}
 }
