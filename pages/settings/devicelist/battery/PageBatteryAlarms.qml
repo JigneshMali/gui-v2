@@ -14,11 +14,18 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
-			// ListAlarm {
-			// 	text: CommonWords.low_battery_voltage
-			// 	dataItem.uid: root.bindPrefix + "/Alarms/LowVoltage"}
+			ListAlarm {
+				text: "Low Soc Limit"
+				dataItem.uid: root.bindPrefix + "/Alarms/Low/State"
+				preferredVisible: dataItem.valid
+			}
 
-			
+			ListAlarm {
+				text: "High Soc Limit"
+				dataItem.uid: root.bindPrefix +"/Alarms/High/State"
+				preferredVisible: dataItem.valid
+			}
+
 			ListAlarm {
 				text: CommonWords.low_battery_voltage
 				dataItem.uid: root.bindPrefix + "/Alarms/LowVoltage"

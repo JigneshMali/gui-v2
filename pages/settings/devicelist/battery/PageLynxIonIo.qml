@@ -32,6 +32,18 @@ Page {
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 
+			ListSwitch {
+				text: "Force charging off"
+				dataItem.uid: root.bindPrefix + "/Io/ForceChargingOff"
+				preferredVisible: dataItem.valid
+			}
+
+			ListSwitch {
+				text: "Force discharging off"
+				dataItem.uid: root.bindPrefix + "/Io/ForceDischargingOff"
+				preferredVisible: dataItem.valid
+			}
+
 			ListText {
 				//% "External relay"
 				text: qsTrId("lynxionio_external_relay")

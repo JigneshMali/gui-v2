@@ -11,6 +11,18 @@ Page {
 
 	property string bindPrefix
 	property BatteryDetails details
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.bindPrefix +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: root.bindPrefix +  "/SFKhardwareflag"
+		}
 
 	QtObject {
 		id: temperatureData
@@ -21,6 +33,7 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
+
 			ListQuantityGroup {
 				//% "Lowest cell voltage"
 				text: qsTrId("batterydetails_lowest_cell_voltage")
@@ -99,6 +112,34 @@ Page {
 					QuantityObject { object: details.capacity; unit: VenusOS.Units_AmpHour }
 				}
 				preferredVisible: details.allowsCapacity
+			}
+
+			ListText {
+				text: "Heating Mode"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListTemperature {
+				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
+				preferredVisible: dataItem.valid 
+				unit: Global.systemSettings.temperatureUnit
+			}
+
+			ListQuantity {
+				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+				unit: VenusOS.Units_Percentage
+
+			}
+
+			ListQuantity {
+				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+				unit: VenusOS.Units_Percentage
 			}
 
 			ListText {
