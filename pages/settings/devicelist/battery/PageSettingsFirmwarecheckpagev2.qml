@@ -8,77 +8,77 @@ import Victron.VenusOS
 
 Page {
 		// id: root
-	property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
+	property string bindPrefix: "com.victronenergy.sfksettings"
 
 	property VeQuickItem  installedVenusOSversion: VeQuickItem { 
 		id: installedVenusOSversion  
 	    uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"}
     property VeQuickItem  sfkV1FirmwareDownloadCompleted: VeQuickItem { 
 		id: sfkV1FirmwareDownloadCompleted   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1FirmwareDownloadCompleted" }
+		uid: "com.victronenergy.sfksettings/System/SFKV1FirmwareDownloadCompleted" }
     property VeQuickItem  sfkV2FirmwareDownloadCompleted: VeQuickItem { 
 		id: sfkV2FirmwareDownloadCompleted   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2FirmwareDownloadCompleted" }		
+		uid: "com.victronenergy.sfksettings/System/SFKV2FirmwareDownloadCompleted" }		
     property VeQuickItem  sfkV3FirmwareDownloadCompleted: VeQuickItem { 
 		id: sfkV3FirmwareDownloadCompleted   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3FirmwareDownloadCompleted" }
+		uid: "com.victronenergy.sfksettings/System/SFKV3FirmwareDownloadCompleted" }
 	property VeQuickItem  sfkV1InstallConfirmItem: VeQuickItem { 
 		id: sfkV1InstallConfirmItem   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1Installconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV1Installconfirm" }
 	property VeQuickItem  sfkV2InstallConfirmItem: VeQuickItem { 
 		id: sfkV2InstallConfirmItem   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2Installconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV2Installconfirm" }
 	property VeQuickItem  sfkV3InstallConfirmItem: VeQuickItem { 
 		id: sfkV3InstallConfirmItem   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3Installconfirm" }	
+		uid: "com.victronenergy.sfksettings/System/SFKV3Installconfirm" }	
 	property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1Installconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV1Installconfirm" }
     property VeQuickItem  sfkV2InstallConfirm: VeQuickItem { 
 		id: sfkV2InstallConfirm  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2Installconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV2Installconfirm" }
     property VeQuickItem  sfkV3InstallConfirm: VeQuickItem { 
 		id: sfkV3InstallConfirm  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3Installconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV3Installconfirm" }
     property VeQuickItem  sfkFirmwareInstallationCompleted: VeQuickItem { 
 		id: sfkFirmwareInstallationCompleted  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareInstallationCompleted" }
+		uid: "com.victronenergy.sfksettings/System/SFKFirmwareInstallationCompleted" }
     property VeQuickItem  sfkV1TextInstallConfirm: VeQuickItem {
 		id: sfkV1TextInstallConfirm  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1Textinstallconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV1Textinstallconfirm" }
     property VeQuickItem  sfkV2TextInstallConfirm: VeQuickItem {
 		id: sfkV2TextInstallConfirm  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2Textinstallconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV2Textinstallconfirm" }
     property VeQuickItem  sfkV3TextInstallConfirm: VeQuickItem { 
 		id: sfkV3TextInstallConfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3Textinstallconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV3Textinstallconfirm" }
     property VeQuickItem  sfkV1FirmwareDownloadConfirm: VeQuickItem { 
 		id: sfkV1FirmwareDownloadConfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1Downloaded" }
+		uid: "com.victronenergy.sfksettings/System/SFKV1Downloaded" }
     property VeQuickItem  sfkV2FirmwareDownloadConfirm: VeQuickItem { 
 		id: sfkV2FirmwareDownloadConfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2Downloaded" }
+		uid: "com.victronenergy.sfksettings/System/SFKV2Downloaded" }
     property VeQuickItem  sfkV3FirmwareDownloadConfirm: VeQuickItem { 
 		id: sfkV3FirmwareDownloadConfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3Downloaded" }
+		uid: "com.victronenergy.sfksettings/System/SFKV3Downloaded" }
     property VeQuickItem  sfkV1OSTextconfirm: VeQuickItem { 
 		id: sfkV1OSTextconfirm  
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1OSTextconfirm"}
+		uid: "com.victronenergy.sfksettings/System/SFKV1OSTextconfirm"}
     property VeQuickItem  sfkV2OSTextconfirm: VeQuickItem { 
 		id: sfkV2OSTextconfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2OSTextconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV2OSTextconfirm" }
     property VeQuickItem  sfkV3OSTextconfirm: VeQuickItem { 
 		id: sfkV3OSTextconfirm 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3OSTextconfirm" }
+		uid: "com.victronenergy.sfksettings/System/SFKV3OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 
-		uid: "mqtt/com.victronenergy.sfksettings/System/SFKCompatibleVerisonNr" }
+		uid: "com.victronenergy.sfksettings/System/SFKCompatibleVerisonNr" }
     property VeQuickItem  sfkNumberofVersions: VeQuickItem { 
 		id: sfksfkNumberofVersionsvbFlag  
-	   uid: "mqtt/com.victronenergy.sfksettings/System/SFKNumberofVersions" }
+	   uid: "com.victronenergy.sfksettings/System/SFKNumberofVersions" }
     property VeQuickItem  isSFKVersionsAvailable: VeQuickItem {
 		id: isSFKVersionsAvailable  
-	    uid: "mqtt/com.victronenergy.sfksettings/System/IsSFKVersionsAvailable" }
+	    uid: "com.victronenergy.sfksettings/System/IsSFKVersionsAvailable" }
     property VeQuickItem  firmwareVersion: VeQuickItem { 
 		id: firmwareVersion  
 	    uid: root.bindPrefix + "/FirmwareVersion" }
@@ -86,26 +86,26 @@ Page {
     // Firmware availability check
     property VeQuickItem  sfkFirmwareAvailableCheck: VeQuickItem { 
 		id: sfkFirmwareAvailableCheck   
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
+	    uid: "com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
     property VeQuickItem sfkFirmwareAvailableCheckItem: VeQuickItem { 
 		id: sfkFirmwareAvailableCheckItem  
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
+	    uid: "com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
 
     property string firmwareStatusMessage: isSFKVersionsAvailable.value === 1 ? qsTr("New firmware available.") : qsTr("")
     property string firmwareInstalledMessage: qsTr("Installation completed. Please reboot the device.")
 
     property VeQuickItem  sfkCurrentversion: VeQuickItem { 
 		id: sfkCurrentversion 
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKcurrentversion" }
+	    uid: "com.victronenergy.sfksettings/System/SFKcurrentversion" }
     property VeQuickItem  sfkV1version: VeQuickItem { 
 		id: sfkV1version   
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKV1version" }
+	    uid: "com.victronenergy.sfksettings/System/SFKV1version" }
     property VeQuickItem  sfkV2version: VeQuickItem {
 		id: sfkV2version 
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKV2version" }
+	    uid: "com.victronenergy.sfksettings/System/SFKV2version" }
     property VeQuickItem  sfkV3version: VeQuickItem { 
 		id: sfkV3version 
-	    uid: "mqtt/com.victronenergy.sfksettings/System/SFKV3version" }
+	    uid: "com.victronenergy.sfksettings/System/SFKV3version" }
 
     property real sfkCurrentVersion: sfkCurrentversion.value || 0.0
     property real sfkV1Version: sfkV1version.value || 0.0

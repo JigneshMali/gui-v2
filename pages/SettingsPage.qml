@@ -100,7 +100,7 @@ SwipeViewPage {
 				preferredVisible:  true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml",
-							{ "title": text, "bindPrefix": "mqtt/com.victronenergy.sfksettings" })
+							{ "title": text, "bindPrefix": "com.victronenergy.sfksettings" })
 				}
 			}
 		}

@@ -8,7 +8,7 @@ import Victron.VenusOS
 
 Page {
 	// id: root
-	property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
+	property string bindPrefix: "com.victronenergy.sfksettings"
 
 
 	GradientListView {
@@ -19,7 +19,7 @@ Page {
 				preferredVisible:  true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKUpdateDriver.qml",
-							{ "title": text, "bindPrefix": "mqtt/com.victronenergy.sfksettings" })
+							{ "title": text, "bindPrefix": "com.victronenergy.sfksettings" })
 				}
 			}
 
@@ -28,7 +28,7 @@ Page {
 				preferredVisible:  true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKUninstallDriver.qml",
-							{ "title": text, "bindPrefix": "mqtt/com.victronenergy.sfksettings" })
+							{ "title": text, "bindPrefix": "com.victronenergy.sfksettings" })
 				}
 			}
 
