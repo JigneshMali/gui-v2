@@ -30,7 +30,7 @@ Page {
                 text: "UID is: " + bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
                 preferredVisible: true
             }
-            
+
             ListText {
                 text: "UID is: " + root.bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
                 preferredVisible: true
@@ -41,11 +41,30 @@ Page {
                 preferredVisible: firmwareUninstallationCompleted.value === 1
             }
 
-
-
             ListRadioButtonGroup {
+                text: "Uninstall driver mqtt/"
+                // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                dataItem.uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
+                preferredVisible: true
+                optionModel: [
+                    { display: qsTr("Uninstall"), value: 1 },
+                    { display: qsTr("Cancel"), value: 0 }
+                ]
+            }
+                ListRadioButtonGroup {
                 text: "Uninstall driver"
-                dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                dataItem.uid: "com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
+                preferredVisible: true
+                optionModel: [
+                    { display: qsTr("Uninstall"), value: 1 },
+                    { display: qsTr("Cancel"), value: 0 }
+                ]
+            }
+            ListRadioButtonGroup {
+                text: "Uninstall driver mqtt//"
+                // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                dataItem.uid: "mqtt/System/SFKFirmwareUninstallconfirm"
                 preferredVisible: true
                 optionModel: [
                     { display: qsTr("Uninstall"), value: 1 },
