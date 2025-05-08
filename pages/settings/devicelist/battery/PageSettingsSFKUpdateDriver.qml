@@ -7,75 +7,77 @@ import QtQuick
 import Victron.VenusOS
 
 Page {
-		// id: root
-	property string bindPrefix: "com.victronenergy.sfksettings"
+	id: root
+    property string sfkService: "com.victronenergy.sfksettings"
+    // choose D-Bus vs MQTT prefix automatically
+    property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
-		uid: "com.victronenergy.sfksettings/System/SFKV1Installconfirm" }
+		uid: root.bindPrefix + "/System/SFKV1Installconfirm" }
     property VeQuickItem  sfkV2InstallConfirm: VeQuickItem { 
 		id: sfkV2InstallConfirm  
-		uid: "com.victronenergy.sfksettings/System/SFKV2Installconfirm" }
+		uid: root.bindPrefix + "/System/SFKV2Installconfirm" }
     property VeQuickItem  sfkV3InstallConfirm: VeQuickItem { 
 		id: sfkV3InstallConfirm  
-		uid: "com.victronenergy.sfksettings/System/SFKV3Installconfirm" }
+		uid: root.bindPrefix + "/System/SFKV3Installconfirm" }
     property VeQuickItem  sfkFirmwareInstallationCompleted: VeQuickItem { 
 		id: sfkFirmwareInstallationCompleted  
-		uid: "com.victronenergy.sfksettings/System/SFKFirmwareInstallationCompleted" }
+		uid: root.bindPrefix + "/System/SFKFirmwareInstallationCompleted" }
     property VeQuickItem  sfkV1TextInstallConfirm: VeQuickItem {
 		id: sfkV1TextInstallConfirm  
-		uid: "com.victronenergy.sfksettings/System/SFKV1Textinstallconfirm" }
+		uid: root.bindPrefix + "/System/SFKV1Textinstallconfirm" }
     property VeQuickItem  sfkV2TextInstallConfirm: VeQuickItem {
 		id: sfkV2TextInstallConfirm  
-		uid: "com.victronenergy.sfksettings/System/SFKV2Textinstallconfirm" }
+		uid: root.bindPrefix + "/System/SFKV2Textinstallconfirm" }
     property VeQuickItem  sfkV3TextInstallConfirm: VeQuickItem { 
 		id: sfkV3TextInstallConfirm 
-		uid: "com.victronenergy.sfksettings/System/SFKV3Textinstallconfirm" }
+		uid: root.bindPrefix + "/System/SFKV3Textinstallconfirm" }
     property VeQuickItem  sfkV1OSTextConfirm: VeQuickItem { 
 		id: sfkV1OSTextConfirm  
-		uid: "com.victronenergy.sfksettings/System/SFKV1OSTextconfirm"}
+		uid: root.bindPrefix + "/System/SFKV1OSTextconfirm"}
     property VeQuickItem  sfkV2OSTextConfirm: VeQuickItem { 
 		id: sfkV2OSTextConfirm 
-		uid: "com.victronenergy.sfksettings/System/SFKV2OSTextconfirm" }
+		uid: root.bindPrefix + "/System/SFKV2OSTextconfirm" }
     property VeQuickItem  sfkV3OSTextConfirm: VeQuickItem { 
 		id: sfkV3OSTextConfirm 
-		uid: "com.victronenergy.sfksettings/System/SFKV3OSTextconfirm" }
+		uid: root.bindPrefix + "/System/SFKV3OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 
-		uid: "com.victronenergy.sfksettings/System/SFKCompatibleVerisonNr" }
+		uid: root.bindPrefix + "/System/SFKCompatibleVerisonNr" }
     property VeQuickItem  sfkNumberofVersions: VeQuickItem { 
 		id: sfksfkNumberofVersionsvbFlag  
-	   uid: "com.victronenergy.sfksettings/System/SFKNumberofVersions" }
+	   uid: root.bindPrefix + "/System/SFKNumberofVersions" }
     property VeQuickItem  isSFKVersionsAvailable: VeQuickItem {
 		id: isSFKVersionsAvailable  
-	    uid: "com.victronenergy.sfksettings/System/IsSFKVersionsAvailable" }
+	    uid: root.bindPrefix + "/System/IsSFKVersionsAvailable" }
     property VeQuickItem  firmwareVersion: VeQuickItem { 
 		id: firmwareVersion  
-	    uid: "com.victronenergy.sfksettings/FirmwareVersion" }
+	    uid: root.bindPrefix + "/FirmwareVersion" }
 
     // Firmware availability check
     property VeQuickItem  sfkFirmwareAvailableCheck: VeQuickItem { 
 		id: sfkFirmwareAvailableCheck   
-	    uid: "com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
+	    uid: root.bindPrefix + "/System/SFKFirmwareAvailableCheck" }
     property VeQuickItem sfkFirmwareAvailableCheckItem: VeQuickItem { 
 		id: sfkFirmwareAvailableCheckItem  
-	    uid: "com.victronenergy.sfksettings/System/SFKFirmwareAvailableCheck" }
+	    uid: root.bindPrefix + "/System/SFKFirmwareAvailableCheck" }
 
     property string firmwareStatusMessage: isSFKVersionsAvailable.value === 1 ? qsTr("New firmware available.") : qsTr("")
     property string firmwareInstalledMessage: qsTr("Installation completed. Please reboot the device.")
 
     property VeQuickItem  sfkCurrentversion: VeQuickItem { 
 		id: sfkCurrentversion 
-	    uid: "com.victronenergy.sfksettings/System/SFKcurrentversion" }
+	    uid: root.bindPrefix + "/System/SFKcurrentversion" }
     property VeQuickItem  sfkV1version: VeQuickItem { 
 		id: sfkV1version   
-	    uid: "com.victronenergy.sfksettings/System/SFKV1version" }
+	    uid: root.bindPrefix + "/System/SFKV1version" }
     property VeQuickItem  sfkV2version: VeQuickItem {
 		id: sfkV2version 
-	    uid: "com.victronenergy.sfksettings/System/SFKV2version" }
+	    uid: root.bindPrefix + "/System/SFKV2version" }
     property VeQuickItem  sfkV3version: VeQuickItem { 
 		id: sfkV3version 
-	    uid: "com.victronenergy.sfksettings/System/SFKV3version" }
+	    uid: root.bindPrefix + "/System/SFKV3version" }
 
     property real sfkCurrentVersion: sfkCurrentversion.value || 0.0
     property real sfkV1Version: sfkV1version.value || 0.0
@@ -143,7 +145,7 @@ Page {
 			
 			ListText {
 				text: "SFK Drivers Available"
-				dataItem.uid: "com.victronenergy.sfksettings/System/SFKNumberofVersions"
+				dataItem.uid: root.bindPrefix + "/System/SFKNumberofVersions"
 				preferredVisible: (( isSFKVersionsAvailable.value === 1) || ( sfkNumberofVersions.value > 0 ) ) &&  (sfkFirmwareInstallationCompleted.value === 0)
 			}
 
