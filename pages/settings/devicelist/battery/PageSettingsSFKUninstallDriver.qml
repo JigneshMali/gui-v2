@@ -26,11 +26,22 @@ Page {
                 }
                 preferredVisible: true
             }
+            ListText {
+                text: "UID is: " + bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+                preferredVisible: true
+            }
+            
+            ListText {
+                text: "UID is: " + root.bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+                preferredVisible: true
+            }
 
             ListText {
                 text: "Driver removed. Please reboot the device."
                 preferredVisible: firmwareUninstallationCompleted.value === 1
             }
+
+
 
             ListRadioButtonGroup {
                 text: "Uninstall driver"
