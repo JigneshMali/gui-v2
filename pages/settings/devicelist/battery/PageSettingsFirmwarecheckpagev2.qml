@@ -5,6 +5,8 @@
 
 import QtQuick
 import Victron.VenusOS
+import Victron.Mqtt      // <-- this hook makes “mqtt/…” UIDs work
+
 
 Page {
 	id: root
