@@ -26,7 +26,7 @@ Page {
             }
 
             ListText {
-                text: "UID is: " + bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+                text: "UID is: " + bindPrefix + "/Settings/System/SFKFirmwareUninstallationCompleted"
                 preferredVisible: true
             }
 
@@ -37,7 +37,7 @@ Page {
 
             ListRadioButtonGroup {
                 text: "Uninstall driver"
-                dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallConfirm"
+                dataItem.uid: root.bindPrefix + "/Settings/System/SFKFirmwareUninstallConfirm"
                 preferredVisible: true
                 optionModel: [
                     { display: qsTr("Uninstall"), value: 1 },
