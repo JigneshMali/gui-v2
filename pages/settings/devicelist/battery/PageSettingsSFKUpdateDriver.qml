@@ -13,7 +13,8 @@ Page {
     // choose D-Bus vs MQTT prefix automatically
 	// property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
     // property string bindPrefix:"mqtt/" + sfkService
-    property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
+    // property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
+    property string bindPrefix: "mqtt"
 
 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
@@ -145,7 +146,7 @@ Page {
 				}
 			
 				preferredVisible: true
-				// preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
+				preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
 			}			
 			
 			ListText {
