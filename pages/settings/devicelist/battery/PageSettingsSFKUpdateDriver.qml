@@ -11,11 +11,7 @@ Page {
 	id: root
     property string sfkService: "com.victronenergy.sfksettings"
     // choose D-Bus vs MQTT prefix automatically
-	// property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
-    // property string bindPrefix:"mqtt/" + sfkService
-    // property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
-    property string bindPrefix: "mqtt"
-
+	property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   

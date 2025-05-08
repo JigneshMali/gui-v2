@@ -1,14 +1,13 @@
 import QtQuick
 import Victron.VenusOS
-import Victron.Mqtt      // <-- this hook makes “mqtt/…” UIDs work
 
 Page {
     id: root
     property string sfkService: "com.victronenergy.sfksettings"
     property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
-        uid: root.bindPrefix + "Settings/System/SFKFirmwareUninstallationCompleted"
-    }
+        uid: root.bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+    }    
 
     GradientListView {
         model: VisibleItemModel {
@@ -26,7 +25,7 @@ Page {
             }
 
             ListText {
-                text: "UID is: " + bindPrefix + "/Settings/System/SFKFirmwareUninstallationCompleted"
+                text: "UID is: " + bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
                 preferredVisible: true
             }
 
@@ -37,7 +36,12 @@ Page {
 
             ListRadioButtonGroup {
                 text: "Uninstall driver"
-                dataItem.uid: root.bindPrefix + "/Settings/System/SFKFirmwareUninstallConfirm"
+                // ← inline the VeQuickItem so the group can read/write the MQTT value
+                dataItem: VeQuickItem {
+                    uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
+                    // uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                }
+                // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
                 preferredVisible: true
                 optionModel: [
                     { display: qsTr("Uninstall"), value: 1 },
