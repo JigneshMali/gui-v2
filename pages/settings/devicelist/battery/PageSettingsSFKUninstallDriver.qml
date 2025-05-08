@@ -7,7 +7,7 @@ Page {
     property string sfkService: "com.victronenergy.sfksettings"
     property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
-        uid: root.bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+        uid: root.bindPrefix + "Settings/System/SFKFirmwareUninstallationCompleted"
     }
 
     GradientListView {
