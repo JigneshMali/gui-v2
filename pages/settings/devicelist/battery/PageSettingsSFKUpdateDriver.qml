@@ -142,7 +142,7 @@ Page {
 				}
 			
 				preferredVisible: true
-				preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
+				// preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
 			}			
 			
 			ListText {
