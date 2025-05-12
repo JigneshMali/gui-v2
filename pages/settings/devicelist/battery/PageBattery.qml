@@ -144,7 +144,10 @@ Page {
 					id: batteryVoltage
 					uid: root.bindPrefix + "/Dc/0/Voltage"
 				}
-
+				VeQuickItem {
+					id: heatFetStatus
+					uid: root.bindPrefix + "/System/HeatFetStatus"
+				}
 				VeQuickItem {
 					id: batteryCurrent
 					uid: root.bindPrefix + "/Dc/0/Current"
