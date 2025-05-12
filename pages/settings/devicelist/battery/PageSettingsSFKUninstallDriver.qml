@@ -37,10 +37,7 @@ Page {
             ListRadioButtonGroup {
                 text: "Uninstall driver"
                 // ← inline the VeQuickItem so the group can read/write the MQTT value
-                dataItem: VeQuickItem {
-                    uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
-                    // uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
-                }
+                dataItem.uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
                 // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
                 preferredVisible: true
                 optionModel: [
