@@ -3,29 +3,34 @@ import Victron.VenusOS
 
 Page {
     id: root
+
+    // service name stays the same
     property string sfkService: "com.victronenergy.sfksettings"
-    property string bindPrefix: "mqtt/com.victronenergy.sfksettings"
+    // this will be "mqtt/com.victronenergy.sfksettings" in MQTT,
+    // or         "dbus"                             in D-Bus
+    property string bindPrefix: BackendConnection.uidPrefix()
+
+    // the data item
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
-        uid: root.bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
-    }    
+        uid: bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+    }
 
     GradientListView {
         model: VisibleItemModel {
-
             ListText {
                 text: {
                     switch (BackendConnection.type) {
-                        case BackendConnection.DBusSource: return qsTr("Current backend: D-Bus")
-                        case BackendConnection.MqttSource: return qsTr("Current backend: MQTT")
-                        case BackendConnection.MockSource: return qsTr("Current backend: Mock")
-                        default: return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
+                        case BackendConnection.DBusSource:   return qsTr("Current backend: D-Bus")
+                        case BackendConnection.MqttSource:  return qsTr("Current backend: MQTT")
+                        case BackendConnection.MockSource:  return qsTr("Current backend: Mock")
+                        default:                           return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
                     }
                 }
                 preferredVisible: true
             }
 
             ListText {
-                text: "UID is: " + bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+                text: "UID is: " + firmwareUninstallationCompleted.uid
                 preferredVisible: true
             }
 
@@ -35,10 +40,8 @@ Page {
             }
 
             ListRadioButtonGroup {
-                text: "Uninstall driver"
-                // ← inline the VeQuickItem so the group can read/write the MQTT value
-                dataItem.uid: "mqtt/com.victronenergy.sfksettings/System/SFKFirmwareUninstallconfirm"
-                // dataItem.uid: root.bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                text: qsTr("Uninstall driver")
+                dataItem.uid: bindPrefix + "/System/SFKFirmwareUninstallconfirm"
                 preferredVisible: true
                 optionModel: [
                     { display: qsTr("Uninstall"), value: 1 },
