@@ -30,7 +30,7 @@ Page {
             }
 
             ListText {
-                text: "UID is: " + BackendConnection.uidPrefix() 
+                text: "UID is: " + bindPrefix
                 preferredVisible: true
             }
 
