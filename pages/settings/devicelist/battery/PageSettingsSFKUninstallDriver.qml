@@ -8,7 +8,7 @@ Page {
     property string sfkService: "com.victronenergy.sfksettings"
     // this will be "mqtt/com.victronenergy.sfksettings" in MQTT,
     // or         "dbus"                             in D-Bus
-    property string bindPrefix: BackendConnection.uidPrefix() + sfkService
+    property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
 
     // the data item
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
