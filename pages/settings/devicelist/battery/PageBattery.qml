@@ -144,11 +144,20 @@ Page {
 				VeQuickItem { id: errorInvalidConfig; uid: root.bindPrefix + "/Errors/SmartLithium/InvalidConfiguration" }
 			}
 
+			// ListQuantityGroup {
+			// 	text: CommonWords.battery
+			// 	model: QuantityObjectModel {
+			// 		ListText {text: heatFetStatus.value === 1 && pulse ? qsTr("H"): qsTr(" ")}
+			// 		QuantityObject { object:  heatFetStatus.value === 1 && pulse ? "H" : " "  }
+			// 		QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
+			// 		QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
+			// 		QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
+			// 	}
+
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
-					ListText {text: heatFetStatus.value === 1 && pulse ? qsTr("H"): qsTr(" ")}
-					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? "H" : " "  }
+					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? 1 : Null  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
