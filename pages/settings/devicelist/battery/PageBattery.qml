@@ -19,7 +19,6 @@ Page {
 		id: battery
 		serviceUid: root.bindPrefix
 	}
-
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
 		uid: root.bindPrefix +  "/SFKbatteryflag"
@@ -157,7 +156,7 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
-					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? 1 : null  }
+					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? 1 : 0  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
