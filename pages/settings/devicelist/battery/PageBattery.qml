@@ -156,7 +156,7 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
-					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? 1 : 0  }
+					QuantityObject { object:  heatFetStatus1.value === 1 && pulse ? heatFetStatus1.value : !heatFetStatus1.value  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
@@ -177,7 +177,13 @@ Page {
 					uid: root.bindPrefix + "/Dc/0/Power"
 				}
 			}
-
+			ListText {
+					id: heatFetStatus1
+					//% "Number of BMSes"
+					text: qsTr("heatFetStatus1")
+					dataItem.uid: root.bindPrefix + "/System/HeatFetStatus"
+					preferredVisible: true
+				}
 			ListQuantity {
 				//% "Total Capacity"
 				text: qsTrId("devicelist_battery_total_capacity")
