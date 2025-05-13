@@ -10,7 +10,7 @@ DeviceListDelegate {
 	id: root
 	property VeQuickItem heatFetStatus: VeQuickItem {
 		id: heatFetStatus
-		uid: root.bindPrefix +  "/System/HeatFetStatus"
+		uid: root.device.serviceUid  +  "/System/HeatFetStatus"
 		}	
 	property bool pulse: true
 	readonly property bool isParallelBms: numberOfBmses.valid
