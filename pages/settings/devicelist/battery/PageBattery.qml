@@ -39,7 +39,7 @@ Page {
     Timer {
         id: _timer
         interval: 500
-        running: heatFetStatus1.value === 1
+        running: heatFetStatus.value === 1
         repeat: true
         onTriggered: pulse = !pulse
     }
@@ -157,7 +157,6 @@ Page {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
 					QuantityObject { object: customDataObject; key:"heatText"  }
-					QuantityObject { object:  heatFetStatus1.value === 1 && pulse ? heatFetStatus1.value : !heatFetStatus1.value  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
@@ -188,7 +187,7 @@ Page {
 					//% "Number of BMSes"
 					text: qsTr("heatFetStatus1")
 					dataItem.uid: root.bindPrefix + "/System/HeatFetStatus"
-					preferredVisible: true
+					preferredVisible: pulse
 				}
 			ListQuantity {
 				//% "Total Capacity"
