@@ -31,7 +31,19 @@ Page {
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
 		uid: root.bindPrefix +  "/SFKhardwareflag"
+		}
+	property VeQuickItem heatFetStatus: VeQuickItem {
+		id: heatFetStatus
+		uid: root.bindPrefix +  "/System/HeatFetStatus"
 		}	
+    property bool pulse: true
+    Timer {
+        id: _timer
+        interval: 500
+        running: heatFetStatus.value === 1
+        repeat: true
+        onTriggered: pulse = !pulse
+    }
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -135,7 +147,7 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
-					QuantityObject { object:  heatFetStatus.value === 1 ? "H" : " "; color: "red"  }
+					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? "H" : " "; color: "red"  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
@@ -145,10 +157,7 @@ Page {
 					id: batteryVoltage
 					uid: root.bindPrefix + "/Dc/0/Voltage"
 				}
-				VeQuickItem {
-					id: heatFetStatus
-					uid: root.bindPrefix + "/System/HeatFetStatus"
-				}
+
 				VeQuickItem {
 					id: batteryCurrent
 					uid: root.bindPrefix + "/Dc/0/Current"
