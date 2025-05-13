@@ -147,6 +147,7 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
+					ListText {text: heatFetStatus.value === 1 && pulse ? qsTr("H"): qsTr(" ")}
 					QuantityObject { object:  heatFetStatus.value === 1 && pulse ? "H" : " "  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
@@ -193,6 +194,7 @@ Page {
 					uid: root.bindPrefix + "/State"
 				}
 			}
+			
 
 			ListText {
 				id: nrOfBmses
