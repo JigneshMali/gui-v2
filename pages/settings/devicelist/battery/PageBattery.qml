@@ -146,8 +146,8 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
-					QuantityObject { object: customDataObject; key:"heatText"  }
-					QuantityObject { object: customDataObject; key:"heatRedText"  }
+					// QuantityObject { object: customDataObject; key:"heatText"  }
+					// QuantityObject { object: customDataObject; key:"heatRedText"  }
 					QuantityObject { object: customDataObject; key:"heatRedTextP"  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
@@ -171,9 +171,9 @@ Page {
 
 				QtObject {
 					id: customDataObject
-					property string heatText:  (heatFetStatus.value === 1 && pulse)  ? "H" : " "
+					// property string heatText:  (heatFetStatus.value === 1 && pulse)  ? "H" : " "
 					property string heatRedTextP: (heatFetStatus.value === 1 && pulse) ? "<span style='color:#ff0000; font-weight:bold;'>H</span>" : " "
-					property string heatRedText:  (heatFetStatus.value === 1 && pulse)  ?  "<span style='color:#ff0000; padding:4px 8px; border-radius:4px; font-weight:bold;'>H</span>" : " "
+					// property string heatRedText:  (heatFetStatus.value === 1 && pulse)  ?  "<span style='color:#ff0000; padding:4px 8px; border-radius:4px; font-weight:bold;'>H</span>" : " "
 				}
 			}
 
