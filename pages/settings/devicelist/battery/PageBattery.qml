@@ -174,13 +174,7 @@ Page {
 					property string heatRedText:  (heatFetStatus.value === 1 && pulse)  ?  "<span style='color:#ff0000; padding:4px 8px; border-radius:4px; font-weight:bold;'>H</span>" : " "
 				}
 			}
-			ListText {
-					id: heatFetStatus1
-					//% "Number of BMSes"
-					text: qsTr("heatFetStatus1")
-					dataItem.uid: root.bindPrefix + "/System/HeatFetStatus"
-					preferredVisible: pulse
-				}
+
 			ListQuantity {
 				//% "Total Capacity"
 				text: qsTrId("devicelist_battery_total_capacity")
