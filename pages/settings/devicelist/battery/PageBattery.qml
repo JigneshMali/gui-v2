@@ -39,7 +39,7 @@ Page {
     Timer {
         id: _timer
         interval: 500
-        running: heatFetStatus.value === 1
+        running: heatFetStatus1.value === 1
         repeat: true
         onTriggered: pulse = !pulse
     }
