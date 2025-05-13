@@ -147,6 +147,7 @@ Page {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
 					QuantityObject { object: customDataObject; key:"heatText"  }
+					QuantityObject { object: customDataObject; key:"heatRedText"  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
@@ -170,6 +171,7 @@ Page {
 				QtObject {
 					id: customDataObject
 					property string heatText:  (heatFetStatus.value === 1 && pulse)  ? "H" : " "
+					property string heatRedText:  (heatFetStatus.value === 1 && pulse)  ?  "<span style='color:#ff0000; padding:4px 8px; border-radius:4px; font-weight:bold;'>H</span>" : " "
 				}
 			}
 			ListText {
