@@ -8,7 +8,8 @@ Page {
     property string sfkService: "com.victronenergy.sfksettings"
     // this will be "mqtt/com.victronenergy.sfksettings" in MQTT,
     // or         "dbus"                             in D-Bus
-    property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
+    property string bindPrefix: BackendConnection.uidPrefix() + '/' + "sfksettings/" + "0"
+    // property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
 
     // the data item
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
@@ -23,7 +24,7 @@ Page {
                         case BackendConnection.DBusSource:   return qsTr("Current backend: D-Bus")
                         case BackendConnection.MqttSource:  return qsTr("Current backend: MQTT")
                         case BackendConnection.MockSource:  return qsTr("Current backend: Mock")
-                        default:                           return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
+                        default: return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
                     }
                 }
                 preferredVisible: true

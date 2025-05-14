@@ -10,7 +10,9 @@ Page {
 	id: root
     property string sfkService: "com.victronenergy.sfksettings"
     // choose D-Bus vs MQTT prefix automatically
-	property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
+	// property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
+	property string bindPrefix: BackendConnection.uidPrefix() + '/' + "sfksettings/0" 
+    // property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
 
 	GradientListView {
 		model: VisibleItemModel {
