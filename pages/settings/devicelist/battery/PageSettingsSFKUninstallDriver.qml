@@ -17,23 +17,6 @@ Page {
     GradientListView {
         model: VisibleItemModel {
             ListText {
-                text: {
-                    switch (BackendConnection.type) {
-                        case BackendConnection.DBusSource:   return qsTr("Current backend: D-Bus")
-                        case BackendConnection.MqttSource:  return qsTr("Current backend: MQTT")
-                        case BackendConnection.MockSource:  return qsTr("Current backend: Mock")
-                        default: return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
-                    }
-                }
-                preferredVisible: true
-            }
-
-            ListText {
-                text: "UID is: " + mqttprefix
-                preferredVisible: true
-            }
-
-            ListText {
                 text: "Driver removed. Please reboot the device."
                 preferredVisible: firmwareUninstallationCompleted.value === 1
             }

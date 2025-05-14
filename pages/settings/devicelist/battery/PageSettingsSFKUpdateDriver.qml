@@ -54,7 +54,7 @@ Page {
 	    uid: mqttprefix + "/System/IsSFKVersionsAvailable" }
     property VeQuickItem  firmwareVersion: VeQuickItem { 
 		id: firmwareVersion  
-	    uid: root.bindPrefix + "/FirmwareVersion" }
+	    uid: mqttprefix + "/FirmwareVersion" }
 
     // Firmware availability check
     property VeQuickItem  sfkFirmwareAvailableCheck: VeQuickItem { 
