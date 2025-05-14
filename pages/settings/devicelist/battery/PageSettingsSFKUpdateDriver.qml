@@ -10,50 +10,47 @@ import Victron.Mqtt      // <-- this hook makes “mqtt/…” UIDs work
 Page {
 	id: root
     property string sfkService: "com.victronenergy.sfksettings"
-    // choose D-Bus vs MQTT prefix automatically
-	// property string bindPrefix:BackendConnection.type === BackendConnection.MqttSource ? "mqtt/" + sfkService : sfkService
-	property string bindPrefix: "mqtt/sfksettings/0"
-    // property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
+    property string mqttprefix: "mqtt/sfksettings/0"
 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
-		uid: "mqtt/sfksettings/0/System/SFKV1Installconfirm" }
+		uid: mqttprefix + "/System/SFKV1Installconfirm" }
     property VeQuickItem  sfkV2InstallConfirm: VeQuickItem { 
 		id: sfkV2InstallConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV2Installconfirm" }
+		uid: mqttprefix + "/System/SFKV2Installconfirm" }
     property VeQuickItem  sfkV3InstallConfirm: VeQuickItem { 
 		id: sfkV3InstallConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV3Installconfirm" }
+		uid: mqttprefix + "/System/SFKV3Installconfirm" }
     property VeQuickItem  sfkFirmwareInstallationCompleted: VeQuickItem { 
 		id: sfkFirmwareInstallationCompleted  
-		uid: "mqtt/sfksettings/0/System/SFKFirmwareInstallationCompleted" }
+		uid: mqttprefix + "/System/SFKFirmwareInstallationCompleted" }
     property VeQuickItem  sfkV1TextInstallConfirm: VeQuickItem {
 		id: sfkV1TextInstallConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV1Textinstallconfirm" }
+		uid: mqttprefix + "/System/SFKV1Textinstallconfirm" }
     property VeQuickItem  sfkV2TextInstallConfirm: VeQuickItem {
 		id: sfkV2TextInstallConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV2Textinstallconfirm" }
+		uid: mqttprefix + "/System/SFKV2Textinstallconfirm" }
     property VeQuickItem  sfkV3TextInstallConfirm: VeQuickItem { 
 		id: sfkV3TextInstallConfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV3Textinstallconfirm" }
+		uid: mqttprefix + "/System/SFKV3Textinstallconfirm" }
     property VeQuickItem  sfkV1OSTextConfirm: VeQuickItem { 
 		id: sfkV1OSTextConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV1OSTextconfirm"}
+		uid: mqttprefix + "/System/SFKV1OSTextconfirm"}
     property VeQuickItem  sfkV2OSTextConfirm: VeQuickItem { 
 		id: sfkV2OSTextConfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV2OSTextconfirm" }
+		uid: mqttprefix + "/System/SFKV2OSTextconfirm" }
     property VeQuickItem  sfkV3OSTextConfirm: VeQuickItem { 
 		id: sfkV3OSTextConfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV3OSTextconfirm" }
+		uid: mqttprefix + "/System/SFKV3OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 
-		uid: "mqtt/sfksettings/0/System/SFKCompatibleVerisonNr" }
+		uid: mqttprefix + "/System/SFKCompatibleVerisonNr" }
     property VeQuickItem  sfkNumberofVersions: VeQuickItem { 
 		id: sfksfkNumberofVersionsvbFlag  
-	   uid: "mqtt/sfksettings/0/System/SFKNumberofVersions" }
+	   uid: mqttprefix + "/System/SFKNumberofVersions" }
     property VeQuickItem  isSFKVersionsAvailable: VeQuickItem {
 		id: isSFKVersionsAvailable  
-	    uid: "mqtt/sfksettings/0/System/IsSFKVersionsAvailable" }
+	    uid: mqttprefix + "/System/IsSFKVersionsAvailable" }
     property VeQuickItem  firmwareVersion: VeQuickItem { 
 		id: firmwareVersion  
 	    uid: root.bindPrefix + "/FirmwareVersion" }
@@ -61,26 +58,26 @@ Page {
     // Firmware availability check
     property VeQuickItem  sfkFirmwareAvailableCheck: VeQuickItem { 
 		id: sfkFirmwareAvailableCheck   
-	    uid: "mqtt/sfksettings/0/System/SFKFirmwareAvailableCheck" }
+	    uid: mqttprefix + "/System/SFKFirmwareAvailableCheck" }
     property VeQuickItem sfkFirmwareAvailableCheckItem: VeQuickItem { 
 		id: sfkFirmwareAvailableCheckItem  
-	    uid: "mqtt/sfksettings/0/System/SFKFirmwareAvailableCheck" }
+	    uid: mqttprefix + "/System/SFKFirmwareAvailableCheck" }
 
     property string firmwareStatusMessage: isSFKVersionsAvailable.value === 1 ? qsTr("New firmware available.") : qsTr("")
     property string firmwareInstalledMessage: qsTr("Installation completed. Please reboot the device.")
 
     property VeQuickItem  sfkCurrentversion: VeQuickItem { 
 		id: sfkCurrentversion 
-	    uid: "mqtt/sfksettings/0/System/SFKcurrentversion" }
+	    uid: mqttprefix + "/System/SFKcurrentversion" }
     property VeQuickItem  sfkV1version: VeQuickItem { 
 		id: sfkV1version   
-	    uid: "mqtt/sfksettings/0/System/SFKV1version" }
+	    uid: mqttprefix + "/System/SFKV1version" }
     property VeQuickItem  sfkV2version: VeQuickItem {
 		id: sfkV2version 
-	    uid: "mqtt/sfksettings/0/System/SFKV2version" }
+	    uid: mqttprefix + "/System/SFKV2version" }
     property VeQuickItem  sfkV3version: VeQuickItem { 
 		id: sfkV3version 
-	    uid: "mqtt/sfksettings/0/System/SFKV3version" }
+	    uid: mqttprefix + "/System/SFKV3version" }
 
     property real sfkCurrentVersion: sfkCurrentversion.value || 0.0
     property real sfkV1Version: sfkV1version.value || 0.0
@@ -104,22 +101,6 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
-
-			ListText {
-				text: {
-					switch (BackendConnection.type) {
-					case BackendConnection.DBusSource:
-						return qsTr("Current backend: D-Bus")
-					case BackendConnection.MqttSource:
-						return qsTr("Current backend: MQTT")
-					case BackendConnection.MockSource:
-						return qsTr("Current backend: Mock")
-					default:
-						return qsTr("Backend type: Unknown (%1)").arg(BackendConnection.type)
-					}
-				}
-				preferredVisible: true
-			}
 
 			ListRadioButtonGroup {
 				//% "SFK Driver Update"
@@ -149,7 +130,7 @@ Page {
 			
 			ListText {
 				text: "SFK Drivers Available"
-				dataItem.uid: "mqtt/sfksettings/0/System/SFKNumberofVersions"
+				dataItem.uid: mqttprefix + "/System/SFKNumberofVersions"
 				preferredVisible: (( isSFKVersionsAvailable.value === 1) || ( sfkNumberofVersions.value > 0 ) ) &&  (sfkFirmwareInstallationCompleted.value === 0)
 			}
 
