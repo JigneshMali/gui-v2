@@ -11,6 +11,7 @@ Page {
 	id: root
     property string sfkService: "com.victronenergy.sfksettings"
     property string mqttprefix: "mqtt/sfksettings/0"
+    property string bindPrefix: "mqtt/sfksettings/0"
 
     property VeQuickItem  sfkV1InstallConfirm: VeQuickItem { 
 		id: sfkV1InstallConfirm   
