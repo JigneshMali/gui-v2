@@ -13,7 +13,7 @@ Page {
 
     // the data item
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
-        uid: bindPrefix + "/System/SFKFirmwareUninstallationCompleted"
+        uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallationCompleted"
     }
 
     GradientListView {
@@ -42,7 +42,7 @@ Page {
 
             ListRadioButtonGroup {
                 text: qsTr("Uninstall driver")
-                dataItem.uid: bindPrefix + "/System/SFKFirmwareUninstallconfirm"
+                dataItem.uid:  "mqtt/sfksettings/0/System/SFKFirmwareUninstallconfirm"
                 preferredVisible: true
                 optionModel: [
                     { display: qsTr("Uninstall"), value: 1 },
