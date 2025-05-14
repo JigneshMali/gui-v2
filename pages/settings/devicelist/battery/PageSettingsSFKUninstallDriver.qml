@@ -6,10 +6,7 @@ Page {
 
     // service name stays the same
     property string sfkService: "com.victronenergy.sfksettings"
-    // this will be "mqtt/com.victronenergy.sfksettings" in MQTT,
-    // or         "dbus"                             in D-Bus
-    property string bindPrefix: "mqtt/sfksettings/0"
-    // property string bindPrefix: BackendConnection.uidPrefix() + '/' + sfkService
+    property string mqttprefix: "mqtt/sfksettings/0"
 
     // the data item
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
@@ -31,7 +28,7 @@ Page {
             }
 
             ListText {
-                text: "UID is: " + bindPrefix
+                text: "UID is: " + mqttprefix
                 preferredVisible: true
             }
 
