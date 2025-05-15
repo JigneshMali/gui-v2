@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 3.24) # earlier versions of cmake don't handle 'q
 cmake_policy(SET CMP0071 NEW) # process GENERATED source files in AUTOMOC and AUTOUIC. Added to silence a cmake warning.
 cmake_policy(SET CMP0079 NEW)
 
-project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.12)
+project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.13)
 add_definitions(-DPROJECT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR} -DPROJECT_VERSION_MINOR=${PROJECT_VERSION_MINOR} -DPROJECT_VERSION_PATCH=${PROJECT_VERSION_PATCH} )
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -221,6 +221,7 @@ set (VENUS_QML_MODULE_SOURCES
     components/Led.qml
     components/LoadGraph.qml
     components/LoadGraphShapePath.qml
+    components/KeyNavigationListHelper.qml
     components/MultiServiceDeviceModel.qml
     components/NavBar.qml
     components/NavButton.qml
@@ -286,10 +287,11 @@ set (VENUS_QML_MODULE_SOURCES
     components/WasmVirtualKeyboardHandler.qml
     components/WifiModel.qml
     components/ClassAndVrmInstance.qml
-
     components/controls/Button.qml
     components/controls/ComboBox.qml
     components/controls/DimmingSlider.qml
+    components/controls/EditFrame.qml
+    components/controls/KeyNavigationHighlight.qml
     components/controls/Label.qml
     components/controls/ListItemButton.qml
     components/controls/ListPressArea.qml
@@ -342,7 +344,7 @@ set (VENUS_QML_MODULE_SOURCES
     components/listitems/ListLink.qml
     components/listitems/ListMqttAccessSwitch.qml
     components/listitems/ListMountStateButton.qml
-    components/listitems/ListOutputBatterySwitch.qml
+    components/listitems/ListOutputBatteryRadioButtonGroup.qml
     components/listitems/ListPvInverterPositionRadioButtonGroup.qml
     components/listitems/ListEvChargerPositionRadioButtonGroup.qml
     components/listitems/ListRebootButton.qml
@@ -351,6 +353,8 @@ set (VENUS_QML_MODULE_SOURCES
     components/listitems/ListTemperatureRelay.qml
     components/listitems/ListVolumeUnitRadioButtonGroup.qml
 
+    components/listitems/core/BaseListItem.qml
+    components/listitems/core/BaseListLoader.qml
     components/listitems/core/ListAlarm.qml
     components/listitems/core/ListButton.qml
     components/listitems/core/ListDateSelector.qml
@@ -380,6 +384,7 @@ set (VENUS_QML_MODULE_SOURCES
     components/listitems/core/SectionHeader.qml
     components/listitems/core/SettingsListHeader.qml
     components/listitems/core/SettingsListNavigation.qml
+    components/listitems/core/SliderHandleHighlight.qml
 
     components/widgets/AcWidget.qml
     components/widgets/AcInputWidget.qml
@@ -753,6 +758,8 @@ list(APPEND VenusQMLModule_CPP_SOURCES
     src/cpuinfo.cpp
     src/frameratemodel.h
     src/frameratemodel.cpp
+    src/keyeventfilter.h
+    src/keyeventfilter.cpp
     src/phasemodel.h
     src/phasemodel.cpp
     src/productinfo.h
@@ -1211,6 +1218,8 @@ qt_add_resources(${PROJECT_NAME} "${PROJECT_NAME}_large_resources"
         images/electron.svg
         images/ess.svg
         images/freshWater.svg
+        images/key_navigation_highlight_dark.svg
+        images/key_navigation_highlight_light.svg
         images/icon_black_water_24.svg
         images/icon_charging_generator.svg
         images/icon_charging_grid.svg
@@ -1273,6 +1282,7 @@ qt_add_resources(${PROJECT_NAME} "${PROJECT_NAME}_large_resources"
         images/settings.svg
         images/shore.svg
         images/solaryield.svg
+        images/spinbox_arrow_up.svg
         images/splash-logo-icon-5inch.svg
         images/splash-logo-icon-7inch.svg
         images/splash-logo-text-5inch.svg

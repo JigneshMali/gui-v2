@@ -200,8 +200,26 @@ Page {
 			}
 
 			PrimaryListLabel {
-				//% "Note that the following features are not officially supported by Victron. Please turn to community.victronenergy.com for questions.\n\nDocumentation at https://ve3.nl/vol"
+				//% "Note that the following features are not officially supported by Victron. Please turn to the Victron Community for questions."
 				text: qsTrId("settings_large_features_not_offically_supported")
+				preferredVisible: osLargeFeatures.visible
+			}
+
+			ListLink {
+				//% "Documentation"
+				text: qsTrId("settings_large_documentation")
+				url: "https://ve3.nl/vol"
+				preferredVisible: osLargeFeatures.visible
+			}
+
+			ListLink {
+				//% "Victron Community"
+				text: qsTrId("settings_large_victron_community")
+				url: "https://community.victronenergy.com"
+				preferredVisible: osLargeFeatures.visible
+			}
+
+			SettingsListHeader {
 				preferredVisible: osLargeFeatures.visible
 			}
 
@@ -220,9 +238,10 @@ Page {
 				preferredVisible: dataItem.valid
 			}
 
-			PrimaryListLabel {
-				//% "Access Signal K at http://venus.local:3000 and via VRM."
+			ListLink {
+				//% "Access Signal K locally or via VRM"
 				text: qsTrId("settings_large_access_signal_k")
+				url: "http://venus.local:3000"
 				preferredVisible: signalk.checked
 			}
 
@@ -231,6 +250,18 @@ Page {
 
 				//% "Node-RED"
 				text: qsTrId("settings_large_node_red")
+				secondaryText: {
+					if (nodeRedModeItem.value === VenusOS.NodeRed_Mode_Disabled) {
+						return CommonWords.disabled
+					} else if (nodeRedModeItem.value === VenusOS.NodeRed_Mode_EnabledWithSafeMode) {
+						return qsTrId("settings_large_enabled_safe_mode")
+					} else if (nodeRedModeItem.value === VenusOS.NodeRed_Mode_Enabled) {
+						return CommonWords.enabled
+					} else if (nodeRedModeItem.value === VenusOS.NodeRed_Mode_EnabledWithSafeMode) {
+						//% "Enabled (safe mode)"
+						return qsTrId("settings_large_enabled_safe_mode")
+					}
+				}
 				preferredVisible: nodeRedModeItem.valid
 				onClicked: Global.pageManager.pushPage("/pages/settings/PageSettingsNodeRed.qml", {"title": text })
 
