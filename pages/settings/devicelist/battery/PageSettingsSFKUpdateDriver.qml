@@ -104,7 +104,7 @@ Page {
 		model: VisibleItemModel {
 			ListText {
 				text: "SFK Driver Version"
-				dataItem.uid: "mqtt/sfksettings/0/System/sfkCurrentversion"
+				dataItem.uid: "mqtt/sfksettings/0/System/SFKcurrentversion"
 				preferredVisible: true
 			}
 
