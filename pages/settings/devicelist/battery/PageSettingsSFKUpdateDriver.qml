@@ -70,6 +70,10 @@ Page {
     property VeQuickItem  sfkCurrentversion: VeQuickItem { 
 		id: sfkCurrentversion 
 	    uid: "mqtt/sfksettings/0/System/SFKcurrentversion" }
+
+    property VeQuickItem  sfkVCurrentversion: VeQuickItem { 
+		id: sfkVCurrentversion 
+	    uid: "mqtt/sfksettings/0/System/SFKVcurrentversion" }	
     property VeQuickItem  sfkV1version: VeQuickItem { 
 		id: sfkV1version   
 	    uid: "mqtt/sfksettings/0/System/SFKV1version" }
@@ -104,7 +108,7 @@ Page {
 		model: VisibleItemModel {
 			ListText {
 				text: "SFK Driver Version"
-				dataItem.uid: "mqtt/sfksettings/0/System/SFKcurrentversion"
+				dataItem.uid: "mqtt/sfksettings/0/System/SFKVcurrentversion"
 				preferredVisible: true
 			}
 
