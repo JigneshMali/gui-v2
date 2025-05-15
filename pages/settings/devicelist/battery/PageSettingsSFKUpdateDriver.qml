@@ -144,7 +144,7 @@ Page {
 				text: sfkV1TextInstallConfirm.value
 				preferredVisible: (sfkNumberofVersions.value > 0 && sfkNumberofVersions.value < 4 ) && sfkFirmwareAvailableCheck.value === 1
 				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev1.qml",
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev1.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}
@@ -153,7 +153,7 @@ Page {
 				text: sfkV2TextInstallConfirm.value
 				preferredVisible: (sfkNumberofVersions.value > 1 && sfkNumberofVersions.value < 4 ) && sfkFirmwareAvailableCheck.value === 1
 				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev2.qml",
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev2.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}
@@ -162,7 +162,7 @@ Page {
 				text: sfkV3TextInstallConfirm.value
 				preferredVisible: sfkNumberofVersions.value > 2  && sfkNumberofVersions.value < 4 && sfkFirmwareAvailableCheck.value === 1
 				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml",
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev3.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}
