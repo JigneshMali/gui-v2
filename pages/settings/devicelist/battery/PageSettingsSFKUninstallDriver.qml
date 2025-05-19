@@ -13,6 +13,10 @@ Page {
     property VeQuickItem firmwareUninstallationCompleted: VeQuickItem {
         uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallationCompleted"
     }
+        // the data item
+    property VeQuickItem sfkFirmwareUninstallconfirm: VeQuickItem {
+        uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallconfirm"
+    }
 
     GradientListView {
         model: VisibleItemModel {
@@ -29,6 +33,13 @@ Page {
                     { display: qsTr("Uninstall"), value: 1 },
                     { display: qsTr("Cancel"),    value: 0 }
                 ]
+            }
+
+            ListButton {
+                text: qsTr("Uninstall driver")
+                secondaryText: CommonWords.press_to_reset
+                preferredVisible: sfkFirmwareUninstallconfirm.value === 1
+                onClicked: sfkFirmwareUninstallconfirm.setValue(0)
             }
 
             ListRebootButton { }
