@@ -18,7 +18,7 @@ Page {
 			ListText {
 				//% "Firmware Version"
 				text:  qsTr("Firmware version")
-				dataItem.uid:"mqtt/sfksettings/0/System/FirmwareVersion"
+				dataItem.uid:"mqtt/sfksettings/0/FirmwareVersion"
 				preferredVisible: true
 			}
 

@@ -16,7 +16,7 @@ Page {
 
 			ListSwitch {
 				text: "Enable Virtual Battery"
-				dataItem.uid: "mqtt/sfksettings/0/System/SfkVirtualBatteryActive"
+				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryActive"
 				preferredVisible: true
 			}
 
