@@ -25,21 +25,21 @@ Page {
                 preferredVisible: firmwareUninstallationCompleted.value === 1
             }
 
-            ListRadioButtonGroup {
-                text: qsTr("Uninstall driver")
-                dataItem.uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallconfirm"
-                preferredVisible: true
-                optionModel: [
-                    { display: qsTr("Uninstall"), value: 1 },
-                    { display: qsTr("Cancel"),    value: 0 }
-                ]
-            }
+            // ListRadioButtonGroup {
+            //     text: qsTr("Uninstall driver")
+            //     dataItem.uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallconfirm"
+            //     preferredVisible: true
+            //     optionModel: [
+            //         { display: qsTr("Uninstall"), value: 1 },
+            //         { display: qsTr("Cancel"),    value: 0 }
+            //     ]
+            // }
 
             ListButton {
                 text: qsTr("Uninstall driver")
-                secondaryText: CommonWords.press_to_reset
-                preferredVisible: sfkFirmwareUninstallconfirm.value === 1
-                onClicked: sfkFirmwareUninstallconfirm.setValue(0)
+                secondaryText: qsTr("Uninstall driver")
+                preferredVisible: true
+                onClicked: sfkFirmwareUninstallconfirm.setValue(1)
             }
 
             ListRebootButton { }
