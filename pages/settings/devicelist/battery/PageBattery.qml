@@ -531,14 +531,15 @@ Page {
 				}
 			}
 
-			ListNavigation {
-				text: "Enable Virtual Battery"
-				preferredVisible: sfkFlag.value === 1
-				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
-							{ "title": text, "bindPrefix": root.bindPrefix  })
-				}
-			}
+			// ListNavigation {
+			// 	text: "Enable Virtual Battery"
+			// 	preferredVisible: sfkFlag.value === 1
+			// 	onClicked: {
+			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
+			// 				{ "title": text, "bindPrefix": root.bindPrefix  })
+			// 	}
+			// }
+			
 			ListButton {
 				//% "Redetect Battery"
 				text: qsTrId("battery_redetect_battery")

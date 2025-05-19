@@ -16,7 +16,7 @@ Page {
 
 			ListSwitch {
 				text: "Enable Virtual Battery"
-				dataItem.uid: root.bindPrefix + "/SfkVirtualBatteryActive"
+				dataItem.uid: "mqtt/sfksettings/0/System/SfkVirtualBatteryActive"
 				preferredVisible: true
 			}
 

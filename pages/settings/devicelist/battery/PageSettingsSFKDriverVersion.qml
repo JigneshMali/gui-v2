@@ -14,6 +14,13 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
+			
+			ListText {
+				//% "Firmware Version"
+				text:  qsTr("Firmware version")
+				dataItem.uid:"mqtt/sfksettings/0/System/FirmwareVersion"
+				preferredVisible: true
+			}
 
 			ListNavigation {
 				text: qsTr("Update SFK Driver")
@@ -30,6 +37,15 @@ Page {
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKUninstallDriver.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
+			ListNavigation {
+				text: "Enable Virtual Battery"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
 
