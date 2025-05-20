@@ -25,16 +25,6 @@ Page {
                 preferredVisible: firmwareUninstallationCompleted.value === 1
             }
 
-            // ListRadioButtonGroup {
-            //     text: qsTr("Uninstall driver")
-            //     dataItem.uid: "mqtt/sfksettings/0/System/SFKFirmwareUninstallconfirm"
-            //     preferredVisible: true
-            //     optionModel: [
-            //         { display: qsTr("Uninstall"), value: 1 },
-            //         { display: qsTr("Cancel"),    value: 0 }
-            //     ]
-            // }
-
             ListButton {
                 text: qsTr("Uninstall driver")
                 secondaryText: qsTr("Uninstall driver")

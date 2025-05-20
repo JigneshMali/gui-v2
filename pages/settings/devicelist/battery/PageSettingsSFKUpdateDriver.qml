@@ -110,33 +110,14 @@ Page {
 				text: "SFK Driver Version"
 				dataItem.uid: "mqtt/sfksettings/0/System/SFKVcurrentversion"
 				preferredVisible: true
-			}
+			}	
 
-			ListRadioButtonGroup {
-				//% "SFK Driver Update"
-				text: "Check for SFK driver update"
-			
-				optionModel: [
-					//% "Check for Updates"
-					{ display: "Check", value: 1 },
-					//% "Cancel"
-					{ display: "Cancel", value: 0 }
-				]
-			
-				currentIndex: sfkFirmwareAvailableCheck.value === 1 ? 0 : 1
-			
-				onOptionClicked: function(index) {
-					// Trigger the appropriate action based on the selected option
-					if (optionModel[index].value === 1) {
-						sfkFirmwareAvailableCheck.setValue(1) // Start checking for updates
-					} else {
-						sfkFirmwareAvailableCheck.setValue(0) // Cancel the update check
-					}
-				}
-			
-				preferredVisible: true
-				// preferredVisible: sfkFirmwareInstallationCompleted.value === 0 // Show only if versions are available
-			}			
+			ListButton {
+                text: qsTr("Check for SFK driver update")
+                secondaryText: qsTr("Check")
+                preferredVisible: true
+                onClicked: sfkFirmwareAvailableCheck.setValue(1)
+            }		
 			
 			ListText {
 				text: "SFK Drivers Available"

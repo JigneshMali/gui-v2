@@ -182,55 +182,19 @@ Page {
 				preferredVisible: sfkFirmwareInstallationCompleted.value === 1 
 			}
 
-			ListRadioButtonGroup {
-				//% "SFK Driver Update"
-				text: qsTr("Download %1").arg(sfkV3TextInstallConfirm.value)
-			
-				optionModel: [
-					//% "Check for Updates"
-					{ display: "Download", value: 1 },
-					//% "Cancel"
-					{ display: "Cancel", value: 0 }
-				]
-			
-				currentIndex: sfkV3FirmwareDownloadConfirm.value === 1 ? 0 : 1
-			
-				onOptionClicked: function(index) {
-					// Trigger the appropriate action based on the selected option
-					if (optionModel[index].value === 1) {
-						sfkV3FirmwareDownloadConfirm.setValue(1) // Start checking for updates
-					} else {
-						sfkV3FirmwareDownloadConfirm.setValue(0) // Cancel the update check
-					}
-				}
-			
-				preferredVisible: (installedVersion === requiredVersionv3 ) && sfkFirmwareInstallationCompleted.value === 0 
-			}
+			ListButton {
+                text:  qsTr("Download %1").arg(sfkV3TextInstallConfirm.value)
+                secondaryText: qsTr("Download")
+                preferredVisible:  (installedVersion === requiredVersionv3 ) && sfkFirmwareInstallationCompleted.value === 0 
+                onClicked: sfkV3FirmwareDownloadConfirm.setValue(1)
+            }
 
-			ListRadioButtonGroup {
-				//% "SFK Driver Update"
-				text: qsTr("Install %1").arg(sfkV3TextInstallConfirm.value)
-			
-				optionModel: [
-					//% "Check for Updates"
-					{ display: "Install", value: 1 },
-					//% "Cancel"
-					{ display: "Cancel", value: 0 }
-				]
-			
-				currentIndex: sfkV3InstallConfirmItem.value === 1 ? 0 : 1
-			
-				onOptionClicked: function(index) {
-					// Trigger the appropriate action based on the selected option
-					if (optionModel[index].value === 1) {
-						sfkV3InstallConfirmItem.setValue(1) // Start checking for updates
-					} else {
-						sfkV3InstallConfirmItem.setValue(0) // Cancel the update check
-					}
-				}
-			
-				preferredVisible: sfkV3FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0 
-			}
+			ListButton {
+                text:   qsTr("Install %1").arg(sfkV3TextInstallConfirm.value)
+                secondaryText: qsTr("Install")
+                preferredVisible:  sfkV3FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0 
+                onClicked: sfkV3InstallConfirmItem.setValue(1)
+            }
 			
 			ListRebootButton { }
 	

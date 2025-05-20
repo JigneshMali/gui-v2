@@ -106,15 +106,6 @@ SwipeViewPage {
 				iconSource: "qrc:/images/sfk_icon_connectivity_32.png"
 				showAccessLevel: VenusOS.User_AccessType_SuperUser
 			}
-
-			ListNavigation {
-				text: qsTr("SFK Venus OS Driver")
-				preferredVisible:  true
-				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml",
-							{ "title": text, "bindPrefix": "com.victronenergy.sfksettings" })
-				}
-			}
 		}
 	}
 }
