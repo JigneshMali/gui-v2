@@ -106,11 +106,11 @@ Page {
 
 	GradientListView {
 		model: VisibleItemModel {
-			// ListText {
-			// 	text: "SFK Driver Version"
-			// 	dataItem.uid: "mqtt/sfksettings/0/FirmwareVersion"
-			// 	preferredVisible: true
-			// }	
+			ListText {
+				text: "SFK Driver Version"
+				dataItem.uid: "mqtt/sfksettings/0/FirmwareVersion"
+				preferredVisible: true
+			}	
 
 			ListButton {
                 text: qsTr("Check for SFK driver update")
