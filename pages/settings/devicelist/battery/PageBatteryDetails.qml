@@ -108,7 +108,7 @@ Page {
 				text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
 				model: QuantityObjectModel {
 					QuantityObject { object: nrOfModulesBlockingCharge.value }
-					QuantityObject { object: nrOfModulesBlockingCharge.value }
+					QuantityObject { object: nrOfModulesBlockingDischarge.value }
 				}
 				preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
 			}
