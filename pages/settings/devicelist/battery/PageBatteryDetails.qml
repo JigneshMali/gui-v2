@@ -23,6 +23,15 @@ Page {
 		id: versionFlag
 		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
+	property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
+		id: nrOfModulesBlockingCharge
+		uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
+		}
+	property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
+		id: nrOfModulesBlockingDischarge
+		uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
+		}
+
 
 	QtObject {
 		id: temperatureData
@@ -98,8 +107,8 @@ Page {
 				//% "Number of modules blocking charge / discharge"
 				text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.nrOfModulesBlockingCharge }
-					QuantityObject { object: details.nrOfModulesBlockingDischarge }
+					QuantityObject { object: nrOfModulesBlockingCharge.value }
+					QuantityObject { object: nrOfModulesBlockingCharge.value }
 				}
 				preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
 			}
