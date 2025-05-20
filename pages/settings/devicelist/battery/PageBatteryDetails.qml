@@ -23,15 +23,6 @@ Page {
 		id: versionFlag
 		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
-	property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
-		id: nrOfModulesBlockingCharge
-		uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
-		}
-	property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
-		id: nrOfModulesBlockingDischarge
-		uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
-		}
-
 
 	QtObject {
 		id: temperatureData
@@ -107,10 +98,24 @@ Page {
 				//% "Number of modules blocking charge / discharge"
 				text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
 				model: QuantityObjectModel {
-					QuantityObject { object: nrOfModulesBlockingCharge.value }
-					QuantityObject { object: nrOfModulesBlockingDischarge.value }
+					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingCharge" }
+					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingDischarge" }
 				}
 				preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
+
+				QtObject {
+					id: customDataObject
+
+					property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
+					id: nrOfModulesBlockingCharge
+					uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
+					}
+
+					property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
+					id: nrOfModulesBlockingDischarge
+					uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
+					}
+				}
 			}
 
 			ListQuantityGroup {
@@ -121,6 +126,7 @@ Page {
 					QuantityObject { object: details.capacity; unit: VenusOS.Units_AmpHour }
 				}
 				preferredVisible: details.allowsCapacity
+
 			}
 
 			ListText {

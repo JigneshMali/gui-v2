@@ -171,9 +171,7 @@ Page {
 
 				QtObject {
 					id: customDataObject
-					// property string heatText:  (heatFetStatus.value === 1 && pulse)  ? "H" : " "
 					property string heatRedTextP: (heatFetStatus.value === 1 && pulse) ? "<span style='color:#ff0000; font-weight:bold;'>H</span>" : " "
-					// property string heatRedText:  (heatFetStatus.value === 1 && pulse)  ?  "<span style='color:#ff0000; padding:4px 8px; border-radius:4px; font-weight:bold;'>H</span>" : " "
 				}
 			}
 
