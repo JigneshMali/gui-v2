@@ -97,6 +97,16 @@ SwipeViewPage {
 				showAccessLevel: VenusOS.User_AccessType_SuperUser
 			}
 
+			SettingsListNavigation {
+				//% "SFK Venus OS Driver"
+				text: qsTr("SFK Venus OS Driver")
+				//% "Manage SFK devices and driver updates"
+				secondaryText: qsTr("Manage SFK devices and driver updates")
+				pageSource: "/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml"
+				iconSource: "qrc:/images/sfk_icon_connectivity_32.png"
+				showAccessLevel: VenusOS.User_AccessType_SuperUser
+			}
+
 			ListNavigation {
 				text: qsTr("SFK Venus OS Driver")
 				preferredVisible:  true
