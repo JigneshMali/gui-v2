@@ -1202,8 +1202,7 @@ qt_add_resources(${PROJECT_NAME} "${PROJECT_NAME}_large_resources"
         images/icon_battery_charging_24.svg
         images/icon_battery_discharging_24.svg
         images/icon_connectivity_32.png
-        images/sfk_icon_v2.png
-        images/sfk_icon_v1.png
+        images/sfk_icon.png
         images/icon_debug_32.png
         images/icon_devices_32.png
         images/icon_general_32.png
