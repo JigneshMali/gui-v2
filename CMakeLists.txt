@@ -598,6 +598,7 @@ set (VENUS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev1.qml
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev2.qml
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev3.qml
+    pages/settings/devicelist/battery/PageSettingsSFKDriverSettings.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml
     pages/settings/devicelist/battery/PageBatteryHistory.qml

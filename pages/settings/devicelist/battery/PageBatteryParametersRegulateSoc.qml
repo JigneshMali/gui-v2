@@ -38,7 +38,7 @@ Page {
 
 			ListRadioButtonGroup {
 				text: "Regulate Max SOC Enable"
-				dataItem.uid: root.bindPrefix + "/Info/RegulateMaxSocEnable"
+				dataItem.uid: "mqtt/sfksettings/0/Info/RegulateMaxSocEnable"
 				optionModel: [
 					{ display: qsTr("Yes"), value: 1 },
 					{ display: qsTr("No"), value: 0 }
@@ -47,13 +47,13 @@ Page {
 
 			ListRadioButtonGroup {
 				text: "Heating Pad Temperature Limit"
-				dataItem.uid: root.bindPrefix + "/Info/BalanceTemperatureLimit"
+				dataItem.uid: "mqtt/sfksettings/0/Info/BalanceTemperatureLimit"
 				optionModel: getDefaultOptions()		 
 			}
 
 			ListRadioButtonGroup {
 				text: "Max SOC Limit"
-				dataItem.uid: root.bindPrefix + "/Info/MaxSocLimitParameter"
+				dataItem.uid: "mqtt/sfksettings/0/Info/MaxSocLimitParameter"
 				optionModel: [
 					{ display: qsTr("%1% %2").arg(95).arg("[DEFAULT]"), value:95},
 					{ display: qsTr("%1%").arg(96), value: 96},
@@ -64,7 +64,7 @@ Page {
 			
 			ListRadioButtonGroup {
 				text: "High SOC Time Limit"
-				dataItem.uid: root.bindPrefix + "/Info/HighSocTimeLimitParameter"
+				dataItem.uid: "mqtt/sfksettings/0/Info/HighSocTimeLimitParameter"
 				optionModel: [
 					{ display: qsTr("%1Hours %2").arg(12).arg("[DEFAULT]"), value:12},
 					{ display: qsTr("%1Hours").arg(24), value: 24},

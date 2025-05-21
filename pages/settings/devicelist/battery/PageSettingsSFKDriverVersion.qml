@@ -49,6 +49,15 @@ Page {
 				}
 			}
 
+			ListNavigation {
+				text: "Driver Settings"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverSettings.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
+
 		}
 
 
