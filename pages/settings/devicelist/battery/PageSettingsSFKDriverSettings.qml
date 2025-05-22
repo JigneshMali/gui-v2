@@ -31,15 +31,15 @@ Page {
 				dataItem.uid: "mqtt/sfksettings/0/Info/MaxChargeVoltage"
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.400)); value: 3.400 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.425)); value: 3.425 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.450)); value: 3.450 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.475)); value: 3.475 },
-                    { display:qsTr("%1V %2").arg(nrOfcell.value*(3.500)).arg("[DEFAULT]"); value: 3.500 },
-                    { display:qsTr("%1V").arg(nrOfcell.value*(3.525)); value: 3.525 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.550)); value: 3.550 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.575)); value: 3.575 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.600)); value: 3.600 }				
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.400)), value: 3.400 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.425)), value: 3.425 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.450)), value: 3.450 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.475)), value: 3.475 },
+                    { display:qsTr("%1V %2").arg(nrOfcell.value*(3.500)).arg("[DEFAULT]"), value: 3.500 },
+                    { display:qsTr("%1V").arg(nrOfcell.value*(3.525)), value: 3.525 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.550)), value: 3.550 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.575)), value: 3.575 },
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 }				
 				]
 			}
 
