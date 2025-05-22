@@ -111,7 +111,7 @@ Page {
 				dataItem.uid: "mqtt/sfksettings/0/Info/FloatCellVoltage"
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
-					{ display: qsTr("%1.0V (%2.000V/cell)").arg(nrOfcell.value*(3.000)).arg((3.000)), value: 3.300 },
+					{ display: qsTr("%1.0V (%2.000V/cell)").arg(nrOfcell.value*(3.300)).arg((3.300)), value: 3.300 },
 					{ display: qsTr("%1V (%2V/cell) [DEFAULT]").arg(nrOfcell.value*(3.325)).arg((3.325)), value: 3.325 },
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.350)).arg((3.350)), value: 3.350 },
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.375)).arg((3.375)), value: 3.375 }
