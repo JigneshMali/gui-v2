@@ -17,7 +17,7 @@ Page {
 			
 			ListText {
 				//% "Firmware Version"
-				text:  qsTr("Firmware version")
+				text:  qsTr("SFK Driver Version")
 				dataItem.uid:"mqtt/sfksettings/0/FirmwareVersion"
 				preferredVisible: true
 			}
