@@ -39,12 +39,12 @@ Page {
 				preferredVisible: dataItem.valid
 			}
 
-			ListAlarm {
-				//% "High cell voltage"
-				text: qsTrId("batteryalarms_high_cell_voltage")
-				dataItem.uid: root.bindPrefix + "/Alarms/HighCellVoltage"
-				preferredVisible: dataItem.valid
-			}
+			// ListAlarm {
+			// 	//% "High cell voltage"
+			// 	text: qsTrId("batteryalarms_high_cell_voltage")
+			// 	dataItem.uid: root.bindPrefix + "/Alarms/HighCellVoltage"
+			// 	preferredVisible: dataItem.valid
+			// }
 
 			ListAlarm {
 				//% "High charge current"
