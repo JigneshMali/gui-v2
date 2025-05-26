@@ -214,14 +214,6 @@ Page {
 			}
 
 			ListText {
-				//% "Balancing"
-				text: qsTrId("lynxionsystem_balancing")
-				dataItem.uid: root.bindPrefix + "/Balancing"
-				preferredVisible: dataItem.seen
-				secondaryText: CommonWords.activeOrInactive(dataItem.value)
-			}
-
-			ListText {
 				//% "Balancer status"
 				text: qsTrId("lynxionsystem_balancer_status")
 				dataItem.uid: root.bindPrefix + "/Balancer/Status"
