@@ -165,12 +165,6 @@ Page {
 				dataItem.uid: root.bindPrefix + "/System/BatteriesSeries"
 			}
 
-			ListText {
-				//% "Cells per battery"
-				text: qsTrId("lynxionsystem_cells_per_battery")
-				dataItem.uid: root.bindPrefix + "/System/NrOfCellsPerBattery"
-			}
-
 			ListQuantityGroup {
 				//% "Min/max cell voltage"
 				text: qsTrId("lynxionsystem_min_max_cell_voltage")
