@@ -78,13 +78,13 @@ Page {
 				}
 			}
 
-			ListText {
-				//% "Product ID"
-				text: qsTrId("settings_deviceinfo_product_id")
-				secondaryText: Utils.toHexFormat(dataItem.value)
-				dataItem.uid: root.bindPrefix + "/ProductId"
-				dataItem.invalidate: false
-			}
+			// ListText {
+			// 	//% "Product ID"
+			// 	text: qsTrId("settings_deviceinfo_product_id")
+			// 	secondaryText: Utils.toHexFormat(dataItem.value)
+			// 	dataItem.uid: root.bindPrefix + "/ProductId"
+			// 	dataItem.invalidate: false
+			// }
 
 			ListFirmwareVersion {
 				bindPrefix: root.bindPrefix
