@@ -78,16 +78,22 @@ Page {
 				dataItem.uid: root.bindPrefix + "/DSGOC_Err_Count"  // Directly reading from the required path
 				 preferredVisible: dataItem.valid
 			}
-			
+
+			ListText {
+				text: "Cell overvoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/COVP_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
 			ListText {
 				text: "Cell undervoltage error" // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/COVP_Err_Count"  // Directly reading from the required path
+				dataItem.uid: root.bindPrefix + "/CUVP_Err_Count"  // Directly reading from the required path
 				 preferredVisible: dataItem.valid
 			}
 			
 			ListText {
 				text: "Short circuit error" // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/CUVP_Err_Count"  // Directly reading from the required path
+				dataItem.uid: root.bindPrefix + "/SC_Err_Count"  // Directly reading from the required path
 				 preferredVisible: dataItem.valid
 			}
 			
