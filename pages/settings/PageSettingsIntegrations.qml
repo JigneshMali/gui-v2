@@ -129,13 +129,10 @@ Page {
 				preferredVisible: digitalModel.rowCount > 0
 				onClicked: Global.pageManager.pushPage(digitalInputsComponent, {"title": text})
 
-				VeQItemSortTableModel {
+				VeQItemTableModel {
 					id: digitalModel
-					filterRegExp: "/[1-9]$"
-					model: VeQItemTableModel {
-						uids: [ Global.systemSettings.serviceUid + "/Settings/DigitalInput" ]
-						flags: VeQItemTableModel.AddChildren | VeQItemTableModel.AddNonLeaves | VeQItemTableModel.DontAddItem
-					}
+					uids: [ BackendConnection.serviceUidForType("digitalinputs") + "/Devices" ]
+					flags: VeQItemTableModel.AddChildren | VeQItemTableModel.AddNonLeaves | VeQItemTableModel.DontAddItem
 				}
 
 				Component {
@@ -160,11 +157,20 @@ Page {
 							model: digitalModel
 
 							delegate: ListRadioButtonGroup {
-								//: %1 = number of the digital input
-								//% "Digital input %1"
-								text: qsTrId("settings_io_digital_input").arg(model.uid.split('/').pop())
+								text: inputLabel.value || ""
 								dataItem.uid: model.uid + "/Type"
 								optionModel: delegateOptionModel
+
+								// TODO ideally digitalModel would filter out offline items using
+								// VeQItemSortTableModel.FilterOffline, but currently those are only
+								// filtered out when the service is offline, rather than the leaf
+								// items.
+								preferredVisible: dataItem.valid
+
+								VeQuickItem {
+									id: inputLabel
+									uid: model.uid + "/Label"
+								}
 							}
 						}
 					}
@@ -260,6 +266,8 @@ Page {
 					} else if (nodeRedModeItem.value === VenusOS.NodeRed_Mode_EnabledWithSafeMode) {
 						//% "Enabled (safe mode)"
 						return qsTrId("settings_large_enabled_safe_mode")
+					} else {
+						return ""
 					}
 				}
 				preferredVisible: nodeRedModeItem.valid

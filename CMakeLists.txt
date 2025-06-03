@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 3.24) # earlier versions of cmake don't handle 'q
 cmake_policy(SET CMP0071 NEW) # process GENERATED source files in AUTOMOC and AUTOUIC. Added to silence a cmake warning.
 cmake_policy(SET CMP0079 NEW)
 
-project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.14)
+project(venus-gui-v2 LANGUAGES CXX VERSION 1.1.19)
 add_definitions(-DPROJECT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR} -DPROJECT_VERSION_MINOR=${PROJECT_VERSION_MINOR} -DPROJECT_VERSION_PATCH=${PROJECT_VERSION_PATCH} )
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -215,6 +215,7 @@ set (VENUS_QML_MODULE_SOURCES
     components/GeneratorIconLabel.qml
     components/GradientListView.qml
     components/GsmStatusIcon.qml
+    components/HeatPumpModel.qml
     components/IconButton.qml
     components/InputPanel.qml
     components/InverterAcOutSettings.qml
@@ -345,9 +346,9 @@ set (VENUS_QML_MODULE_SOURCES
     components/listitems/ListLink.qml
     components/listitems/ListMqttAccessSwitch.qml
     components/listitems/ListMountStateButton.qml
+    components/listitems/ListAcInPositionRadioButtonGroup.qml
     components/listitems/ListOutputBatteryRadioButtonGroup.qml
     components/listitems/ListPvInverterPositionRadioButtonGroup.qml
-    components/listitems/ListEvChargerPositionRadioButtonGroup.qml
     components/listitems/ListRebootButton.qml
     components/listitems/ListRelayState.qml
     components/listitems/ListResetHistory.qml
@@ -529,7 +530,6 @@ set (VENUS_QML_MODULE_SOURCES
     pages/settings/PageSettingsHub4Feedin.qml
     pages/settings/PageSettingsHub4Peakshaving.qml
     pages/settings/PageSettingsIntegrations.qml
-    pages/settings/PageSettingsIo.qml
     pages/settings/PageSettingsLarge.qml
     pages/settings/PageSettingsLogger.qml
     pages/settings/PageSettingsModbus.qml
@@ -612,6 +612,7 @@ set (VENUS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageLynxIonSystem.qml
     pages/settings/devicelist/dc-in/DcHistorySettingsColumn.qml
     pages/settings/devicelist/dc-in/ListCycleHistoryItem.qml
+    pages/settings/devicelist/dc-in/DcBmsSettingsPage.qml
     pages/settings/devicelist/dc-in/PageAlternator.qml
     pages/settings/devicelist/dc-in/PageAlternatorModel.qml
     pages/settings/devicelist/dc-in/PageDcDcConverter.qml
