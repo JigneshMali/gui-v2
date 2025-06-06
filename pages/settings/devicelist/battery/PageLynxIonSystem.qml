@@ -121,7 +121,7 @@ Page {
 				text: "Virtual Battery Setup"
 				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
 				optionModel: generateOptions()		 
-				preferredVisible: nrOfBatteries.value !== 1 || nrOfBatteries.value !== 0
+				preferredVisible: nrOfBatteries.value > 1 || nrOfBatteries.value === 0
 
 			}
 
@@ -129,7 +129,7 @@ Page {
 				//% "Capacity"
 				text: "Virtual Battery Setup"
 				secondaryText: "Single Battery"
-				preferredVisible: nrOfBatteries.value === 1 || nrOfBatteries.value === 0
+				preferredVisible: nrOfBatteries.value === 1 
 			}
 
 			ListNavigation {
