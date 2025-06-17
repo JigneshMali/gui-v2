@@ -65,8 +65,8 @@ Page {
 				text: "Activation Voltage"
 				dataItem.uid: root.bindPrefix +"/Info/ActivationVoltage"
 				optionModel: [
-					{ display: qsTr("%1V").arg(3.50), value: 3.50},
-					{ display: qsTr("%1V").arg(3.46), value: 3.46},
+					{ display: qsTr("%1V").arg(3.50), value: 3.50 },
+					{ display: qsTr("%1V").arg(3.46), value: 3.46 },
 					{ display: qsTr("%1V").arg(3.42), value: 3.42 },
 					{ display: qsTr("%1V").arg(3.38), value: 3.38 }
 				]

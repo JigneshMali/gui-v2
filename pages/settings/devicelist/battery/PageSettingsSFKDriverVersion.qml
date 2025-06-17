@@ -41,7 +41,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: "Enable Virtual Battery"
+				text: "Virtual Battery"
 				preferredVisible: true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
