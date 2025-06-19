@@ -31,13 +31,6 @@ Page {
 				]
 			}
 
-			ListText {
-				text: "Virtual Battery Logic"
-				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryActive"
-				preferredVisible: true
-				secondaryText: dataItem.value === 1 ? "Vedbus Item Import" : dataItem.value === 0 ? "Dbus Monitor" : ""
-			}
-
 			ListRebootButton { }
 
 		}
