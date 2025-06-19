@@ -22,7 +22,7 @@ Page {
 			
 			ListRadioButtonGroup {
 				text: "Virtual Battery Logic"
-				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryActive"
+				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
                     { display: qsTr( "Dbus Monitor"), value: 0 },
