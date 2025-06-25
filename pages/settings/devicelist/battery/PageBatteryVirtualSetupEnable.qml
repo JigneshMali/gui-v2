@@ -10,6 +10,11 @@ Page {
 	id: root
 
 	property string bindPrefix
+	// Add VeQuickItem to observe the selected logic
+	property VeQuickItem sfkVirtualBatteryLogic: VeQuickItem {
+		id: sfkVirtualBatteryLogic
+		uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
+	}
 
 	GradientListView {
 		model: ObjectModel {
@@ -27,7 +32,6 @@ Page {
 				optionModel: [
                     { display: qsTr( "Dbus Monitor"), value: 0 },
                     { display: qsTr( "Vedbus Item Import"), value: 1 }
-			
 				]
 			}
 
@@ -35,4 +39,16 @@ Page {
 
 		}
 	}
+	// React to changes using Connections on the VeQuickItem
+	Connections {
+		target: sfkVirtualBatteryLogic
+		onValueChanged: {
+			Global.showToastNotification(
+				VenusOS.Notification_Info,
+				qsTr("Please reboot device to see changes"),
+				5000
+			)
+		}
+	}
+
 }
