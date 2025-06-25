@@ -14,7 +14,27 @@ Page {
     property string mqttprefix: "mqtt/sfksettings/0"
     property string bindPrefix: "mqtt/sfksettings/0"
 
-	
+	property VeQuickItem sfkV1DownloadProgress: VeQuickItem {
+		id: sfkV1DownloadProgress
+		uid: "mqtt/sfksettings/0/System/SFKV1DownloadProgress"}
+	property VeQuickItem sfkV1InstallProgress: VeQuickItem {
+		id: sfkV1InstallProgress
+		uid: "mqtt/sfksettings/0/System/SFKV1InstallProgress"}
+	property VeQuickItem sfkV2DownloadProgress: VeQuickItem {
+		id: sfkV2DownloadProgress
+		uid: "mqtt/sfksettings/0/System/SFKV2DownloadProgress"}
+	property VeQuickItem sfkV2InstallProgress: VeQuickItem {
+		id: sfkV2InstallProgress
+		uid: "mqtt/sfksettings/0/System/SFKV2InstallProgress"}
+
+	property VeQuickItem sfkV3DownloadProgress: VeQuickItem {
+		id: sfkV3DownloadProgress
+		uid: "mqtt/sfksettings/0/System/SFKV3DownloadProgress"}
+	property VeQuickItem sfkV3InstallProgress: VeQuickItem {
+		id: sfkV3InstallProgress
+		uid: "mqtt/sfksettings/0/System/SFKV3InstallProgress"}
+
+
 	property VeQuickItem  installedVenusOSversion: VeQuickItem { 
 		id: installedVenusOSversion  
 	    uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"}
@@ -184,18 +204,38 @@ Page {
 			}
 
 			ListButton {
-                text:  qsTr("Download %1").arg(sfkV2TextInstallConfirm.value)
-                secondaryText: qsTr("Download")
-                preferredVisible:  (installedVersion === requiredVersionv2 ) && sfkFirmwareInstallationCompleted.value === 0 
-                onClicked: sfkV2FirmwareDownloadConfirm.setValue(1)
-            }
+				text: qsTr("Download %1").arg(sfkV2TextInstallConfirm.value)
+
+				secondaryText:sfkV2DownloadProgress.value === 100
+						? qsTr("Downloaded")
+					: sfkV2FirmwareDownloadConfirm.value === 1
+						? qsTr("Downloading %1%").arg(sfkV2DownloadProgress.value)
+					: qsTr("Download")
+
+				preferredVisible: (installedVersion === requiredVersionv2) && sfkFirmwareInstallationCompleted.value === 0
+
+				onClicked: {
+					if (sfkV2FirmwareDownloadConfirm.value !== 1 && sfkV2DownloadProgress.value < 100)
+						sfkV2FirmwareDownloadConfirm.setValue(1)
+				}
+			}
 
 			ListButton {
-                text:   qsTr("Install %1").arg(sfkV2TextInstallConfirm.value)
-                secondaryText: qsTr("Install")
-                preferredVisible:  sfkV2FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0 
-                onClicked: sfkV2InstallConfirmItem.setValue(1)
-            }
+				text: qsTr("Install %1").arg(sfkV2TextInstallConfirm.value)
+
+				secondaryText:sfkV2InstallProgress.value === 100
+						? qsTr("Installed")
+					: sfkV2InstallConfirmItem.value === 1
+						? qsTr("Installing %1%").arg(sfkV2InstallProgress.value)
+					: qsTr("Install")
+
+				preferredVisible: sfkV2FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0
+
+				onClicked: {
+					if (sfkV2InstallConfirmItem.value !== 1 && sfkV2InstallProgress.value < 100)
+						sfkV2InstallConfirmItem.setValue(1)
+				}
+			}
 			
 			ListRebootButton { }
 	
