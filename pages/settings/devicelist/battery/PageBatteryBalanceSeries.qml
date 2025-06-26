@@ -47,9 +47,9 @@ Page {
 				text: "Voltage Diviation"
 				dataItem.uid: root.bindPrefix +"/System/BalanceVoltageDiviation"
 				optionModel: [
-					{ display: qsTr("%1mV").arg(100), value: 100},
+					{ display: qsTr("%1mV %2").arg(100).arg("[DEFAULT]"), value:100},
 					{ display: qsTr("%1mV").arg(200), value: 200},
-					{ display: qsTr("%1mV %2").arg(300).arg("[DEFAULT]"), value:300},
+					{ display: qsTr("%1mV").arg(300), value: 300},
 					{ display: qsTr("%1mV").arg(400), value: 400 },
 					{ display: qsTr("%1mV").arg(500), value: 500 }
 				]
