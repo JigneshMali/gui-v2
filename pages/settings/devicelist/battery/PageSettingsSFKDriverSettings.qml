@@ -128,8 +128,8 @@ Page {
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("1 Second"), value: 1000 },
-					{ display: qsTr("2 Seconds %1").arg("[DEFAULT]"), value: 2000 },
-					{ display: qsTr("3 Seconds"), value: 3000 },
+					{ display: qsTr("2 Seconds"), value: 2000 },
+					{ display: qsTr("3 Seconds %1").arg("[DEFAULT]"), value: 3000 },
 					{ display: qsTr("4 Seconds"), value: 4000 },
 					{ display: qsTr("5 Seconds"), value: 5000 }
 				]
