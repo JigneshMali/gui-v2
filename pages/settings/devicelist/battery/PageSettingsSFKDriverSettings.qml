@@ -131,7 +131,11 @@ Page {
 					{ display: qsTr("2 Seconds"), value: 2000 },
 					{ display: qsTr("3 Seconds %1").arg("[DEFAULT]"), value: 3000 },
 					{ display: qsTr("4 Seconds"), value: 4000 },
-					{ display: qsTr("5 Seconds"), value: 5000 }
+					{ display: qsTr("5 Seconds"), value: 5000 },
+					{ display: qsTr("6 Seconds"), value: 6000 },
+					{ display: qsTr("7 Seconds"), value: 7000 },
+					{ display: qsTr("8 Seconds"), value: 8000 }
+
 				]
 			}
 
