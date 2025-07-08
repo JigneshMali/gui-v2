@@ -152,6 +152,19 @@ Page {
 				]
 			}
 
+			ListSwitch {
+				text: "Detail Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkDetailLogging"
+				preferredVisible: true
+			}
+
+			ListSwitch {
+				text: "Debug Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkDebugLogging"
+				preferredVisible: true
+			}
+
+
 			// ListNavigation {
 			// 	text: "Regulate Max SOC Options"
 			// 	preferredVisible: true  // Control visibility based on your condition

@@ -35,6 +35,18 @@ Page {
 				]
 			}
 
+			ListSwitch {
+				text: "Detail Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDetailLogging"
+				preferredVisible: true
+			}
+
+			ListSwitch {
+				text: "Debug Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDebugLogging"
+				preferredVisible: true
+			}
+
 			ListRebootButton { }
 
 		}
