@@ -36,7 +36,7 @@ Page {
 			}
 			
 			ListRadioButtonGroup {
-				text: "Float Compensation"
+				text: "Absorption to Float Compensation"
 				dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensation"
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
@@ -46,6 +46,18 @@ Page {
 					{ display: qsTr("300 mV"), value: 300 },
 					{ display: qsTr("400 mV"), value: 400 },
 					{ display: qsTr("500 mV"), value: 500 }
+				]
+			}
+
+			ListRadioButtonGroup {
+				text: "Absorption to Float Time"
+				dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensationTime"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("15 Minutes %1").arg("[DEFAULT]"), value: 15 },
+					{ display: qsTr("30 Minutes"), value: 30 },
+					{ display: qsTr("45 Minutes"), value: 45 },
+					{ display: qsTr("60 Minutes"), value: 60 }
 				]
 			}
 
