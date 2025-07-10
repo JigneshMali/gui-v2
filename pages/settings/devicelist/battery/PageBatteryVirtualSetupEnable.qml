@@ -35,31 +35,31 @@ Page {
 				]
 			}
 			
-			ListRadioButtonGroup {
-				text: "Absorption to Float Compensation"
-				dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensation"
-				preferredVisible: true  // Control visibility based on your condition
-				optionModel: [
-					{ display: qsTr("0 mV"), value: 0 },
-					{ display: qsTr("100 mV %1").arg("[DEFAULT]"), value: 100 },
-					{ display: qsTr("200 mV"), value: 200 },
-					{ display: qsTr("300 mV"), value: 300 },
-					{ display: qsTr("400 mV"), value: 400 },
-					{ display: qsTr("500 mV"), value: 500 }
-				]
-			}
+			// ListRadioButtonGroup {
+			// 	text: "Absorption to Float Compensation"
+			// 	dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensation"
+			// 	preferredVisible: true  // Control visibility based on your condition
+			// 	optionModel: [
+			// 		{ display: qsTr("0 mV"), value: 0 },
+			// 		{ display: qsTr("100 mV %1").arg("[DEFAULT]"), value: 100 },
+			// 		{ display: qsTr("200 mV"), value: 200 },
+			// 		{ display: qsTr("300 mV"), value: 300 },
+			// 		{ display: qsTr("400 mV"), value: 400 },
+			// 		{ display: qsTr("500 mV"), value: 500 }
+			// 	]
+			// }
 
-			ListRadioButtonGroup {
-				text: "Absorption to Float Time"
-				dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensationTime"
-				preferredVisible: true  // Control visibility based on your condition
-				optionModel: [
-					{ display: qsTr("15 Minutes %1").arg("[DEFAULT]"), value: 15 },
-					{ display: qsTr("30 Minutes"), value: 30 },
-					{ display: qsTr("45 Minutes"), value: 45 },
-					{ display: qsTr("60 Minutes"), value: 60 }
-				]
-			}
+			// ListRadioButtonGroup {
+			// 	text: "Absorption to Float Time"
+			// 	dataItem.uid: "mqtt/sfksettings/0/Info/FloatCompensationTime"
+			// 	preferredVisible: true  // Control visibility based on your condition
+			// 	optionModel: [
+			// 		{ display: qsTr("15 Minutes %1").arg("[DEFAULT]"), value: 15 },
+			// 		{ display: qsTr("30 Minutes"), value: 30 },
+			// 		{ display: qsTr("45 Minutes"), value: 45 },
+			// 		{ display: qsTr("60 Minutes"), value: 60 }
+			// 	]
+			// }
 
 			ListSwitch {
 				text: "Detail Logging"
