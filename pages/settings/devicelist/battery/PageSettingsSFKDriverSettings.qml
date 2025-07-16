@@ -138,6 +138,20 @@ Page {
 
 				]
 			}
+			
+			ListRadioButtonGroup {
+				text: "Absorption to Float transition time"
+				dataItem.uid: "mqtt/sfksettings/0/Info/MaxVoltageTimeSec"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("5 Mins"), value:  300 },
+					{ display: qsTr("10 Mins"), value: 600 },
+					{ display: qsTr("15 Mins %1").arg("[DEFAULT]"), value: 900 },
+					{ display: qsTr("20 Mins"), value: 1200 },
+					{ display: qsTr("25 Mins"), value: 1500 },
+					{ display: qsTr("30 Mins"), value: 1800 }
+				]
+			}
 
 			ListSwitch {
 				text: "Detail Logging"
