@@ -152,6 +152,23 @@ Page {
 					{ display: qsTr("30 Mins"), value: 1800 }
 				]
 			}
+			
+			ListRadioButtonGroup {
+				text: "Charge Voltage Compensation (Voltage Drop)"
+				dataItem.uid: "mqtt/sfksettings/0/Info/VoltageDrop"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("0 mV"), value:  0 },
+					{ display: qsTr("25 mV"), value: 25 },
+					{ display: qsTr("50 mV %1").arg("[DEFAULT]"), value: 50 },
+					{ display: qsTr("75 mV"), value: 75 },
+					{ display: qsTr("100 mV"), value: 100 },
+					{ display: qsTr("125 mV"), value: 125 },
+					{ display: qsTr("150 mV"), value: 150 },
+					{ display: qsTr("175 mV"), value: 175 },
+					{ display: qsTr("200 mV"), value: 200 }
+				]			
+			}
 
 			ListSwitch {
 				text: "Detail Logging"
