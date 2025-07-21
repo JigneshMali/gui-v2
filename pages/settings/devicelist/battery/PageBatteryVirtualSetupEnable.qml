@@ -16,6 +16,19 @@ Page {
 		uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
 	}
 
+	property string bindPrefix
+		property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	// Dynamic MQTT path base
+	property string mqttPrefix: mqttPrefix + "/" + sfkVBDeviceInstance.value
+
+	property VeQuickItem sfkvbServiceRestart: VeQuickItem {
+		id: sfkvbServiceRestart
+		uid: mqttPrefix + "/RestartService"
+	}
+	
 	GradientListView {
 		model: ObjectModel {
 
@@ -23,6 +36,15 @@ Page {
 				text: "Virtual Battery"
 				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryActive"
 				preferredVisible: true
+			}
+
+			ListNavigation {
+				text: "Virtual Setup"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
 			}
 			
 			ListRadioButtonGroup {
@@ -46,8 +68,15 @@ Page {
 				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDebugLogging"
 				preferredVisible: true
 			}
+			
+			ListButton {
+                text: qsTr("Restart Service")
+                secondaryText: qsTr("Restart Service")
+                preferredVisible: true
+                onClicked: sfkvbServiceRestart.setValue(1)
+            }
 
-			ListRebootButton { }
+			// ListRebootButton { }
 
 		}
 	}
