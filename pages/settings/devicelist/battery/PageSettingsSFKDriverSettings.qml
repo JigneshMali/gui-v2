@@ -15,6 +15,11 @@ Page {
 		id: nrOfcell
 		uid: "mqtt/sfksettings/0/System/NrOfCellsPerBattery"
 		}	
+	
+	property VeQuickItem sfkbatteriesServiceRestart: VeQuickItem {
+		id: sfkbatteriesServiceRestart
+		uid: "mqtt/sfksettings/0/RestartService"
+		}	
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -166,6 +171,12 @@ Page {
 				preferredVisible: true
 			}
 
+			ListButton {
+                text: qsTr("Restart Service")
+                secondaryText: qsTr("Restart Service")
+                preferredVisible: true
+                onClicked: sfkbatteriesServiceRestart.setValue(1)
+            }
 
 			// ListNavigation {
 			// 	text: "Regulate Max SOC Options"
