@@ -16,8 +16,7 @@ Page {
 		uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
 	}
 
-	property string bindPrefix
-		property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
 	}
