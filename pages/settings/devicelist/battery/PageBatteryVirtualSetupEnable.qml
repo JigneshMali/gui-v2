@@ -21,8 +21,9 @@ Page {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
 	}
+	
 	// Dynamic MQTT path base
-	property string mqttPrefix: mqttPrefix + "/" + sfkVBDeviceInstance.value
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
 
 	property VeQuickItem sfkvbServiceRestart: VeQuickItem {
 		id: sfkvbServiceRestart
