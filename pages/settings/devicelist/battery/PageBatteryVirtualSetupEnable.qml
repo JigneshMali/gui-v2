@@ -80,16 +80,27 @@ Page {
 
 		}
 	}
-	// React to changes using Connections on the VeQuickItem
+		// React to changes using Connections on the VeQuickItem
 	Connections {
-		target: sfkVirtualBatteryLogic
-		onValueChanged: {
-			Global.showToastNotification(
-				VenusOS.Notification_Info,
-				qsTr("Please reboot device to see changes"),
-				5000
+    target: sfkVirtualBatteryLogic
+    function onValueChanged() {
+        Global.showToastNotification(
+            VenusOS.Notification_Info,
+            qsTr("Please reboot device to see changes"),
+            5000
 			)
 		}
 	}
+	// // React to changes using Connections on the VeQuickItem
+	// Connections {
+	// 	target: sfkVirtualBatteryLogic
+	// 	onValueChanged: {
+	// 		Global.showToastNotification(
+	// 			VenusOS.Notification_Info,
+	// 			qsTr("Please reboot device to see changes"),
+	// 			5000
+	// 		)
+	// 	}
+	// }
 
 }
