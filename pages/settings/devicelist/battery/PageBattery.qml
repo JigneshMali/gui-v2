@@ -464,7 +464,7 @@ Page {
 			ListNavigation {
 				//% "System"
 				text: qsTrId("battery_settings_system")
-				preferredVisible: nrOfBatteries.valid && sfkvbFlag.value === 0
+				preferredVisible: nrOfBatteries.valid 
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageLynxIonSystem.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })

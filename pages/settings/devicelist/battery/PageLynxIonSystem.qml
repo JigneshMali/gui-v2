@@ -117,29 +117,29 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
-			ListRadioButtonGroup {
-				text: "Virtual Battery Setup"
-				dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
-				optionModel: generateOptions()		 
-				preferredVisible: nrOfBatteries.value > 1 || nrOfBatteries.value === 0
+			// ListRadioButtonGroup {
+			// 	text: "Virtual Battery Setup"
+			// 	dataItem.uid: root.bindPrefix + "/System/SFKVirtualSetup"
+			// 	optionModel: generateOptions()		 
+			// 	preferredVisible: nrOfBatteries.value > 1 || nrOfBatteries.value === 0
 
-			}
+			// }
 
-			ListText {
-				//% "Capacity"
-				text: "Virtual Battery Setup"
-				secondaryText: "Single Battery"
-				preferredVisible: nrOfBatteries.value === 1 
-			}
+			// ListText {
+			// 	//% "Capacity"
+			// 	text: "Virtual Battery Setup"
+			// 	secondaryText: "Single Battery"
+			// 	preferredVisible: nrOfBatteries.value === 1 
+			// }
 
-			ListNavigation {
-				text: "Series Balance Selection"
-				preferredVisible: showMbSwitch && nrOfBatteries.value !== 1
-				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryBalanceSeries.qml",
-							{ "title": text, "bindPrefix": root.bindPrefix  })
-				}
-			}
+			// ListNavigation {
+			// 	text: "Series Balance Selection"
+			// 	preferredVisible: showMbSwitch && nrOfBatteries.value !== 1
+			// 	onClicked: {
+			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryBalanceSeries.qml",
+			// 				{ "title": text, "bindPrefix": root.bindPrefix  })
+			// 	}
+			// }
 
 			ListText {
 				//% "Capacity"
