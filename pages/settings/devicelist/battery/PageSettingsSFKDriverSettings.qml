@@ -172,7 +172,7 @@ Page {
 			}
 
 			ListButton {
-                text: qsTr("Restart Service")
+                text: qsTr("Apply Changes")
                 secondaryText: qsTr("Restart Service")
                 preferredVisible: true
                 onClicked: sfkbatteriesServiceRestart.setValue(1)
