@@ -172,107 +172,107 @@ Page {
 				}
 			}
 
-			ListText {
-				//% "Capacity"
-				text: qsTrId("lynxionsystem_capacity")
-				dataItem.uid: mqttPrefix + "/Capacity"
-				preferredVisible: dataItem.valid
-			}
+			// ListText {
+			// 	//% "Capacity"
+			// 	text: qsTrId("lynxionsystem_capacity")
+			// 	dataItem.uid: mqttPrefix + "/Capacity"
+			// 	preferredVisible: dataItem.valid
+			// }
 
-			ListText {
-				text: CommonWords.batteries
-				dataItem.uid: mqttPrefix + "/System/NrOfBatteries"
-			}
+			// ListText {
+			// 	text: CommonWords.batteries
+			// 	dataItem.uid: mqttPrefix + "/System/NrOfBatteries"
+			// }
 
-			ListText {
-				//% "Parallel"
-				text: qsTrId("lynxionsystem_parallel")
-				dataItem.uid: mqttPrefix + "/System/BatteriesParallel"
-			}
+			// ListText {
+			// 	//% "Parallel"
+			// 	text: qsTrId("lynxionsystem_parallel")
+			// 	dataItem.uid: mqttPrefix + "/System/BatteriesParallel"
+			// }
 
-			ListText {
-				//% "Series"
-				text: qsTrId("lynxionsystem_series")
-				dataItem.uid: mqttPrefix + "/System/BatteriesSeries"
-			}
+			// ListText {
+			// 	//% "Series"
+			// 	text: qsTrId("lynxionsystem_series")
+			// 	dataItem.uid: mqttPrefix + "/System/BatteriesSeries"
+			// }
 
-			ListQuantityGroup {
-				//% "Min/max cell voltage"
-				text: qsTrId("lynxionsystem_min_max_cell_voltage")
-				model: QuantityObjectModel {
-					QuantityObject { object: minCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
-					QuantityObject { object: maxCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
-				}
-				preferredVisible: minCellVoltage.valid && maxCellVoltage.valid
+			// ListQuantityGroup {
+			// 	//% "Min/max cell voltage"
+			// 	text: qsTrId("lynxionsystem_min_max_cell_voltage")
+			// 	model: QuantityObjectModel {
+			// 		QuantityObject { object: minCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
+			// 		QuantityObject { object: maxCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
+			// 	}
+			// 	preferredVisible: minCellVoltage.valid && maxCellVoltage.valid
 
-				VeQuickItem {
-					id: minCellVoltage
-					uid: mqttPrefix + "/System/MinCellVoltage"
-				}
+			// 	VeQuickItem {
+			// 		id: minCellVoltage
+			// 		uid: mqttPrefix + "/System/MinCellVoltage"
+			// 	}
 
-				VeQuickItem {
-					id: maxCellVoltage
-					uid: mqttPrefix + "/System/MaxCellVoltage"
-				}
-			}
+			// 	VeQuickItem {
+			// 		id: maxCellVoltage
+			// 		uid: mqttPrefix + "/System/MaxCellVoltage"
+			// 	}
+			// }
 
-			ListQuantityGroup {
-				//% "Min/max cell temperature"
-				text: qsTrId("lynxionsystem_min_max_cell_temperature")
-				model: QuantityObjectModel {
-					QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-					QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-				}
-				preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
+			// ListQuantityGroup {
+			// 	//% "Min/max cell temperature"
+			// 	text: qsTrId("lynxionsystem_min_max_cell_temperature")
+			// 	model: QuantityObjectModel {
+			// 		QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+			// 		QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+			// 	}
+			// 	preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
 
-				// VeQuickItem {
-				// 	id: minCellTemperature
-				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-				// 	uid: mqttPrefix + "/System/MinCellTemperature"
-				// }
+			// 	// VeQuickItem {
+			// 	// 	id: minCellTemperature
+			// 	// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+			// 	// 	uid: mqttPrefix + "/System/MinCellTemperature"
+			// 	// }
 
-				// VeQuickItem {
-				// 	id: maxCellTemperature
-				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-				// 	uid: mqttPrefix + "/System/MaxCellTemperature"
-				// }
+			// 	// VeQuickItem {
+			// 	// 	id: maxCellTemperature
+			// 	// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+			// 	// 	uid: mqttPrefix + "/System/MaxCellTemperature"
+			// 	// }
 				
-				VeQuickItem {
-					id: minCellTemperature
-					readonly property real convertedValue:  convertTemperature(value)
-					uid: mqttPrefix + "/System/MinCellTemperature"
-				}
+			// 	VeQuickItem {
+			// 		id: minCellTemperature
+			// 		readonly property real convertedValue:  convertTemperature(value)
+			// 		uid: mqttPrefix + "/System/MinCellTemperature"
+			// 	}
 
-				VeQuickItem {
-					id: maxCellTemperature
-					readonly property real convertedValue: convertTemperature(value)
-					uid: mqttPrefix + "/System/MaxCellTemperature"
-				}
-			}
+			// 	VeQuickItem {
+			// 		id: maxCellTemperature
+			// 		readonly property real convertedValue: convertTemperature(value)
+			// 		uid: mqttPrefix + "/System/MaxCellTemperature"
+			// 	}
+			// }
 
-			ListText {
-				//% "Balancer status"
-				text: qsTrId("lynxionsystem_balancer_status")
-				dataItem.uid: mqttPrefix + "/Balancer/Status"
-				preferredVisible: dataItem.seen
-				secondaryText: {
-					switch (dataItem.value) {
-					case VenusOS.Battery_Balancer_Balanced:
-						//% "Balanced"
-						return qsTrId("lynxionsystem_balancer_balanced")
-					case VenusOS.Battery_Balancer_Balancing:
-						//% "Balancing"
-						return qsTrId("lynxionsystem_balancer_balancing")
-					case VenusOS.Battery_Balancer_Imbalance:
-						//% "Imbalance"
-						return qsTrId("lynxionsystem_balancer_imbalance")
-					case VenusOS.Battery_Balancer_Unknown:
-					default:
-						//% "Unknown"
-						return qsTrId("lynxionsystem_balancer_unknown")
-					}
-				}
-			}
+			// ListText {
+			// 	//% "Balancer status"
+			// 	text: qsTrId("lynxionsystem_balancer_status")
+			// 	dataItem.uid: mqttPrefix + "/Balancer/Status"
+			// 	preferredVisible: dataItem.seen
+			// 	secondaryText: {
+			// 		switch (dataItem.value) {
+			// 		case VenusOS.Battery_Balancer_Balanced:
+			// 			//% "Balanced"
+			// 			return qsTrId("lynxionsystem_balancer_balanced")
+			// 		case VenusOS.Battery_Balancer_Balancing:
+			// 			//% "Balancing"
+			// 			return qsTrId("lynxionsystem_balancer_balancing")
+			// 		case VenusOS.Battery_Balancer_Imbalance:
+			// 			//% "Imbalance"
+			// 			return qsTrId("lynxionsystem_balancer_imbalance")
+			// 		case VenusOS.Battery_Balancer_Unknown:
+			// 		default:
+			// 			//% "Unknown"
+			// 			return qsTrId("lynxionsystem_balancer_unknown")
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }
