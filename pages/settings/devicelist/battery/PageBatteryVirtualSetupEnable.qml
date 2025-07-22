@@ -39,7 +39,7 @@ Page {
 			}
 
 			ListNavigation {
-				text: "Virtual Setup"
+				text: "Battery Configuration"
 				preferredVisible: true
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml",
@@ -70,8 +70,8 @@ Page {
 			}
 			
 			ListButton {
-                text: qsTr("Restart Service")
-                secondaryText: qsTr("Restart Service")
+                text: qsTr("Apply Changes")
+                secondaryText: qsTr("Restart Virtual Battery")
                 preferredVisible: true
                 onClicked: sfkvbServiceRestart.setValue(1)
             }
