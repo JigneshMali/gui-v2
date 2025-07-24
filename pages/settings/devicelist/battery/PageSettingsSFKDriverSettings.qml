@@ -195,7 +195,7 @@ Page {
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Main SFK Venus OS Driver service restarting...."),
-						4000
+						5000
                 	)
 					}
 				globalDialogResult  = 0   // Reset after processing
