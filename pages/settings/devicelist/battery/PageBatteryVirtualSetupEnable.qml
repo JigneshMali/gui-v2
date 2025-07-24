@@ -10,6 +10,7 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property int globalDialogResult: 0   // <--- Global result variable	
 	// Add VeQuickItem to observe the selected logic
 	property VeQuickItem sfkVirtualBatteryLogic: VeQuickItem {
 		id: sfkVirtualBatteryLogic
@@ -68,19 +69,41 @@ Page {
 				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDebugLogging"
 				preferredVisible: true
 			}
-			
+		
 			ListButton {
-                text: qsTr("Apply Changes")
-                secondaryText: qsTr("Restart Virtual Battery")
-                preferredVisible: true
-                onClicked: sfkvbServiceRestart.setValue(1)
-            }
+				text: qsTr("Apply Changes")
+				secondaryText: qsTr("Restart Virtual Battery")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(confirmRestartDialog)
+			}
 
 			// ListRebootButton { }
 
 		}
 	}
-		// React to changes using Connections on the VeQuickItem
+
+	Component {
+		id: confirmRestartDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will restart the SFK Virtual Battery.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					sfkvbServiceRestart.setValue(1)
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Virtual Battery service restarting..."),
+						5000
+                	)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+	// React to changes using Connections on the VeQuickItem
 	Connections {
     target: sfkVirtualBatteryLogic
     function onValueChanged() {
@@ -91,16 +114,6 @@ Page {
 			)
 		}
 	}
-	// // React to changes using Connections on the VeQuickItem
-	// Connections {
-	// 	target: sfkVirtualBatteryLogic
-	// 	onValueChanged: {
-	// 		Global.showToastNotification(
-	// 			VenusOS.Notification_Info,
-	// 			qsTr("Please reboot device to see changes"),
-	// 			5000
-	// 		)
-	// 	}
-	// }
+
 
 }

@@ -10,6 +10,7 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property int globalDialogResult: 0   // <--- Global result variable	
 
 	property VeQuickItem nrOfcell: VeQuickItem {
 		id: nrOfcell
@@ -172,20 +173,33 @@ Page {
 			}
 
 			ListButton {
-                text: qsTr("Apply Changes")
-                secondaryText: qsTr("Restart Service")
-                preferredVisible: true
-                onClicked: sfkbatteriesServiceRestart.setValue(1)
-            }
-
-			// ListNavigation {
-			// 	text: "Regulate Max SOC Options"
-			// 	preferredVisible: true  // Control visibility based on your condition
-			// 	onClicked: {
-			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParametersRegulateSoc.qml",
-			// 				{ "title": text, "bindPrefix": root.bindPrefix  })
-			// 	}
-			// }
+				text: qsTr("Apply Changes")
+				secondaryText: qsTr("Restart Service")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(confirmRestartDialog)
+			}
+		}
+	}
+	
+	Component {
+		id: confirmRestartDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will restart the main SFK Venus OS Driver.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					sfkbatteriesServiceRestart.setValue(1)
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Main SFK Venus OS Driver service restarting...."),
+						4000
+                	)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
 		}
 	}
 }
