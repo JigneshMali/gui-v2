@@ -22,6 +22,19 @@ Page {
 		uid: "mqtt/sfksettings/0/RestartService"
 		}	
 
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	
+	// Dynamic MQTT path base
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+
+	property VeQuickItem sfkvbServiceRestart: VeQuickItem {
+		id: sfkvbServiceRestart
+		uid: mqttPrefix + "/RestartService"
+	}
+
 	GradientListView {
 		model: VisibleItemModel {
 
@@ -191,12 +204,16 @@ Page {
 			onClosed: function() {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
-					sfkbatteriesServiceRestart.setValue(1)
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Main SFK Venus OS Driver service restarting...."),
 						5000
                 	)
+					sfkbatteriesServiceRestart.setValue(1)
+					if (sfkvbServiceRestart.valid) 
+					{
+						sfkvbServiceRestart.setValue(1)
+					}
 					}
 				globalDialogResult  = 0   // Reset after processing
 			}
