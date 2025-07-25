@@ -198,7 +198,7 @@ Page {
 		id: confirmRestartDialog
 		ModalWarningDialog {
 			title: qsTr("Apply Changes")
-			description: qsTr("This will restart the main SFK Venus OS Driver.")
+			description: qsTr("This will restart the main SFK Venus OS Driver & Virtual Battery (if active).")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
