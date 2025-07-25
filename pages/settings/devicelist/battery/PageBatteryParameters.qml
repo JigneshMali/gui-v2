@@ -48,22 +48,28 @@ Page {
 				preferredVisible: true  // Control visibility based on your condition
 			}
 
-			ListText {
-				text: "Charge Voltage Limit (CVL)"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+			ListQuantity {
+				//% "Charge Voltage Limit (CVL)"
+				text: qsTrId("batteryparameters_charge_voltage_limit_cvl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"
+				preferredVisible:sfkvbFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Volt_DC
 			}
-			
-			ListText {
-				text:  "Charge Current Limit (CCL)"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+
+			ListQuantity {
+				//% "Charge Current Limit (CCL)"
+				text: qsTrId("batteryparameters_charge_current_limit_ccl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"
+				preferredVisible: sfkvbFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Amp
 			}
-			
-			ListText {
-				text: "Discharge Current Limit (DCL)" // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+
+			ListQuantity {
+				//% "Discharge Current Limit (DCL)"
+				text: qsTrId("batteryparameters_discharge_current_limit_dcl")
+				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
+				preferredVisible: sfkvbFlag  // Control visibility based on your condition
+				unit: VenusOS.Units_Amp
 			}
 			
 			ListQuantity {
