@@ -42,13 +42,30 @@ Page {
 				dataItem.uid: root.bindPrefix + "/Info/ChargeLimitation"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
 			}
-
 			ListText {
 				text: "Discharge Limitation"  // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/Info/DischargeLimitation"  // Directly reading from the required path
 				preferredVisible: true  // Control visibility based on your condition
 			}
 
+			ListText {
+				text: "Charge Voltage Limit (CVL)"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeVoltage"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+			
+			ListText {
+				text:  "Charge Current Limit (CCL)"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/MaxChargeCurrent"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+			
+			ListText {
+				text: "Discharge Current Limit (DCL)" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+			}
+			
 			ListQuantity {
 				//% "Low Voltage Disconnect (always ignored)"
 				text: qsTrId("batteryparameters_low_voltage_disconnect_always_ignored")

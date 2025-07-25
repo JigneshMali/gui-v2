@@ -88,16 +88,16 @@ Page {
 				]
 			}
 
-			ListRadioButtonGroup {
-				text: "Max Cell Voltage"
-				dataItem.uid: "mqtt/sfksettings/0/Info/MaxCellVoltage"
-				preferredVisible: true  // Control visibility based on your condition
-				optionModel: [
-					{ display: qsTr("%1V %2").arg(3.500).arg("[DEFAULT]"), value: 3.500 },
-					{ display: qsTr("%1V").arg(3.550), value: 3.550 },
-					{ display: qsTr("%1V").arg(3.600), value: 3.600 }
-				]
-			}
+			// ListRadioButtonGroup {
+			// 	text: "Max Cell Voltage"
+			// 	dataItem.uid: "mqtt/sfksettings/0/Info/MaxCellVoltage"
+			// 	preferredVisible: true  // Control visibility based on your condition
+			// 	optionModel: [
+			// 		{ display: qsTr("%1V %2").arg(3.500).arg("[DEFAULT]"), value: 3.500 },
+			// 		{ display: qsTr("%1V").arg(3.550), value: 3.550 },
+			// 		{ display: qsTr("%1V").arg(3.600), value: 3.600 }
+			// 	]
+			// }
 
 			ListRadioButtonGroup {
 				text: "Float Cell Voltage"
