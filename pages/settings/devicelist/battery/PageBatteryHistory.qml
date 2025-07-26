@@ -12,8 +12,91 @@ Page {
 	required property string bindPrefix
 	required property BatteryHistory history
 
+	VeQuickItem {
+			id: productName
+			uid: root.bindPrefix + "/ProductName"
+		}
+	VeQuickItem {
+			id: hardwareVersion
+			uid: root.bindPrefix + "/HardwareVersion"
+		}
+	VeQuickItem {
+			id: nrOfBatteries
+			uid: root.bindPrefix + "/System/NrOfBatteries"
+		}
+
+	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
+	property bool versionFlag: hardwareVersion.text === "6.4"
+
 	GradientListView {
 		model: VisibleItemModel {
+
+			ListText {
+				text: "Pack overvoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/POVP_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Pack undervoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/PUVP_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Charging low temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGUT_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Charging over temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGOT_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Charging overcurrent error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGOC_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Discharging low temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGUT_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Discharging over temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGOT_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Discharging overcurrent error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGOC_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Cell overvoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/COVP_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Cell undervoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CUVP_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Short circuit error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SC_Err_Count"  // Directly reading from the required path
+				 preferredVisible: dataItem.valid
+			}
+			
 			ListQuantity {
 				//% "Deepest discharge"
 				text: qsTrId("batteryalarms_deepest_discharge")

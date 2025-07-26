@@ -32,20 +32,10 @@ Page {
 		model: VisibleItemModel {
 
 			ListText {
-				text: "Charge Mode"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/ChargeMode"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
-			}
-
-			ListText {
-				text: "Charge Limitation"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/ChargeLimitation"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
-			}
-			ListText {
-				text: "Discharge Limitation"  // Directly assigning text as no translation ID exists
-				dataItem.uid: root.bindPrefix + "/Info/DischargeLimitation"  // Directly reading from the required path
-				preferredVisible: true  // Control visibility based on your condition
+				//% "Hardware version"
+				text: "Charge Mode"
+				dataItem.uid: root.bindPrefix +"/Info/ChargeMode"
+				preferredVisible: dataItem.valid
 			}
 
 			ListQuantity {
@@ -70,24 +60,6 @@ Page {
 				dataItem.uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
 				preferredVisible: sfkvbFlag  // Control visibility based on your condition
 				unit: VenusOS.Units_Amp
-			}
-			
-			ListQuantity {
-				//% "Low Voltage Disconnect (always ignored)"
-				text: qsTrId("batteryparameters_low_voltage_disconnect_always_ignored")
-				dataItem.uid: root.bindPrefix + "/Info/BatteryLowVoltage"
-				preferredVisible: dataItem.valid
-				showAccessLevel: VenusOS.User_AccessType_Service
-				unit: VenusOS.Units_Volt_DC
-			}
-
-			ListText {
-				//: Shows if the battery requests charging: yes or no
-				//% "Requests Charging"
-				text: qsTrId("batteryparameters_charge_request")
-				dataItem.uid: root.bindPrefix + "/Info/ChargeRequest"
-				preferredVisible: dataItem.valid
-				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 		}
 	}

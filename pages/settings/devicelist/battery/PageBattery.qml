@@ -19,9 +19,35 @@ Page {
 		id: battery
 		serviceUid: root.bindPrefix
 	}
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.bindPrefix +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: root.bindPrefix +  "/SFKhardwareflag"
+		}
+	property VeQuickItem heatFetStatus: VeQuickItem {
+		id: heatFetStatus
+		uid: root.bindPrefix +  "/System/HeatFetStatus"
+		}	
+    property bool pulse: true
+    Timer {
+        id: _timer
+        interval: 500
+        running: heatFetStatus.value === 1
+        repeat: true
+        onTriggered: pulse = !pulse
+    }
 
 	GradientListView {
 		model: VisibleItemModel {
+
+
 			ListRadioButtonGroup {
 				text: CommonWords.switch_mode
 				dataItem.uid: root.bindPrefix + "/Mode"
@@ -120,6 +146,7 @@ Page {
 			ListQuantityGroup {
 				text: CommonWords.battery
 				model: QuantityObjectModel {
+					QuantityObject { object: customDataObject; key:"heatRedTextP"  }
 					QuantityObject { object: batteryVoltage; unit: VenusOS.Units_Volt_DC }
 					QuantityObject { object: batteryCurrent; unit: VenusOS.Units_Amp }
 					QuantityObject { object: batteryPower; unit: VenusOS.Units_Watt }
@@ -138,6 +165,11 @@ Page {
 				VeQuickItem {
 					id: batteryPower
 					uid: root.bindPrefix + "/Dc/0/Power"
+				}
+
+				QtObject {
+					id: customDataObject
+					property string heatRedTextP: (heatFetStatus.value === 1 && pulse) ? "<span style='color:#ff0000; font-weight:bold;'>H</span>" : " "
 				}
 			}
 
@@ -165,6 +197,7 @@ Page {
 					uid: root.bindPrefix + "/State"
 				}
 			}
+			
 
 			ListText {
 				id: nrOfBmses
@@ -173,11 +206,39 @@ Page {
 				dataItem.uid: root.bindPrefix + "/NumberOfBmses"
 				preferredVisible: root.isParallelBms
 			}
+			
+			ListText {
+				id: currentavg5min
+				text: "Current (Last 5 minutes avg.)"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CurrentAvg"  // Directly reading from the required path
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
+			}
 
 			ListQuantity {
 				text: CommonWords.state_of_charge
 				dataItem.uid: root.bindPrefix + "/Soc"
 				unit: VenusOS.Units_Percentage
+			}
+
+			ListTemperature {
+				text: "BMS Temp"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/MOSTemperature"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
+			}
+			
+			ListTemperature {
+				text: "Case Temp 1"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/Temperature1"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
+			}
+
+			ListTemperature {
+				text: "Case Temp 2"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/System/Temperature2"  // Directly reading from the required path
+				preferredVisible: true  // Control visibility based on your condition
+				unit: Global.systemSettings.temperatureUnit
 			}
 
 			ListQuantity {
@@ -188,19 +249,19 @@ Page {
 				unit: VenusOS.Units_Percentage
 			}
 
-			ListTemperature {
-				text: CommonWords.battery_temperature
-				dataItem.uid: root.bindPrefix + "/Dc/0/Temperature"
-				preferredVisible: dataItem.valid
-				unit: Global.systemSettings.temperatureUnit
-			}
+			// ListTemperature {
+			// 	text: CommonWords.battery_temperature
+			// 	dataItem.uid: root.bindPrefix + "/Dc/0/Temperature"
+			// 	preferredVisible: dataItem.valid
+			// 	unit: Global.systemSettings.temperatureUnit
+			// }
 
-			ListTemperature {
-				//% "Air temperature"
-				text: qsTrId("battery_air_temp")
-				dataItem.uid: root.bindPrefix + "/AirTemperature"
-				preferredVisible: dataItem.valid
-			}
+			// ListTemperature {
+			// 	//% "Air temperature"
+			// 	text: qsTrId("battery_air_temp")
+			// 	dataItem.uid: root.bindPrefix + "/AirTemperature"
+			// 	preferredVisible: dataItem.valid
+			// }
 
 			ListQuantity {
 				//% "Starter voltage"
@@ -286,6 +347,15 @@ Page {
 				BatteryDetails {
 					id: batteryDetails
 					bindPrefix: root.bindPrefix
+				}
+			}
+
+			ListNavigation {
+				text: "Cell Voltages"
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryCellVoltages.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
 
@@ -377,7 +447,7 @@ Page {
 			ListNavigation {
 				//% "IO"
 				text: qsTrId("battery_settings_io")
-				preferredVisible: allowToCharge.valid
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageLynxIonIo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -392,7 +462,7 @@ Page {
 			ListNavigation {
 				//% "System"
 				text: qsTrId("battery_settings_system")
-				preferredVisible: nrOfBatteries.valid
+				preferredVisible: nrOfBatteries.valid 
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageLynxIonSystem.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -406,8 +476,18 @@ Page {
 
 			ListNavigation {
 				text: CommonWords.device_info_title
+				preferredVisible: sfkFlag.value === 1
 				onClicked: {
-					Global.pageManager.pushPage("/pages/settings/PageDeviceInfo.qml",
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageDeviceInfo.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+
+			ListNavigation {
+				text: CommonWords.device_info_title
+				preferredVisible:  sfkvbFlag.value === 1
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
 				}
 			}
@@ -415,7 +495,17 @@ Page {
 			ListNavigation {
 				//% "Parameters"
 				text: qsTrId("battery_settings_parameters")
-				preferredVisible: cvl.valid || ccl.valid || dcl.valid
+				preferredVisible: nrOfBatteries.valid &&  sfkvbFlag.value === 1
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryParameters.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix })
+				}
+			}
+			
+			ListNavigation {
+				//% "Parameters"
+				text: qsTrId("battery_settings_parameters")
+				preferredVisible: !nrOfBatteries.valid && sfkFlag.value === 1 &&  sfkvbFlag.value === 0
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryParameters.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix })
@@ -437,6 +527,15 @@ Page {
 				}
 			}
 
+			// ListNavigation {
+			// 	text: "Enable Virtual Battery"
+			// 	preferredVisible: sfkFlag.value === 1
+			// 	onClicked: {
+			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml",
+			// 				{ "title": text, "bindPrefix": root.bindPrefix  })
+			// 	}
+			// }
+			
 			ListButton {
 				//% "Redetect Battery"
 				text: qsTrId("battery_redetect_battery")

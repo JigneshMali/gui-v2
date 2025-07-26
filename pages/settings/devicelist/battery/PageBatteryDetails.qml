@@ -11,14 +11,34 @@ Page {
 
 	property string bindPrefix
 	property BatteryDetails details
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.bindPrefix +  "/SFKbatteryflag"
+	}	
+	property VeQuickItem sfkvbFlag: VeQuickItem {
+		id: sfkvbFlag
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
+	}	
+	property VeQuickItem versionFlag: VeQuickItem {
+		id: versionFlag
+		uid: root.bindPrefix +  "/SFKhardwareflag"
+		}
+
+	QtObject {
+		id: temperatureData
+
+		readonly property real minCellTemperature: Global.systemSettings.convertFromCelsius(details.minCellTemperature.value)
+		readonly property real maxCellTemperature: Global.systemSettings.convertFromCelsius(details.maxCellTemperature.value)
+	}
 
 	GradientListView {
 		model: VisibleItemModel {
+
 			ListQuantityGroup {
 				//% "Lowest cell voltage"
 				text: qsTrId("batterydetails_lowest_cell_voltage")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minVoltageCellId; precision: details.minVoltageCellId.decimals }
+					QuantityObject { object: details.minVoltageCellId }
 					QuantityObject { object: details.minCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
 				}
 				preferredVisible: details.allowsLowestCellVoltage
@@ -28,7 +48,7 @@ Page {
 				//% "Highest cell voltage"
 				text: qsTrId("batterydetails_highest_cell_voltage")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.maxVoltageCellId; precision: details.maxVoltageCellId.decimals }
+					QuantityObject { object: details.maxVoltageCellId }
 					QuantityObject { object: details.maxCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
 				}
 				preferredVisible: details.allowsHighestCellVoltage
@@ -38,8 +58,8 @@ Page {
 				//% "Minimum cell temperature"
 				text: qsTrId("batterydetails_minimum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minTemperatureCellId; precision: details.minTemperatureCellId.decimals }
-					QuantityObject { object: details.minCellTemperature; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.minTemperatureCellId }
+					QuantityObject { object: temperatureData; key: "minCellTemperature"; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMinimumCellTemperature
 			}
@@ -48,8 +68,8 @@ Page {
 				//% "Maximum cell temperature"
 				text: qsTrId("batterydetails_maximum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.maxTemperatureCellId; precision: details.maxTemperatureCellId.decimals }
-					QuantityObject { object: details.maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.maxTemperatureCellId }
+					QuantityObject { object: temperatureData; key: "maxCellTemperature"; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMaximumCellTemperature
 			}
@@ -78,10 +98,24 @@ Page {
 				//% "Number of modules blocking charge / discharge"
 				text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.nrOfModulesBlockingCharge; precision: details.nrOfModulesBlockingCharge.decimals }
-					QuantityObject { object: details.nrOfModulesBlockingDischarge; precision: details.nrOfModulesBlockingDischarge.decimals }
+					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingCharge" }
+					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingDischarge" }
 				}
 				preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
+
+				QtObject {
+					id: customDataObject
+
+					property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
+					id: nrOfModulesBlockingCharge
+					uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
+					}
+
+					property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
+					id: nrOfModulesBlockingDischarge
+					uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
+					}
+				}
 			}
 
 			ListQuantityGroup {
@@ -92,6 +126,35 @@ Page {
 					QuantityObject { object: details.capacity; unit: VenusOS.Units_AmpHour }
 				}
 				preferredVisible: details.allowsCapacity
+
+			}
+
+			ListText {
+				text: "Heating Mode"  // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingMode"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListTemperature {
+				text: "Heating Activation Temperature" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/HeatingStartTemp"  // Directly reading from the required path
+				preferredVisible: dataItem.valid 
+				unit: Global.systemSettings.temperatureUnit
+			}
+
+			ListQuantity {
+				text: "SOC Max Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMaxLimit"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+				unit: VenusOS.Units_Percentage
+
+			}
+
+			ListQuantity {
+				text: "SOC Min Limit" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SOCMinLimit"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+				unit: VenusOS.Units_Percentage
 			}
 
 			ListText {
