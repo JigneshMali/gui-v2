@@ -16,6 +16,12 @@ Page {
 	property VeQuickItem sfkShowBalanceSeries: VeQuickItem {uid: root.bindPrefix +  "/System/ShowBalanceSeries"}
     property bool showMbSwitch : (["2S_2B_4C", "2S_2B_8C", "3S_3B_4C", "4S_4B_4C","2S2P_4B_4C", "2S2P_4B_8C", "2S3P_6B_4C",  "3S2P_6B_4C",  "2S3P_6B_8C", "3S2P_6B_4C", "4S2P_8B_4C", "2S4P_8B_4C","2S4P_8B_8C"].indexOf(sfkvirtualbattery.value) !== -1) && (sfkShowBalanceSeries.value === "YES")
 
+	QtObject {
+		id: temperatureData
+
+		readonly property real minCellTemperature: Global.systemSettings.convertFromCelsius(details.minCellTemperature.value)
+		readonly property real maxCellTemperature: Global.systemSettings.convertFromCelsius(details.maxCellTemperature.value)
+	}
 
 	function generateOptions() {
 		var options = [];
@@ -189,22 +195,22 @@ Page {
 				//% "Min/max cell temperature"
 				text: qsTrId("lynxionsystem_min_max_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-					QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.minCellTemperature;unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.maxCellTemperature;unit: Global.systemSettings.temperatureUnit }
 				}
-				preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
+				preferredVisible: details.minCellTemperature.valid && details.maxCellTemperature.valid
 
-				VeQuickItem {
-					id: minCellTemperature
-					readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-					uid: root.bindPrefix + "/System/MinCellTemperature"
-				}
+				// VeQuickItem {
+				// 	id: minCellTemperature
+				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+				// 	uid: root.bindPrefix + "/System/MinCellTemperature"
+				// }
 
-				VeQuickItem {
-					id: maxCellTemperature
-					readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-					uid: root.bindPrefix + "/System/MaxCellTemperature"
-				}
+				// VeQuickItem {
+				// 	id: maxCellTemperature
+				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+				// 	uid: root.bindPrefix + "/System/MaxCellTemperature"
+				// }
 			}
 
 			// ListQuantityGroup {
