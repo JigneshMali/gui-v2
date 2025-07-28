@@ -186,26 +186,46 @@ Page {
 			}
 
 			ListQuantityGroup {
-				//% "Min/max cell temperature"
-				text: qsTrId("lynxionsystem_min_max_cell_temperature")
+				//% "Minimum cell temperature"
+				text: qsTrId("batterydetails_minimum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-					QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.minTemperatureCellId; precision: details.minTemperatureCellId.decimals }
+					QuantityObject { object: details.minCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
-				preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
-
-				VeQuickItem {
-					id: minCellTemperature
-					readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-					uid: root.bindPrefix + "/System/MinCellTemperature"
-				}
-
-				VeQuickItem {
-					id: maxCellTemperature
-					readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-					uid: root.bindPrefix + "/System/MaxCellTemperature"
-				}
+				preferredVisible: details.allowsMinimumCellTemperature
 			}
+
+			ListQuantityGroup {
+				//% "Maximum cell temperature"
+				text: qsTrId("batterydetails_maximum_cell_temperature")
+				model: QuantityObjectModel {
+					QuantityObject { object: details.maxTemperatureCellId; precision: details.maxTemperatureCellId.decimals }
+					QuantityObject { object: details.maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
+				}
+				preferredVisible: details.allowsMaximumCellTemperature
+			}
+			
+			// ListQuantityGroup {
+			// 	//% "Min/max cell temperature"
+			// 	text: qsTrId("lynxionsystem_min_max_cell_temperature")
+			// 	model: QuantityObjectModel {
+			// 		QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+			// 		QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
+			// 	}
+			// 	preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
+
+			// 	VeQuickItem {
+			// 		id: minCellTemperature
+			// 		readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+			// 		uid: root.bindPrefix + "/System/MinCellTemperature"
+			// 	}
+
+			// 	VeQuickItem {
+			// 		id: maxCellTemperature
+			// 		readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
+			// 		uid: root.bindPrefix + "/System/MaxCellTemperature"
+			// 	}
+			// }
 
 			ListText {
 				//% "Balancer status"
