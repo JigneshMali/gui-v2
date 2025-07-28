@@ -8,7 +8,7 @@ import Victron.VenusOS
 
 Page {
 	id: root
-
+	property BatteryDetails details
 	property string bindPrefix
 	property VeQuickItem nrOfBatteries: VeQuickItem {uid: root.bindPrefix + "/System/NrOfBatteries"}
 	property VeQuickItem nrOfCellsPerBattery: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
