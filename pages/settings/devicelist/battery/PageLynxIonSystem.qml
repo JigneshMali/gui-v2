@@ -186,25 +186,29 @@ Page {
 			}
 
 			ListQuantityGroup {
-				//% "Minimum cell temperature"
-				text: qsTrId("batterydetails_minimum_cell_temperature")
+				//% "Min/max cell temperature"
+				text: qsTrId("lynxionsystem_min_max_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minTemperatureCellId; precision: details.minTemperatureCellId.decimals }
-					QuantityObject { object: details.minCellTemperature; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: minCellTemperature; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
-				preferredVisible: details.allowsMinimumCellTemperature
+				preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
+
+				VeQuickItem {
+					id: minCellTemperature
+					uid: root.bindPrefix + "/System/MinCellTemperature"
+					dataItem.sourceUnit: Units.unitToVeUnit(VenusOS.Units_Temperature_Celsius)
+					dataItem.displayUnit: Units.unitToVeUnit(Global.systemSettings.temperatureUnit)
+				}
+
+				VeQuickItem {
+					id: maxCellTemperature
+					uid: root.bindPrefix + "/System/MaxCellTemperature"
+					dataItem.sourceUnit: Units.unitToVeUnit(VenusOS.Units_Temperature_Celsius)
+					dataItem.displayUnit: Units.unitToVeUnit(Global.systemSettings.temperatureUnit)
+				}
 			}
 
-			ListQuantityGroup {
-				//% "Maximum cell temperature"
-				text: qsTrId("batterydetails_maximum_cell_temperature")
-				model: QuantityObjectModel {
-					QuantityObject { object: details.maxTemperatureCellId; precision: details.maxTemperatureCellId.decimals }
-					QuantityObject { object: details.maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
-				}
-				preferredVisible: details.allowsMaximumCellTemperature
-			}
-			
 			// ListQuantityGroup {
 			// 	//% "Min/max cell temperature"
 			// 	text: qsTrId("lynxionsystem_min_max_cell_temperature")
