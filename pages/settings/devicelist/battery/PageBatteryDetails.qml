@@ -58,8 +58,8 @@ Page {
 				//% "Minimum cell temperature"
 				text: qsTrId("batterydetails_minimum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minTemperatureCellId }
-					QuantityObject { object: temperatureData; key: "minCellTemperature"; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.minTemperatureCellId; precision: details.minTemperatureCellId.decimals }
+					QuantityObject { object: details.minCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMinimumCellTemperature
 			}
@@ -68,8 +68,8 @@ Page {
 				//% "Maximum cell temperature"
 				text: qsTrId("batterydetails_maximum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.maxTemperatureCellId }
-					QuantityObject { object: temperatureData; key: "maxCellTemperature"; unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: details.maxTemperatureCellId; precision: details.maxTemperatureCellId.decimals }
+					QuantityObject { object: details.maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMaximumCellTemperature
 			}
