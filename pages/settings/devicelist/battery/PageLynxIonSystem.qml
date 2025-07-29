@@ -14,13 +14,12 @@ Page {
 	property VeQuickItem nrOfCellsPerBattery: VeQuickItem {uid: root.bindPrefix +  "/System/NrOfCellsPerBattery"}
 	property VeQuickItem sfkvirtualbattery: VeQuickItem {uid: root.bindPrefix +  "/System/SFKVirtualSetup"}
 	property VeQuickItem sfkShowBalanceSeries: VeQuickItem {uid: root.bindPrefix +  "/System/ShowBalanceSeries"}
+	// property VeQuickItem minCellTemperature: VeQuickItem {uid: root.bindPrefix +  "/System/MinCellTemperature"}
+	// property VeQuickItem maxCellTemperature: VeQuickItem {uid: root.bindPrefix +  "/System/MaxCellTemperature"}
     property bool showMbSwitch : (["2S_2B_4C", "2S_2B_8C", "3S_3B_4C", "4S_4B_4C","2S2P_4B_4C", "2S2P_4B_8C", "2S3P_6B_4C",  "3S2P_6B_4C",  "2S3P_6B_8C", "3S2P_6B_4C", "4S2P_8B_4C", "2S4P_8B_4C","2S4P_8B_8C"].indexOf(sfkvirtualbattery.value) !== -1) && (sfkShowBalanceSeries.value === "YES")
 
-	QtObject {
-		id: temperatureData
-
-		readonly property real minCellTemperature: Global.systemSettings.convertFromCelsius(details.minCellTemperature.value)
-		readonly property real maxCellTemperature: Global.systemSettings.convertFromCelsius(details.maxCellTemperature.value)
+	function isCelsius() {
+		return Global.systemSettings.temperatureUnit === VenusOS.Units_Temperature_Celsius;
 	}
 
 	function generateOptions() {
@@ -195,10 +194,26 @@ Page {
 				//% "Min/max cell temperature"
 				text: qsTrId("lynxionsystem_min_max_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minCellTemperature;unit: Global.systemSettings.temperatureUnit }
-					QuantityObject { object: details.maxCellTemperature;unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: minCellTemperature;unit: Global.systemSettings.temperatureUnit }
+					QuantityObject { object: maxCellTemperature;unit: Global.systemSettings.temperatureUnit }
 				}
-				preferredVisible: details.minCellTemperature.valid && details.maxCellTemperature.valid
+				preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
+
+				VeQuickItem {
+					id: minCellTemperature
+					// readonly property real convertedValue: root.isCelsius() ? value : Global.systemSettings.convertFromCelsius(value)
+					uid: root.bindPrefix + "/System/MinCellTemperature"
+					sourceUnit: Units.unitToVeUnit(VenusOS.Units_Temperature_Celsius)
+					displayUnit: Units.unitToVeUnit(Global.systemSettings.temperatureUnit)
+				}
+
+				VeQuickItem {
+					id: maxCellTemperature
+					// readonly property real convertedValue: root.isCelsius() ? value : Global.systemSettings.convertFromCelsius(value)
+					uid: root.bindPrefix + "/System/MaxCellTemperature"
+					sourceUnit: Units.unitToVeUnit(VenusOS.Units_Temperature_Celsius)
+					displayUnit: Units.unitToVeUnit(Global.systemSettings.temperatureUnit)
+				}
 
 				// VeQuickItem {
 				// 	id: minCellTemperature
