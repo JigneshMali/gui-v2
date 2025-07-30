@@ -214,41 +214,8 @@ Page {
 					sourceUnit: Units.unitToVeUnit(VenusOS.Units_Temperature_Celsius)
 					displayUnit: Units.unitToVeUnit(Global.systemSettings.temperatureUnit)
 				}
-
-				// VeQuickItem {
-				// 	id: minCellTemperature
-				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-				// 	uid: root.bindPrefix + "/System/MinCellTemperature"
-				// }
-
-				// VeQuickItem {
-				// 	id: maxCellTemperature
-				// 	readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-				// 	uid: root.bindPrefix + "/System/MaxCellTemperature"
-				// }
 			}
 
-			// ListQuantityGroup {
-			// 	//% "Min/max cell temperature"
-			// 	text: qsTrId("lynxionsystem_min_max_cell_temperature")
-			// 	model: QuantityObjectModel {
-			// 		QuantityObject { object: minCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-			// 		QuantityObject { object: maxCellTemperature; key: "convertedValue"; unit: Global.systemSettings.temperatureUnit }
-			// 	}
-			// 	preferredVisible: minCellTemperature.valid && maxCellTemperature.valid
-
-			// 	VeQuickItem {
-			// 		id: minCellTemperature
-			// 		readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-			// 		uid: root.bindPrefix + "/System/MinCellTemperature"
-			// 	}
-
-			// 	VeQuickItem {
-			// 		id: maxCellTemperature
-			// 		readonly property real convertedValue: Global.systemSettings.convertFromCelsius(value)
-			// 		uid: root.bindPrefix + "/System/MaxCellTemperature"
-			// 	}
-			// }
 
 			ListText {
 				//% "Balancer status"
