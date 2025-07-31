@@ -37,9 +37,9 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
-				ListButton {
-				text: qsTr("Apply Changes")
-				secondaryText: qsTr("Restart Virtual Battery")
+			ListButton {
+				text: qsTr("Heating Test")
+				secondaryText: qsTr("Heating Test")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmRestartDialog)
 			}
