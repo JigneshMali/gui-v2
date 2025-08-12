@@ -53,13 +53,6 @@ Page {
 			ListRadioButtonGroup {
 				text: "Voltage Diviation"
 				dataItem.uid: mqttPrefix + "/System/BalanceVoltageDiviation"
-				// optionModel: [
-				// 	{ display: qsTr("%1mV %2").arg(100).arg("[DEFAULT]"), value:100},
-				// 	{ display: qsTr("%1mV").arg(200), value: 200},
-				// 	{ display: qsTr("%1mV").arg(300), value: 300},
-				// 	{ display: qsTr("%1mV").arg(400), value: 400 },
-				// 	{ display: qsTr("%1mV").arg(500), value: 500 }
-				// ]
 				optionModel: [
 					{ display: qsTr("%1mV").arg(15), value: 15 },
 					{ display: qsTr("%1mV %2").arg(30).arg("[DEFAULT]"), value:30},
@@ -68,9 +61,7 @@ Page {
 					{ display: qsTr("%1mV").arg(75), value: 75 },
 					{ display: qsTr("%1mV").arg(90), value: 90 },
 					{ display: qsTr("%1mV").arg(105), value: 105 },
-					{ display: qsTr("%1mV").arg(120), value: 120 },
-					{ display: qsTr("%1mV").arg(135), value: 135 },
-					{ display: qsTr("%1mV").arg(150), value: 150 }
+					{ display: qsTr("%1mV").arg(120), value: 120 }
 				]
 			}
 
@@ -88,7 +79,7 @@ Page {
 					{ display: qsTr("%1V").arg(3.46), value: 3.46 },
 					{ display: qsTr("%1V").arg(3.42), value: 3.42 },
 					{ display: qsTr("%1V").arg(3.38), value: 3.38 },
-					{ display: qsTr("%1V").arg(3.34), value: 3.34 },
+					{ display: qsTr("%1V %2").arg(3.34).arg("[DEFAULT]"), value: 3.34 },
 					{ display: qsTr("%1V").arg(3.30), value: 3.30 }
 				]
 			}
