@@ -37,12 +37,12 @@ Page {
 	GradientListView {
 		model: VisibleItemModel {
 
-			ListButton {
-				text: qsTr("Heating Test")
-				secondaryText: qsTr("Heating Test")
-				preferredVisible: true
-				onClicked: Global.dialogLayer.open(confirmRestartDialog)
-			}
+			// ListButton {
+			// 	text: qsTr("Heating Test")
+			// 	secondaryText: qsTr("Heating Test")
+			// 	preferredVisible: true
+			// 	onClicked: Global.dialogLayer.open(confirmRestartDialog)
+			// }
 
 			ListText {
 				text: "Charge Mode"  // Directly assigning text as no translation ID exists
@@ -105,25 +105,25 @@ Page {
 		}
 
 	}
-	Component {
-		id: confirmRestartDialog
-		ModalWarningDialog {
-			title: qsTr("Heating Test")
-			description: qsTr("This will start Heating Test.")
-			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
-			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
-			onClosed: function() {
-				globalDialogResult  = result 
-				if (globalDialogResult  === 1) {
-					heatingTest.setValue(1)
-					Global.showToastNotification(
-						VenusOS.Notification_Info,
-						qsTr("  Heating Test starting..."),
-						5000
-                	)
-					}
-				globalDialogResult  = 0   // Reset after processing
-			}
-		}
-	}
+	// Component {
+	// 	id: confirmRestartDialog
+	// 	ModalWarningDialog {
+	// 		title: qsTr("Heating Test")
+	// 		description: qsTr("This will start Heating Test.")
+	// 		// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+	// 		dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+	// 		onClosed: function() {
+	// 			globalDialogResult  = result 
+	// 			if (globalDialogResult  === 1) {
+	// 				heatingTest.setValue(1)
+	// 				Global.showToastNotification(
+	// 					VenusOS.Notification_Info,
+	// 					qsTr("  Heating Test starting..."),
+	// 					5000
+    //             	)
+	// 				}
+	// 			globalDialogResult  = 0   // Reset after processing
+	// 		}
+	// 	}
+	// }
 }
