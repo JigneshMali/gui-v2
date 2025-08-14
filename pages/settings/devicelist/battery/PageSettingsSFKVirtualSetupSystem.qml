@@ -48,6 +48,22 @@ Page {
         return isCelsius() ? temp : (temp * 9 / 5) + 32;
     }
 
+	function sfkSyncLowTempOptionList() {
+		if (isCelsius()) {
+			return [
+				{ display: qsTr("2°C - 10°C"), value: 0 },
+				{ display: qsTr("5°C - 13°C"), value: 1 },
+				{ display: qsTr("8°C - 16°C"), value: 2 }
+			];
+		} else {
+			return [
+				{ display: qsTr("35.6°F - 50°F"), value: 0 },
+				{ display: qsTr("41°F - 55.4°F"), value: 1 },
+				{ display: qsTr("46.4°F - 60.8°F"), value: 2 }
+			];
+		}
+	}
+
 	function generateOptions() {
 		var options = [];
 		var nrOfCellsValue = nrOfCellsPerBattery.value || 4; // Default to 4 if undefined
@@ -172,6 +188,11 @@ Page {
 				}
 			}
 
+			ListRadioButtonGroup {
+				text: "Synchronized Low Temp Options"
+				dataItem.uid: mqttPrefix + "/Info/SynchronizedLowTempOptions"
+				optionModel: sfkSyncLowTempOptionList()		 
+			}
 			// ListText {
 			// 	//% "Capacity"
 			// 	text: qsTrId("lynxionsystem_capacity")
