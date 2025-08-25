@@ -12,6 +12,10 @@ Page {
 
 	property string bindPrefix
 	property alias settingsListView: settingsListView
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
 
 	GradientListView {
 		id: settingsListView
@@ -55,6 +59,17 @@ Page {
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
+				onValueChanged: {
+					// push the new value into your sfkVBDeviceInstance
+					if (value !== undefined && value !== null) {
+						sfkVBDeviceInstance.setValue(value)
+					}
+				}
+			}
+			ListText {
+				text: "sfkVBDeviceInstance"  // Directly assigning text as no translation ID exists
+				preferredVisible: true
+				secondaryText: qsTr("%1").arg(sfkVBDeviceInstance.value)
 			}
 		}
 	}
