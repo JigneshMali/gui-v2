@@ -59,11 +59,13 @@ Page {
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
-				onValueChanged: {
-					// push the new value into your sfkVBDeviceInstance
-					if (value !== undefined && value !== null) {
-						sfkVBDeviceInstance.setValue(value)
-					}
+				Connections {
+						target: dataItem
+						function onValueChanged() {
+							if (dataItem.valid) {
+								sfkVBDeviceInstance.setValue(dataItem.value)
+							}
+						}
 				}
 			}
 			ListText {
