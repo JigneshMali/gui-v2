@@ -96,8 +96,8 @@ Page {
 			onClosed: function() {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
-					sfkvbServiceRestart.setValue(1)
 					restartVBService.setValue(1)
+					sfkvbServiceRestart.setValue(1)
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Virtual Battery service restarting..."),
