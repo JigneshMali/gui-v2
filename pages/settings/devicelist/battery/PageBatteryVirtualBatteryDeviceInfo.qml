@@ -68,11 +68,11 @@ Page {
 						}
 				}
 			}
-			ListText {
-				text: "sfkVBDeviceInstance"  // Directly assigning text as no translation ID exists
-				preferredVisible: true
-				secondaryText: qsTr("%1").arg(sfkVBDeviceInstance.value)
-			}
+			// ListText {
+			// 	text: "sfkVBDeviceInstance"  // Directly assigning text as no translation ID exists
+			// 	preferredVisible: true
+			// 	secondaryText: qsTr("%1").arg(sfkVBDeviceInstance.value)
+			// }
 		}
 	}
 }
