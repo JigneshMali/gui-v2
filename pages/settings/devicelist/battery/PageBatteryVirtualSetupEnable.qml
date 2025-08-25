@@ -21,6 +21,10 @@ Page {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
 	}
+	property VeQuickItem restartVBService: VeQuickItem {
+		id: restartVBService
+		uid: "mqtt/sfksettings/0/RestartVBService"
+	}
 	
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
@@ -93,6 +97,7 @@ Page {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
 					sfkvbServiceRestart.setValue(1)
+					restartVBService.setValue(1)
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Virtual Battery service restarting..."),
