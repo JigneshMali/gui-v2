@@ -70,7 +70,7 @@ Page {
 			
 			ListButton {
 				text: "Synchronized Heating"
-				secondaryText: if(heatSynchronizeActiveValue.value=== 0) ? qsTr("Activate") : qsTr("Deactivate")
+				secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Activate") : qsTr("Deactivate")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
@@ -88,8 +88,7 @@ Page {
 		id: confirmLowTempModesetoDialog
 		ModalWarningDialog {
 			title: qsTr("Synchronized Heating")
-			description: (heatSynchronizeActiveValue.value=== 0) ? qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?") 
-			: qsTr("Synchronized Heating is being disabled. Do you want to proceed?")
+			description: (heatSynchronizeActiveValue.value=== 0) ? qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?") : qsTr("Synchronized Heating is being disabled. Do you want to proceed?")
 			// //% "Yes"
 			// acceptText: qsTrId("common_words_yes")
 			// //% "No"
