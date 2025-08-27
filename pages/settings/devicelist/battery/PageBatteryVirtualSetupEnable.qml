@@ -52,6 +52,15 @@ Page {
 				}
 			}
 			
+			ListNavigation {
+				text: "Synchronized Heating"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeating.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
+			
 			ListRadioButtonGroup {
 				text: "Charge Mode Transition"
 				dataItem.uid: "mqtt/sfksettings/0/Info/SfkVbChargeModeOptions"

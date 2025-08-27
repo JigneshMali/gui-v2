@@ -1,0 +1,72 @@
+/*
+** Copyright (C) 2023 Victron Energy B.V.
+** See LICENSE.txt for license information.
+*/
+
+import QtQuick
+import Victron.VenusOS
+
+Page {
+	id: root
+
+	property string bindPrefix
+		property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	
+	// Dynamic MQTT path base
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+
+	function isCelsius() {
+		return Global.systemSettings.temperatureUnit === VenusOS.Units_Temperature_Celsius;
+	}
+
+	function sfkSyncLowTempOptions() {
+		if (isCelsius()) {
+			return [
+				// { display: qsTr("2°C - 10°C"), value: 0 },
+				// { display: qsTr("5°C - 13°C"), value: 1 },
+				// { display: qsTr("8°C - 16°C"), value: 2 }
+				{ display: qsTr("30°C - 34°C"), value: 0 },
+				{ display: qsTr("34°C - 38°C"), value: 1 },
+				{ display: qsTr("38°C - 40°C"), value: 2 }
+			];
+		} else {
+			return [
+				// { display: qsTr("35.6°F - 50°F"), value: 0 },
+				// { display: qsTr("41°F - 55.4°F"), value: 1 },
+				// { display: qsTr("46.4°F - 60.8°F"), value: 2 }
+				{ display: qsTr("86°F - 93.2°F"), value: 0 },
+				{ display: qsTr("93.2°F - 100.4°F"), value: 1 },
+				{ display: qsTr("100.4°F - 104°F"), value: 2 }
+			];
+		}
+	}
+
+	GradientListView {
+		model: ObjectModel {
+
+			// ListRadioButtonGroup {
+			// 	text: "Enable Series Balance"
+			// 	dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteries"
+			// 	optionModel: [
+			// 		{ display: qsTr("Yes"), value: "YES" },
+			// 		{ display: qsTr("No"), value: "NO" }
+			// 	]
+			// }
+
+			ListSwitch {
+				text: "Synchronized Heating"
+				dataItem.uid:  mqttPrefix + "/Info/HeatSynchronizeActive"
+				preferredVisible: true
+			}
+
+			ListRadioButtonGroup {
+				text: "Temperature Range"
+				dataItem.uid: mqttPrefix + "/Info/SynchronizedLowTempOptions"
+				optionModel: sfkSyncLowTempOptions()		 
+			}
+		}
+	}
+}
