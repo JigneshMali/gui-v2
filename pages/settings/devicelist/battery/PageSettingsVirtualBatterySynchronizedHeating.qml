@@ -18,6 +18,10 @@ Page {
 	
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+	property VeQuickItem heatSynchronizeActiveValue: VeQuickItem {
+		id: heatSynchronizeActiveValue
+		uid: mqttPrefix + "/Info/HeatSynchronizeActive"
+	}
 
 	function isCelsius() {
 		return Global.systemSettings.temperatureUnit === VenusOS.Units_Temperature_Celsius;
@@ -76,8 +80,9 @@ Page {
 		// id: confirmRestartDialog
 		id: confirmLowTempModesetoDialog
 		ModalWarningDialog {
-			title: qsTr("Apply Changes")
-			description: qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?")
+			title: qsTr("Synchronized Heating")
+			description: if(heatSynchronizeActiveValue.value=== 0) ? qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?") 
+			: qsTr("Synchronized Heating is being disabled. Do you want to proceed?")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
