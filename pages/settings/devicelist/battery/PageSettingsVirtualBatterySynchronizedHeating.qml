@@ -88,9 +88,12 @@ Page {
 		id: confirmLowTempModesetoDialog
 		ModalWarningDialog {
 			title: qsTr("Synchronized Heating")
-			description: if(heatSynchronizeActiveValue.value=== 0) ? qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?") 
+			description: (heatSynchronizeActiveValue.value=== 0) ? qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?") 
 			: qsTr("Synchronized Heating is being disabled. Do you want to proceed?")
-			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			// //% "Yes"
+			// acceptText: qsTrId("common_words_yes")
+			// //% "No"
+			// rejectText: qsTrId("common_words_no")
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
 				lowtempDialogResult  = result 
