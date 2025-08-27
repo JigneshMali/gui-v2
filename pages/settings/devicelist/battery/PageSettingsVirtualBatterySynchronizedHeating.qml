@@ -61,9 +61,16 @@ Page {
 			// 	]
 			// }
 
-			ListSwitch {
+			// ListSwitch {
+			// 	text: "Synchronized Heating"
+			// 	dataItem.uid:  mqttPrefix + "/Info/HeatSynchronizeActive"
+			// 	preferredVisible: true
+			// 	onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
+			// }
+			
+			ListButton {
 				text: "Synchronized Heating"
-				dataItem.uid:  mqttPrefix + "/Info/HeatSynchronizeActive"
+				secondaryText: if(heatSynchronizeActiveValue.value=== 0) ? qsTr("Activate") : qsTr("Deactivate")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
@@ -88,13 +95,29 @@ Page {
 			onClosed: function() {
 				lowtempDialogResult  = result 
 				if (lowtempDialogResult  === 1) {
-					// restartVBService.setValue(1)
-					// sfkvbServiceRestart.setValue(1)
-					Global.showToastNotification(
+					if(heatSynchronizeActiveValue.value=== 0)
+					{
+						heatSynchronizeActiveValue.setValue(1)
+						Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Setting all connected batteries to Externally Managed."),
+						qsTr("Synchronized Heating  set to Externally Managed mode"),
 						5000
-                	)
+                		)
+					}
+					else if (heatSynchronizeActiveValue.value=== 1)
+					{
+						heatSynchronizeActiveValue.setValue(0)
+						Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Synchronized Heating is disabled"),
+						5000
+                		)
+					}
+					// Global.showToastNotification(
+					// 	VenusOS.Notification_Info,
+					// 	qsTr("Setting all connected batteries to Externally Managed."),
+					// 	5000
+                	// )
 					}
 				lowtempDialogResult  = 0   // Reset after processing
 			}
