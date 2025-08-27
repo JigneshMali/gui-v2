@@ -10,6 +10,7 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property int lowtempDialogResult: 0   // <--- Global result variable	
 		property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
@@ -60,6 +61,7 @@ Page {
 				text: "Synchronized Heating"
 				dataItem.uid:  mqttPrefix + "/Info/HeatSynchronizeActive"
 				preferredVisible: true
+				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
 
 			ListRadioButtonGroup {
@@ -69,4 +71,29 @@ Page {
 			}
 		}
 	}
+
+	Component {
+		// id: confirmRestartDialog
+		id: confirmLowTempModesetoDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will set the heating mode for all connected batteries to Externally Managed. Do you want to proceed?")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				lowtempDialogResult  = result 
+				if (lowtempDialogResult  === 1) {
+					// restartVBService.setValue(1)
+					// sfkvbServiceRestart.setValue(1)
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Setting all connected batteries to Externally Managed."),
+						5000
+                	)
+					}
+				lowtempDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+
 }
