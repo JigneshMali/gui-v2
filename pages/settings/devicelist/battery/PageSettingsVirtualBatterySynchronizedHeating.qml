@@ -100,7 +100,7 @@ Page {
 						heatSynchronizeActiveValue.setValue(1)
 						Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Synchronized Heating  set to Externally Managed mode"),
+						qsTr("Synchronized Heating set to Externally Managed."),
 						5000
                 		)
 					}
