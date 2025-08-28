@@ -11,16 +11,19 @@ Page {
 
 	property string bindPrefix
 	property int lowtempDialogResult: 0   // <--- Global result variable	
-		property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
 	}
-	
-	// Dynamic MQTT path base
+		// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
 	property VeQuickItem heatSynchronizeActiveValue: VeQuickItem {
 		id: heatSynchronizeActiveValue
 		uid: mqttPrefix + "/Info/HeatSynchronizeActive"
+	}
+    property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
+		id: sfksettingsHeatSynchronizeActiveValue
+		uid: "mqtt/sfksettings/0/Info/HeatSynchronizeActive" 
 	}
 
 	function isCelsius() {
@@ -100,6 +103,7 @@ Page {
 					if(heatSynchronizeActiveValue.value=== 0)
 					{
 						heatSynchronizeActiveValue.setValue(1)
+						sfksettingsHeatSynchronizeActiveValue.setValue(1)
 						Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Synchronized Heating set to Externally Managed."),
@@ -109,6 +113,7 @@ Page {
 					else if (heatSynchronizeActiveValue.value=== 1)
 					{
 						heatSynchronizeActiveValue.setValue(0)
+						sfksettingsHeatSynchronizeActiveValue.setValue(0)
 						Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Synchronized Heating is disabled"),

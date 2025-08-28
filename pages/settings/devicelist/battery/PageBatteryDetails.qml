@@ -24,6 +24,17 @@ Page {
 		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
 
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	// Dynamic MQTT path base
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+	property VeQuickItem heatSynchronizeActiveValue: VeQuickItem {
+		id: heatSynchronizeActiveValue
+		uid: mqttPrefix + "/Info/HeatSynchronizeActive"
+	}
+
 	QtObject {
 		id: temperatureData
 
