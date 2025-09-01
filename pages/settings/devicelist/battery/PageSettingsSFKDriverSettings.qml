@@ -173,6 +173,19 @@ Page {
 				]			
 			}
 
+			ListRadioButtonGroup {
+				text: "Float to Bulk Transition SOC"
+				dataItem.uid: "mqtt/sfksettings/0/Info/FloatToBulkSOCLimit"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("70 %"), value: 70 },
+					{ display: qsTr("75 %"), value: 75 },
+					{ display: qsTr("80 % [DEFAULT]"), value: 80 },
+					{ display: qsTr("85 %"), value: 85 },
+					{ display: qsTr("90 %"), value: 90 }
+				]
+			}
+
 			ListSwitch {
 				text: "Detail Logging"
 				dataItem.uid: "mqtt/sfksettings/0/Log/SfkDetailLogging"
