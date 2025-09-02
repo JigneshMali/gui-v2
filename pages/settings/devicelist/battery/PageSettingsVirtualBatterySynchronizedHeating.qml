@@ -21,9 +21,29 @@ Page {
 		id: heatSynchronizeActiveValue
 		uid: mqttPrefix + "/Info/HeatSynchronizeActive"
 	}
+	property VeQuickItem heatingModeProgressbar: VeQuickItem {
+		id: heatingModeProgressbar
+		uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
+	}
     property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
 		id: sfksettingsHeatSynchronizeActiveValue
 		uid: "mqtt/sfksettings/0/Info/HeatSynchronizeActive" 
+        property bool completed: false   // track if 100% already reached
+		onValueChanged: { 
+				if (value === undefined)
+                return;
+				if (heatSynchronizeActiveValue.value === 1 && value === 100 && !completed) {
+                var msg = qsTr("Set to Externally Managed. Process is %1% completed.").arg(value)
+				Global.showToastNotification(
+						VenusOS.Notification_Info,
+						msg,
+						3000
+                		)
+                if (value >= 100) {
+                    completed = true   // stop further toasts
+                }
+            }
+		}
 	}
 
 	function isCelsius() {
@@ -77,11 +97,18 @@ Page {
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
+			ListText {
+				//% "Firmware Version"
+				text:  qsTr("Setting to Externally Managed. Please wait until the process is completed... Progress: %1%").arg(heatingModeProgressbar.value)
+				dataItem.uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
+				preferredVisible: heatSynchronizeActiveValue.value === 1 && heatingModeProgressbar.value !== 100 
+			}
 
 			ListRadioButtonGroup {
 				text: "Temperature Range"
 				dataItem.uid: mqttPrefix + "/Info/SynchronizedLowTempOptions"
-				optionModel: sfkSyncLowTempOptions()		 
+				optionModel: sfkSyncLowTempOptions()	
+				preferredVisible: heatingModeProgressbar.value === 100 && ( heatSynchronizeActiveValue.value === 1 || heatSynchronizeActiveValue.value === 0)
 			}
 		}
 	}
