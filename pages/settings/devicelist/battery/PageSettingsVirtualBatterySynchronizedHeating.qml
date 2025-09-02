@@ -100,7 +100,7 @@ Page {
 			ListText {
 				//% "Firmware Version"
 				text:  qsTr("Setting to Externally Managed. Please wait until the process is completed... Progress: %1%").arg(heatingModeProgressbar.value)
-				dataItem.uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
+				// dataItem.uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
 				preferredVisible: heatSynchronizeActiveValue.value === 1 && heatingModeProgressbar.value !== 100 
 			}
 
