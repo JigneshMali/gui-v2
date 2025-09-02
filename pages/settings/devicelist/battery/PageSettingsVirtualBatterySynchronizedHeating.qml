@@ -136,7 +136,7 @@ Page {
 						sfksettingsHeatSynchronizeActiveValue.setValue(1)
 						Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Synchronized Heating set to Externally Managed."),
+						qsTr("Synchronized Heating is enabled."),
 						5000
                 		)
 					}
@@ -146,7 +146,7 @@ Page {
 						sfksettingsHeatSynchronizeActiveValue.setValue(0)
 						Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Synchronized Heating is disabled"),
+						qsTr("Synchronized Heating is disabled."),
 						5000
                 		)
 					}
