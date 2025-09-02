@@ -42,7 +42,7 @@ Page {
 				if (value === undefined)
                 return;
 				if (heatSynchronizeActiveValue.value === 1 && value === 100 && !completed) {
-                var msg = qsTr("Set to Externally Managed. All batteries (%1 of %2) are in low temp charge heating mode.").arg(settingBatteryCount.value).arg(totalBatteryCount.value)
+                var msg = qsTr("Set to Externally Managed. All batteries are in low temp charge heating mode.")
                 // var msg = qsTr("Set to Externally Managed. Process is %1% completed.").arg(value)
 				Global.showToastNotification(
 						VenusOS.Notification_Info,
