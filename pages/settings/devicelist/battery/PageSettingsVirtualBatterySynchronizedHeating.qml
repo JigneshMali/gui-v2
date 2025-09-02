@@ -25,6 +25,15 @@ Page {
 		id: heatingModeProgressbar
 		uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
 	}
+	property VeQuickItem totalBatteryCount: VeQuickItem {
+		id: totalBatteryCount
+		uid: mqttPrefix + "/Batteries/TotalBatteryCount"
+	}
+	property VeQuickItem settingBatteryCount: VeQuickItem {
+		id: settingBatteryCount
+		uid: mqttPrefix + "/Batteries/SettingBatteryCount"
+	}
+
     property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
 		id: sfksettingsHeatSynchronizeActiveValue
 		uid: "mqtt/sfksettings/0/Info/HeatSynchronizeActive" 
@@ -33,7 +42,8 @@ Page {
 				if (value === undefined)
                 return;
 				if (heatSynchronizeActiveValue.value === 1 && value === 100 && !completed) {
-                var msg = qsTr("Set to Externally Managed. Process is %1% completed.").arg(value)
+                var msg = qsTr("Set to Externally Managed. All batteries (%1 of %2) are in low temp charge heating mode.").arg(settingBatteryCount.value).arg(totalBatteryCount.value)
+                // var msg = qsTr("Set to Externally Managed. Process is %1% completed.").arg(value)
 				Global.showToastNotification(
 						VenusOS.Notification_Info,
 						msg,
@@ -53,21 +63,21 @@ Page {
 	function sfkSyncLowTempOptions() {
 		if (isCelsius()) {
 			return [
-				// { display: qsTr("2°C - 10°C"), value: 0 },
-				// { display: qsTr("5°C - 13°C"), value: 1 },
-				// { display: qsTr("8°C - 16°C"), value: 2 }
-				{ display: qsTr("30°C - 34°C"), value: 0 },
-				{ display: qsTr("34°C - 38°C"), value: 1 },
-				{ display: qsTr("38°C - 40°C"), value: 2 }
+				{ display: qsTr("2°C - 10°C"), value: 0 },
+				{ display: qsTr("5°C - 13°C"), value: 1 },
+				{ display: qsTr("8°C - 16°C"), value: 2 }
+				// { display: qsTr("30°C - 34°C"), value: 0 },
+				// { display: qsTr("34°C - 38°C"), value: 1 },
+				// { display: qsTr("38°C - 40°C"), value: 2 }
 			];
 		} else {
 			return [
-				// { display: qsTr("35°F - 50°F"), value: 0 },
-				// { display: qsTr("41°F - 55°F"), value: 1 },
-				// { display: qsTr("46°F - 60°F"), value: 2 }
-				{ display: qsTr("86°F - 93.2°F"), value: 0 },
-				{ display: qsTr("93.2°F - 100.4°F"), value: 1 },
-				{ display: qsTr("100.4°F - 104°F"), value: 2 }
+				{ display: qsTr("35°F - 50°F"), value: 0 },
+				{ display: qsTr("41°F - 55°F"), value: 1 },
+				{ display: qsTr("46°F - 60°F"), value: 2 }
+				// { display: qsTr("86°F - 93.2°F"), value: 0 },
+				// { display: qsTr("93.2°F - 100.4°F"), value: 1 },
+				// { display: qsTr("100.4°F - 104°F"), value: 2 }
 			];
 		}
 	}
@@ -99,8 +109,8 @@ Page {
 			}
 			ListText {
 				//% "Firmware Version"
-				text:  qsTr("Setting to Externally Managed. Please wait until the process is completed... Progress: %1%").arg(heatingModeProgressbar.value)
-				// dataItem.uid: mqttPrefix + "/Batteries/HeatingmodeProgressbar"
+				text:  qsTr("Setting to Externally Managed. Setting Battery %1 of %2 to low temp charge heating mode.").arg(settingBatteryCount.value).arg(totalBatteryCount.value)
+				// text:  qsTr("Setting to Externally Managed. Please wait until the process is completed... Progress: %1%").arg(heatingModeProgressbar.value)
 				preferredVisible: heatSynchronizeActiveValue.value === 1 && heatingModeProgressbar.value !== 100 
 			}
 
