@@ -33,6 +33,10 @@ Page {
 		id: settingBatteryCount
 		uid: mqttPrefix + "/Batteries/SettingBatteryCount"
 	}
+	property VeQuickItem allVersion64bool: VeQuickItem {
+		id: allVersion64bool
+		uid: mqttPrefix + "/Batteries/AllVersion64"
+	}
 
     property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
 		id: sfksettingsHeatSynchronizeActiveValue
@@ -85,40 +89,29 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
-			// ListRadioButtonGroup {
-			// 	text: "Enable Series Balance"
-			// 	dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteries"
-			// 	optionModel: [
-			// 		{ display: qsTr("Yes"), value: "YES" },
-			// 		{ display: qsTr("No"), value: "NO" }
-			// 	]
-			// }
-
-			// ListSwitch {
-			// 	text: "Synchronized Heating"
-			// 	dataItem.uid:  mqttPrefix + "/Info/HeatSynchronizeActive"
-			// 	preferredVisible: true
-			// 	onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
-			// }
+			ListText {
+				text: qsTr("All batteries must have compatible hardware version (v6.4) to use Synchronized Heating.")
+				preferredVisible: allVersion64bool.value === 0
+			}
 			
 			ListButton {
 				text: "Synchronized Heating"
 				secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Enable") : qsTr("Disable")
-				preferredVisible: true
+				preferredVisible: allVersion64bool.value === 1 
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
 			ListText {
 				//% "Firmware Version"
 				text:  qsTr("Setting to Externally Managed. Setting Battery %1 of %2 to low temp charge heating mode.").arg(settingBatteryCount.value).arg(totalBatteryCount.value)
 				// text:  qsTr("Setting to Externally Managed. Please wait until the process is completed... Progress: %1%").arg(heatingModeProgressbar.value)
-				preferredVisible: heatSynchronizeActiveValue.value === 1 && heatingModeProgressbar.value !== 100 
+				preferredVisible: heatSynchronizeActiveValue.value === 1 && heatingModeProgressbar.value !== 100  && allVersion64bool.value === 1 
 			}
 
 			ListRadioButtonGroup {
 				text: "Temperature Range"
 				dataItem.uid: mqttPrefix + "/Info/SynchronizedLowTempOptions"
 				optionModel: sfkSyncLowTempOptions()	
-				preferredVisible: heatingModeProgressbar.value === 100 && ( heatSynchronizeActiveValue.value === 1 || heatSynchronizeActiveValue.value === 0)
+				preferredVisible: heatingModeProgressbar.value === 100 && ( heatSynchronizeActiveValue.value === 1 || heatSynchronizeActiveValue.value === 0) && allVersion64bool.value === 1 
 			}
 		}
 	}
