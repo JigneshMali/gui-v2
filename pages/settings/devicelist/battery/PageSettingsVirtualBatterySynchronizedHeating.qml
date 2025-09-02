@@ -62,9 +62,9 @@ Page {
 			];
 		} else {
 			return [
-				// { display: qsTr("35.6°F - 50°F"), value: 0 },
-				// { display: qsTr("41°F - 55.4°F"), value: 1 },
-				// { display: qsTr("46.4°F - 60.8°F"), value: 2 }
+				// { display: qsTr("35°F - 50°F"), value: 0 },
+				// { display: qsTr("41°F - 55°F"), value: 1 },
+				// { display: qsTr("46°F - 60°F"), value: 2 }
 				{ display: qsTr("86°F - 93.2°F"), value: 0 },
 				{ display: qsTr("93.2°F - 100.4°F"), value: 1 },
 				{ display: qsTr("100.4°F - 104°F"), value: 2 }
@@ -93,7 +93,7 @@ Page {
 			
 			ListButton {
 				text: "Synchronized Heating"
-				secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Activate") : qsTr("Deactivate")
+				secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Enable") : qsTr("Disable")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
