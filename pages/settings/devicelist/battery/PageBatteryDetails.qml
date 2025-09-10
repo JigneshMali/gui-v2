@@ -37,7 +37,6 @@ Page {
 
 	QtObject {
 		id: temperatureData
-
 		readonly property real minCellTemperature: Global.systemSettings.convertFromCelsius(details.minCellTemperature.value)
 		readonly property real maxCellTemperature: Global.systemSettings.convertFromCelsius(details.maxCellTemperature.value)
 	}
