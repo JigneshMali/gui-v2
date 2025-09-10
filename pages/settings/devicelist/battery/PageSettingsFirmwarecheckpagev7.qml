@@ -14,43 +14,43 @@ Page {
     property string bindPrefix: "mqtt/sfksettings/0"
 
 
-	property VeQuickItem sfkV4DownloadProgress: VeQuickItem {
-		id: sfkV4DownloadProgress
-		uid: "mqtt/sfksettings/0/System/SFKV4DownloadProgress"}
-	property VeQuickItem sfkV4InstallProgress: VeQuickItem {
-		id: sfkV4InstallProgress
-		uid: "mqtt/sfksettings/0/System/SFKV4InstallProgress"}
+	property VeQuickItem sfkV7DownloadProgress: VeQuickItem {
+		id: sfkV7DownloadProgress
+		uid: "mqtt/sfksettings/0/System/SFKV7DownloadProgress"}
+	property VeQuickItem sfkV7InstallProgress: VeQuickItem {
+		id: sfkV7InstallProgress
+		uid: "mqtt/sfksettings/0/System/SFKV7InstallProgress"}
 
 	property VeQuickItem  installedVenusOSversion: VeQuickItem { 
 		id: installedVenusOSversion  
 	    uid: Global.venusPlatform.serviceUid + "/Firmware/Installed/Version"}
     	
-    property VeQuickItem  sfkV4FirmwareDownloadCompleted: VeQuickItem { 
-		id: sfkV4FirmwareDownloadCompleted   
-		uid: "mqtt/sfksettings/0/System/SFKV4FirmwareDownloadCompleted" }
+    property VeQuickItem  sfkV7FirmwareDownloadCompleted: VeQuickItem { 
+		id: sfkV7FirmwareDownloadCompleted   
+		uid: "mqtt/sfksettings/0/System/SFKV7FirmwareDownloadCompleted" }
 	
-	property VeQuickItem  sfkV4InstallConfirmItem: VeQuickItem { 
-		id: sfkV4InstallConfirmItem   
-		uid: "mqtt/sfksettings/0/System/SFKV4Installconfirm" }	
+	property VeQuickItem  sfkV7InstallConfirmItem: VeQuickItem { 
+		id: sfkV7InstallConfirmItem   
+		uid: "mqtt/sfksettings/0/System/SFKV7Installconfirm" }	
 	
-    property VeQuickItem  sfkV4InstallConfirm: VeQuickItem { 
-		id: sfkV4InstallConfirm  
-		uid: "mqtt/sfksettings/0/System/SFKV4Installconfirm" }
+    property VeQuickItem  sfkV7InstallConfirm: VeQuickItem { 
+		id: sfkV7InstallConfirm  
+		uid: "mqtt/sfksettings/0/System/SFKV7Installconfirm" }
     property VeQuickItem  sfkFirmwareInstallationCompleted: VeQuickItem { 
 		id: sfkFirmwareInstallationCompleted  
 		uid: "mqtt/sfksettings/0/System/SFKFirmwareInstallationCompleted" }
     
-    property VeQuickItem  sfkV4TextInstallConfirm: VeQuickItem { 
-		id: sfkV4TextInstallConfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV4Textinstallconfirm" }
+    property VeQuickItem  sfkV7TextInstallConfirm: VeQuickItem { 
+		id: sfkV7TextInstallConfirm 
+		uid: "mqtt/sfksettings/0/System/SFKV7Textinstallconfirm" }
     
-    property VeQuickItem  sfkV4FirmwareDownloadConfirm: VeQuickItem { 
-		id: sfkV4FirmwareDownloadConfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV4Downloaded" }
+    property VeQuickItem  sfkV7FirmwareDownloadConfirm: VeQuickItem { 
+		id: sfkV7FirmwareDownloadConfirm 
+		uid: "mqtt/sfksettings/0/System/SFKV7Downloaded" }
     
-    property VeQuickItem  sfkV4OSTextconfirm: VeQuickItem { 
-		id: sfkV4OSTextconfirm 
-		uid: "mqtt/sfksettings/0/System/SFKV4OSTextconfirm" }
+    property VeQuickItem  sfkV7OSTextconfirm: VeQuickItem { 
+		id: sfkV7OSTextconfirm 
+		uid: "mqtt/sfksettings/0/System/SFKV7OSTextconfirm" }
     property VeQuickItem  sfkCompatibleVerisonNr: VeQuickItem {
 		id: sfkCompatibleVerisonNr 
 		uid: "mqtt/sfksettings/0/System/SFKCompatibleVerisonNr" }
@@ -79,18 +79,18 @@ Page {
 		id: sfkCurrentversion 
 	    uid: "mqtt/sfksettings/0/System/SFKcurrentversion" }
     
-    property VeQuickItem  sfkV4version: VeQuickItem { 
-		id: sfkV4version 
-	    uid: "mqtt/sfksettings/0/System/SFKV4version" }
+    property VeQuickItem  sfkV7version: VeQuickItem { 
+		id: sfkV7version 
+	    uid: "mqtt/sfksettings/0/System/SFKV7version" }
 
     property real sfkCurrentVersion: sfkCurrentversion.value || 0.0
-    property real sfkV4VersionReal: sfkV4version.value || 0.0
+    property real sfkV7VersionReal: sfkV7version.value || 0.0
 
     // Boolean properties indicating if a newer version is available
-    property bool isSFKV4Newer: sfkV4VersionReal >= sfkCurrentVersion
+    property bool isSFKV7Newer: sfkV7VersionReal >= sfkCurrentVersion
 
     property string installedVersionStr: installedVenusOSversion.value || "v0.00"
-    property string requiredVersionStrV4: sfkV4OSTextconfirm.value || "v0.00"
+    property string requiredVersionStrV7: sfkV7OSTextconfirm.value || "v0.00"
 
     // Function to extract numeric version and convert to float
     function extractVersionNumber(versionString) {
@@ -99,10 +99,10 @@ Page {
     }
 	    // Convert versions to numbers
     property real installedVersion: extractVersionNumber(installedVersionStr)
-    property real requiredVersionV4: extractVersionNumber(requiredVersionStrV4)
+    property real requiredVersionV7: extractVersionNumber(requiredVersionStrV7)
 
-    property string versionComparisonMessageV4: (installedVersion > requiredVersionV4) ? qsTr("This driver is not compatible with your Venus OS firmware.") : installedVersion < requiredVersionV4 ? qsTr("This driver is not compatible with your Venus OS firmware.") :  qsTr("This driver is compatible with your Venus OS firmware.")
-    property string versionoutdateComparisonMessageV4: (isSFKV4Newer) ? qsTr("") : qsTr("This driver is outdated.")
+    property string versionComparisonMessageV7: (installedVersion > requiredVersionV7) ? qsTr("This driver is not compatible with your Venus OS firmware.") : installedVersion < requiredVersionV7 ? qsTr("This driver is not compatible with your Venus OS firmware.") :  qsTr("This driver is compatible with your Venus OS firmware.")
+    property string versionoutdateComparisonMessageV7: (isSFKV7Newer) ? qsTr("") : qsTr("This driver is outdated.")
     property bool installationCompletedPulse: true
 
 	property VeQuickItem sfkFlag: VeQuickItem{
@@ -141,7 +141,7 @@ Page {
 			}
 
 			ListText {
-				text: qsTr("%1 %2").arg(versionComparisonMessageV4).arg(versionoutdateComparisonMessageV4)
+				text: qsTr("%1 %2").arg(versionComparisonMessageV7).arg(versionoutdateComparisonMessageV7)
 				preferredVisible: sfkFirmwareInstallationCompleted.value === 0 
 			}
 
@@ -151,36 +151,36 @@ Page {
 			}
 
 			ListButton {
-				text: qsTr("Download %1").arg(sfkV4TextInstallConfirm.value)
+				text: qsTr("Download %1").arg(sfkV7TextInstallConfirm.value)
 
-				secondaryText:sfkV4DownloadProgress.value === 100
+				secondaryText:sfkV7DownloadProgress.value === 100
 						? qsTr("Downloaded")
-					: sfkV4FirmwareDownloadConfirm.value === 1
-						? qsTr("Downloading %1%").arg(sfkV4DownloadProgress.value)
+					: sfkV7FirmwareDownloadConfirm.value === 1
+						? qsTr("Downloading %1%").arg(sfkV7DownloadProgress.value)
 					: qsTr("Download")
 
-				preferredVisible: (installedVersion === requiredVersionV4) && sfkFirmwareInstallationCompleted.value === 0
+				preferredVisible: (installedVersion === requiredVersionV7) && sfkFirmwareInstallationCompleted.value === 0
 
 				onClicked: {
-					if (sfkV4FirmwareDownloadConfirm.value !== 1 && sfkV4DownloadProgress.value < 100)
-						sfkV4FirmwareDownloadConfirm.setValue(1)
+					if (sfkV7FirmwareDownloadConfirm.value !== 1 && sfkV7DownloadProgress.value < 100)
+						sfkV7FirmwareDownloadConfirm.setValue(1)
 				}
 			}
 
 			ListButton {
-				text: qsTr("Install %1").arg(sfkV4TextInstallConfirm.value)
+				text: qsTr("Install %1").arg(sfkV7TextInstallConfirm.value)
 
-				secondaryText:sfkV4InstallProgress.value === 100
+				secondaryText:sfkV7InstallProgress.value === 100
 						? qsTr("Installed")
-					: sfkV4InstallConfirmItem.value === 1
-						? qsTr("Installing %1%").arg(sfkV4InstallProgress.value)
+					: sfkV7InstallConfirmItem.value === 1
+						? qsTr("Installing %1%").arg(sfkV7InstallProgress.value)
 					: qsTr("Install")
 
-				preferredVisible: sfkV4FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0
+				preferredVisible: sfkV7FirmwareDownloadCompleted.value === 1 && sfkFirmwareInstallationCompleted.value === 0
 
 				onClicked: {
-					if (sfkV4InstallConfirmItem.value !== 1 && sfkV4InstallProgress.value < 100)
-						sfkV4InstallConfirmItem.setValue(1)
+					if (sfkV7InstallConfirmItem.value !== 1 && sfkV7InstallProgress.value < 100)
+						sfkV7InstallConfirmItem.setValue(1)
 				}
 			}
 

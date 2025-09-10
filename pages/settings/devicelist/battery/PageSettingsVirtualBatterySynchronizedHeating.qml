@@ -8,7 +8,6 @@ import Victron.VenusOS
 
 Page {
 	id: root
-
 	property string bindPrefix
 	property int lowtempDialogResult: 0   // <--- Global result variable	
 	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
