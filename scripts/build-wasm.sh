@@ -95,9 +95,7 @@ cd "build-wasm"
 # Configure the project with CMake, setting the build type to MinSizeRel (minimum size release)
 ${QTDIR}/bin/qt-cmake -DCMAKE_BUILD_TYPE=MinSizeRel ..
 
-# Build the project using CMake with the MinSizeRel configuration
-# parallel builds cause an error here.
-cmake --build .
+cmake --build . --parallel $(nproc)
 
 if [ $? -ne 0 ]; then
     echo
@@ -171,9 +169,19 @@ if [[ -n "${HOST_LIST}" ]]; then
     # Loop through each host
     for HOST in "${HOSTS[@]}"; do
 
+        # Test if port 22 is open
+        echo -n "Testing if port 22 is reachable on ${HOST}... "
+        if nc -z -w 5 "${HOST}" 22; then
+            echo -e "\e[32mOK.\e[0m"
+        else
+            echo -e "\e[31mPort 22 is not reachable on ${HOST}. Please check the IP address and network connection.\e[0m"
+            # Skip to the next host
+            continue
+        fi
+
         # Test SSH connection
         echo "Testing SSH connection to ${HOST}..."
-        ssh -o BatchMode=yes -o ConnectTimeout=5 root@${HOST} "exit" 2>/dev/null
+        ssh -o BatchMode=yes -o ConnectTimeout=5 root@${HOST} "exit"
 
         if [ $? -ne 0 ]; then
             echo
@@ -184,7 +192,8 @@ if [[ -n "${HOST_LIST}" ]]; then
             ssh-copy-id root@${HOST}
             if [ $? -ne 0 ]; then
                 echo -e "\e[31mFailed to upload SSH key. Please check your password and try again.\e[0m"
-                exit 1
+                # Skip to the next host
+                continue
             fi
             echo
             echo -e "\e[32mSSH key uploaded successfully.\e[0m"
@@ -210,7 +219,8 @@ if [[ -n "${HOST_LIST}" ]]; then
             echo "GX device disk space:"
             ssh root@${HOST} "df -h | head -n 2"
             echo
-            exit 1
+            # Skip to the next host
+            continue
         fi
         echo -e "\e[32mFiles uploaded successfully.\e[0m"
         echo

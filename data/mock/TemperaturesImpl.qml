@@ -84,13 +84,14 @@ Item {
 
 	// Animate temperature service values.
 	Instantiator {
-		model: ServiceModel { serviceTypes: ["temperature"] }
+		model: FilteredServiceModel { serviceTypes: ["temperature"] }
 		delegate: Item {
 			id: temperature
 
 			required property string uid
 
 			MockDataRandomizer {
+				active: Global.mainView && Global.mainView.mainViewVisible
 				VeQuickItem { uid: temperature.uid + "/Temperature" }
 				VeQuickItem { uid: temperature.uid + "/Humidity" }
 			}

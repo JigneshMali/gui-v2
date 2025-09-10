@@ -24,7 +24,7 @@ Item {
 	}
 
 	Instantiator {
-		model: ServiceModel { serviceTypes: ["motordrive"] }
+		model: FilteredServiceModel { serviceTypes: ["motordrive"] }
 		delegate: Item {
 			id: motorDrive
 
@@ -37,6 +37,7 @@ Item {
 				onValueChanged: {
 					if (motorDrive.index === 0) {
 						root.setSystemValue("/MotorDrive/Power", value ?? 0)
+						root.setSystemValue("/MotorDrive/Current", value/100 ?? 0)
 					}
 				}
 			}
@@ -53,6 +54,7 @@ Item {
 
 			// Animate motordrive values.
 			MockDataRandomizer {
+				active: Global.mainView && Global.mainView.mainViewVisible
 				VeQuickItem { uid: motorDrive.uid + "/Dc/0/Power" }
 				VeQuickItem { uid: motorDrive.uid + "/Dc/0/Voltage" }
 				VeQuickItem { uid: motorDrive.uid + "/Dc/0/Current" }
@@ -62,11 +64,13 @@ Item {
 				VeQuickItem { uid: motorDrive.uid + "/Controller/Temperature" }
 			}
 			MockDataRangeAnimator {
+				active: Global.mainView && Global.mainView.mainViewVisible
 				stepSize: -876 // use a step size that looks uneven
 				maximumValue: MockManager.value(Global.systemSettings.serviceUid + "/Settings/Gui/Gauges/MotorDrive/RPM/Max") || 0
 				VeQuickItem { uid: motorDrive.uid + "/Motor/RPM" }
 			}
 			MockDataRangeAnimator {
+				active: Global.mainView && Global.mainView.mainViewVisible
 				maximumValue: VenusOS.MotorDriveGear_Forward
 				VeQuickItem { uid: motorDrive.uid + "/Motor/Direction" }
 			}

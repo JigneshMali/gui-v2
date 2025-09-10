@@ -302,11 +302,11 @@ SwipeViewPage {
 
 	function _dcWidgetTypeForInputType(dcInputType) {
 		switch (dcInputType) {
-		case VenusOS.DcInputs_InputType_Alternator:
+		case VenusOS.DcMeter_Type_Alternator:
 			return VenusOS.OverviewWidget_Type_Alternator
-		case VenusOS.DcInputs_InputType_FuelCell:
+		case VenusOS.DcMeter_Type_FuelCell:
 			return VenusOS.OverviewWidget_Type_FuelCell
-		case VenusOS.DcInputs_InputType_WindCharger:
+		case VenusOS.DcMeter_Type_WindCharger:
 			return VenusOS.OverviewWidget_Type_Wind
 		default:
 			// Use DC Generator as the catch-all type for any DC power source that isn't
@@ -370,8 +370,8 @@ SwipeViewPage {
 
 			// For AC inputs, positive power means energy is flowing towards inverter/charger,
 			// and negative power means energy is flowing towards the input.
-			return power > Theme.geometry_overviewPage_connector_animationPowerThreshold
-					? VenusOS.WidgetConnector_AnimationMode_StartToEnd
+			return Math.abs(power) < Theme.geometry_overviewPage_connector_animationPowerThreshold ? VenusOS.WidgetConnector_AnimationMode_NotAnimated
+					: power > 0.0 ? VenusOS.WidgetConnector_AnimationMode_StartToEnd
 					: VenusOS.WidgetConnector_AnimationMode_EndToStart
 		} else if (connectorWidget.endWidget === batteryWidget) {
 			// For DC inputs, positive power means energy is flowing towards battery.

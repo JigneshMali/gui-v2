@@ -198,11 +198,13 @@ void BackendConnection::initDBusConnection(const QString &address)
 	QDBusConnection dbus = VeDbusConnection::getConnection();
 	if (!dbus.isConnected()) {
 		qWarning() << "D-Bus connection failed!";
+		emit producerChanged();
 		setState(Failed);
 		return;
 	}
 
 	dbusProducer->open(dbus);
+	emit producerChanged();
 
 	setState(VeDbusConnection::getConnection().isConnected());
 }
@@ -354,12 +356,14 @@ void BackendConnection::initMqttConnection(const QString &address)
 		mqttProducer->open(QHostAddress(address), 1883);
 	}
 #endif
+	emit producerChanged();
 }
 
 void BackendConnection::initMockConnection()
 {
 	VeQItemMockProducer *producer = new VeQItemMockProducer(VeQItems::getRoot(), "mock");
 	m_producer = producer;
+	emit producerChanged();
 	setState(true);
 }
 
@@ -373,6 +377,7 @@ void BackendConnection::setType(const SourceType type, const QString &address)
 	if (m_producer) {
 		m_producer->deleteLater();
 		m_producer = nullptr;
+		emit producerChanged();
 	}
 
 	switch (type) {
@@ -643,6 +648,19 @@ void BackendConnection::setNeedsWasmKeyboardHandler(bool needsWasmKeyboardHandle
 	}
 }
 
+bool BackendConnection::msaaEnabled() const
+{
+	return m_msaaEnabled;
+}
+
+void BackendConnection::setMsaaEnabled(bool e)
+{
+	if (m_msaaEnabled != e) {
+		m_msaaEnabled = e;
+		emit msaaEnabledChanged();
+	}
+}
+
 QUrl BackendConnection::demoImageFileName() const
 {
 	static const QUrl filePath = QUrl::fromLocalFile("/data/demo-brief.png");
@@ -776,6 +794,40 @@ void BackendConnectionTester::qmlEngineAvailable(QQmlEngine *engine)
 	// Initialization requiring the QQmlEngine to be constructed
 	engine->rootContext()->setContextProperty("mqttBackend", &mqttBackend);
 	engine->rootContext()->setContextProperty("dbusBackend", &dbusBackend);
+}
+
+void BackendConnection::setNodeRedUrl(const QString &url)
+{
+	if (m_nodeRedUrl != url) {
+		m_nodeRedUrl = url;
+		emit nodeRedUrlChanged();
+	}
+}
+
+QString BackendConnection::nodeRedUrl() const
+{
+	if (m_nodeRedUrl.isEmpty()) {
+		return QStringLiteral("https://venus.local:1881");
+	} else {
+		return m_nodeRedUrl;
+	}
+}
+
+void BackendConnection::setSignalKUrl(const QString &url)
+{
+	if (m_signalKUrl != url) {
+		m_signalKUrl = url;
+		emit signalKUrlChanged();
+	}
+}
+
+QString BackendConnection::signalKUrl() const
+{
+	if (m_signalKUrl.isEmpty()) {
+		return QStringLiteral("https://venus.local:3000");
+	} else {
+		return m_signalKUrl;
+	}
 }
 
 }

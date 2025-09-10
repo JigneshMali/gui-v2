@@ -307,6 +307,10 @@ QtObject {
 	//% "Manufacturer"
 	readonly property string manufacturer: qsTrId("common_words_manufacturer")
 
+	//: Short for Maximum
+	//% "Max"
+	readonly property string max: qsTrId("common_words_max")
+
 	//% "Maximum current"
 	readonly property string maximum_current: qsTrId("common_words_maximum_current")
 
@@ -318,6 +322,10 @@ QtObject {
 
 	//% "Maximum voltage"
 	readonly property string maximum_voltage: qsTrId("common_words_maximum_voltage")
+
+	//: Short for Minimum
+	//% "Min"
+	readonly property string min: qsTrId("common_words_min")
 
 	//% "Minimum current"
 	readonly property string minimum_current: qsTrId("common_words_minimum_current")
@@ -403,6 +411,9 @@ QtObject {
 	//: AC input or output position
 	//% "Position"
 	readonly property string position_ac: qsTrId("common_words_position_ac")
+
+	//% "Press"
+	readonly property string press: qsTrId("common_words_press")
 
 	//% "Press to clear"
 	readonly property string press_to_clear: qsTrId("common_words_press_to_clear")
@@ -518,6 +529,9 @@ QtObject {
 
 	//% "Total"
 	readonly property string total: qsTrId("common_words_total")
+
+	//% "Total power"
+	readonly property string total_power: qsTrId("common_words_total_power")
 
 	//: Solar tracker
 	//% "Tracker"

@@ -39,6 +39,8 @@
     "color_button_icon_down": "color_gray5",
     "color_button_on_background": "color_ok",
     "color_button_off_background": "color_dimBlue",
+    "color_button_on_background_disabled": "color_gray3",
+    "color_button_off_background_disabled": "#333333",
 
     "color_card_separator": "color_gray2",
 
@@ -58,6 +60,8 @@
 
     "color_scrollBar_bar": "color_gray2",
 
+    "color_slider_separator": "#C3D8EE",
+
     "color_splash_logo_icon": "color_white",
     "color_splash_logo_text": "color_white",
 
@@ -66,6 +70,12 @@
     "color_switch_groove_on": "color_ok",
     "color_switch_groove_border_off": "color_gray4",
     "color_switch_groove_border_on": "transparent",
+
+    "color_temperatureslider_gradient_max": "#752E2C",
+    "color_temperatureslider_gradient_max_border": "#F35C58",
+    "color_temperatureslider_gradient_min": "#2D2647",
+    "color_temperatureslider_gradient_min_border": "#387DC5",
+    "color_temperatureslider_gradient_mid": "#1D3D60",
 
     "color_navigationBar_button_on": "color_blue",
     "color_navigationBar_button_off": "color_gray5",

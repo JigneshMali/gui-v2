@@ -2,13 +2,6 @@
 # Copyright (C) 2023 Victron Energy B.V.
 # See LICENSE.txt for license information.
 #
-
-if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
-    message(FATAL_ERROR "In-source builds are not allowed. Build artifacts such as CMakeCache.txt created in ${CMAKE_SOURCE_DIR} will cause problems for future builds. Run 'git clean -fd' in ${CMAKE_SOURCE_DIR} to continue.")
-endif()
-
-cmake_minimum_required(VERSION 3.24) # earlier versions of cmake don't handle 'qt_add_qml_module' properly, you get errors at runtime like: "qrc:/main.qml:164 ApplicationContent is not a type\n"
-
 # CMAKE HINTS
 # see: https://github.com/victronenergy/gui-v2/wiki/How-to-build-venus-gui-v2
 #
@@ -25,47 +18,29 @@ cmake_minimum_required(VERSION 3.24) # earlier versions of cmake don't handle 'q
 #       cmake /path/to/CMakeLists.txt
 #       POEDITOR_TOKEN='....' make upload_translations  # this uploads /path/to/build/i18n/venus-gui-v2.ts to poeditor
 
+cmake_policy(SET CMP0048 NEW)
 cmake_policy(SET CMP0071 NEW) # process GENERATED source files in AUTOMOC and AUTOUIC. Added to silence a cmake warning.
 cmake_policy(SET CMP0079 NEW)
 
-project(venus-gui-v2 LANGUAGES CXX VERSION 1.2.7)
-add_definitions(-DPROJECT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR} -DPROJECT_VERSION_MINOR=${PROJECT_VERSION_MINOR} -DPROJECT_VERSION_PATCH=${PROJECT_VERSION_PATCH} )
-
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install CACHE PATH "..." FORCE)
-else()
-    include(GNUInstallDirs)
+cmake_minimum_required(VERSION 3.24)
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+    message(FATAL_ERROR "In-source builds are not allowed. Build artifacts such as CMakeCache.txt created in ${CMAKE_SOURCE_DIR} will cause problems for future builds. Run 'git clean -fd' in ${CMAKE_SOURCE_DIR} to continue.")
 endif()
 
-option(LOAD_QML_FROM_FILESYSTEM "disable filesystem loading via cmake -DLOAD_QML_FROM_FILESYSTEM=OFF" ON) # Enabled by default
+project(venus-gui-v2 LANGUAGES CXX VERSION 1.2.9)
+add_definitions(-DPROJECT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR} -DPROJECT_VERSION_MINOR=${PROJECT_VERSION_MINOR} -DPROJECT_VERSION_PATCH=${PROJECT_VERSION_PATCH} )
+
 option(NO_CACHEGEN "Enable bytecode compilation and lint processing for all qml files via cmake -NO_CACHEGEN=OFF" ON) # Enabled by default
 option(RUN_UNIT_TESTS "only affects desktop builds. Enable via cmake -DRUN_UNIT_TESTS=ON" OFF) # Disabled by default
 
-if (${CMAKE_SYSTEM_PROCESSOR} STREQUAL ${CMAKE_HOST_SYSTEM_PROCESSOR})
-    set(VENUS_DESKTOP_BUILD ON)
-endif()
-if (${VENUS_DESKTOP_BUILD})
-    add_compile_definitions(VENUS_DESKTOP_BUILD)
-    enable_testing()
-    add_subdirectory(tests)
-endif()
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(cmake/BuildDefines.cmake)
+include(cmake/BuildRequirements.cmake)
+include(cmake/BuildQt6AddShaders.cmake)
 
 message("Building VenusOS for ${CMAKE_SYSTEM_NAME}")
+message("Host system architecture: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
 message("CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 message("CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
-
-# If we want a release build, remove the '-g' debug compiler flag set by the environment setup script.
-# Otherwise, our executable size ballons from ~10MB to ~220MB.
-if(("${CMAKE_BUILD_TYPE}" STREQUAL "Release" OR "${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel"))
-    message("Removing '-g' debug flag set by /opt/venus/dunfell-arm-cortexa7hf-neon-vfpv4/environment-setup-cortexa7hf-neon-vfpv4-ve-linux-gnueabi")
-    # Match all instances of " -g " in the input "${CMAKE_CXX_FLAGS}" and replace it with a single space " " and store the result into the output variable CMAKE_CXX_FLAGS
-    string(REPLACE " -g " " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-    message("new CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS} ")
-endif()
 
 if (${NO_CACHEGEN})
     message("Disabling cache generation for faster builds")
@@ -1513,48 +1488,25 @@ add_link_options(
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
-    Qt6::Svg
-    Qt6::Xml
-    Qt6::Mqtt
-    VenusQMLModuleplugin
-    BoatPageComponentsplugin
+    VictronVenusOSplugin
+    VictronVenusOSShadersplugin
     VictronGaugesplugin
+    VictronBoatplugin
     VictronMockplugin
     qzxing
 )
 
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Emscripten")
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        Qt6::WebSockets
-    )
-else()
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        Qt6::DBus
-    )
-endif()
+include(cmake/RunTests.cmake)
 
-# see if the dependency graph is correct, for translations support...
-add_custom_target(graphviz
-                 "${CMAKE_COMMAND}" "--graphviz=${PROJECT_NAME}.dot" .
-                  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
-# disable it for now, can re-enable for future analysis when required.
-#add_dependencies(${PROJECT_NAME} graphviz)
-
-# Parse theme json files and generate themeobject.h.
-# Use DEPENDS to ensure script is only run when the script or theme json files have changed.
-find_package(Python3 COMPONENTS Interpreter)
-add_custom_command(
-    COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/tools/themeparser.py "${PROJECT_SOURCE_DIR}/themes/" "${PROJECT_SOURCE_DIR}/src/themeobjects.h"
-    OUTPUT "${PROJECT_SOURCE_DIR}/src/themeobjects.h"
-    DEPENDS "${PROJECT_SOURCE_DIR}/themes/animation" "${PROJECT_SOURCE_DIR}/themes/color" "${PROJECT_SOURCE_DIR}/themes/geometry" "${PROJECT_SOURCE_DIR}/themes/typography" ${PROJECT_SOURCE_DIR}/tools/themeparser.py
-    COMMENT "Generating themeobjects.h"
-)
-add_custom_target(
-    theme_parser ALL
-    DEPENDS "${PROJECT_SOURCE_DIR}/src/themeobjects.h"
-)
+add_dependencies(generate_translation_sources_file theme_parser)
 add_dependencies(${PROJECT_NAME} theme_parser)
+# Note: ${PROJECT_NAME} depends on ${BUILD_DIR_QM_FILES} via the qt_add_resources() in GuiV2.cmake
+
+# to visualise the dependency graph, do the following:
+# $ cmake --graphviz=dependencies.dot ../gui-v2/
+# or uncomment the following and build normally.
+#include(cmake/DependencyGraph.cmake)
+#add_dependencies(${PROJECT_NAME} dependency_graph)
+# then convert the dot file to a png:
+# $ dot -Tpng dependencies.dot -o dependencies.png
+
