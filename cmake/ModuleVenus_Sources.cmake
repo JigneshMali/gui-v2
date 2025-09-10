@@ -445,6 +445,10 @@ set (VictronVenusOS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev1.qml
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev2.qml
     pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev3.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev4.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev5.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev6.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev7.qml
     pages/settings/devicelist/battery/PageSettingsSFKDriverSettings.qml
     pages/settings/devicelist/battery/PageSettingsVirtualBatteryBalanceSeries.qml
     pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml
