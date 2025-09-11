@@ -491,14 +491,14 @@ DevicePage {
 		// 	}
 		// }
 			
-		ListNavigation {
-			text: CommonWords.device_info_title
-			preferredVisible:  sfkvbFlag.value === 1
-			onClicked: {
-				Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
-						{ "title": text, "bindPrefix": root.bindPrefix })
-			}
-		}
+		// ListNavigation {
+		// 	text: CommonWords.device_info_title
+		// 	preferredVisible:  sfkvbFlag.value === 1
+		// 	onClicked: {
+		// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml",
+		// 				{ "title": text, "bindPrefix": root.bindPrefix })
+		// 	}
+		// }
 
 		ListNavigation {
 				//% "Parameters"
