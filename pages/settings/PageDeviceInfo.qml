@@ -36,7 +36,7 @@ Page {
 				dataItem.uid: root.bindPrefix + "/Connected"
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
-			
+
 			ListText {
 				//% "Connection"
 				text: qsTrId("settings_deviceinfo_connection")
@@ -67,7 +67,7 @@ Page {
 				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 				// placeholderText: CommonWords.custom_name
 				textField.onAccepted: {
 					if (textField.text.length !== 6) {
@@ -79,18 +79,18 @@ Page {
 				}
 			}
 
-			ListText {
-				//% "Product ID"
-				text: qsTrId("settings_deviceinfo_product_id")
-				secondaryText: Utils.toHexFormat(dataItem.value)
-				dataItem.uid: root.serviceUid + "/ProductId"
-				dataItem.invalidate: false
-			}
+			// ListText {
+			// 	//% "Product ID"
+			// 	text: qsTrId("settings_deviceinfo_product_id")
+			// 	secondaryText: Utils.toHexFormat(dataItem.value)
+			// 	dataItem.uid: root.serviceUid + "/ProductId"
+			// 	dataItem.invalidate: false
+			// }
 
 			ListFirmwareVersion {
 				bindPrefix: root.serviceUid
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			ListText {
@@ -98,7 +98,7 @@ Page {
 				text: qsTrId("settings_deviceinfo_hardware_version")
 				dataItem.uid: root.serviceUid + "/HardwareVersion"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid  && sfkFlag.value === 1
 			}
 
 			// ListText {
@@ -120,14 +120,14 @@ Page {
 				text: CommonWords.serial_number
 				dataItem.uid: root.serviceUid + "/Serial"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 			
 			ListText {
 				text: "MCU ID"
 				dataItem.uid: root.bindPrefix + "/MCUid"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			ListText {
