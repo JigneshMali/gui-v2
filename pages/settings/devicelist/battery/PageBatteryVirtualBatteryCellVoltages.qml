@@ -186,7 +186,7 @@ Page {
 	// -------------------------------------- custom start
 	// ---------------- BATTERY - 1 START
 			ListText {
-				text:  qsTr("%1").arg(_b1CustomName.text)
+				text:  qsTr("%1").arg(_b1CustomName.value)
 				// preferredVisible: _b1CustomName.valid
 				preferredVisible: _b1CustomName.valid && b1c1volt.value > 0
 			}
@@ -381,7 +381,7 @@ Page {
 	
 	// ---------------- BATTERY - 2 START
 			ListText {
-				text:  qsTr("%1").arg(_b2CustomName.text)
+				text:  qsTr("%1").arg(_b2CustomName.value)
 				preferredVisible: _b2CustomName.valid && b2c1volt.value > 0
 			}
 
@@ -574,7 +574,7 @@ Page {
 	// ---------------- BATTERY - 2 END
 	// ---------------- BATTERY - 3 START
 			ListText {
-				text:  qsTr("%1").arg(_b3CustomName.text)
+				text:  qsTr("%1").arg(_b3CustomName.value)
 				preferredVisible: _b3CustomName.valid && b3c1volt.value > 0
 			}
 
@@ -767,7 +767,7 @@ Page {
 	// ---------------- BATTERY - 3 END
 	// ---------------- BATTERY - 4 START
 			ListText {
-				text:  qsTr("%1").arg(_b4CustomName.text)
+				text:  qsTr("%1").arg(_b4CustomName.value)
 				preferredVisible: _b4CustomName.valid && b4c1volt.value > 0
 			}
 
@@ -960,7 +960,7 @@ Page {
 	// ---------------- BATTERY - 4 END
 	// ---------------- BATTERY - 5 START
 			ListText {
-				text:  qsTr("%1").arg(_b5CustomName.text)
+				text:  qsTr("%1").arg(_b5CustomName.value)
 				preferredVisible: _b5CustomName.valid && b5c1volt.value > 0
 			}
 
@@ -1153,7 +1153,7 @@ Page {
 	// ---------------- BATTERY - 5 END
 	// ---------------- BATTERY - 6 START
 			ListText {
-				text:  qsTr("%1").arg(_b6CustomName.text)
+				text:  qsTr("%1").arg(_b6CustomName.value)
 				preferredVisible: _b6CustomName.valid && b6c1volt.value > 0
 			}
 
@@ -1346,7 +1346,7 @@ Page {
 	// ---------------- BATTERY - 6 END
 	// ---------------- BATTERY - 7 START
 			ListText {
-				text:  qsTr("%1").arg(_b7CustomName.text)
+				text:  qsTr("%1").arg(_b7CustomName.value)
 				preferredVisible: _b7CustomName.valid && b7c1volt.value > 0
 			}
 
@@ -1539,7 +1539,7 @@ Page {
 	// ---------------- BATTERY - 7 END
 	// ---------------- BATTERY - 8 START
 			ListText {
-				text:  qsTr("%1").arg(_b8CustomName.text)
+				text:  qsTr("%1").arg(_b8CustomName.value)
 				preferredVisible: _b8CustomName.valid && b8c1volt.value > 0
 			}
 
