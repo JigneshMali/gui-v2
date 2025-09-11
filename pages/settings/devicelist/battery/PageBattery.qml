@@ -357,6 +357,15 @@ DevicePage {
 						{ "title": text, "bindPrefix": root.bindPrefix  })
 			}
 		}
+		
+		ListNavigation {
+			text: "Cell Voltages"
+			preferredVisible: nrOfBatteries.valid
+			onClicked: {
+				Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryVirtualBatteryCellVoltages.qml",
+						{ "title": text, "bindPrefix": root.bindPrefix  })
+			}
+		}
 
 		ListNavigation {
 			text: CommonWords.alarms
