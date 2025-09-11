@@ -15,15 +15,15 @@ Page {
 	property Component extraDeviceInfo
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
-		uid: root.bindPrefix +  "/SFKbatteryflag"
+		uid: root.serviceUid +  "/SFKbatteryflag"
 	}	
 	property VeQuickItem sfkvbFlag: VeQuickItem {
 		id: sfkvbFlag
-		uid: root.bindPrefix + "/SFKVBbatteryflag"
+		uid: root.serviceUid + "/SFKVBbatteryflag"
 	}	
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
-		uid: root.bindPrefix +  "/SFKhardwareflag"
+		uid: root.serviceUid +  "/SFKhardwareflag"
 		}
 
 	title: CommonWords.device_info_title
@@ -33,7 +33,7 @@ Page {
 
 			ListText {
 				text: "Connected"
-				dataItem.uid: root.bindPrefix + "/Connected"
+				dataItem.uid: root.serviceUid + "/Connected"
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 
@@ -64,7 +64,7 @@ Page {
 			ListTextField {
 				//% "SFK pin"
 				text: "Security pin"
-				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
+				dataItem.uid: root.serviceUid + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
@@ -110,7 +110,7 @@ Page {
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
-				dataItem.uid: root.bindPrefix + "/DeviceInstance"
+				dataItem.uid: root.serviceUid + "/DeviceInstance"
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
@@ -125,7 +125,7 @@ Page {
 			
 			ListText {
 				text: "MCU ID"
-				dataItem.uid: root.bindPrefix + "/MCUid"
+				dataItem.uid: root.serviceUid + "/MCUid"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
