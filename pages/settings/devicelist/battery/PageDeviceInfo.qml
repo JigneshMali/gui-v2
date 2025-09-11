@@ -84,6 +84,7 @@ Page {
 			// 	secondaryText: Utils.toHexFormat(dataItem.value)
 			// 	dataItem.uid: root.bindPrefix + "/ProductId"
 			// 	dataItem.invalidate: false
+			// 	preferredVisible: dataItem.valid && sfkFlag.value === 0
 			// }
 
 			ListFirmwareVersion {

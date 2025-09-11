@@ -5,13 +5,14 @@
 
 import QtQuick
 import Victron.VenusOS
-import QtQuick.Controls.impl as CP
 
 Page {
 	id: root
 
-	property string bindPrefix
-	property alias settingsListView: settingsListView
+	// The uid of the service that provides the device information.
+	required property string serviceUid
+	// Additional settings to be loaded.
+	property Component extraDeviceInfo
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
 		uid: root.bindPrefix +  "/SFKbatteryflag"
@@ -25,9 +26,9 @@ Page {
 		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
 
-	GradientListView {
-		id: settingsListView
+	title: CommonWords.device_info_title
 
+	GradientListView {
 		model: VisibleItemModel {
 
 			ListText {
@@ -35,25 +36,25 @@ Page {
 				dataItem.uid: root.bindPrefix + "/Connected"
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
-
+			
 			ListText {
 				//% "Connection"
 				text: qsTrId("settings_deviceinfo_connection")
-				dataItem.uid: root.bindPrefix + "/Mgmt/Connection"
+				dataItem.uid: root.serviceUid + "/Mgmt/Connection"
 				dataItem.invalidate: false
 			}
 
 			ListText {
 				//% "Product"
 				text: qsTrId("settings_deviceinfo_product")
-				dataItem.uid: root.bindPrefix + "/ProductName"
+				dataItem.uid: root.serviceUid + "/ProductName"
 				dataItem.invalidate: false
 			}
 
 			ListTextField {
 				//% "Name"
 				text: qsTrId("settings_deviceinfo_name")
-				dataItem.uid: root.bindPrefix + "/CustomName"
+				dataItem.uid: root.serviceUid + "/CustomName"
 				dataItem.invalidate: false
 				textField.maximumLength: 32
 				preferredVisible: dataItem.valid
@@ -82,25 +83,30 @@ Page {
 				//% "Product ID"
 				text: qsTrId("settings_deviceinfo_product_id")
 				secondaryText: Utils.toHexFormat(dataItem.value)
-				dataItem.uid: root.bindPrefix + "/ProductId"
+				dataItem.uid: root.serviceUid + "/ProductId"
 				dataItem.invalidate: false
-				// preferredVisible: dataItem.valid && sfkFlag.value === 0 && sfkvbFlag.value === 0
-				preferredVisible: dataItem.valid && sfkFlag.value === undefined && sfkvbFlag.value === undefined
 			}
 
 			ListFirmwareVersion {
-				bindPrefix: root.bindPrefix
+				bindPrefix: root.serviceUid
 				dataItem.invalidate: false
+				preferredVisible: dataItem.valid
 			}
 
 			ListText {
 				//% "Hardware version"
 				text: qsTrId("settings_deviceinfo_hardware_version")
-				dataItem.uid: root.bindPrefix + "/HardwareVersion"
+				dataItem.uid: root.serviceUid + "/HardwareVersion"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
 
+			// ListText {
+			// 	text: CommonWords.vrm_instance
+			// 	dataItem.uid: root.serviceUid + "/DeviceInstance"
+			// 	dataItem.invalidate: false
+			// }
+			
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
@@ -112,11 +118,11 @@ Page {
 
 			ListText {
 				text: CommonWords.serial_number
-				dataItem.uid: root.bindPrefix + "/Serial"
+				dataItem.uid: root.serviceUid + "/Serial"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
-
+			
 			ListText {
 				text: "MCU ID"
 				dataItem.uid: root.bindPrefix + "/MCUid"
@@ -127,10 +133,12 @@ Page {
 			ListText {
 				//% "Device name"
 				text: qsTrId("settings_deviceinfo_device_name")
-				dataItem.uid: root.bindPrefix + "/DeviceName"
+				dataItem.uid: root.serviceUid + "/DeviceName"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
 		}
+
+		footer: root.extraDeviceInfo
 	}
-}
+}*/
