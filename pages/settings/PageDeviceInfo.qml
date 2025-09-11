@@ -17,15 +17,15 @@ Page {
 	property Component extraDeviceInfo
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
-		uid: root.bindPrefix +  "/SFKbatteryflag"
+		uid: root.serviceUid +  "/SFKbatteryflag"
 	}	
 	property VeQuickItem sfkvbFlag: VeQuickItem {
 		id: sfkvbFlag
-		uid: root.bindPrefix + "/SFKVBbatteryflag"
+		uid: root.serviceUid + "/SFKVBbatteryflag"
 	}	
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
-		uid: root.bindPrefix +  "/SFKhardwareflag"
+		uid: root.serviceUid +  "/SFKhardwareflag"
 		}
 
 	title: CommonWords.device_info_title
@@ -35,28 +35,28 @@ Page {
 
 			ListText {
 				text: "Connected"
-				dataItem.uid: root.bindPrefix + "/Connected"
+				dataItem.uid: root.serviceUid + "/Connected"
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 
 			ListText {
 				//% "Connection"
 				text: qsTrId("settings_deviceinfo_connection")
-				dataItem.uid: root.bindPrefix + "/Mgmt/Connection"
+				dataItem.uid: root.serviceUid + "/Mgmt/Connection"
 				dataItem.invalidate: false
 			}
 
 			ListText {
 				//% "Product"
 				text: qsTrId("settings_deviceinfo_product")
-				dataItem.uid: root.bindPrefix + "/ProductName"
+				dataItem.uid: root.serviceUid + "/ProductName"
 				dataItem.invalidate: false
 			}
 
 			ListTextField {
 				//% "Name"
 				text: qsTrId("settings_deviceinfo_name")
-				dataItem.uid: root.bindPrefix + "/CustomName"
+				dataItem.uid: root.serviceUid + "/CustomName"
 				dataItem.invalidate: false
 				textField.maximumLength: 32
 				preferredVisible: dataItem.valid
@@ -66,7 +66,7 @@ Page {
 			ListTextField {
 				//% "SFK pin"
 				text: "Security pin"
-				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
+				dataItem.uid: root.serviceUid + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
@@ -85,12 +85,12 @@ Page {
 			// 	//% "Product ID"
 			// 	text: qsTrId("settings_deviceinfo_product_id")
 			// 	secondaryText: Utils.toHexFormat(dataItem.value)
-			// 	dataItem.uid: root.bindPrefix + "/ProductId"
+			// 	dataItem.uid: root.serviceUid + "/ProductId"
 			// 	dataItem.invalidate: false
 			// }
 
 			ListFirmwareVersion {
-				bindPrefix: root.bindPrefix
+				bindPrefix: root.serviceUid
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
@@ -98,21 +98,21 @@ Page {
 			ListText {
 				//% "Hardware version"
 				text: qsTrId("settings_deviceinfo_hardware_version")
-				dataItem.uid: root.bindPrefix + "/HardwareVersion"
+				dataItem.uid: root.serviceUid + "/HardwareVersion"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid  && sfkFlag.value === 1
 			}
 
 			// ListText {
 			// 	text: CommonWords.vrm_instance
-			// 	dataItem.uid: root.bindPrefix + "/DeviceInstance"
+			// 	dataItem.uid: root.serviceUid + "/DeviceInstance"
 			// 	dataItem.invalidate: false
 			// }
 			
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
-				dataItem.uid: root.bindPrefix + "/DeviceInstance"
+				dataItem.uid: root.serviceUid + "/DeviceInstance"
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
@@ -120,14 +120,14 @@ Page {
 
 			ListText {
 				text: CommonWords.serial_number
-				dataItem.uid: root.bindPrefix + "/Serial"
+				dataItem.uid: root.serviceUid + "/Serial"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 			
 			ListText {
 				text: "MCU ID"
-				dataItem.uid: root.bindPrefix + "/MCUid"
+				dataItem.uid: root.serviceUid + "/MCUid"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
@@ -135,7 +135,7 @@ Page {
 			ListText {
 				//% "Device name"
 				text: qsTrId("settings_deviceinfo_device_name")
-				dataItem.uid: root.bindPrefix + "/DeviceName"
+				dataItem.uid: root.serviceUid + "/DeviceName"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
