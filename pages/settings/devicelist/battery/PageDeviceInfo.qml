@@ -66,7 +66,7 @@ Page {
 				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 				// placeholderText: CommonWords.custom_name
 				textField.onAccepted: {
 					if (textField.text.length !== 6) {
@@ -90,6 +90,7 @@ Page {
 			ListFirmwareVersion {
 				bindPrefix: root.bindPrefix
 				dataItem.invalidate: false
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			ListText {
@@ -97,7 +98,7 @@ Page {
 				text: qsTrId("settings_deviceinfo_hardware_version")
 				dataItem.uid: root.bindPrefix + "/HardwareVersion"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			ListTextField {
@@ -113,14 +114,14 @@ Page {
 				text: CommonWords.serial_number
 				dataItem.uid: root.bindPrefix + "/Serial"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			ListText {
 				text: "MCU ID"
 				dataItem.uid: root.bindPrefix + "/MCUid"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
 			// ListNavigation {
