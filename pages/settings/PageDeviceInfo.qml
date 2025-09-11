@@ -84,7 +84,8 @@ Page {
 				secondaryText: Utils.toHexFormat(dataItem.value)
 				dataItem.uid: root.bindPrefix + "/ProductId"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid && sfkFlag.value === 0 && sfkvbFlag.value === 0
+				// preferredVisible: dataItem.valid && sfkFlag.value === 0 && sfkvbFlag.value === 0
+				preferredVisible: dataItem.valid && sfkFlag.value === undefined && sfkvbFlag.value === undefined
 			}
 
 			ListFirmwareVersion {
