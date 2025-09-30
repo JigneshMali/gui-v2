@@ -25,7 +25,15 @@ Page {
 		id: restartVBService
 		uid: "mqtt/sfksettings/0/RestartVBService"
 	}
-	
+	property VeQuickItem sfkSubmitDriverHelpFile: VeQuickItem {
+		id: sfkSubmitDriverHelpFile
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFile"
+	}
+	property VeQuickItem sfkSubmitDriverHelpFileProgress: VeQuickItem {
+		id: sfkSubmitDriverHelpFileProgress
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFileProgress"
+	}
+
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
 
@@ -88,6 +96,25 @@ Page {
 				secondaryText: qsTr("Restart Virtual Battery")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmRestartDialog)
+			}
+
+			ListButton {
+				text: qsTr("Submit SFK Driver Diagnostics")
+				secondaryText:sfkSubmitDriverHelpFileProgress.value === 100
+						? qsTr("Submitted")
+					: sfkV7FirmwareDownloadConfirm.value === 1
+						? qsTr("Submitting %1%").arg(sfkSubmitDriverHelpFileProgress.value)
+					: qsTr("Submit")
+
+				preferredVisible: true
+				onClicked: {
+				if (sfkSubmitDriverHelpFile.value === 1){
+                    sfkSubmitDriverHelpFile.setValue(0)
+                }
+                if (sfkSubmitDriverHelpFile.value === 0){
+                    sfkSubmitDriverHelpFile.setValue(1)
+                }
+				}
 			}
 
 			// ListRebootButton { }
