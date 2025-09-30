@@ -102,7 +102,7 @@ Page {
 				text: qsTr("Submit SFK Driver Diagnostics")
 				secondaryText:sfkSubmitDriverHelpFileProgress.value === 100
 						? qsTr("Submitted")
-					: sfkV7FirmwareDownloadConfirm.value === 1
+					: sfkSubmitDriverHelpFile.value === 1
 						? qsTr("Submitting %1%").arg(sfkSubmitDriverHelpFileProgress.value)
 					: qsTr("Submit")
 
