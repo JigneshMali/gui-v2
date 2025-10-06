@@ -9,8 +9,24 @@ import Victron.VenusOS
 Page {
 	id: root
     property string sfkService: "com.victronenergy.sfksettings"
-    property string mqttprefix: "mqtt/sfksettings/0"
     property string bindPrefix: "mqtt/sfksettings/0"
+
+
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	
+	// Dynamic MQTT path base
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+	property VeQuickItem sfkSubmitDriverHelpFile: VeQuickItem {
+		id: sfkSubmitDriverHelpFile
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFile"
+	}
+	property VeQuickItem sfkSubmitDriverHelpFileProgress: VeQuickItem {
+		id: sfkSubmitDriverHelpFileProgress
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFileProgress"
+	}
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -55,6 +71,33 @@ Page {
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDriverSettings.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
+			
+			ListButton 
+			{
+				text: qsTr("Submit Diagnostic Report")
+				secondaryText:sfkSubmitDriverHelpFileProgress.value === 100
+						? qsTr("Submitted")
+					: sfkSubmitDriverHelpFile.value === 1
+						? qsTr("Submitting %1%").arg(sfkSubmitDriverHelpFileProgress.value)
+					: qsTr("Submit")
+
+				preferredVisible: true
+				onClicked:{
+					if (sfkSubmitDriverHelpFile.value === 1)
+					{
+						sfkSubmitDriverHelpFile.setValue(0)
+					}
+					if (sfkSubmitDriverHelpFile.value === 0)
+					{
+						sfkSubmitDriverHelpFile.setValue(1)
+						Global.showToastNotification(
+							VenusOS.Notification_Info,
+							qsTr("Submitting Diagnostic Report..."),
+							5000
+						)
+					}
 				}
 			}
 
