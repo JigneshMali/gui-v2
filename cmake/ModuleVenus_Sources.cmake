@@ -454,6 +454,7 @@ set (VictronVenusOS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml
     pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeating.qml
     pages/settings/devicelist/battery/PageBatteryVirtualBatteryCellVoltages.qml
+    pages/settings/devicelist/battery/PageSettingsSFKDiagnosticReport.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml
     pages/settings/devicelist/battery/PageBatteryHistory.qml

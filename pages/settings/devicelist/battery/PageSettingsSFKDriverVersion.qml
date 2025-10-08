@@ -73,33 +73,16 @@ Page {
 							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
-			
-			ListButton 
-			{
-				text: qsTr("Submit Diagnostic Report")
-				secondaryText:sfkSubmitDriverHelpFileProgress.value === 100
-						? qsTr("Submitted")
-					: sfkSubmitDriverHelpFile.value === 1
-						? qsTr("Submitting %1%").arg(sfkSubmitDriverHelpFileProgress.value)
-					: qsTr("Submit")
 
+			ListNavigation {
+				text: "Generate Diagnostic Report"
 				preferredVisible: true
-				onClicked:{
-					if (sfkSubmitDriverHelpFile.value === 1)
-					{
-						sfkSubmitDriverHelpFile.setValue(0)
-					}
-					if (sfkSubmitDriverHelpFile.value === 0)
-					{
-						sfkSubmitDriverHelpFile.setValue(1)
-						Global.showToastNotification(
-							VenusOS.Notification_Info,
-							qsTr("Submitting Diagnostic Report..."),
-							5000
-						)
-					}
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKDiagnosticReport.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
+			
 
 		}
 
