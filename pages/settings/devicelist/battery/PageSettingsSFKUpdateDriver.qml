@@ -180,9 +180,20 @@ Page {
 
 			ListButton {
                 text: qsTr("Check for SFK driver update")
-                secondaryText: qsTr("Check")
+                // secondaryText: qsTr("Check")
+                secondaryText: sfkFirmwareAvailableCheck.value ? qsTr("Cancel") : qsTr("Check")
                 preferredVisible: true
-                onClicked: sfkFirmwareAvailableCheck.setValue(1)
+                // onClicked: sfkFirmwareAvailableCheck.setValue(1)				
+				onClicked:{
+					if (sfkFirmwareAvailableCheck.value === 1)
+					{
+						sfkFirmwareAvailableCheck.setValue(0)
+					}
+					if (sfkFirmwareAvailableCheck.value === 0)
+					{
+						sfkFirmwareAvailableCheck.setValue(1)
+					}
+				}
             }		
 			
 			ListText {
