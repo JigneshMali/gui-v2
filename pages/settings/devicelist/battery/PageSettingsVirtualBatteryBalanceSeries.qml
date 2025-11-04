@@ -54,14 +54,13 @@ Page {
 				text: "Voltage Diviation"
 				dataItem.uid: mqttPrefix + "/System/BalanceVoltageDiviation"
 				optionModel: [
+					{ display: qsTr("%1mV").arg(10), value: 10 },
 					{ display: qsTr("%1mV").arg(15), value: 15 },
-					{ display: qsTr("%1mV %2").arg(30).arg("[DEFAULT]"), value:30},
+					{ display: qsTr("%1mV %2").arg(20).arg("[DEFAULT]"), value:20},
+					{ display: qsTr("%1mV").arg(25), value: 25 },
+					{ display: qsTr("%1mV").arg(30), value: 30 },
 					{ display: qsTr("%1mV").arg(45), value: 45 },
-					{ display: qsTr("%1mV").arg(60), value: 60 },
-					{ display: qsTr("%1mV").arg(75), value: 75 },
-					{ display: qsTr("%1mV").arg(90), value: 90 },
-					{ display: qsTr("%1mV").arg(105), value: 105 },
-					{ display: qsTr("%1mV").arg(120), value: 120 }
+					{ display: qsTr("%1mV").arg(60), value: 60 }
 				]
 			}
 

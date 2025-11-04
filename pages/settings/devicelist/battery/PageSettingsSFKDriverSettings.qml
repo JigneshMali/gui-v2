@@ -183,6 +183,8 @@ Page {
 				dataItem.uid: "mqtt/sfksettings/0/Info/FloatToBulkSOCLimit"
 				preferredVisible: true  // Control visibility based on your condition
 				optionModel: [
+					{ display: qsTr("60 %"), value: 60 },
+					{ display: qsTr("65 %"), value: 65 },
 					{ display: qsTr("70 %"), value: 70 },
 					{ display: qsTr("75 %"), value: 75 },
 					{ display: qsTr("80 % [DEFAULT]"), value: 80 },
