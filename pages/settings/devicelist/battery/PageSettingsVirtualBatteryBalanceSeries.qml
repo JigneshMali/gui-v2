@@ -83,6 +83,18 @@ Page {
 				]
 			}
 			
+			ListRadioButtonGroup {
+				text: "Dynamic Balancing"
+				dataItem.uid: mqttPrefix + "/Info/DynamicBalancing"
+				optionModel: [
+					{ display: qsTr("%1mV").arg(35), value: 35 },
+					{ display: qsTr("%1mV").arg(30), value: 30 },
+					{ display: qsTr("%1mV").arg(25), value: 25 },
+					{ display: qsTr("%1mV").arg(20), value: 20 },
+					{ display: qsTr("%1mV").arg(15), value: 15 }
+				]
+			}
+
 			ListText {
 				//% "Capacity"
 				text: "Balance Voltage Limit"
