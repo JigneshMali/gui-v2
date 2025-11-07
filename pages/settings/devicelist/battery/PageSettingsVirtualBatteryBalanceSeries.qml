@@ -50,61 +50,19 @@ Page {
 				]
 			}
 
-			ListRadioButtonGroup {
-				text: "Voltage Diviation"
-				dataItem.uid: mqttPrefix + "/System/BalanceVoltageDiviation"
-				optionModel: [
-					{ display: qsTr("%1mV").arg(10), value: 10 },
-					{ display: qsTr("%1mV").arg(15), value: 15 },
-					{ display: qsTr("%1mV %2").arg(20).arg("[DEFAULT]"), value:20},
-					{ display: qsTr("%1mV").arg(25), value: 25 },
-					{ display: qsTr("%1mV").arg(30), value: 30 },
-					{ display: qsTr("%1mV").arg(45), value: 45 },
-					{ display: qsTr("%1mV").arg(60), value: 60 }
-				]
+			ListNavigation {
+				text: "Balancing Logic"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsVirtualBatteryBalanceSeriesLogicSelection.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
 			}
 
 			ListRadioButtonGroup {
 				text: "Balance Temperature Limit"
 				dataItem.uid: mqttPrefix + "/System/BalanceTemperatureLimit"
 				optionModel: getDefaultOptions()		 
-			}
-
-			ListRadioButtonGroup {
-				text: "Activation Voltage"
-				dataItem.uid: mqttPrefix + "/Info/ActivationVoltage"
-				optionModel: [
-					{ display: qsTr("%1V").arg(3.50), value: 3.50 },
-					{ display: qsTr("%1V").arg(3.46), value: 3.46 },
-					{ display: qsTr("%1V").arg(3.42), value: 3.42 },
-					{ display: qsTr("%1V").arg(3.38), value: 3.38 },
-					{ display: qsTr("%1V %2").arg(3.34).arg("[DEFAULT]"), value: 3.34 },
-					{ display: qsTr("%1V").arg(3.30), value: 3.30 }
-				]
-			}
-			
-			// ListRadioButtonGroup {
-			// 	text: "Dynamic Balancing"
-			// 	dataItem.uid: mqttPrefix + "/Info/DynamicBalancing"
-			// 	optionModel: [
-			// 		{ display: qsTr("%1mV").arg(35), value: 35 },
-			// 		{ display: qsTr("%1mV").arg(30), value: 30 },
-			// 		{ display: qsTr("%1mV").arg(25), value: 25 },
-			// 		{ display: qsTr("%1mV").arg(20), value: 20 },
-			// 		{ display: qsTr("%1mV").arg(15), value: 15 }
-			// 	]
-			// }
-			
-			ListRadioButtonGroup {
-				text: "Dynamic Balancing"
-				dataItem.uid: mqttPrefix + "/Info/DynamicBalancing"
-				optionModel: [
-					{ display: qsTr("3.34mV - 3.38mV"), value: 35 },
-					{ display: qsTr("3.38mV - 3.42mV"), value: 30 },
-					{ display: qsTr("3.42mV - 3.46mV"), value: 25 },
-					{ display: qsTr("3.46mV - 3.50mV"), value: 20 },
-					{ display: qsTr("3.50mV - 3.65mV"), value: 15 }
-				]
 			}
 
 			ListText {
