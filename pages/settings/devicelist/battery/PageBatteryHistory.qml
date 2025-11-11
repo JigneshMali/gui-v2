@@ -26,8 +26,6 @@ Page {
 		}
 
 	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
-	property bool versionFlag: hardwareVersion.text === "6.4"
-
 	GradientListView {
 		model: VisibleItemModel {
 
