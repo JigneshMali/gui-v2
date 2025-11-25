@@ -718,6 +718,8 @@ set(VictronVenusOS_RESOURCES
     images/icon_battery_charging_24.svg
     images/icon_battery_discharging_24.svg
     images/icon_connectivity_32.png
+    images/sfk_icon.png
+    images/sfk_logo.png
     images/icon_debug_32.png
     images/icon_devices_32.png
     images/icon_general_32.png
