@@ -446,6 +446,35 @@ set (VictronVenusOS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/FuseInfo.qml
     pages/settings/devicelist/battery/Page48TlDiagnostics.qml
     pages/settings/devicelist/battery/PageBattery.qml
+    pages/settings/devicelist/battery/PageBatteryCellVoltages.qml
+    pages/settings/devicelist/battery/PageDeviceInfo.qml
+    pages/settings/devicelist/battery/PageBatteryVirtualSetupEnable.qml
+    pages/settings/devicelist/battery/PageBatteryParametersRegulateSoc.qml
+    pages/settings/devicelist/battery/PageBatteryVirtualBatteryParameters.qml
+    pages/settings/devicelist/battery/PageBatteryVirtualBatteryDeviceInfo.qml
+    pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwareCheck.qml
+    pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev1.qml
+    pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev2.qml
+    pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwarecheckpagev3.qml
+    pages/settings/devicelist/battery/PageBatteryBalanceSeries.qml
+    pages/settings/devicelist/battery/PageBatteryDeviceinfoUninstallSFK.qml
+    pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml
+    pages/settings/devicelist/battery/PageSettingsSFKUninstallDriver.qml
+    pages/settings/devicelist/battery/PageSettingsSFKUpdateDriver.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev1.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev2.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev3.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev4.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev5.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev6.qml
+    pages/settings/devicelist/battery/PageSettingsFirmwarecheckpagev7.qml
+    pages/settings/devicelist/battery/PageSettingsSFKDriverSettings.qml
+    pages/settings/devicelist/battery/PageSettingsVirtualBatteryBalanceSeries.qml
+    pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml
+    pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeating.qml
+    pages/settings/devicelist/battery/PageBatteryVirtualBatteryCellVoltages.qml
+    pages/settings/devicelist/battery/PageSettingsSFKDiagnosticReport.qml
+    pages/settings/devicelist/battery/PageSettingsVirtualBatteryBalanceSeriesLogicSelection.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml
     pages/settings/devicelist/battery/PageBatteryHistory.qml
