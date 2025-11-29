@@ -141,8 +141,8 @@ Page {
 			onClosed: function() {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
-					// restartVBService.setValue(1) // sfk installation service restart if other restart does not work we can use this also.
-					sfkvbServiceRestart.setValue(1)
+					restartVBService.setValue(1) // sfk installation service restart if other restart does not work we can use this also.
+					// sfkvbServiceRestart.setValue(1) // if device instance is changed restart the virtual battery service from driver settings
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Virtual Battery service restarting..."),
