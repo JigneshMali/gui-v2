@@ -142,7 +142,7 @@ Page {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
 					restartVBService.setValue(1) // use  sfk installation service restart if other restart does not work due to vb device instance change.
-					// sfkvbServiceRestart.setValue(1) // if device instance is changed restart the virtual battery service from driver settings
+					sfkvbServiceRestart.setValue(1) // if device instance is changed restart the virtual battery service from driver settings
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
 						qsTr("Virtual Battery service restarting..."),
