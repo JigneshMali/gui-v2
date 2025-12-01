@@ -22,7 +22,7 @@ SwipeViewPage {
 	focusPolicy: Qt.TabFocus
 	property VeQuickItem sfk_DriverSettingMenu_Active: VeQuickItem {
 		id: sfk_DriverSettingMenu_Active
-		uid: "mqtt/sfksettings/0/Connected"
+		uid: "mqtt/sfksettings/0/SFKConnected"
 		}	
 
 	GradientListView {
