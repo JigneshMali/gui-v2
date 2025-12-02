@@ -108,7 +108,7 @@ SwipeViewPage {
 				pageSource: "/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml"
 				// iconSource: "qrc:/images/sfk_icon.png"
 				iconSource: "qrc:/images/sfk_logo.png"
-				showAccessLevel: sfk_DriverSettingMenu_Active.value === 1 && sfk_DriverSettingMenu_Active.valid
+				preferredVisible: sfk_DriverSettingMenu_Active.value === 1 && sfk_DriverSettingMenu_Active.valid
 			}
 		}
 	}
