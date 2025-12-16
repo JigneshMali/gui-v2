@@ -47,7 +47,7 @@ Page {
 			
 			ListSwitch {
 				text: "Discharging below freezing"
-				dataItem.uid: root.bindPrefix + "/Io/DischargingBelowFreezing"
+				dataItem.uid: root.bindPrefix + "/Io/DchgBelowFreezingToggle"
 				preferredVisible: dataItem.valid
 			}
 
