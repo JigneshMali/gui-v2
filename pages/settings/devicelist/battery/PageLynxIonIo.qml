@@ -44,6 +44,12 @@ Page {
 				dataItem.uid: root.bindPrefix + "/Io/ForceDischargingOff"
 				preferredVisible: dataItem.valid
 			}
+			
+			ListSwitch {
+				text: "Discharging below freezing"
+				dataItem.uid: root.bindPrefix + "/Io/DischargingBelowFreezing"
+				preferredVisible: dataItem.valid
+			}
 
 			ListText {
 				//% "External relay"
