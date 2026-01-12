@@ -112,6 +112,21 @@ Page {
 				optionModel: sfkSyncLowTempOptions()	
 				preferredVisible: heatingModeProgressbar.value === 100 && ( heatSynchronizeActiveValue.value === 1 || heatSynchronizeActiveValue.value === 0) && allVersion64bool.value === 1 
 			}
+			
+			ListRadioButtonGroup {
+				text: "Activation Voltage"
+				dataItem.uid: mqttPrefix + "/Info/ActivationVoltage"
+				preferredVisible: balancingLogicSelection.value == 0
+				optionModel: [
+					{ display: qsTr("%1%").arg(20), value: 20 },
+					{ display: qsTr("%1%").arg(25), value: 25 },
+					{ display: qsTr("%1% %2").arg(30).arg("[DEFAULT]"), value: 30 },
+					{ display: qsTr("%1%").arg(35), value: 35 },
+					{ display: qsTr("%1%").arg(40), value: 40 },
+					{ display: qsTr("%1%").arg(45), value: 45 },
+					{ display: qsTr("%1%").arg(50), value: 50 }
+				]
+			}
 		}
 	}
 
