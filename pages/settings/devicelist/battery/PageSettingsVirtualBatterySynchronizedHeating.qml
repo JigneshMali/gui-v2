@@ -114,9 +114,9 @@ Page {
 			}
 			
 			ListRadioButtonGroup {
-				text: "Activation Voltage"
-				dataItem.uid: mqttPrefix + "/Info/ActivationVoltage"
-				preferredVisible: balancingLogicSelection.value == 0
+				text: "Minimum SOC"
+				dataItem.uid: mqttPrefix + "/Info/SynchronizedMinSOC"
+				preferredVisible: heatingModeProgressbar.value === 100 && ( heatSynchronizeActiveValue.value === 1 || heatSynchronizeActiveValue.value === 0) && allVersion64bool.value === 1 
 				optionModel: [
 					{ display: qsTr("%1%").arg(20), value: 20 },
 					{ display: qsTr("%1%").arg(25), value: 25 },
