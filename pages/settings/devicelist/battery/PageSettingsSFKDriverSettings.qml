@@ -264,7 +264,7 @@ Page {
 					sfkSaveSettingsEnabled.setValue(1)
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Changes are being applied the driver."),
+						qsTr("Changes are being applied to the driver."),
 						8000
                 	)
 					}
