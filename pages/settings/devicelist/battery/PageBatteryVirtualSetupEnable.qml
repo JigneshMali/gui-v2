@@ -16,7 +16,6 @@ Page {
 		id: sfkVirtualBatteryLogic
 		uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
 	}
-
 	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
@@ -34,12 +33,18 @@ Page {
 		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFileProgress"
 	}
 
+
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
 
 	property VeQuickItem sfkvbServiceRestart: VeQuickItem {
 		id: sfkvbServiceRestart
 		uid: mqttPrefix + "/RestartService"
+	}
+
+	property VeQuickItem sfkvbSaveSettingsEnabled: VeQuickItem {
+		id: sfkvbSaveSettingsEnabled
+		uid: mqttPrefix + "/Info/SaveSettingsEnabled"
 	}
 	
 	GradientListView {
@@ -93,6 +98,12 @@ Page {
 		
 			ListButton {
 				text: qsTr("Apply Changes")
+				secondaryText: qsTr("Save Changes w/o Restart")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(saveSFKvbSettingsDialog)
+			}
+			ListButton {
+				text: qsTr("Restart Service")
 				secondaryText: qsTr("Restart Virtual Battery")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmRestartDialog)
@@ -135,7 +146,7 @@ Page {
 		id: confirmRestartDialog
 		ModalWarningDialog {
 			title: qsTr("Apply Changes")
-			description: qsTr("This will restart the SFK Virtual Battery.")
+			description: qsTr("This will restart the SFK Virtual Battery. %1").arg("DVCC may detect SFK Virtual Battery lost momentarily while service being restarted.")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
@@ -147,6 +158,27 @@ Page {
 						VenusOS.Notification_Info,
 						qsTr("Virtual Battery service restarting..."),
 						5000
+                	)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+		Component {
+		id: saveSFKvbSettingsDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will apply changes without restarting the Services.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					sfkvbSaveSettingsEnabled.setValue(1)
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Changes are being applied to the driver."),
+						8000
                 	)
 					}
 				globalDialogResult  = 0   // Reset after processing
