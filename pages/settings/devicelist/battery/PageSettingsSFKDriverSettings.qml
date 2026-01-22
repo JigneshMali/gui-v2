@@ -20,6 +20,11 @@ Page {
 	property VeQuickItem sfkbatteriesServiceRestart: VeQuickItem {
 		id: sfkbatteriesServiceRestart
 		uid: "mqtt/sfksettings/0/RestartService"
+		}
+	
+	property VeQuickItem sfkSaveSettingsEnabled: VeQuickItem {
+		id: sfkSaveSettingsEnabled
+		uid: "mqtt/sfksettings/0/Info/SaveSettingsEnabled"
 		}	
 
 	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
@@ -207,7 +212,14 @@ Page {
 
 			ListButton {
 				text: qsTr("Apply Changes")
-				secondaryText: qsTr("Restart Service")
+				secondaryText: qsTr("Save Changes W/o Restart")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(saveSFKSettingsDialog)
+			}
+			
+			ListButton {
+				text: qsTr("Restart Service")
+				secondaryText: qsTr("Save Changes & Restart")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmRestartDialog)
 			}
@@ -217,7 +229,7 @@ Page {
 	Component {
 		id: confirmRestartDialog
 		ModalWarningDialog {
-			title: qsTr("Apply Changes")
+			title: qsTr("Restart Service")
 			description: qsTr("This will restart the main SFK Venus OS Driver & Virtual Battery (if active).")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
@@ -234,6 +246,27 @@ Page {
 					{
 						sfkvbServiceRestart.setValue(1)
 					}
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+	Component {
+		id: saveSFKSettingsDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will apply changes without restart the Services.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Changes Saved & Driver Updated"),
+						5000
+                	)
+					sfkSaveSettingsEnabled.setValue(1)
 					}
 				globalDialogResult  = 0   // Reset after processing
 			}
