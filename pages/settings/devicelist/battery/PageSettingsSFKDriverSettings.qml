@@ -261,12 +261,12 @@ Page {
 			onClosed: function() {
 				globalDialogResult  = result 
 				if (globalDialogResult  === 1) {
+					sfkSaveSettingsEnabled.setValue(1)
 					Global.showToastNotification(
 						VenusOS.Notification_Info,
-						qsTr("Changes Saved & Driver Updated"),
-						5000
+						qsTr("Changes are being applied the driver."),
+						8000
                 	)
-					sfkSaveSettingsEnabled.setValue(1)
 					}
 				globalDialogResult  = 0   // Reset after processing
 			}
