@@ -212,14 +212,14 @@ Page {
 
 			ListButton {
 				text: qsTr("Apply Changes")
-				secondaryText: qsTr("Save Changes W/o Restart")
+				secondaryText: qsTr("Save Changes w/o Restart")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(saveSFKSettingsDialog)
 			}
 			
 			ListButton {
 				text: qsTr("Restart Service")
-				secondaryText: qsTr("Save Changes & Restart")
+				secondaryText: qsTr("Save Changes and Restart")
 				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmRestartDialog)
 			}
@@ -230,7 +230,7 @@ Page {
 		id: confirmRestartDialog
 		ModalWarningDialog {
 			title: qsTr("Restart Service")
-			description: qsTr("This will restart the main SFK Venus OS Driver & Virtual Battery (if active).")
+			description: qsTr("This will restart the main SFK Venus OS Driver & Virtual Battery (if active). %1").arg("DVCC may detect BMS lost momentarily while the driver is being restarted.")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
