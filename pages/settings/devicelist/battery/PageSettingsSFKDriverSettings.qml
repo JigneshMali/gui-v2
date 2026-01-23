@@ -127,7 +127,10 @@ Page {
 					{ display: qsTr("%1V (%2V/cell) [DEFAULT]").arg(nrOfcell.value*(3.300)).arg((3.300)), value: 3.300 },
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.325)).arg((3.325)), value: 3.325 },
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.350)).arg((3.350)), value: 3.350 },
-					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.375)).arg((3.375)), value: 3.375 }
+					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.375)).arg((3.375)), value: 3.375 },
+					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.400)).arg((3.400)), value: 3.400 },
+					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.425)).arg((3.425)), value: 3.425 },
+					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.450)).arg((3.450)), value: 3.450 }
 				]
 			}
 
