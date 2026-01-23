@@ -145,7 +145,7 @@ Page {
 	Component {
 		id: confirmRestartDialog
 		ModalWarningDialog {
-			title: qsTr("Apply Changes")
+			title: qsTr("Restart Service")
 			description: qsTr("This will restart the SFK Virtual Battery. %1").arg("DVCC may detect SFK Virtual Battery lost momentarily while service being restarted.")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
