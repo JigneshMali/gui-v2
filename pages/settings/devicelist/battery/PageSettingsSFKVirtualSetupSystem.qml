@@ -169,7 +169,9 @@ Page {
 				dataItem.uid: mqttPrefix + "/System/SFKVirtualSetup"
 				optionModel: generateOptions()		 
 				preferredVisible: nrOfBatteries.value > 1 || nrOfBatteries.value === 0
-
+				onOptionClicked: (index) => {
+				Global.showToastNotification(VenusOS.Notification_Info,qsTr("Please restart the virtual battery service to see changes."), 8000)
+				}
 			}
 
 			ListText {
