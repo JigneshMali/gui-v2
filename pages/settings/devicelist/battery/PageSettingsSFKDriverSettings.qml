@@ -31,6 +31,16 @@ Page {
 		id: sfkVBDeviceInstance
 		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
 	}
+
+	property VeQuickItem cvlCheckfloatbool: VeQuickItem {
+		id: cvlCheckfloatbool
+		uid: "mqtt/sfksettings/0/Info/CvlCheckfloat"
+	}	
+
+	property VeQuickItem floatCheckCvlbool: VeQuickItem {
+		id: floatCheckCvlbool
+		uid: "mqtt/sfksettings/0/Info/FloatCheckCvl"
+	}
 	
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
@@ -64,6 +74,12 @@ Page {
                     { display: qsTr("%1V").arg(nrOfcell.value*(3.575)), value: 3.575 },
                     { display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 }				
 				]
+				onOptionClicked:{
+					if(cvlCheckfloatbool.value === 1){
+					Global.showToastNotification(VenusOS.Notification_Info,qsTr("Cvl can not be less than float."), 8000)
+					cvlCheckfloatbool.setValue(0)
+					}
+				}
 			}
 
 			ListRadioButtonGroup {
@@ -132,6 +148,12 @@ Page {
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.425)).arg((3.425)), value: 3.425 },
 					{ display: qsTr("%1V (%2V/cell)").arg(nrOfcell.value*(3.450)).arg((3.450)), value: 3.450 }
 				]
+				onOptionClicked:{
+					if(floatCheckCvlbool.value === 1 ){
+					Global.showToastNotification(VenusOS.Notification_Info,qsTr("Float can not be higher than cvl."), 8000)
+					floatCheckCvlbool.setValue(0)
+					}
+				}
 			}
 
 			ListRadioButtonGroup {
