@@ -46,7 +46,16 @@ Page {
 		id: sfkvbSaveSettingsEnabled
 		uid: mqttPrefix + "/Info/SaveSettingsEnabled"
 	}
-	
+	property VeQuickItem sfkVbDebugLogging: VeQuickItem {
+		id: sfkVbDebugLogging
+		uid: mqttPrefix + "/Log/SfkVbDebugLogging"
+	}
+	property VeQuickItem sfkVbDetailLogging: VeQuickItem {
+		id: sfkVbDetailLogging
+		uid: mqttPrefix + "/Log/SfkVbDetailLogging"
+	}
+
+
 	GradientListView {
 		model: ObjectModel {
 
@@ -88,12 +97,28 @@ Page {
 				text: "Detail Logging"
 				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDetailLogging"
 				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						sfkVbDetailLogging.setValue(0)
+					}
+					else if(checked){
+						sfkVbDetailLogging.setValue(1)
+					}
+				}
 			}
 
 			ListSwitch {
 				text: "Debug Logging"
 				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDebugLogging"
 				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						sfkVbDebugLogging.setValue(0)
+					}
+					else if(checked){
+						sfkVbDebugLogging.setValue(1)
+					}
+				}
 			}
 		
 			ListButton {
