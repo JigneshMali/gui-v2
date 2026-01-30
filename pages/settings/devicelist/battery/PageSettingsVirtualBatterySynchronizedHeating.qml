@@ -127,6 +127,15 @@ Page {
 					{ display: qsTr("%1%").arg(50), value: 50 }
 				]
 			}
+
+			ListNavigation {
+				text: "Heating Schedule"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeatingTimeoperation.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
 		}
 	}
 
