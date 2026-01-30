@@ -280,7 +280,7 @@ Page {
 		id: saveSFKSettingsDialog
 		ModalWarningDialog {
 			title: qsTr("Apply Changes")
-			description: qsTr("This will apply changes without restarting the Services.")
+			description: qsTr("This will apply changes without restarting the driver.")
 			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
 			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
 			onClosed: function() {
