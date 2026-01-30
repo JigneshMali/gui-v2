@@ -6,6 +6,7 @@
 import QtQuick
 import Victron.VenusOS
 // import Victron.Mqtt      // <-- this hook makes “mqtt/…” UIDs work
+import QtQuick.Templates as T
 
 Page {
 	id: root
@@ -218,7 +219,38 @@ Page {
 					}
 				}
 			
-			ListRebootButton { }
+			// ListRebootButton { }
+			ListButton {
+				// id: root
+
+				text: CommonWords.reboot
+				//% "Reboot now"
+				secondaryText: qsTrId("reboot_button_reboot_now")
+				writeAccessLevel: VenusOS.User_AccessType_User
+				onClicked: Global.dialogLayer.open(confirmRebootDialogComponent)
+				preferredVisible: sfkFirmwareInstallationCompleted.value === 1 
+				Component {
+					id: confirmRebootDialogComponent
+
+					ModalWarningDialog {
+						//% "Press 'OK' to reboot"
+						title: qsTrId("reboot_button_press_ok_to_reboot")
+						dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+						onClosed: {
+							if (result === T.Dialog.Accepted) {
+								Global.venusPlatform.reboot()
+								Qt.callLater(Global.dialogLayer.open, rebootingDialogComponent)
+							}
+						}
+					}
+				}
+
+				Component {
+					id: rebootingDialogComponent
+
+					ModalRebootingDialog { }
+				}
+			}
 	
 		}
 	}
