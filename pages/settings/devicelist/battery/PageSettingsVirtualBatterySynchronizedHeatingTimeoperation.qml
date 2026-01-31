@@ -42,6 +42,10 @@ Page {
 		id: syncTimeOperationEnabled
 		uid: mqttPrefix + "/Info/SyncTimeOperationEnabled" 
 	}
+	property VeQuickItem  syncTimeOperationStatus: VeQuickItem {
+		id: syncTimeOperationStatus
+		uid: mqttPrefix + "/Info/SyncTimeOperationStatus" 
+	}
 	// -------------------------------------------------
 	property VeQuickItem  wrongTimeInput: VeQuickItem {
 		id: wrongTimeInput
@@ -116,6 +120,19 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
+			ListButton {
+				text: "Scheduled Heating"
+				secondaryText: (syncTimeOperationEnabled.value=== 1) ? qsTr("Enabled") : qsTr("Enabled")
+				preferredVisible: true
+				onClicked: {
+					if (syncTimeOperationEnabled.value === 1) {
+						syncTimeOperationEnabled.setValue(1);   // enable
+					} else if (syncTimeOperationEnabled.value === 0) {
+						syncTimeOperationEnabled.setValue(0);   // disable
+					}
+				}
+			}
+
 			ListTextField {
 				text: "Start Time (HHMM)"
 				dataItem.uid: mqttPrefix + "/Info/HeatStartTime"
@@ -164,18 +181,6 @@ Page {
 				}
 			}
 			
-			ListText {
-				text: "Synchronize Heating Time Operation"
-				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationEnabled"
-				preferredVisible: dataItem.valid
-				secondaryText: {
-					if (dataItem.value === 0) {
-						qsTr("Inactive")
-					} else {
-						qsTr("Active")
-					}
-				}
-			}
 
 		}
 	}

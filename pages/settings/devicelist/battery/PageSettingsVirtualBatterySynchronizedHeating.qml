@@ -136,6 +136,18 @@ Page {
 							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
+			ListText {
+				text: "Scheduled Heating Status"
+				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationStatus"
+				preferredVisible: dataItem.valid
+				secondaryText: {
+					if (dataItem.value === 0) {
+						qsTr("Inactive")
+					} else {
+						qsTr("Active")
+					}
+				}
+			}
 		}
 	}
 
