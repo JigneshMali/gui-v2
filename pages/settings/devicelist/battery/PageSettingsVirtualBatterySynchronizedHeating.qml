@@ -36,7 +36,10 @@ Page {
 		id: allVersion64bool
 		uid: mqttPrefix + "/Batteries/AllVersion64"
 	}
-
+	property VeQuickItem  syncTimeOperationEnabled: VeQuickItem {
+		id: syncTimeOperationEnabled
+		uid: mqttPrefix + "/Info/SyncTimeOperationEnabled" 
+	}
     property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
 		id: sfksettingsHeatSynchronizeActiveValue
 		uid: "mqtt/sfksettings/0/Info/HeatSynchronizeActive" 
@@ -128,26 +131,29 @@ Page {
 				]
 			}
 
+			ListSwitch {
+				text: "Scheduled Heating"
+				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationEnabled"
+				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						syncTimeOperationEnabled.setValue(0)
+					}
+					else if(checked){
+						syncTimeOperationEnabled.setValue(1)
+					}
+				}
+			}
+
 			ListNavigation {
 				text: "Heating Schedule"
-				preferredVisible: true
+				preferredVisible: syncTimeOperationEnabled.value === 1
 				onClicked: {
 					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeatingTimeoperation.qml",
 							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
-			ListText {
-				text: "Scheduled Heating Status"
-				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationStatus"
-				preferredVisible: dataItem.valid
-				secondaryText: {
-					if (dataItem.value === 0) {
-						qsTr("Inactive")
-					} else {
-						qsTr("Active")
-					}
-				}
-			}
+
 		}
 	}
 

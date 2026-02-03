@@ -46,36 +46,40 @@ Page {
 		id: syncTimeOperationStatus
 		uid: mqttPrefix + "/Info/SyncTimeOperationStatus" 
 	}
-	// -------------------------------------------------
-	property VeQuickItem  wrongTimeInput: VeQuickItem {
-		id: wrongTimeInput
-		uid: mqttPrefix + "/Info/WrongTimeInput" 
-		onValueChanged:{
-			if(value === 1){
-				Global.showToastNotification(
-					VenusOS.Notification_Info,
-					qsTr("Invalid time input. Use HHMM and input must be between 0000 to 2359."),
-					5000
-					)
-                wrongTimeInput.setValue(0);   // reset
-			}
-		}
+	property VeQuickItem  applyChanges: VeQuickItem {
+		id: applyChanges
+		uid: mqttPrefix + "/Info/ApplyChanges" 
 	}
 	// -------------------------------------------------
-	property VeQuickItem  allowedStartTimeRange: VeQuickItem {
-		id: allowedStartTimeRange
-		uid: mqttPrefix + "/Info/AllowedStartTimeRange" 
-		onValueChanged:{
-			if(value === 1){
-				Global.showToastNotification(
-					VenusOS.Notification_Info,
-					qsTr("StartTime must be between 2100 to 0400."),
-					5000
-					)
-                allowedStartTimeRange.setValue(0);   // reset
-			}
-		}
-	}
+	// property VeQuickItem  wrongTimeInput: VeQuickItem {
+	// 	id: wrongTimeInput
+	// 	uid: mqttPrefix + "/Info/WrongTimeInput" 
+	// 	onValueChanged:{
+	// 		if(value === 1){
+	// 			Global.showToastNotification(
+	// 				VenusOS.Notification_Info,
+	// 				qsTr("Invalid time input. Use HHMM and input must be between 0000 to 2359."),
+	// 				5000
+	// 				)
+    //             wrongTimeInput.setValue(0);   // reset
+	// 		}
+	// 	}
+	// }
+	// -------------------------------------------------
+	// property VeQuickItem  allowedStartTimeRange: VeQuickItem {
+	// 	id: allowedStartTimeRange
+	// 	uid: mqttPrefix + "/Info/AllowedStartTimeRange" 
+	// 	onValueChanged:{
+	// 		if(value === 1){
+	// 			Global.showToastNotification(
+	// 				VenusOS.Notification_Info,
+	// 				qsTr("StartTime must be between 2100 to 0400."),
+	// 				5000
+	// 				)
+    //             allowedStartTimeRange.setValue(0);   // reset
+	// 		}
+	// 	}
+	// }
 	// -------------------------------------------------
 	property VeQuickItem  allowedMaxTimeRange: VeQuickItem {
 		id: allowedMaxTimeRange
@@ -93,45 +97,8 @@ Page {
 	}
 	// -------------------------------------------------
 
-
-    property VeQuickItem  sfksettingsHeatSynchronizeActiveValue: VeQuickItem { 
-		id: sfksettingsHeatSynchronizeActiveValue
-		uid: "mqtt/sfksettings/0/Info/HeatSynchronizeActive" 
-        property bool completed: false   // track if 100% already reached
-		onValueChanged: { 
-				if (value === undefined)
-                return;
-				if (heatSynchronizeActiveValue.value === 1 && value === 100 && !completed) {
-                var msg = qsTr("Set to Externally Managed. All batteries are in low temp charge heating mode.")
-                // var msg = qsTr("Set to Externally Managed. Process is %1% completed.").arg(value)
-				Global.showToastNotification(
-						VenusOS.Notification_Info,
-						msg,
-						3000
-                		)
-                if (value >= 100) {
-                    completed = true   // stop further toasts
-                }
-            }
-		}
-	}
-
-
 	GradientListView {
 		model: ObjectModel {
-
-			ListButton {
-				text: "Scheduled Heating"
-				secondaryText: (syncTimeOperationEnabled.value=== 1) ? qsTr("Enabled") : qsTr("Enabled")
-				preferredVisible: true
-				onClicked: {
-					if (syncTimeOperationEnabled.value === 1) {
-						syncTimeOperationEnabled.setValue(1);   // enable
-					} else if (syncTimeOperationEnabled.value === 0) {
-						syncTimeOperationEnabled.setValue(0);   // disable
-					}
-				}
-			}
 
 			ListTextField {
 				text: "Start Time (HHMM)"
@@ -181,6 +148,21 @@ Page {
 				}
 			}
 			
+			ListButton {
+				text: "Apply Changes"
+				secondaryText: (applyChanges.value=== 1) ? qsTr("Apply") : qsTr("Apply")
+				preferredVisible: true
+				onClicked: {
+					// Trigger the apply changes action
+					Global.showToastNotification(
+					VenusOS.Notification_Info,
+					qsTr("Heating schedule changes are being applied to the driver."),
+					3000
+					)
+                    applyChanges.setValue(1)
+				}
+			}
+
 
 		}
 	}
