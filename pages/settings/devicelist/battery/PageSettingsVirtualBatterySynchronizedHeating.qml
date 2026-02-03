@@ -143,15 +143,15 @@ Page {
 				text: "Scheduled Heating"
 				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationEnabled"
 				preferredVisible: true
-				updateDataOnClick: false
-				onClicked: {
-					if (!checked) {
-						syncTimeOperationEnabled.setValue(0)
-					}
-					else if(checked){
-						syncTimeOperationEnabled.setValue(1)
-					}
-				}
+				updateDataOnClick: true
+				// onClicked: {
+				// 	if (!checked) {
+				// 		syncTimeOperationEnabled.setValue(0)
+				// 	}
+				// 	else if(checked){
+				// 		syncTimeOperationEnabled.setValue(1)
+				// 	}
+				// }
 			}
 
 			ListNavigation {
