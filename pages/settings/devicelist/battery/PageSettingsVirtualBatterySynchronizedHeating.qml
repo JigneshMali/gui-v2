@@ -96,12 +96,19 @@ Page {
 				preferredVisible: allVersion64bool.value === 0
 			}
 			
-			ListButton {
+			// ListButton {
+			// 	text: "Synchronized Heating"
+			// 	secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Enable") : qsTr("Disable")
+			// 	preferredVisible: allVersion64bool.value === 1 
+			// 	onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
+			// }
+			ListSwitch {
 				text: "Synchronized Heating"
-				secondaryText: (heatSynchronizeActiveValue.value=== 0) ? qsTr("Enable") : qsTr("Disable")
-				preferredVisible: allVersion64bool.value === 1 
+				dataItem.uid: mqttPrefix + "/Info/HeatSynchronizeActive"
+				preferredVisible: true
 				onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 			}
+
 			ListText {
 				//% "Firmware Version"
 				text:  qsTr("Setting to Externally Managed. Setting Battery %1 of %2 to low temp charge heating mode.").arg(settingBatteryCount.value).arg(totalBatteryCount.value)
