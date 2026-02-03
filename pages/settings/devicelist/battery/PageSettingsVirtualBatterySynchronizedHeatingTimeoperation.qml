@@ -106,23 +106,23 @@ Page {
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
-				property string oldValue: ""
-				textField.onAccepted: {
-					oldValue = dataItem.value
-					if (textField.text.length == 1) {
-						dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					} else if (textField.text.length == 2) {
-						dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					}  else if (textField.text.length == 3) {
-						dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					} else if (textField.text.length == 4) {
-						dataItem.value = textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					}
-				}
+				// property string oldValue: ""
+				// textField.onAccepted: {
+				// 	oldValue = dataItem.value
+				// 	if (textField.text.length == 1) {
+				// 		dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	} else if (textField.text.length == 2) {
+				// 		dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	}  else if (textField.text.length == 3) {
+				// 		dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	} else if (textField.text.length == 4) {
+				// 		dataItem.value = textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	}
+				// }
 			}
 			
 			ListTextField {
@@ -131,21 +131,21 @@ Page {
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
-				textField.onAccepted: {
-					if (textField.text.length == 1) {
-						dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					} else if (textField.text.length == 2) {
-						dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					}  else if (textField.text.length == 3) {
-						dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					} else if (textField.text.length == 4) {
-						dataItem.value = textField.text  // Store only if exactly 4 digits
-						// textField.text = dataItem.value             
-					}
-				}
+				// textField.onAccepted: {
+				// 	if (textField.text.length == 1) {
+				// 		dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	} else if (textField.text.length == 2) {
+				// 		dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	}  else if (textField.text.length == 3) {
+				// 		dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	} else if (textField.text.length == 4) {
+				// 		dataItem.value = textField.text  // Store only if exactly 4 digits
+				// 		// textField.text = dataItem.value             
+				// 	}
+				// }
 			}
 			
 			ListButton {
