@@ -105,15 +105,15 @@ Page {
 			ListSwitch {
 				text: "Synchronized Heating"
 				dataItem.uid: mqttPrefix + "/Info/HeatSynchronizeActive"
-				preferredVisible: true
+				preferredVisible: allVersion64bool.value === 1 
 				// onClicked: Global.dialogLayer.open(confirmLowTempModesetoDialog)
 				onClicked: {
 					if (!checked) {
-						heatSynchronizeActiveValue.setValue(0)
+						// heatSynchronizeActiveValue.setValue(0)
 						Global.dialogLayer.open(confirmLowTempModesetoDialog)
 					}
 					else if(checked){
-						heatSynchronizeActiveValue.setValue(1)
+						// heatSynchronizeActiveValue.setValue(1)
 						Global.dialogLayer.open(confirmLowTempModesetoDialog)
 					}
 				}
