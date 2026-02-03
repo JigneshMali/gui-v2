@@ -143,6 +143,7 @@ Page {
 				text: "Scheduled Heating"
 				dataItem.uid: mqttPrefix + "/Info/SyncTimeOperationEnabled"
 				preferredVisible: true
+				updateDataOnClick: false
 				onClicked: {
 					if (!checked) {
 						syncTimeOperationEnabled.setValue(0)
