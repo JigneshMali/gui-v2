@@ -52,7 +52,8 @@ Page {
 			ListSwitch {
 				text: "Enable Series Balance"
 				dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteriesCheck"
-				preferredVisible: true
+				preferredVisible: 
+				updateDataOnClick: true
 				onClicked: {
 					if (!checked) {
 						balanceSeriesBatteriesSelection.setValue("NO")
