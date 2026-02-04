@@ -52,7 +52,7 @@ Page {
 			ListRadioButtonGroup {
 				text: "Activation Voltage"
 				dataItem.uid: mqttPrefix + "/Info/ActivationVoltage"
-				preferredVisible: balancingLogicSelection.value == 0
+				preferredVisible: true
 				optionModel: [
 					{ display: qsTr("%1V").arg(3.50), value: 3.50 },
 					{ display: qsTr("%1V").arg(3.46), value: 3.46 },

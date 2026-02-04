@@ -17,6 +17,14 @@ Page {
 	
 	// Dynamic MQTT path base
 	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+	
+	property VeQuickItem balancingLogicSelection: VeQuickItem {
+		id: balancingLogicSelection
+		uid: mqttPrefix + "/System/BalanceSeriesBatteries" }
+	
+	property VeQuickItem balanceSeriesBatteriesSelectionCheck: VeQuickItem {
+		id: balanceSeriesBatteriesSelectionCheck
+		uid: mqttPrefix + "/System/BalanceSeriesBatteriesCheck" }
 
 	function isCelsius() {
 		return Global.systemSettings.temperatureUnit === VenusOS.Units_Temperature_Celsius;
@@ -41,15 +49,21 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
-			ListRadioButtonGroup {
+			ListSwitch {
 				text: "Enable Series Balance"
-				dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteries"
-				optionModel: [
-					{ display: qsTr("Yes"), value: "YES" },
-					{ display: qsTr("No"), value: "NO" }
-				]
+				dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteriesCheck"
+				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						balanceSeriesBatteriesSelection.setValue("NO")
+						balanceSeriesBatteriesSelectionCheck.setValue(0)
+					}
+					else if(checked){
+						balanceSeriesBatteriesSelection.setValue("YES")
+						balanceSeriesBatteriesSelectionCheck.setValue(1)
+					}
+				}
 			}
-
 			ListNavigation {
 				text: "Balancing Logic"
 				preferredVisible: true

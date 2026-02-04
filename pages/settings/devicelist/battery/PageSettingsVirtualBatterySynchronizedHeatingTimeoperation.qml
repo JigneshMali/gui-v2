@@ -88,7 +88,7 @@ Page {
 			if(value === 1){
 				Global.showToastNotification(
 					VenusOS.Notification_Info,
-					qsTr("StartTime and EndTime window must be 12 hours or less."),
+					qsTr("Start Time and End Time window must be 12 hours or less."),
 					5000
 					)
                 allowedMaxTimeRange.setValue(0);   // reset
@@ -149,7 +149,7 @@ Page {
 			}
 			
 			ListButton {
-				text: "Apply Changes"
+				text: "Set Heating Schedule"
 				secondaryText: (applyChanges.value=== 1) ? qsTr("Apply") : qsTr("Apply")
 				preferredVisible: true
 				onClicked: {
