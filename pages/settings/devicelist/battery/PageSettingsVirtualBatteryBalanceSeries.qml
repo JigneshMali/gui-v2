@@ -56,11 +56,11 @@ Page {
 				updateDataOnClick: true
 				onClicked: {
 					if (!checked) {
-						balanceSeriesBatteriesSelection.setValue("NO")
+						// balanceSeriesBatteriesSelection.setValue("NO")
 						balanceSeriesBatteriesSelectionCheck.setValue(0)
 					}
 					else if(checked){
-						balanceSeriesBatteriesSelection.setValue("YES")
+						// balanceSeriesBatteriesSelection.setValue("YES")
 						balanceSeriesBatteriesSelectionCheck.setValue(1)
 					}
 				}
