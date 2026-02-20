@@ -222,6 +222,17 @@ Page {
 					{ display: qsTr("90 %"), value: 90 }
 				]
 			}
+			ListRadioButtonGroup {
+				text: "BMS Detection Delay"
+				dataItem.uid: "mqtt/sfksettings/0/BmsDetectionDelay"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("5 Seconds"), value: 5 },
+					{ display: qsTr("10 Seconds [DEFAULT]"), value: 10 },
+					{ display: qsTr("15 Seconds"), value: 15 },
+					{ display: qsTr("20 Seconds"), value: 20 }
+				]
+			}
 
 			ListSwitch {
 				text: "Detail Logging"
