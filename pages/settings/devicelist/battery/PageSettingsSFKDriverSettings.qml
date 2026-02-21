@@ -232,6 +232,10 @@ Page {
 					{ display: qsTr("15 Seconds"), value: 15 },
 					{ display: qsTr("20 Seconds"), value: 20 }
 				]
+				onOptionClicked:{
+					Global.showToastNotification(VenusOS.Notification_Info,qsTr("Please restart device to see changes."), 5000)
+					
+				}
 			}
 
 			ListSwitch {
