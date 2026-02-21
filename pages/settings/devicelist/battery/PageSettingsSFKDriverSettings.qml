@@ -234,7 +234,6 @@ Page {
 				]
 				onOptionClicked:{
 					Global.showToastNotification(VenusOS.Notification_Info,qsTr("Please restart device to see changes."), 5000)
-					
 				}
 			}
 
