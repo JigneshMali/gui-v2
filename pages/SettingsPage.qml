@@ -20,6 +20,10 @@ SwipeViewPage {
 	url: "qrc:/qt/qml/Victron/VenusOS/pages/SettingsPage.qml"
 	topLeftButton: VenusOS.StatusBar_LeftButton_ControlsInactive
 	focusPolicy: Qt.TabFocus
+	property VeQuickItem sfk_DriverSettingMenu_Active: VeQuickItem {
+		id: sfk_DriverSettingMenu_Active
+		uid: "mqtt/sfksettings/0/SFKConnected"
+		}	
 
 	GradientListView {
 		id: settingsListView
@@ -94,6 +98,17 @@ SwipeViewPage {
 				pageSource: "/pages/settings/debug/PageDebug.qml"
 				iconSource: "qrc:/images/icon_debug_32.png"
 				showAccessLevel: VenusOS.User_AccessType_SuperUser
+			}
+			
+			SettingsListNavigation {
+				//% "SFK Venus OS Driver"
+				text: qsTr("SFK Venus OS Driver")
+				//% "Manage SFK devices and driver updates"
+				secondaryText: qsTr("Manage SFK devices and driver updates")
+				pageSource: "/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml"
+				// iconSource: "qrc:/images/sfk_icon.png"
+				iconSource: "qrc:/images/sfk_logo.png"
+				preferredVisible: sfk_DriverSettingMenu_Active.value === 1 && sfk_DriverSettingMenu_Active.valid
 			}
 		}
 	}
