@@ -257,16 +257,15 @@ Page {
 				value: preferredVisible ? root.history.chargedEnergy.value : NaN
 			}
 
-			// ListInfoLabel {
-			// 	text: CommonWords.reset_history_on_the_monitor_itself
-			// 	visible: !clearHistory.visible
-			// }
+			ListInfoLabel {
+				text: CommonWords.reset_history_on_the_monitor_itself
+				visible: !clearHistory.visible
+			}
 
-
-			// ListClearHistoryButton {
-			// 	id: clearHistory
-			// 	bindPrefix: root.bindPrefix
-			// }
+			ListClearHistoryButton {
+				id: clearHistory
+				bindPrefix: root.bindPrefix
+			}
 		}
 	}
 }
