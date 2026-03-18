@@ -262,6 +262,7 @@ Page {
 			// 	visible: !clearHistory.visible
 			// }
 
+
 			// ListClearHistoryButton {
 			// 	id: clearHistory
 			// 	bindPrefix: root.bindPrefix
