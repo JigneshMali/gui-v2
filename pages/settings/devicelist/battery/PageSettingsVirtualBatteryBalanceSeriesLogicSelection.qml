@@ -24,13 +24,25 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
-			ListRadioButtonGroup {
+			// ListRadioButtonGroup {
+			// 	text: "Balancing Logic"
+			// 	dataItem.uid: mqttPrefix + "/Info/BalancingLogicSelection"
+			// 	optionModel: [
+			// 		{ display: qsTr("Fixed Balancing"), value: 0 },
+			// 		{ display: qsTr("Dynamic Balancing"), value: 1 }
+			// 	]
+			// }
+
+			ListText {
 				text: "Balancing Logic"
 				dataItem.uid: mqttPrefix + "/Info/BalancingLogicSelection"
-				optionModel: [
-					{ display: qsTr("Fixed Balancing"), value: 0 },
-					{ display: qsTr("Dynamic Balancing"), value: 1 }
-				]
+				secondaryText: {
+					if(dataItem.value === 1){
+						return qsTr("Dynamic Balancing")
+					} else if (dataItem.value === 0) {
+						return qsTr("Fixed Balancing")
+					}
+				}
 			}
 
 			ListRadioButtonGroup {
