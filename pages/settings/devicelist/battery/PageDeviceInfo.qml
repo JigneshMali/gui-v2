@@ -10,53 +10,50 @@ import QtQuick.Controls.impl as CP
 Page {
 	id: root
 
-	// The uid of the service that provides the device information.
-	required property string serviceUid
 	property string bindPrefix
-	// Additional settings to be loaded.
-	property Component extraDeviceInfo
+	property alias settingsListView: settingsListView
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
-		uid: root.serviceUid +  "/SFKbatteryflag"
+		uid: root.bindPrefix +  "/SFKbatteryflag"
 	}	
 	property VeQuickItem sfkvbFlag: VeQuickItem {
 		id: sfkvbFlag
-		uid: root.serviceUid + "/SFKVBbatteryflag"
+		uid: root.bindPrefix + "/SFKVBbatteryflag"
 	}	
 	property VeQuickItem versionFlag: VeQuickItem {
 		id: versionFlag
-		uid: root.serviceUid +  "/SFKhardwareflag"
+		uid: root.bindPrefix +  "/SFKhardwareflag"
 		}
 
-	title: CommonWords.device_info_title
-
 	GradientListView {
+		id: settingsListView
+
 		model: VisibleItemModel {
 
 			ListText {
 				text: "Connected"
-				dataItem.uid: root.serviceUid + "/Connected"
+				dataItem.uid: root.bindPrefix + "/Connected"
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 
 			ListText {
 				//% "Connection"
 				text: qsTrId("settings_deviceinfo_connection")
-				dataItem.uid: root.serviceUid + "/Mgmt/Connection"
+				dataItem.uid: root.bindPrefix + "/Mgmt/Connection"
 				dataItem.invalidate: false
 			}
 
 			ListText {
 				//% "Product"
 				text: qsTrId("settings_deviceinfo_product")
-				dataItem.uid: root.serviceUid + "/ProductName"
+				dataItem.uid: root.bindPrefix + "/ProductName"
 				dataItem.invalidate: false
 			}
 
 			ListTextField {
 				//% "Name"
 				text: qsTrId("settings_deviceinfo_name")
-				dataItem.uid: root.serviceUid + "/CustomName"
+				dataItem.uid: root.bindPrefix + "/CustomName"
 				dataItem.invalidate: false
 				textField.maximumLength: 32
 				preferredVisible: dataItem.valid
@@ -66,7 +63,7 @@ Page {
 			ListTextField {
 				//% "SFK pin"
 				text: "Security pin"
-				dataItem.uid: root.serviceUid + "/SFKBMSPin"
+				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
@@ -85,12 +82,13 @@ Page {
 			// 	//% "Product ID"
 			// 	text: qsTrId("settings_deviceinfo_product_id")
 			// 	secondaryText: Utils.toHexFormat(dataItem.value)
-			// 	dataItem.uid: root.serviceUid + "/ProductId"
+			// 	dataItem.uid: root.bindPrefix + "/ProductId"
 			// 	dataItem.invalidate: false
+			// 	preferredVisible: dataItem.valid && sfkFlag.value === 0
 			// }
 
 			ListFirmwareVersion {
-				bindPrefix: root.serviceUid
+				bindPrefix: root.bindPrefix
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
@@ -98,21 +96,15 @@ Page {
 			ListText {
 				//% "Hardware version"
 				text: qsTrId("settings_deviceinfo_hardware_version")
-				dataItem.uid: root.serviceUid + "/HardwareVersion"
+				dataItem.uid: root.bindPrefix + "/HardwareVersion"
 				dataItem.invalidate: false
-				preferredVisible: dataItem.valid  && sfkFlag.value === 1
+				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
-			// ListText {
-			// 	text: CommonWords.vrm_instance
-			// 	dataItem.uid: root.serviceUid + "/DeviceInstance"
-			// 	dataItem.invalidate: false
-			// }
-			
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
-				dataItem.uid: root.serviceUid + "/DeviceInstance"
+				dataItem.uid: root.bindPrefix + "/DeviceInstance"
 				dataItem.invalidate: false
 				textField.maximumLength: 4
 				preferredVisible: dataItem.valid
@@ -120,27 +112,43 @@ Page {
 
 			ListText {
 				text: CommonWords.serial_number
-				dataItem.uid: root.serviceUid + "/Serial"
+				dataItem.uid: root.bindPrefix + "/Serial"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
-			
+
 			ListText {
 				text: "MCU ID"
-				dataItem.uid: root.serviceUid + "/MCUid"
+				dataItem.uid: root.bindPrefix + "/MCUid"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
+
+			// ListNavigation {
+			// 	text: "Update SFK Driver"
+			// 	preferredVisible: sfkFlag.value === 1
+			// 	onClicked: {
+			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoFirmwareCheck.qml",
+			// 				{ "title": text, "bindPrefix": root.bindPrefix })
+			// 	}
+			// }
+
+			// ListNavigation {
+			// 	text: "Uninstall SFK Driver"
+			// 	preferredVisible: sfkFlag.value === 1
+			// 	onClicked: {
+			// 		Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatteryDeviceinfoUninstallSFK.qml",
+			// 				{ "title": text, "bindPrefix": root.bindPrefix })
+			// 	}
+			// }
 
 			ListText {
 				//% "Device name"
 				text: qsTrId("settings_deviceinfo_device_name")
-				dataItem.uid: root.serviceUid + "/DeviceName"
+				dataItem.uid: root.bindPrefix + "/DeviceName"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
 		}
-
-		footer: root.extraDeviceInfo
 	}
 }
