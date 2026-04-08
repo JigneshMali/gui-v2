@@ -92,8 +92,8 @@ Page {
 				dataItem.uid: mqttPrefix + "/System/FinalBalanceVoltageDeviation"
 				preferredVisible: dataItem.valid
 				optionModel: [
-					{ display: qsTr("%1mV").arg(30), value: 30 },
-					{ display: qsTr("%1mV %2").arg(40).arg("[DEFAULT]"), value:40},
+					{ display: qsTr("%1mV %2").arg(30).arg("[DEFAULT]"), value:30},
+					{ display: qsTr("%1mV").arg(40), value: 40 },
 					{ display: qsTr("%1mV").arg(50), value: 50 },
 					{ display: qsTr("%1mV").arg(60), value: 60 }
 				]
