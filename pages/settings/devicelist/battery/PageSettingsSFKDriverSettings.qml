@@ -50,6 +50,47 @@ Page {
 		uid: mqttPrefix + "/RestartService"
 	}
 
+	function generateOptions() {
+		var options = [];
+		var nrOfCellsValue = nrOfcell.value || 4; // Default to 4 if undefined
+		if (nrOfCellsValue === 4) {
+			options = [
+				{ display: qsTr("%1A").arg(40.0), value: 40 },
+				{ display: qsTr("%1A").arg(50.0), value: 50 },
+				{ display: qsTr("%1A").arg(60.0), value: 60 },
+				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(80.0), value: 80 },
+				{ display: qsTr("%1A").arg(90.0), value: 90 },
+				{ display: qsTr("%1A").arg(80.0), value: 110 },
+				{ display: qsTr("%1A").arg(80.0), value: 130 },
+				{ display: qsTr("%1A").arg(80.0), value: 150 },
+				{ display: qsTr("%1A").arg(80.0), value: 170 },
+				{ display: qsTr("%1A").arg(80.0), value: 190 }
+			];
+		} else if (nrOfCellsValue === 8) {
+			options = [
+				{ display: qsTr("%1A").arg(40.0), value: 40 },
+				{ display: qsTr("%1A").arg(50.0), value: 50 },
+				{ display: qsTr("%1A").arg(60.0), value: 60 },
+				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(80.0), value: 80 },
+				{ display: qsTr("%1A").arg(90.0), value: 90 }
+			];
+		}
+		else {
+			options = [
+				{ display: qsTr("%1A").arg(40.0), value: 40 },
+				{ display: qsTr("%1A").arg(50.0), value: 50 },
+				{ display: qsTr("%1A").arg(60.0), value: 60 },
+				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(80.0), value: 80 },
+				{ display: qsTr("%1A").arg(90.0), value: 90 }
+			];
+		}
+		return options;
+	}
+
+
 	GradientListView {
 		model: VisibleItemModel {
 
@@ -83,7 +124,7 @@ Page {
                     { display:qsTr("%1V").arg(nrOfcell.value*(3.525)), value: 3.525 },
                     { display: qsTr("%1V").arg(nrOfcell.value*(3.550)), value: 3.550 },
                     { display: qsTr("%1V").arg(nrOfcell.value*(3.575)), value: 3.575 },
-                    { display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 }				
+                    { display: qsTr("%1V").arg(nrOfcell.value*(3.600)), value: 3.600 }
 				]
 				onOptionClicked:{
 					if(cvlCheckfloatbool.value === 1){
@@ -97,14 +138,15 @@ Page {
 				text: "Charge Current Limit (CCL)"
 				dataItem.uid: "mqtt/sfksettings/0/Info/MaxChargeCurrent"
 				preferredVisible: true  // Control visibility based on your condition
-				optionModel: [
-					{ display: qsTr("%1A").arg(40.0), value: 40 },
-					{ display: qsTr("%1A").arg(50.0), value: 50 },
-					{ display: qsTr("%1A").arg(60.0), value: 60 },
-					{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
-					{ display: qsTr("%1A").arg(80.0), value: 80 },
-					{ display: qsTr("%1A").arg(90.0), value: 90 }
-				]
+				// optionModel: [
+				// 	{ display: qsTr("%1A").arg(40.0), value: 40 },
+				// 	{ display: qsTr("%1A").arg(50.0), value: 50 },
+				// 	{ display: qsTr("%1A").arg(60.0), value: 60 },
+				// 	{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				// 	{ display: qsTr("%1A").arg(80.0), value: 80 },
+				// 	{ display: qsTr("%1A").arg(90.0), value: 90 }
+				// ]
+				optionModel: generateOptions()		 
             }
 
 			ListRadioButtonGroup {
