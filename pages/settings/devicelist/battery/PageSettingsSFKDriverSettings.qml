@@ -61,11 +61,11 @@ Page {
 				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
 				{ display: qsTr("%1A").arg(80.0), value: 80 },
 				{ display: qsTr("%1A").arg(90.0), value: 90 },
-				{ display: qsTr("%1A").arg(80.0), value: 110 },
-				{ display: qsTr("%1A").arg(80.0), value: 130 },
-				{ display: qsTr("%1A").arg(80.0), value: 150 },
-				{ display: qsTr("%1A").arg(80.0), value: 170 },
-				{ display: qsTr("%1A").arg(80.0), value: 190 }
+				{ display: qsTr("%1A").arg(110.0), value: 110 },
+				{ display: qsTr("%1A").arg(130.0), value: 130 },
+				{ display: qsTr("%1A").arg(150.0), value: 150 },
+				{ display: qsTr("%1A").arg(170.0), value: 170 },
+				{ display: qsTr("%1A").arg(190.0), value: 190 }
 			];
 		} else if (nrOfCellsValue === 8) {
 			options = [
