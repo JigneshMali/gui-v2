@@ -41,7 +41,7 @@ Page {
 
 			ListRadioButtonGroup {
 				text: "Wireless Mode"
-				dataItem.uid: root.bindPrefix + "/H2Device/H2DeviceWirelessMode"
+				dataItem.uid: root.bindPrefix + "/H2DeviceWirelessMode"
 				preferredVisible: dataItem.valid  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("Ble"), value: 3 },
