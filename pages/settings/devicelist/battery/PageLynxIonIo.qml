@@ -34,6 +34,24 @@ Page {
 			}
 
 			ListSwitch {
+				text: "Regulate SOC"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2RegulateMaxSOC_StatusRead"
+				preferredVisible: dataItem.valid
+			}
+
+			ListRadioButtonGroup {
+				text: "Wireless Mode"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2DeviceWirelessMode"
+				preferredVisible: dataItem.valid  // Control visibility based on your condition
+				optionModel: [
+					{ display: qsTr("Ble"), value: 3 },
+					{ display: qsTr("Zigbee"), value: 2 },
+					{ display: qsTr("Thread"), value: 1 },
+					{ display: qsTr("Off"), value: 0 }
+				]
+            }
+			
+			ListSwitch {
 				text: "Force charging off"
 				dataItem.uid: root.bindPrefix + "/Io/ForceChargingOff"
 				preferredVisible: dataItem.valid
