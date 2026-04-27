@@ -17,10 +17,10 @@ Page {
 			uid: root.bindPrefix + "/ProductName"
 		}
 
-	VeQuickItem {
-			id: isH2DeviceBool
-			uid: root.bindPrefix + "/H2DeviceBool"
-		}
+	property VeQuickItem isH2DeviceBool: VeQuickItem{
+		id: isH2DeviceBool
+		uid: root.bindPrefix +  "/H2DeviceBool"
+	}
 
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag

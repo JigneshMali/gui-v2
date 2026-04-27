@@ -28,6 +28,12 @@ Page {
 		uid: root.serviceUid +  "/SFKhardwareflag"
 		}
 
+	property VeQuickItem isH2DeviceBool: VeQuickItem{
+		id: isH2DeviceBool
+		uid: root.serviceUid +  "/H2DeviceBool"
+	}
+
+
 	title: CommonWords.device_info_title
 
 	GradientListView {
@@ -69,7 +75,7 @@ Page {
 				dataItem.uid: root.serviceUid + "/SFKBMSPin"
 				dataItem.invalidate: false
 				textField.maximumLength: 6
-				preferredVisible: dataItem.valid && sfkFlag.value === 1
+				preferredVisible: dataItem.valid && sfkFlag.value === 1 && isH2DeviceBool.value === 0
 				// placeholderText: CommonWords.custom_name
 				textField.onAccepted: {
 					if (textField.text.length !== 6) {
