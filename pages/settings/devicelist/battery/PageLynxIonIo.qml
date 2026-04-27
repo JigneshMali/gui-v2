@@ -33,11 +33,24 @@ Page {
 				secondaryText: CommonWords.yesOrNo(dataItem.value)
 			}
 
+			// ListSwitch {
+			// 	text: "Regulate SOC"
+			// 	dataItem.uid: root.bindPrefix + "/H2Device/H2RegulateMaxSOC_StatusRead"
+			// 	preferredVisible: dataItem.valid
+			// 	checked: dataItem.valid 
+			// }
+
 			ListSwitch {
+				id : regulateMaxSOC
 				text: "Regulate SOC"
 				dataItem.uid: root.bindPrefix + "/H2Device/H2RegulateMaxSOC_StatusRead"
 				preferredVisible: dataItem.valid
-				checked: dataItem.valid 
+				updateDataOnClick: true
+				onClicked: {
+					if(checked){
+						regulateMaxSOC.setValue(0)
+					}
+				}
 			}
 
 			// ListRadioButtonGroup {
