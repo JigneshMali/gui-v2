@@ -105,7 +105,7 @@ Page {
 
 			ListText {
 				text: "Device Firmware"
-				dataItem.uid: root.bindPrefix + "/H2DeviceFirmware"
+				dataItem.uid: root.serviceUid + "/H2DeviceFirmware"
 				dataItem.invalidate: false
 				preferredVisible: dataItem.valid
 			}
