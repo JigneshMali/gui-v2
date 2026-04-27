@@ -16,14 +16,16 @@ Page {
 			id: productName
 			uid: root.bindPrefix + "/ProductName"
 		}
+
 	VeQuickItem {
-			id: hardwareVersion
-			uid: root.bindPrefix + "/HardwareVersion"
+			id: isH2DeviceBool
+			uid: root.bindPrefix + "/H2DeviceBool"
 		}
-	VeQuickItem {
-			id: nrOfBatteries
-			uid: root.bindPrefix + "/System/NrOfBatteries"
-		}
+
+	property VeQuickItem sfkFlag: VeQuickItem{
+		id: sfkFlag
+		uid: root.serviceUid +  "/SFKbatteryflag"
+	}
 
 	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
 	GradientListView {
@@ -255,6 +257,65 @@ Page {
 				preferredVisible: root.history.allowsChargedEnergy
 				unit: VenusOS.Units_Energy_KiloWattHour
 				value: preferredVisible ? root.history.chargedEnergy.value : NaN
+			}
+
+			ListText {
+				text: "BMS Usage Logs"
+				preferredVisible: isH2DeviceBool.value === 1   // Control visibility based on your condition
+			}
+
+			ListText {
+				text: "High Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_HighTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically High Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CHighTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Low Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_LowTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically Low Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CLowTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "High SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_HighSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Low SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_LowSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically Low SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CLowSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "AMP Boost"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_AMPboost"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Day Since Full Charge"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_DaysinceFullCharge"
+				preferredVisible: dataItem.valid
 			}
 
 			ListInfoLabel {
