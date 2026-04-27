@@ -22,12 +22,6 @@ Page {
 		uid: root.bindPrefix +  "/H2DeviceBool"
 	}
 
-	property VeQuickItem sfkFlag: VeQuickItem{
-		id: sfkFlag
-		uid: root.serviceUid +  "/SFKbatteryflag"
-	}
-
-	property bool sfkFlag: productName.text.toLowerCase().indexOf("sfk") !== -1
 	GradientListView {
 		model: VisibleItemModel {
 
