@@ -101,6 +101,13 @@ Page {
 				preferredVisible: dataItem.valid && sfkFlag.value === 1
 			}
 
+			ListText {
+				text: "Device Firmware"
+				dataItem.uid: root.bindPrefix + "/H2DeviceFirmware"
+				dataItem.invalidate: false
+				preferredVisible: dataItem.valid
+			}
+			
 			ListTextField {
 				//% "Name"
 				text: CommonWords.vrm_instance
