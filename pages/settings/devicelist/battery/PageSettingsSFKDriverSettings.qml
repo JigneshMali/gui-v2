@@ -138,29 +138,29 @@ Page {
 				text: "Charge Current Limit (CCL)"
 				dataItem.uid: "mqtt/sfksettings/0/Info/MaxChargeCurrent"
 				preferredVisible: true  // Control visibility based on your condition
-				// optionModel: [
-				// 	{ display: qsTr("%1A").arg(40.0), value: 40 },
-				// 	{ display: qsTr("%1A").arg(50.0), value: 50 },
-				// 	{ display: qsTr("%1A").arg(60.0), value: 60 },
-				// 	{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
-				// 	{ display: qsTr("%1A").arg(80.0), value: 80 },
-				// 	{ display: qsTr("%1A").arg(90.0), value: 90 }
-				// ]
-				optionModel: generateOptions()		 
+				optionModel: [
+					{ display: qsTr("%1A").arg(40.0), value: 40 },
+					{ display: qsTr("%1A").arg(50.0), value: 50 },
+					{ display: qsTr("%1A").arg(60.0), value: 60 },
+					{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+					{ display: qsTr("%1A").arg(80.0), value: 80 },
+					{ display: qsTr("%1A").arg(90.0), value: 90 }
+				]
             }
 
 			ListRadioButtonGroup {
 				text: "Discharge Current Limit (DCL)"
 				dataItem.uid: "mqtt/sfksettings/0/Info/MaxDischargeCurrent"
 				preferredVisible: true  // Control visibility based on your condition
-				optionModel: [
-					{ display: qsTr("%1A").arg(50.0), value: 50 },
-					{ display: qsTr("%1A").arg(60.0), value: 60 },
-					{ display: qsTr("%1A").arg(70.0), value: 70 },
-					{ display: qsTr("%1A").arg(80.0), value: 80 },
-					{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
-					{ display: qsTr("%1A").arg(100.0), value: 100 }
-				]
+				// optionModel: [
+				// 	{ display: qsTr("%1A").arg(50.0), value: 50 },
+				// 	{ display: qsTr("%1A").arg(60.0), value: 60 },
+				// 	{ display: qsTr("%1A").arg(70.0), value: 70 },
+				// 	{ display: qsTr("%1A").arg(80.0), value: 80 },
+				// 	{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
+				// 	{ display: qsTr("%1A").arg(100.0), value: 100 }
+				// ]
+				optionModel: generateOptions()		 
 			}
 
 			ListRadioButtonGroup {
