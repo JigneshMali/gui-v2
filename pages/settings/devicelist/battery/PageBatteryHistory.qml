@@ -260,11 +260,6 @@ Page {
 			}
 
 			ListText {
-				text: "BMS Usage Logs"
-				preferredVisible: isH2DeviceBool.value === 1   // Control visibility based on your condition
-			}
-
-			ListText {
 				text: "High Temp(hrs)"
 				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_HighTemp"
 				preferredVisible: dataItem.valid
