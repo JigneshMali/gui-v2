@@ -55,12 +55,12 @@ Page {
 		var nrOfCellsValue = nrOfcell.value || 4; // Default to 4 if undefined
 		if (nrOfCellsValue === 4) {
 			options = [
-				{ display: qsTr("%1A").arg(40.0), value: 40 },
 				{ display: qsTr("%1A").arg(50.0), value: 50 },
 				{ display: qsTr("%1A").arg(60.0), value: 60 },
-				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(70.0), value: 70 },
 				{ display: qsTr("%1A").arg(80.0), value: 80 },
-				{ display: qsTr("%1A").arg(90.0), value: 90 },
+				{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
+				{ display: qsTr("%1A").arg(100.0), value: 100 },
 				{ display: qsTr("%1A").arg(110.0), value: 110 },
 				{ display: qsTr("%1A").arg(130.0), value: 130 },
 				{ display: qsTr("%1A").arg(150.0), value: 150 },
@@ -69,22 +69,22 @@ Page {
 			];
 		} else if (nrOfCellsValue === 8) {
 			options = [
-				{ display: qsTr("%1A").arg(40.0), value: 40 },
 				{ display: qsTr("%1A").arg(50.0), value: 50 },
 				{ display: qsTr("%1A").arg(60.0), value: 60 },
-				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(70.0), value: 70 },
 				{ display: qsTr("%1A").arg(80.0), value: 80 },
-				{ display: qsTr("%1A").arg(90.0), value: 90 }
+				{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
+				{ display: qsTr("%1A").arg(100.0), value: 100 }
 			];
 		}
 		else {
 			options = [
-				{ display: qsTr("%1A").arg(40.0), value: 40 },
 				{ display: qsTr("%1A").arg(50.0), value: 50 },
 				{ display: qsTr("%1A").arg(60.0), value: 60 },
-				{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
+				{ display: qsTr("%1A").arg(70.0), value: 70 },
 				{ display: qsTr("%1A").arg(80.0), value: 80 },
-				{ display: qsTr("%1A").arg(90.0), value: 90 }
+				{ display: qsTr("%1A %2").arg(90.0).arg("[DEFAULT]"), value: 90 },
+				{ display: qsTr("%1A").arg(100.0), value: 100 }
 			];
 		}
 		return options;
