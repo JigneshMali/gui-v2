@@ -103,7 +103,7 @@ Page {
 			ListRadioButtonGroup {
 				text: "Connection Type"
 				dataItem.uid: "mqtt/sfksettings/0/Bms_Connection_Type"
-				preferredVisible: true  // Control visibility based on your condition
+				preferredVisible: dataItem.valid  // Control visibility based on your condition
 				optionModel: [
 					{ display: qsTr("RJ-45 / RS-485"), value: 1 },
 					{ display: qsTr("USB-C"), value: 2 },
