@@ -107,7 +107,7 @@ Page {
 				optionModel: [
 					{ display: qsTr("RJ-45 / RS-485"), value: 1 },
 					{ display: qsTr("USB-C"), value: 2 },
-					{ display: qsTr("Auto Detect (Slower Detection)"), value: 0 }
+					// { display: qsTr("Auto Detect (Slower Detection)"), value: 0 }
 				]
 			}
             
