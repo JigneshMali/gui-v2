@@ -19,7 +19,7 @@ Page {
 	uid: root.bindPrefix +  "/Alarms/SOCnotification"
 	onValueChanged:{
 			if (value === 1) {
-				Global.showToastNotification(VenusOS.Notification_Info, sOCnotificationText.value)
+				Global.showToastNotification(VenusOS.Notification_Info, sOCnotificationText.value,5000)
 			}
 		}
 	}	
