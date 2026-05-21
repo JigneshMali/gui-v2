@@ -10,6 +10,20 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property VeQuickItem sOCnotificationText: VeQuickItem{
+	id: sOCnotificationText
+	uid: root.bindPrefix +  "/Alarms/SOCnotificationMessage"
+	}	
+	property VeQuickItem sOCnotification: VeQuickItem{
+	id: sOCnotification
+	uid: root.bindPrefix +  "/Alarms/SOCnotification"
+	onValueChanged:{
+			if (value === 1) {
+				Global.showToastNotification(VenusOS.Notification_Info, sOCnotificationText.value)
+			}
+		}
+	}	
+
 
 	GradientListView {
 		model: VisibleItemModel {
