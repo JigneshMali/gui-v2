@@ -58,9 +58,9 @@ Page {
 				dataItem.uid: root.bindPrefix + "/H2DeviceWirelessMode"
 				preferredVisible: dataItem.valid  // Control visibility based on your condition
 				optionModel: [
-					{ display: qsTr("Ble"), value: 3 },
-					{ display: qsTr("Zigbee"), value: 2 },
-					{ display: qsTr("Thread"), value: 1 },
+					{ display: qsTr("Ble"), value: 1 },
+					{ display: qsTr("Zigbee"), value: 3 },
+					{ display: qsTr("Thread"), value: 2 },
 					{ display: qsTr("Off"), value: 0 }
 				]
             }
