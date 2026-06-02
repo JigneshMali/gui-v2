@@ -16,6 +16,11 @@ DevicePage {
 	readonly property bool isFiamm48TL: productId.value === ProductInfo.ProductId_Battery_Fiamm48TL
 	readonly property bool isParallelBms: nrOfBmses.dataItem.valid
 
+	property VeQuickItem isH2DeviceBool: VeQuickItem{
+		id: isH2DeviceBool
+		uid: root.bindPrefix +  "/H2DeviceBool"
+	}
+
 	property VeQuickItem sfkFlag: VeQuickItem{
 		id: sfkFlag
 		uid: root.bindPrefix +  "/SFKbatteryflag"
@@ -532,6 +537,15 @@ DevicePage {
 				VeQuickItem {
 					id: dcl
 					uid: root.bindPrefix + "/Info/MaxDischargeCurrent"
+				}
+			}
+			
+			ListNavigation {
+				text: "Firmware Update"
+				preferredVisible: isH2DeviceBool.value === 1 
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageBatterySFKH2update.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
 				}
 			}
 
