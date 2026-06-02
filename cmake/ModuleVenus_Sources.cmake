@@ -495,6 +495,12 @@ set (VictronVenusOS_QML_MODULE_SOURCES
     pages/settings/devicelist/battery/PageBatteryVirtualBatteryCellVoltages.qml
     pages/settings/devicelist/battery/PageSettingsSFKDiagnosticReport.qml
     pages/settings/devicelist/battery/PageSettingsVirtualBatteryBalanceSeriesLogicSelection.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2update.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2FirmwareV1.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2FirmwareV2.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2FirmwareV3.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2FirmwareV4.qml
+    pages/settings/devicelist/battery/PageBatterySFKH2FirmwareV5.qml
     pages/settings/devicelist/battery/PageBatteryAlarms.qml
     pages/settings/devicelist/battery/PageBatteryDetails.qml
     pages/settings/devicelist/battery/PageBatteryHistory.qml
