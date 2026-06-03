@@ -49,6 +49,9 @@ Page {
     property VeQuickItem sfkV1H2DownloadCompleted: VeQuickItem {
         uid: root.bindPrefix + "/H2Device/SFKV1H2DownloadCompleted"
     }
+    property VeQuickItem sfkV1H2Date: VeQuickItem {
+        uid: root.bindPrefix + "/H2Device/SFKV1H2Date"
+    }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
     readonly property bool pageVisible: isH2DeviceBool.value === 1 && h2SFKFirmwareAvailableCheck.value === 1
@@ -94,7 +97,7 @@ Page {
             }
 			
 			ListText {
-                text: qsTr("Release Notes")
+                text: qsTr("Release Notes - [%1]").arg(sfkV1H2Date.value)
                 preferredVisible: pageVisible && sfkV1H2version.value !== ""
             }
 
