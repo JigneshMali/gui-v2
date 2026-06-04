@@ -9,6 +9,7 @@ import QtQuick.Templates as T
 Page {
     id: root
     required property string bindPrefix
+	property int globalDialogResult: 0   // <--- Global result variable	
 
     // ── Common ────────────────────────────────────────────────────────────────
     property VeQuickItem isH2DeviceBool: VeQuickItem {
@@ -86,11 +87,13 @@ Page {
                             ? qsTr("Writing... %1%").arg(h2DeviceFirmwareFlashBar.value)
                             : qsTr("Update")
                 preferredVisible: pageVisible && sfkV4H2version.value !== "" && noESPFlashFile.value === 1 && sfkV4H2DownloadCompleted.value === 1
-                onClicked: {
-                    if (!loopTestValue.value) {
-                        loopTestValue.setValue(1)
-                    }
-                }
+                // onClicked: {
+                //     if (!loopTestValue.value) {
+                //         loopTestValue.setValue(1)
+                //     }
+                // }
+				onClicked: Global.dialogLayer.open(proceedtoUpdateDialog)
+
             }
             
             ListText {
@@ -104,4 +107,20 @@ Page {
             }
         }
     }
+    	Component {
+		id: proceedtoUpdateDialog
+		ModalWarningDialog {
+			title: qsTr("Proceed to Update?")
+			description: qsTr("During the firmware update the SFK venus os driver and virtual battery will be stopped.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+                    loopTestValue.setValue(1)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
 }

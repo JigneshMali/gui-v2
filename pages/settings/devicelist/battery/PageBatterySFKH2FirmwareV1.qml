@@ -11,7 +11,6 @@ Page {
     required property string bindPrefix
 	property int globalDialogResult: 0   // <--- Global result variable	
 
-
     // ── Common ────────────────────────────────────────────────────────────────
     property VeQuickItem isH2DeviceBool: VeQuickItem {
         uid: root.bindPrefix + "/H2DeviceBool"
@@ -127,5 +126,4 @@ Page {
 			}
 		}
 	}
-
 }
