@@ -85,7 +85,7 @@ Page {
             ListButton {
                 text: qsTr("Update Firmware")
                 secondaryText: h2DeviceFirmwareFlashBar.value === 100
-                        ? qsTr("Verified & Updated")
+                        ? qsTr("Updated")
                         : loopTestValue.value === 1
                             ? qsTr("Writing... %1%").arg(h2DeviceFirmwareFlashBar.value)
                             : qsTr("Update")
