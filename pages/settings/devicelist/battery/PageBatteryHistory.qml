@@ -12,11 +12,6 @@ Page {
 	required property string bindPrefix
 	required property BatteryHistory history
 
-	VeQuickItem {
-			id: productName
-			uid: root.bindPrefix + "/ProductName"
-		}
-
 	property VeQuickItem isH2DeviceBool: VeQuickItem{
 		id: isH2DeviceBool
 		uid: root.bindPrefix +  "/H2DeviceBool"
