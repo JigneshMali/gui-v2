@@ -86,7 +86,7 @@ Page {
                         : loopTestValue.value === 1
                             ? qsTr("Writing... %1%").arg(h2DeviceFirmwareFlashBar.value)
                             : qsTr("Update")
-                preferredVisible: pageVisible && sfkV4H2version.value !== "" && noESPFlashFile.value === 1 && sfkV4H2DownloadCompleted.value === 1
+                preferredVisible: pageVisible && sfkV4H2version.value !== "" && sfkV4H2DownloadCompleted.value === 1
                 // onClicked: {
                 //     if (!loopTestValue.value) {
                 //         loopTestValue.setValue(1)
