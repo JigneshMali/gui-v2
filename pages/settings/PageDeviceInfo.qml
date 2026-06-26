@@ -64,7 +64,7 @@ Page {
 				text: qsTrId("settings_deviceinfo_name")
 				dataItem.uid: root.serviceUid + "/CustomName"
 				dataItem.invalidate: false
-				textField.maximumLength: 32
+				maximumLength: 32
 				preferredVisible: dataItem.valid
 				placeholderText: CommonWords.custom_name
 			}
@@ -74,7 +74,7 @@ Page {
 			// 	text: "Security pin"
 			// 	dataItem.uid: root.serviceUid + "/SFKBMSPin"
 			// 	dataItem.invalidate: false
-			// 	textField.maximumLength: 6
+			// 	maximumLength: 6
 			// 	preferredVisible: dataItem.valid && sfkFlag.value === 1 && isH2DeviceBool.value === 0
 			// 	// placeholderText: CommonWords.custom_name
 			// 	textField.onAccepted: {
@@ -156,7 +156,7 @@ Page {
 				text: CommonWords.vrm_instance
 				dataItem.uid: root.serviceUid + "/DeviceInstance"
 				dataItem.invalidate: false
-				textField.maximumLength: 4
+				maximumLength: 4
 				preferredVisible: dataItem.valid
 			}
 
