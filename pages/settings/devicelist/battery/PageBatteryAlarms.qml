@@ -10,9 +10,36 @@ Page {
 	id: root
 
 	property string bindPrefix
+	property VeQuickItem sOCnotificationText: VeQuickItem{
+	id: sOCnotificationText
+	uid: root.bindPrefix +  "/Alarms/SOCnotificationMessage"
+	}	
+	property VeQuickItem sOCnotification: VeQuickItem{
+	id: sOCnotification
+	uid: root.bindPrefix +  "/Alarms/SOCnotification"
+	onValueChanged:{
+			if (value === 1) {
+				Global.showToastNotification(VenusOS.Notification_Info, sOCnotificationText.value,5000)
+			}
+		}
+	}	
+
 
 	GradientListView {
 		model: VisibleItemModel {
+
+			ListAlarm {
+				text: "Low Soc Limit"
+				dataItem.uid: root.bindPrefix + "/Alarms/Low/State"
+				preferredVisible: dataItem.valid
+			}
+
+			ListAlarm {
+				text: "High Soc Limit"
+				dataItem.uid: root.bindPrefix +"/Alarms/High/State"
+				preferredVisible: dataItem.valid
+			}
+
 			ListAlarm {
 				text: CommonWords.low_battery_voltage
 				dataItem.uid: root.bindPrefix + "/Alarms/LowVoltage"
@@ -26,12 +53,12 @@ Page {
 				preferredVisible: dataItem.valid
 			}
 
-			ListAlarm {
-				//% "High cell voltage"
-				text: qsTrId("batteryalarms_high_cell_voltage")
-				dataItem.uid: root.bindPrefix + "/Alarms/HighCellVoltage"
-				preferredVisible: dataItem.valid
-			}
+			// ListAlarm {
+			// 	//% "High cell voltage"
+			// 	text: qsTrId("batteryalarms_high_cell_voltage")
+			// 	dataItem.uid: root.bindPrefix + "/Alarms/HighCellVoltage"
+			// 	preferredVisible: dataItem.valid
+			// }
 
 			ListAlarm {
 				//% "High charge current"

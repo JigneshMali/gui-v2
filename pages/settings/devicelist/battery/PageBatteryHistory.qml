@@ -12,8 +12,80 @@ Page {
 	required property string bindPrefix
 	required property BatteryHistory history
 
+	property VeQuickItem isH2DeviceBool: VeQuickItem{
+		id: isH2DeviceBool
+		uid: root.bindPrefix +  "/H2DeviceBool"
+	}
+
 	GradientListView {
 		model: VisibleItemModel {
+
+			ListText {
+				text: "Pack overvoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/POVP_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Pack undervoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/PUVP_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Charging low temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGUT_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Charging over temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGOT_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Charging overcurrent error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CHGOC_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Discharging low temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGUT_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Discharging over temp error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGOT_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Discharging overcurrent error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/DSGOC_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Cell overvoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/COVP_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Cell undervoltage error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/CUVP_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Short circuit error" // Directly assigning text as no translation ID exists
+				dataItem.uid: root.bindPrefix + "/SC_Err_Count"  // Directly reading from the required path
+				preferredVisible: dataItem.valid
+			}
+			
 			ListQuantity {
 				//% "Deepest discharge"
 				text: qsTrId("batteryalarms_deepest_discharge")
@@ -80,7 +152,7 @@ Page {
 				preferredVisible: root.history.allowsMinimumCellVoltage
 				unit: VenusOS.Units_Volt_DC
 				value: preferredVisible ? root.history.minimumCellVoltage.value : NaN
-				decimals: 3
+				precision: 3
 			}
 
 			ListQuantity {
@@ -89,7 +161,7 @@ Page {
 				preferredVisible: root.history.allowsMaximumCellVoltage
 				unit: VenusOS.Units_Volt_DC
 				value: preferredVisible ? root.history.maximumCellVoltage.value : NaN
-				decimals: 3
+				precision: 3
 			}
 
 			ListText {
@@ -174,6 +246,60 @@ Page {
 				preferredVisible: root.history.allowsChargedEnergy
 				unit: VenusOS.Units_Energy_KiloWattHour
 				value: preferredVisible ? root.history.chargedEnergy.value : NaN
+			}
+
+			ListText {
+				text: "High Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_HighTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically High Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CHighTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Low Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_LowTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically Low Temp(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CLowTemp"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "High SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_HighSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Low SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_LowSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Critically Low SOC(hrs)"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CLowSoc"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "AMP Boost"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_AMPboost"
+				preferredVisible: dataItem.valid
+			}
+
+			ListText {
+				text: "Day Since Full Charge"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_DaysinceFullCharge"
+				preferredVisible: dataItem.valid
 			}
 
 			ListInfoLabel {
