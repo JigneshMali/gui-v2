@@ -67,7 +67,7 @@ Page {
 								width: parent.width
 								value: cellSum.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -86,7 +86,7 @@ Page {
 								width: parent.width
 								value: cellDiff.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -105,7 +105,7 @@ Page {
 								width: parent.width
 								value: cellMax.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -124,7 +124,7 @@ Page {
 								width: parent.width
 								value: cellMin.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -173,7 +173,7 @@ Page {
 											width: parent.width
 											value: cellVoltage.value ?? NaN
 											unit: VenusOS.Units_Volt_DC
-											precision: 3
+											decimals: 3
 											font.pixelSize: 22
 											valueColor: getCellTextColor(outerIndex * 4 + model.index + 1)
 										}

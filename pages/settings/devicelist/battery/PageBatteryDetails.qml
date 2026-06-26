@@ -49,7 +49,7 @@ Page {
 				text: qsTrId("batterydetails_lowest_cell_voltage")
 				model: QuantityObjectModel {
 					QuantityObject { object: details.minVoltageCellId }
-					QuantityObject { object: details.minCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
+					QuantityObject { object: details.minCellVoltage; unit: VenusOS.Units_Volt_DC; decimals: 3 }
 				}
 				preferredVisible: details.allowsLowestCellVoltage
 			}
@@ -59,7 +59,7 @@ Page {
 				text: qsTrId("batterydetails_highest_cell_voltage")
 				model: QuantityObjectModel {
 					QuantityObject { object: details.maxVoltageCellId }
-					QuantityObject { object: details.maxCellVoltage; unit: VenusOS.Units_Volt_DC; precision: 3 }
+					QuantityObject { object: details.maxCellVoltage; unit: VenusOS.Units_Volt_DC; decimals: 3 }
 				}
 				preferredVisible: details.allowsHighestCellVoltage
 			}
@@ -68,7 +68,7 @@ Page {
 				//% "Minimum cell temperature"
 				text: qsTrId("batterydetails_minimum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.minTemperatureCellId; precision: details.minTemperatureCellId.decimals }
+					QuantityObject { object: details.minTemperatureCellId; decimals: details.minTemperatureCellId.decimals }
 					QuantityObject { object: details.minCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMinimumCellTemperature
@@ -78,7 +78,7 @@ Page {
 				//% "Maximum cell temperature"
 				text: qsTrId("batterydetails_maximum_cell_temperature")
 				model: QuantityObjectModel {
-					QuantityObject { object: details.maxTemperatureCellId; precision: details.maxTemperatureCellId.decimals }
+					QuantityObject { object: details.maxTemperatureCellId; decimals: details.maxTemperatureCellId.decimals }
 					QuantityObject { object: details.maxCellTemperature; unit: Global.systemSettings.temperatureUnit }
 				}
 				preferredVisible: details.allowsMaximumCellTemperature

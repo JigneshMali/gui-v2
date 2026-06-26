@@ -212,7 +212,7 @@ Page {
 								width: parent.width
 								value: b1c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -231,7 +231,7 @@ Page {
 								width: parent.width
 								value: b1c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -250,7 +250,7 @@ Page {
 								width: parent.width
 								value: b1c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -269,7 +269,7 @@ Page {
 								width: parent.width
 								value: b1c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -305,7 +305,7 @@ Page {
 								width: parent.width
 								value: b1c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -324,7 +324,7 @@ Page {
 								width: parent.width
 								value: b1c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -343,7 +343,7 @@ Page {
 								width: parent.width
 								value: b1c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -362,7 +362,7 @@ Page {
 								width: parent.width
 								value: b1c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -406,7 +406,7 @@ Page {
 								width: parent.width
 								value: b2c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -425,7 +425,7 @@ Page {
 								width: parent.width
 								value: b2c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -444,7 +444,7 @@ Page {
 								width: parent.width
 								value: b2c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -463,7 +463,7 @@ Page {
 								width: parent.width
 								value: b2c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -499,7 +499,7 @@ Page {
 								width: parent.width
 								value: b2c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -518,7 +518,7 @@ Page {
 								width: parent.width
 								value: b2c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -537,7 +537,7 @@ Page {
 								width: parent.width
 								value: b2c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -556,7 +556,7 @@ Page {
 								width: parent.width
 								value: b2c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -599,7 +599,7 @@ Page {
 								width: parent.width
 								value: b3c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -618,7 +618,7 @@ Page {
 								width: parent.width
 								value: b3c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -637,7 +637,7 @@ Page {
 								width: parent.width
 								value: b3c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -656,7 +656,7 @@ Page {
 								width: parent.width
 								value: b3c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -692,7 +692,7 @@ Page {
 								width: parent.width
 								value: b3c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -711,7 +711,7 @@ Page {
 								width: parent.width
 								value: b3c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -730,7 +730,7 @@ Page {
 								width: parent.width
 								value: b3c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -749,7 +749,7 @@ Page {
 								width: parent.width
 								value: b3c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -792,7 +792,7 @@ Page {
 								width: parent.width
 								value: b4c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -811,7 +811,7 @@ Page {
 								width: parent.width
 								value: b4c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -830,7 +830,7 @@ Page {
 								width: parent.width
 								value: b4c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -849,7 +849,7 @@ Page {
 								width: parent.width
 								value: b4c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -885,7 +885,7 @@ Page {
 								width: parent.width
 								value: b4c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -904,7 +904,7 @@ Page {
 								width: parent.width
 								value: b4c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -923,7 +923,7 @@ Page {
 								width: parent.width
 								value: b4c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -942,7 +942,7 @@ Page {
 								width: parent.width
 								value: b4c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -985,7 +985,7 @@ Page {
 								width: parent.width
 								value: b5c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1004,7 +1004,7 @@ Page {
 								width: parent.width
 								value: b5c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1023,7 +1023,7 @@ Page {
 								width: parent.width
 								value: b5c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1042,7 +1042,7 @@ Page {
 								width: parent.width
 								value: b5c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1078,7 +1078,7 @@ Page {
 								width: parent.width
 								value: b5c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1097,7 +1097,7 @@ Page {
 								width: parent.width
 								value: b5c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1116,7 +1116,7 @@ Page {
 								width: parent.width
 								value: b5c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1135,7 +1135,7 @@ Page {
 								width: parent.width
 								value: b5c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1178,7 +1178,7 @@ Page {
 								width: parent.width
 								value: b6c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1197,7 +1197,7 @@ Page {
 								width: parent.width
 								value: b6c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1216,7 +1216,7 @@ Page {
 								width: parent.width
 								value: b6c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1235,7 +1235,7 @@ Page {
 								width: parent.width
 								value: b6c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1271,7 +1271,7 @@ Page {
 								width: parent.width
 								value: b6c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1290,7 +1290,7 @@ Page {
 								width: parent.width
 								value: b6c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1309,7 +1309,7 @@ Page {
 								width: parent.width
 								value: b6c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1328,7 +1328,7 @@ Page {
 								width: parent.width
 								value: b6c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1371,7 +1371,7 @@ Page {
 								width: parent.width
 								value: b7c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1390,7 +1390,7 @@ Page {
 								width: parent.width
 								value: b7c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1409,7 +1409,7 @@ Page {
 								width: parent.width
 								value: b7c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1428,7 +1428,7 @@ Page {
 								width: parent.width
 								value: b7c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1464,7 +1464,7 @@ Page {
 								width: parent.width
 								value: b7c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1483,7 +1483,7 @@ Page {
 								width: parent.width
 								value: b7c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1502,7 +1502,7 @@ Page {
 								width: parent.width
 								value: b7c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1521,7 +1521,7 @@ Page {
 								width: parent.width
 								value: b7c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1564,7 +1564,7 @@ Page {
 								width: parent.width
 								value: b8c1volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1583,7 +1583,7 @@ Page {
 								width: parent.width
 								value: b8c2volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1602,7 +1602,7 @@ Page {
 								width: parent.width
 								value: b8c3volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1621,7 +1621,7 @@ Page {
 								width: parent.width
 								value: b8c4volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1657,7 +1657,7 @@ Page {
 								width: parent.width
 								value: b8c5volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1676,7 +1676,7 @@ Page {
 								width: parent.width
 								value: b8c6volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1695,7 +1695,7 @@ Page {
 								width: parent.width
 								value: b8c7volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
@@ -1714,7 +1714,7 @@ Page {
 								width: parent.width
 								value: b8c8volt.value ?? NaN
 								unit: VenusOS.Units_Volt_DC
-								precision: 3
+								decimals: 3
 								font.pixelSize: 22
 							}
 
