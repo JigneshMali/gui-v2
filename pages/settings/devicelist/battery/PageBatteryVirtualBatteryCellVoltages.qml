@@ -196,13 +196,13 @@ Page {
 				preferredVisible: b1c1volt.value !== 0
 				// preferredVisible: b1c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b1cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b1cell1OverviewItem.maximumContentWidth
+						width: b1cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -282,20 +282,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b1cell5OverviewItem
 				preferredVisible: b1c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b1cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b1cell5OverviewItem.maximumContentWidth
+						width: b1cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -375,7 +374,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 1 END
 	
@@ -390,13 +388,13 @@ Page {
 				preferredVisible: b2c1volt.value !== 0
 				// preferredVisible: b2c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b2cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b2cell1OverviewItem.maximumContentWidth
+						width: b2cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -476,20 +474,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b2cell5OverviewItem
 				preferredVisible: b2c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b2cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b2cell5OverviewItem.maximumContentWidth
+						width: b2cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -569,7 +566,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 2 END
 	// ---------------- BATTERY - 3 START
@@ -583,13 +579,13 @@ Page {
 				preferredVisible: b3c1volt.value !== 0
 				// preferredVisible: b3c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b3cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b3cell1OverviewItem.maximumContentWidth
+						width: b3cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -669,20 +665,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b3cell5OverviewItem
 				preferredVisible: b3c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b3cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b3cell5OverviewItem.maximumContentWidth
+						width: b3cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -762,7 +757,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 3 END
 	// ---------------- BATTERY - 4 START
@@ -776,13 +770,13 @@ Page {
 				preferredVisible: b4c1volt.value !== 0
 				// preferredVisible: b4c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b4cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b4cell1OverviewItem.maximumContentWidth
+						width: b4cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -862,20 +856,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b4cell5OverviewItem
 				preferredVisible: b4c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b4cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b4cell5OverviewItem.maximumContentWidth
+						width: b4cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -955,7 +948,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 4 END
 	// ---------------- BATTERY - 5 START
@@ -969,13 +961,13 @@ Page {
 				preferredVisible: b5c1volt.value !== 0
 				// preferredVisible: b5c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b5cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b5cell1OverviewItem.maximumContentWidth
+						width: b5cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1055,20 +1047,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b5cell5OverviewItem
 				preferredVisible: b5c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b5cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b5cell5OverviewItem.maximumContentWidth
+						width: b5cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1148,7 +1139,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 5 END
 	// ---------------- BATTERY - 6 START
@@ -1162,13 +1152,13 @@ Page {
 				preferredVisible: b6c1volt.value !== 0
 				// preferredVisible: b6c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b6cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b6cell1OverviewItem.maximumContentWidth
+						width: b6cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1248,20 +1238,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b6cell5OverviewItem
 				preferredVisible: b6c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b6cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b6cell5OverviewItem.maximumContentWidth
+						width: b6cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1341,7 +1330,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 6 END
 	// ---------------- BATTERY - 7 START
@@ -1355,13 +1343,13 @@ Page {
 				preferredVisible: b7c1volt.value !== 0
 				// preferredVisible: b7c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b7cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b7cell1OverviewItem.maximumContentWidth
+						width: b7cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1441,20 +1429,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b7cell5OverviewItem
 				preferredVisible: b7c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b7cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b7cell5OverviewItem.maximumContentWidth
+						width: b7cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1534,7 +1521,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 7 END
 	// ---------------- BATTERY - 8 START
@@ -1548,13 +1534,13 @@ Page {
 				preferredVisible: b8c1volt.value !== 0
 				// preferredVisible: b8c1volt.valid
 				text: "Cells 1-4"
-				content.children: [
+				contentItem:
 					Row {
 						id: b8cell1ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b8cell1OverviewItem.maximumContentWidth
+						width: b8cell1OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1634,20 +1620,19 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			ListItem {
 				id: b8cell5OverviewItem
 				preferredVisible: b8c5volt.value !== 0
 				text: "Cells 5-8"
-				content.children: [
+				contentItem:
 					Row {
 						id: b8cell5ContentOverviewItem
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: b8cell5OverviewItem.maximumContentWidth
+						width: b8cell5OverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -1727,7 +1712,6 @@ Page {
 							}
 						}
 					}
-				]
 			}			
 	// ---------------- BATTERY - 8 END
 			

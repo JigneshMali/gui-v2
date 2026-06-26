@@ -51,13 +51,13 @@ Page {
 			ListItem {
 				id: cellOverviewItem
 				text: "Overview"
-				content.children: [
+				contentItem:
 					Row {
 						id: contentRowOverview
 
 						readonly property real itemWidth: (width - (spacing * 3)) / 4
 
-						width: cellOverviewItem.maximumContentWidth
+						width: cellOverviewItem.availableWidth
 						spacing: Theme.geometry_listItem_content_spacing
 
 						Column {
@@ -137,7 +137,6 @@ Page {
 							}
 						}
 					}
-				]
 			}
 
 			Column {
@@ -154,13 +153,13 @@ Page {
 
 						text: "Cells %1-%2".arg(model.index * 4 + 1).arg(model.index * 4 + 4)
 						preferredVisible: firstRowCellVoltage.valid
-						content.children: [
+						contentItem:
 							Row {
 								id: contentRow
 
 								readonly property real itemWidth: (width - (spacing * (cellRepeater.count - 1))) / cellRepeater.count
 
-								width: cellListItem.maximumContentWidth
+								width: cellListItem.availableWidth
 								// spacing: Theme.geometry_listItem_content_spacing
 
 								Repeater {
@@ -198,7 +197,6 @@ Page {
 									uid: root.bindPrefix + "/Voltages/Cell%1".arg(outerIndex * 4 + 1)
 								}
 							}
-						]
 					}
 				}
 			}
