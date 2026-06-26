@@ -60,20 +60,57 @@ Page {
 				placeholderText: CommonWords.custom_name
 			}
 
+			// ListTextField {
+			// 	//% "SFK pin"
+			// 	text: "Security pin"
+			// 	dataItem.uid: root.bindPrefix + "/SFKBMSPin"
+			// 	dataItem.invalidate: false
+			// 	maximumLength: 6
+			// 	preferredVisible: dataItem.valid && sfkFlag.value === 1
+			// 	// placeholderText: CommonWords.custom_name
+			// 	textField.onAccepted: {
+			// 		if (textField.text.length !== 6) {
+			// 			toast.createToast(qsTr("Security Pin must be 6 digits"))
+			// 		} else {
+			// 			dataItem.value = textField.text  // Store only if exactly 6 digits
+			// 			textField.text = ""             // Clear the field for security
+			// 		}
+			// 	}
+			// }
 			ListTextField {
 				//% "SFK pin"
 				text: "Security pin"
-				dataItem.uid: root.bindPrefix + "/SFKBMSPin"
+				dataItem.uid: root.serviceUid + "/SFKBMSPin"
 				dataItem.invalidate: false
+
 				maximumLength: 6
-				preferredVisible: dataItem.valid && sfkFlag.value === 1
-				// placeholderText: CommonWords.custom_name
-				textField.onAccepted: {
-					if (textField.text.length !== 6) {
-						toast.createToast(qsTr("Security Pin must be 6 digits"))
-					} else {
-						dataItem.value = textField.text  // Store only if exactly 6 digits
-						textField.text = ""             // Clear the field for security
+				inputMethodHints: Qt.ImhDigitsOnly
+
+				preferredVisible: dataItem.valid && sfkFlag.value === 1 && isH2DeviceBool.value === 0
+
+				validateInput: function() {
+					const pin = secondaryText.trim()
+
+					if (!pin.match(/^[0-9]+$/)) {
+						return Utils.validationResult(
+							VenusOS.InputValidation_Result_Error,
+							qsTr("Security Pin must contain digits only")
+						)
+					}
+
+					if (pin.length !== 6) {
+						return Utils.validationResult(
+							VenusOS.InputValidation_Result_Error,
+							qsTr("Security Pin must be 6 digits")
+						)
+					}
+
+					return Utils.validationResult(VenusOS.InputValidation_Result_OK, "", pin)
+				}
+
+				saveInput: function() {
+					if (dataItem.uid) {
+						dataItem.setValue(secondaryText.trim())
 					}
 				}
 			}

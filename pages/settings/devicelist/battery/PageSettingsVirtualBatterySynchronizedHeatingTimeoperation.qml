@@ -50,36 +50,7 @@ Page {
 		id: applyChanges
 		uid: mqttPrefix + "/Info/ApplyChanges" 
 	}
-	// -------------------------------------------------
-	// property VeQuickItem  wrongTimeInput: VeQuickItem {
-	// 	id: wrongTimeInput
-	// 	uid: mqttPrefix + "/Info/WrongTimeInput" 
-	// 	onValueChanged:{
-	// 		if(value === 1){
-	// 			Global.showToastNotification(
-	// 				VenusOS.Notification_Info,
-	// 				qsTr("Invalid time input. Use HHMM and input must be between 0000 to 2359."),
-	// 				5000
-	// 				)
-    //             wrongTimeInput.setValue(0);   // reset
-	// 		}
-	// 	}
-	// }
-	// -------------------------------------------------
-	// property VeQuickItem  allowedStartTimeRange: VeQuickItem {
-	// 	id: allowedStartTimeRange
-	// 	uid: mqttPrefix + "/Info/AllowedStartTimeRange" 
-	// 	onValueChanged:{
-	// 		if(value === 1){
-	// 			Global.showToastNotification(
-	// 				VenusOS.Notification_Info,
-	// 				qsTr("StartTime must be between 2100 to 0400."),
-	// 				5000
-	// 				)
-    //             allowedStartTimeRange.setValue(0);   // reset
-	// 		}
-	// 	}
-	// }
+
 	// -------------------------------------------------
 	property VeQuickItem  allowedMaxTimeRange: VeQuickItem {
 		id: allowedMaxTimeRange
@@ -106,23 +77,6 @@ Page {
 				dataItem.invalidate: false
 				maximumLength: 4
 				preferredVisible: dataItem.valid
-				// property string oldValue: ""
-				// textField.onAccepted: {
-				// 	oldValue = dataItem.value
-				// 	if (textField.text.length == 1) {
-				// 		dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	} else if (textField.text.length == 2) {
-				// 		dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	}  else if (textField.text.length == 3) {
-				// 		dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	} else if (textField.text.length == 4) {
-				// 		dataItem.value = textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	}
-				// }
 			}
 			
 			ListTextField {
@@ -131,21 +85,7 @@ Page {
 				dataItem.invalidate: false
 				maximumLength: 4
 				preferredVisible: dataItem.valid
-				// textField.onAccepted: {
-				// 	if (textField.text.length == 1) {
-				// 		dataItem.value = "000" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	} else if (textField.text.length == 2) {
-				// 		dataItem.value = "00" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	}  else if (textField.text.length == 3) {
-				// 		dataItem.value = "0" + textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	} else if (textField.text.length == 4) {
-				// 		dataItem.value = textField.text  // Store only if exactly 4 digits
-				// 		// textField.text = dataItem.value             
-				// 	}
-				// }
+
 			}
 			
 			ListButton {
