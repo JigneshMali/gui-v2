@@ -104,7 +104,7 @@ Page {
 				text: "Start Time (HHMM)"
 				dataItem.uid: mqttPrefix + "/Info/HeatStartTime"
 				dataItem.invalidate: false
-				textField.maximumLength: 4
+				maximumLength: 4
 				preferredVisible: dataItem.valid
 				// property string oldValue: ""
 				// textField.onAccepted: {
@@ -129,7 +129,7 @@ Page {
 				text: "End Time (HHMM)"
 				dataItem.uid: mqttPrefix + "/Info/HeatEndTime"
 				dataItem.invalidate: false
-				textField.maximumLength: 4
+				maximumLength: 4
 				preferredVisible: dataItem.valid
 				// textField.onAccepted: {
 				// 	if (textField.text.length == 1) {
