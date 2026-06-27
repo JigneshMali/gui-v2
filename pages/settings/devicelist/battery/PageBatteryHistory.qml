@@ -16,9 +16,25 @@ Page {
 		id: isH2DeviceBool
 		uid: root.bindPrefix +  "/H2DeviceBool"
 	}
+	
+	property VeQuickItem historyTabRefresh: VeQuickItem{
+		id: historyTabRefresh
+		uid: root.bindPrefix +  "/HistoryTabRefresh"
+	}
 
 	GradientListView {
 		model: VisibleItemModel {
+
+			ListButton {
+				text: qsTr("Read Logs")
+				secondaryText: historyTabRefresh.value === 1
+					? qsTr("Reading logs...")
+					: qsTr("Refresh")
+				preferredVisible: true
+				onClicked: {
+					historyTabRefresh.setValue(1)
+				}
+			}
 
 			ListText {
 				text: "Pack overvoltage error" // Directly assigning text as no translation ID exists
