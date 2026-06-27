@@ -49,22 +49,29 @@ Page {
 	GradientListView {
 		model: ObjectModel {
 
+			// ListSwitch {
+			// 	text: "Enable Series Balance"
+			// 	dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteriesCheck"
+			// 	preferredVisible: true
+			// 	updateDataOnClick:true
+			// 	onClicked: {
+			// 		if (!checked) {
+			// 			// balanceSeriesBatteriesSelection.setValue("NO")
+			// 			balanceSeriesBatteriesSelectionCheck.setValue(0)
+			// 		}
+			// 		else if(checked){
+			// 			// balanceSeriesBatteriesSelection.setValue("YES")
+			// 			balanceSeriesBatteriesSelectionCheck.setValue(1)
+			// 		}
+			// 	}
+			// }
+
 			ListSwitch {
-				text: "Enable Series Balance"
+				text:  "Enable Series Balance"
 				dataItem.uid: mqttPrefix + "/System/BalanceSeriesBatteriesCheck"
-				preferredVisible: true
-				updateDataOnClick:true
-				onClicked: {
-					if (!checked) {
-						// balanceSeriesBatteriesSelection.setValue("NO")
-						balanceSeriesBatteriesSelectionCheck.setValue(0)
-					}
-					else if(checked){
-						// balanceSeriesBatteriesSelection.setValue("YES")
-						balanceSeriesBatteriesSelectionCheck.setValue(1)
-					}
-				}
+				preferredVisible: dataItem.valid
 			}
+
 			ListNavigation {
 				text: "Balancing Logic"
 				preferredVisible: true
