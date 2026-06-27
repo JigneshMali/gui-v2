@@ -36,6 +36,7 @@ Page {
 				}
 			}
 
+
 			ListText {
 				text: "Pack overvoltage error" // Directly assigning text as no translation ID exists
 				dataItem.uid: root.bindPrefix + "/POVP_Err_Count"  // Directly reading from the required path
