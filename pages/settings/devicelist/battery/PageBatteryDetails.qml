@@ -104,27 +104,57 @@ Page {
 				preferredVisible: details.allowsBatteryModules
 			}
 
+			// ListQuantityGroup {
+			// 	//% "Number of modules blocking charge / discharge"
+			// 	text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
+			// 	model: QuantityObjectModel {
+			// 		QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingCharge" }
+			// 		QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingDischarge" }
+			// 	}
+			// 	preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
+
+			// 	QtObject {
+			// 		id: customDataObject
+
+			// 		property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
+			// 		id: nrOfModulesBlockingCharge
+			// 		uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
+			// 		}
+
+			// 		property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
+			// 		id: nrOfModulesBlockingDischarge
+			// 		uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
+			// 		}
+			// 	}
+			// }
 			ListQuantityGroup {
+				id: modulesBlockingGroup
+
 				//% "Number of modules blocking charge / discharge"
 				text: qsTrId("batterydetails_number_of_modules_blocking_charge_discharge")
+
 				model: QuantityObjectModel {
-					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingCharge" }
-					QuantityObject { object: customDataObject ; key : "nrOfModulesBlockingDischarge" }
+					QuantityObject {
+						object: nrOfModulesBlockingCharge
+						decimals: 0
+					}
+
+					QuantityObject {
+						object: nrOfModulesBlockingDischarge
+						decimals: 0
+					}
 				}
-				preferredVisible: details.allowsNumberOfModulesBlockingChargeDischarge
 
-				QtObject {
-					id: customDataObject
+				preferredVisible: nrOfModulesBlockingCharge.valid || nrOfModulesBlockingDischarge.valid
 
-					property VeQuickItem nrOfModulesBlockingCharge: VeQuickItem {
+				VeQuickItem {
 					id: nrOfModulesBlockingCharge
-					uid: root.bindPrefix +  "/System/NrOfModulesBlockingCharge"
-					}
+					uid: root.bindPrefix + "/System/NrOfModulesBlockingCharge"
+				}
 
-					property VeQuickItem nrOfModulesBlockingDischarge: VeQuickItem {
+				VeQuickItem {
 					id: nrOfModulesBlockingDischarge
-					uid: root.bindPrefix +  "/System/NrOfModulesBlockingDischarge"
-					}
+					uid: root.bindPrefix + "/System/NrOfModulesBlockingDischarge"
 				}
 			}
 
