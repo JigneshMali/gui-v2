@@ -123,6 +123,11 @@ Page {
 				}
 			}
 			
+			ListText {
+                text: qsTr("Battery updates will be paused until firmware is updated or canceled.")
+                preferredVisible: true
+            }
+			
 		// -----------------------------------------VisibleItemModel
 		}
 	}

@@ -21,6 +21,11 @@ Page {
 		id: historyTabRefresh
 		uid: root.bindPrefix +  "/HistoryTabRefresh"
 	}
+	
+	property VeQuickItem fullychargedDate: VeQuickItem{
+		id: fullychargedDate
+		uid: root.bindPrefix +  "/H2Device/H2Log_FullyChargedDate"
+	}
 
 	GradientListView {
 		model: VisibleItemModel {
@@ -314,10 +319,16 @@ Page {
 			}
 
 			ListText {
-				text: "Day Since Full Charge"
+				text: "Days Since Full Charge"
 				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_DaysinceFullCharge"
 				preferredVisible: dataItem.valid
 			}
+
+			ListText {
+                text: "Fully Charged Date"
+                secondaryText: fullychargedDate.value
+                preferredVisible: dataItem.valid
+            }
 
 			ListInfoLabel {
 				text: CommonWords.reset_history_on_the_monitor_itself
