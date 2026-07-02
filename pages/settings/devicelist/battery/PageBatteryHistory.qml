@@ -325,7 +325,7 @@ Page {
 			ListText {
                 text: "Fully Charged Date"
                 secondaryText: fullychargedDate.value
-                preferredVisible: dataItem.valid
+                preferredVisible: isH2DeviceBool.value === 1
             }
 
 			ListInfoLabel {
