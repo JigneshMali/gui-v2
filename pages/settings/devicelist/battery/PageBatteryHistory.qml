@@ -22,7 +22,6 @@ Page {
 		uid: root.bindPrefix +  "/HistoryTabRefresh"
 	}
 	property VeQuickItem fullychargedDate: VeQuickItem{
-		id: fullychargedDate
 		uid: root.bindPrefix +  "/H2Device/H2Log_FullyChargedDate"
 	}
 
