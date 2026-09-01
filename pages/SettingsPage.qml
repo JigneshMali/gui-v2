@@ -132,6 +132,15 @@ SwipeViewPage {
 				pageIconSource: "qrc:/images/icon_debug_32.svg"
 				showAccessLevel: VenusOS.User_AccessType_SuperUser
 			}
+			SettingsListNavigation {
+				//% "SFK Venus OS Driver"
+				text: qsTr("SFK Venus OS Driver")
+				//% "Manage SFK devices and driver updates"
+				caption: qsTr("Manage SFK devices and driver updates")
+				pageSource: "/pages/settings/devicelist/battery/PageSettingsSFKDriverVersion.qml"
+				pageIconSource: "qrc:/images/sfk_logo.png"
+				preferredVisible: sfk_DriverSettingMenu_Active.value === 1 && sfk_DriverSettingMenu_Active.valid
+			}
 		}
 	}
 }

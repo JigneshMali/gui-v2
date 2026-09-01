@@ -1,0 +1,225 @@
+/*
+** Copyright (C) 2023 Victron Energy B.V.
+** See LICENSE.txt for license information.
+*/
+
+import QtQuick
+import Victron.VenusOS
+
+Page {
+	id: root
+
+	property string bindPrefix
+	property int globalDialogResult: 0   // <--- Global result variable	
+	// Add VeQuickItem to observe the selected logic
+	property VeQuickItem sfkVirtualBatteryLogic: VeQuickItem {
+		id: sfkVirtualBatteryLogic
+		uid: "mqtt/sfksettings/0/SfkVirtualBatteryLogic"
+	}
+	property VeQuickItem sfkVBDeviceInstance: VeQuickItem {
+		id: sfkVBDeviceInstance
+		uid: "mqtt/sfksettings/0/SfkVBDeviceInstance"
+	}
+	property VeQuickItem restartVBService: VeQuickItem {
+		id: restartVBService
+		uid: "mqtt/sfksettings/0/RestartVBService"
+	}
+	property VeQuickItem sfkSubmitDriverHelpFile: VeQuickItem {
+		id: sfkSubmitDriverHelpFile
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFile"
+	}
+	property VeQuickItem sfkSubmitDriverHelpFileProgress: VeQuickItem {
+		id: sfkSubmitDriverHelpFileProgress
+		uid: "mqtt/sfksettings/0/System/SFKSubmitDriverHelpFileProgress"
+	}
+
+
+	// Dynamic MQTT path base
+	property string mqttPrefix: "mqtt/battery/" + sfkVBDeviceInstance.value
+
+	property VeQuickItem sfkvbServiceRestart: VeQuickItem {
+		id: sfkvbServiceRestart
+		uid: mqttPrefix + "/RestartService"
+	}
+
+	property VeQuickItem sfkvbSaveSettingsEnabled: VeQuickItem {
+		id: sfkvbSaveSettingsEnabled
+		uid: mqttPrefix + "/Info/SaveSettingsEnabled"
+	}
+	property VeQuickItem sfkVbDebugLogging: VeQuickItem {
+		id: sfkVbDebugLogging
+		uid: mqttPrefix + "/Log/SfkVbDebugLogging"
+	}
+	property VeQuickItem sfkVbDetailLogging: VeQuickItem {
+		id: sfkVbDetailLogging
+		uid: mqttPrefix + "/Log/SfkVbDetailLogging"
+	}
+
+
+	GradientListView {
+		model: ObjectModel {
+
+			ListSwitch {
+				text: "Virtual Battery"
+				dataItem.uid: "mqtt/sfksettings/0/SfkVirtualBatteryActive"
+				preferredVisible: true
+			}
+
+			ListNavigation {
+				text: "Battery Configuration"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsSFKVirtualSetupSystem.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
+			
+			ListNavigation {
+				text: "Synchronized Heating"
+				preferredVisible: true
+				onClicked: {
+					Global.pageManager.pushPage("/pages/settings/devicelist/battery/PageSettingsVirtualBatterySynchronizedHeating.qml",
+							{ "title": text, "bindPrefix": root.bindPrefix  })
+				}
+			}
+			
+			ListRadioButtonGroup {
+				text: "Charge Mode Transition"
+				dataItem.uid: "mqtt/sfksettings/0/Info/SfkVbChargeModeOptions"
+				preferredVisible: true  // Control visibility based on your condition
+				optionModel: [
+                    { display: qsTr("All Batteries in Float"), value: 0 },
+                    { display: qsTr("Common Charge Status"), value: 1 }
+				]
+			}
+
+			ListSwitch {
+				text: "Detail Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDetailLogging"
+				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						sfkVbDetailLogging.setValue(0)
+					}
+					else if(checked){
+						sfkVbDetailLogging.setValue(1)
+					}
+				}
+			}
+
+			ListSwitch {
+				text: "Debug Logging"
+				dataItem.uid: "mqtt/sfksettings/0/Log/SfkVbDebugLogging"
+				preferredVisible: true
+				onClicked: {
+					if (!checked) {
+						sfkVbDebugLogging.setValue(0)
+					}
+					else if(checked){
+						sfkVbDebugLogging.setValue(1)
+					}
+				}
+			}
+		
+			ListButton {
+				text: qsTr("Apply Changes")
+				secondaryText: qsTr("Save Changes w/o Restart")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(saveSFKvbSettingsDialog)
+			}
+			ListButton {
+				text: qsTr("Restart Service")
+				secondaryText: qsTr("Restart Virtual Battery")
+				preferredVisible: true
+				onClicked: Global.dialogLayer.open(confirmRestartDialog)
+			}
+
+			// ListButton 
+			// {
+			// 	text: qsTr("Submit Diagnostic Report")
+			// 	secondaryText:sfkSubmitDriverHelpFileProgress.value === 100
+			// 			? qsTr("Submitted")
+			// 		: sfkSubmitDriverHelpFile.value === 1
+			// 			? qsTr("Submitting %1%").arg(sfkSubmitDriverHelpFileProgress.value)
+			// 		: qsTr("Submit")
+
+			// 	preferredVisible: true
+			// 	onClicked: 
+			// 	{
+			// 		if (sfkSubmitDriverHelpFile.value === 1)
+			// 		{
+			// 			sfkSubmitDriverHelpFile.setValue(0)
+			// 		}
+			// 		if (sfkSubmitDriverHelpFile.value === 0)
+			// 		{
+			// 			sfkSubmitDriverHelpFile.setValue(1)
+			// 			Global.showToastNotification(
+			// 				VenusOS.Notification_Info,
+			// 				qsTr("Submitting Diagnostic Report..."),
+			// 				5000
+			// 			)
+			// 		}
+			// 	}
+			// }
+
+			// ListRebootButton { }
+
+		}
+	}
+
+	Component {
+		id: confirmRestartDialog
+		ModalWarningDialog {
+			title: qsTr("Restart Service")
+			description: qsTr("This will restart the SFK Virtual Battery. %1").arg("DVCC may detect SFK Virtual Battery lost momentarily while service being restarted.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					restartVBService.setValue(1) // use  sfk installation service restart if other restart does not work due to vb device instance change.
+					sfkvbServiceRestart.setValue(1) // if device instance is changed restart the virtual battery service from driver settings
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Virtual Battery service restarting..."),
+						5000
+                	)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+		Component {
+		id: saveSFKvbSettingsDialog
+		ModalWarningDialog {
+			title: qsTr("Apply Changes")
+			description: qsTr("This will apply changes without restarting the driver.")
+			// dialogDoneOptions: "OkAndCancel"  // error of int expected 
+			dialogDoneOptions: VenusOS.ModalDialog_DoneOptions_OkAndCancel
+			onClosed: function() {
+				globalDialogResult  = result 
+				if (globalDialogResult  === 1) {
+					sfkvbSaveSettingsEnabled.setValue(1)
+					Global.showToastNotification(
+						VenusOS.Notification_Info,
+						qsTr("Changes are being applied to the driver."),
+						8000
+                	)
+					}
+				globalDialogResult  = 0   // Reset after processing
+			}
+		}
+	}
+	// React to changes using Connections on the VeQuickItem
+	Connections {
+    target: sfkVirtualBatteryLogic
+    function onValueChanged() {
+        Global.showToastNotification(
+            VenusOS.Notification_Info,
+            qsTr("Please reboot device to see changes"),
+            5000
+			)
+		}
+	}
+
+}

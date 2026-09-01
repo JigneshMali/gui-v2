@@ -8,7 +8,18 @@ import Victron.VenusOS
 
 DeviceListDelegate {
 	id: root
-
+	property VeQuickItem heatFetStatus: VeQuickItem {
+		id: heatFetStatus
+		uid: root.device.serviceUid  +  "/System/HeatFetStatus"
+		}	
+	property bool pulse: true
+	    Timer {
+        id: _timer
+        interval: 500
+        running: heatFetStatus.value === 1
+        repeat: true
+        onTriggered: pulse = !pulse
+    }
 	readonly property bool isParallelBms: numberOfBmses.valid
 
 	quantityModel: !root.isParallelBms && state.valid && state.value === VenusOS.Battery_State_Pending
@@ -34,10 +45,15 @@ DeviceListDelegate {
 		id: defaultModel
 
 		filterType: QuantityObjectModel.HasValue
-
+		QuantityObject { object: customDataObject; key:"heatRedTextP"  }
 		QuantityObject { object: soc; unit: VenusOS.Units_Percentage }
 		QuantityObject { object: voltage; unit: VenusOS.Units_Volt_DC }
 		QuantityObject { object: current; unit: VenusOS.Units_Amp }
+	}
+
+	QtObject {
+		id: customDataObject
+		property string heatRedTextP: (heatFetStatus.value === 1 && pulse) ? "<span style='color:#ff0000; font-weight:bold;'>H</span>" : " "
 	}
 
 	VeQuickItem {
