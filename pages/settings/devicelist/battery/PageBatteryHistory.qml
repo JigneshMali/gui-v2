@@ -328,6 +328,18 @@ Page {
                 preferredVisible: isH2DeviceBool.value === 1
             }
 
+			ListText {
+				text: "Voltage Below Critical Threshold "
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_VBCTMinutes"
+				preferredVisible: dataItem.valid
+			}
+			
+			ListText {
+				text: "Critical Low Voltage Shutdown Count"
+				dataItem.uid: root.bindPrefix + "/H2Device/H2Log_CriticalShutdownCount"
+				preferredVisible: dataItem.valid
+			}
+
 			ListInfoLabel {
 				text: CommonWords.reset_history_on_the_monitor_itself
 				visible: !clearHistory.visible
