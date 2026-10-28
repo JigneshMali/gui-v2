@@ -144,7 +144,8 @@ Page {
 					{ display: qsTr("%1A").arg(60.0), value: 60 },
 					{ display: qsTr("%1A %2").arg(70.0).arg("[DEFAULT]"), value: 70 },
 					{ display: qsTr("%1A").arg(80.0), value: 80 },
-					{ display: qsTr("%1A").arg(90.0), value: 90 }
+					{ display: qsTr("%1A").arg(90.0), value: 90 },
+					{ display: qsTr("%1A").arg(100.0), value: 100 }
 				]
             }
 
